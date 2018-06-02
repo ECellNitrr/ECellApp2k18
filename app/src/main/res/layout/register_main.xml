@@ -7,47 +7,56 @@
     android:orientation="vertical"
     tools:context=".RegisterMainActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/register_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:padding="50dp">
+        android:transitionName="cardViewTransition">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="E-Summit 2018"
-            android:textColor="#FFF"
-            android:textSize="40sp" />
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical"
+            android:padding="50dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Don't fit in, just stand out!"
-            android:textColor="#cfd8dc"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="E-Summit 2018"
+                android:textColor="#FFF"
+                android:textSize="40sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="20dp"
-            android:text="The most incipient congregation of entrepreneurial minds is here. Pump yourself up."
-            android:textColor="#cfd8dc"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Don't fit in, just stand out!"
+                android:textColor="#cfd8dc"
+                android:textSize="20sp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/button_style"
-            android:text="Visit Site"
-            android:textColor="#212121" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:text="The most incipient congregation of entrepreneurial minds is here. Pump yourself up."
+                android:textColor="#cfd8dc"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/register_visit_site"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_style"
+                android:text="Visit Site"
+                android:textColor="#212121"
+                android:transitionName="buttonTransition" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,6 +65,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/register_facebook"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -63,6 +73,7 @@
             android:elevation="35dp"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:transitionName="fbTransition"
             app:cardBackgroundColor="#eeeeee"
             app:cardCornerRadius="20dp">
 
@@ -73,9 +84,11 @@
                 android:padding="10dp">
 
                 <ImageView
+                    android:id="@+id/register_facebook_image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/facebook_logo" />
+                    android:src="@drawable/facebook_logo"
+                    android:transitionName="facebookImageTransition" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -93,6 +106,7 @@
             android:layout_height="25dp" />
 
         <android.support.v7.widget.CardView
+            android:id="@+id/register_manual"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -100,6 +114,7 @@
             android:elevation="35dp"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:transitionName="manualTransition"
             app:cardBackgroundColor="#eeeeee"
             app:cardCornerRadius="20dp">
 
