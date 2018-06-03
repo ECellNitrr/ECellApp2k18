@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FacebookActivity" />
+        <activity android:name=".SignInActivity" />
         <activity android:name=".OTPActivity" />
         <activity android:name=".ManualSignUpActivity" />
 
