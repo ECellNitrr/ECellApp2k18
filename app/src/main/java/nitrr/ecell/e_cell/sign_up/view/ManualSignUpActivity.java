@@ -156,6 +156,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
                     }
 
                     signUpInstance.sendData(inputName.getText().toString().trim(), encPassword, inputPhone.getText().toString().trim());
+                    Toast.makeText(getApplicationContext(), "Sign Up Success.", Toast.LENGTH_SHORT).show();
 
                     /*
                      * OTP Call after successful ..
