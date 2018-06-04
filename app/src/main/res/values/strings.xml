@@ -11,6 +11,8 @@
     <string name="re_enter_password">Re-enter Password</string>
     <string name="sign_up_one">Sign Up with Username</string>
     <string name="sign_up_two">and Password</string>
-    <string name="sign_in_one">Sign In with Username</string>
     <string name="forgot_password">Forgot your Password</string>
+    <string name="facebook_app_id">227874984654887</string>
+    <string name="fb_login_protocol_scheme">fb227874984654887</string>
+
 </resources>
