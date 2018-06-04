@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".reg_main.view.RegisterMainActivity">
+    tools:context=".view.RegisterMainActivity">
 
     <ImageView
         android:id="@+id/ecell_image"
@@ -26,11 +26,11 @@
             android:id="@+id/register_sign_in"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/button_style_border"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/sign_in"
-            android:layout_gravity="center"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="20sp"
@@ -95,7 +95,15 @@
             android:background="@drawable/button_style_filled"
             android:clickable="true"
             android:focusable="true"
+            android:onClick="facebookSignUp"
             android:orientation="horizontal">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
 
             <ImageView
                 android:layout_width="30dp"
