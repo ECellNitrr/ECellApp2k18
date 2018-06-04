@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.RegisterMainActivity">
+        <activity android:name=".reg_main.view.RegisterMainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ManualSignUpActivity" />
+        <activity android:name=".sign_up.view.ManualSignUpActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
