@@ -26,17 +26,19 @@ public class SignUpDataImp implements SignUpData {
 
     @Override
     public void sendData(String userName, String password, String phone) {
-        if (signUpInterface.isNetworkAvailable() && userData.validateUserName(userName)) {
-            signUpInterface.showProgressBar(true);
+        if (signUpInterface.checkNetwork())
+            if (userData.validateUserName(userName)) {
+                signUpInterface.showProgressBar(true);
 
-            String token = userDataReference.push().getKey();
-            User user = new User(token, userName, password, phone);
+                String token = userDataReference.push().getKey();
+                User user = new User(token, userName, password, phone);
 
-            assert token != null;
-            userDataReference.child(token).setValue(user);
-        } else {
-            signUpInterface.showErrorMessage("User Name already exists. Try again.");
-        }
+                assert token != null;
+                userDataReference.child(token).setValue(user);
+            } else {
+
+                signUpInterface.showErrorMessage("User Name already exists. Try again.");
+            }
 
         signUpInterface.showProgressBar(false);
     }

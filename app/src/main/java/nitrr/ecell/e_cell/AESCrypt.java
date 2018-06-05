@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.sign_up.Utils;
+package nitrr.ecell.e_cell;
 
 import android.util.Base64;
 

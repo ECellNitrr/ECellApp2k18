@@ -2,9 +2,6 @@ package nitrr.ecell.e_cell.sign_up.view;
 
 import android.content.DialogInterface;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -23,8 +20,9 @@ import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
+import nitrr.ecell.e_cell.AESCrypt;
+import nitrr.ecell.e_cell.NetworkUtils;
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.sign_up.Utils.AESCrypt;
 import nitrr.ecell.e_cell.sign_up.presenter.SignUpData;
 import nitrr.ecell.e_cell.sign_up.presenter.SignUpDataImp;
 
@@ -37,6 +35,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
     ProgressBar signUpProgressBar;
     SignUpData signUpInstance;
     AESCrypt aesCrypt = new AESCrypt();
+    Boolean proceed = true;
 
     @Override
     protected void onStart() {
@@ -97,7 +96,10 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
                 if ((phone.length() != 10) || (Pattern.matches("[0-9]", phone))) {
                     inputPhoneLayout.setError("Valid Phone Number required.");
                     inputPhone.requestFocus();
+                    proceed = false;
+
                 } else {
+                    proceed = true;
                     inputPhoneLayout.setErrorEnabled(false);
                 }
             }
@@ -117,9 +119,13 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
                 if ((inputPassword.getText().toString().trim().isEmpty()) || (inputPassword.getText().length() < 8)) {
                     inputPasswordLayout.setError("Valid Password of at least 8 characters required.");
                     inputPassword.requestFocus();
+                    proceed = false;
+
                 } else {
+                    proceed = true;
                     inputPasswordLayout.setErrorEnabled(false);
                 }
+
             }
         });
 
@@ -137,9 +143,13 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
                 if (!inputConfirm.getText().toString().equals(inputPassword.getText().toString())) {
                     inputConfirmLayout.setError("Passwords didn't match.");
                     inputConfirm.requestFocus();
+                    proceed = false;
+
                 } else {
+                    proceed = true;
                     inputConfirmLayout.setErrorEnabled(false);
                 }
+
             }
         });
 
@@ -155,13 +165,18 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
                         Log.d("Encryption Error", e.getMessage());
                     }
 
-                    signUpInstance.sendData(inputName.getText().toString().trim(), encPassword, inputPhone.getText().toString().trim());
-                    Toast.makeText(getApplicationContext(), "Sign Up Success.", Toast.LENGTH_SHORT).show();
+                    if (proceed) {
+                        signUpInstance.sendData(inputName.getText().toString().trim(), encPassword, inputPhone.getText().toString().trim());
 
-                    /*
-                     * OTP Call after successful ..
-                     * */
+                        if (proceed)
+                            Toast.makeText(getApplicationContext(), "Sign Up Success.", Toast.LENGTH_SHORT).show();
 
+                        /*
+                         * OTP Call after successful ..
+                         * */
+
+                        //finish();
+                    }
                 }
             }
         });
@@ -192,55 +207,57 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
     }
 
     @Override
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        assert connectivityManager != null;
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        AlertDialog.Builder builder;
+    public boolean checkNetwork() {
 
-        if (!activeNetworkInfo.isConnected()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                builder = new AlertDialog.Builder(getApplicationContext(), android.R.style.Theme_Material_Dialog_Alert);
-            else
-                builder = new AlertDialog.Builder(getApplicationContext());
+        if (NetworkUtils.isNetworkAvailable(ManualSignUpActivity.this)) {
+            proceed = true;
+            return true;
 
-            builder.setTitle("Network Error!")
-                    .setMessage("Do you want to retry?")
-                    .setNeutralButton("Retry", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            isNetworkAvailable();
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
+        } else {
+
+            final AlertDialog alertDialog = new AlertDialog.Builder(ManualSignUpActivity.this).create();
+            alertDialog.setTitle("Network Error!");
+            alertDialog.setMessage("Internet not Available. Check your Network Connectivity and Try Again.");
+            alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
+
+            proceed = false;
+            alertDialog.show();
+            return false;
         }
-
-        return true;
     }
 
     @Override
     public void showErrorMessage(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
 
     private boolean validateDetails() {
         if (inputName.getText().toString().trim().isEmpty()) {
             inputNameLayout.setError("Enter a User Name.");
+            proceed = false;
             return false;
         }
 
         if (inputPassword.getText().toString().trim().isEmpty()) {
             inputPasswordLayout.setError("Enter a password containing at least 8 characters.");
+            proceed = false;
             return false;
         }
 
         if (inputPhone.getText().toString().trim().isEmpty()) {
             inputPhoneLayout.setError("Enter your Phone Number.");
+            proceed = false;
             return false;
         }
 
+        proceed = true;
         return true;
     }
 }
