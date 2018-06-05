@@ -1,14 +1,12 @@
 package nitrr.ecell.e_cell.reg_main.view;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -69,30 +67,33 @@ public class RegisterMainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                 *  Sign In Activity Call..
-                 * */
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                //finish();
+                        /*
+                         * Sign In Activity Call
+                         * */
+
+                        //finish();
+                    }
+                }, 150);
             }
         });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    Pair[] pairs = new Pair[2];
-                    pairs[0] = new Pair<View, String>(signUp, "signUpButtonTrans");
-                    pairs[1] = new Pair<View, String>(ecellImage, "imageTrans");
-
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegisterMainActivity.this, pairs);
-                    startActivity(intent, options.toBundle());
-                } else {
-                    startActivity(intent);
-                }
-
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 150);
             }
         });
 
@@ -115,11 +116,18 @@ public class RegisterMainActivity extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "Facebook Authentication Successful.", Toast.LENGTH_SHORT).show();
 
-                        /*
-                         * OTP Activity Call.
-                         * */
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
 
-                        //finish();
+                                /*
+                                 * OTP Activity Call
+                                 * */
+
+                                //finish();
+                            }
+                        }, 150);
                     }
 
                     @Override

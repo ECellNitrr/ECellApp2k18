@@ -22,8 +22,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/ecell_white"
-            android:transitionName="imageTrans" />
+            android:src="@mipmap/ecell_white" />
 
         <TextView
             android:id="@+id/sign_up_one"
@@ -187,8 +186,7 @@
             android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@color/colorOuterSpace"
-            android:textSize="20sp"
-            android:transitionName="signUpButtonTrans" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ProgressBar
