@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import nitrr.ecell.e_cell.FacebookSignUp;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.sign_up.view.ManualSignUpActivity;
 
@@ -17,6 +18,7 @@ public class RegisterMainActivity extends AppCompatActivity {
     Button signIn, signUp;
     TextView orContinueWith;
     LinearLayout facebookSignUp;
+    FacebookSignUp fbSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,6 @@ public class RegisterMainActivity extends AppCompatActivity {
         Typeface helvetica = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/helvetica.ttf");
 
         orContinueWith.setTypeface(helvetica);
-
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,15 +68,14 @@ public class RegisterMainActivity extends AppCompatActivity {
             }
         });
 
-
-        facebookSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        fbSignUp = new FacebookSignUp(RegisterMainActivity.this, facebookSignUp);
+        fbSignUp.initialize();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-
+        fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+    }
 }
