@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import nitrr.ecell.e_cell.R;
@@ -16,9 +16,9 @@ public class ManualSignUpActivity extends AppCompatActivity {
 
     EditText inputUserName, inputPhone, inputPassword, inputConfirm, inputFName, inputLName, inputEmail;
     TextInputLayout inputUserNameLayout, inputPhoneLayout, inputPasswordLayout, inputConfirmLayout, inputFNameLayout, inputLNameLayout, inputEmailLayout;
-    Button signUpProceed;
+    Button signUpProceed, back;
     ProgressBar signUpProgressBar;
-    CardView cardAbove, cardBelow;
+    LinearLayout layoutFirst, layoutSecond;
     Boolean proceed = true, first = true;
 
     @Override
@@ -48,30 +48,49 @@ public class ManualSignUpActivity extends AppCompatActivity {
         inputLName = findViewById(R.id.man_lastname);
 
         signUpProceed = findViewById(R.id.sign_up_proceed);
+        back = findViewById(R.id.sign_up_back);
 
         signUpProgressBar = findViewById(R.id.signUpProgressBar);
 
-        cardAbove = findViewById(R.id.card_above);
-        cardBelow = findViewById(R.id.card_below);
+        layoutFirst = findViewById(R.id.lay_first);
+        layoutSecond = findViewById(R.id.lay_second);
+
+        back.setEnabled(false);
 
         signUpProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (first)
+                if (first) {
                     signUpProceed.setText(getResources().getString(R.string.sign_up));
+                    layoutSecond.animate().translationX(0).setDuration(500);
+                    layoutFirst.animate().translationX(-1000).setDuration(500);
+                    back.animate().alpha(1.0f).setDuration(300);
 
-                if (cardAbove.getAlpha() == 1.0f) {
-
-                    cardAbove.animate().translationY(cardAbove.getHeight() + 350).alpha(0.0f).setDuration(300);
-                    cardBelow.setAlpha(1.0f);
-                    cardBelow.animate().translationY(0).setDuration(1);
+                    back.setEnabled(true);
+                    first = false;
+                    inputPassword.requestFocus();
 
                 } else {
 
-                    cardBelow.animate().translationY(cardBelow.getHeight() + 350).alpha(0.0f).setDuration(300);
-                    cardAbove.setAlpha(1.0f);
-                    cardAbove.animate().translationY(0).setDuration(1);
+                    /*
+                     * OTP Activity Call
+                     * */
                 }
+
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutFirst.animate().translationX(0).setDuration(500);
+                layoutSecond.animate().translationX(1000).setDuration(500);
+                back.animate().alpha(0.0f).setDuration(300);
+
+                back.setEnabled(false);
+                first = true;
+                signUpProceed.setText(getResources().getString(R.string.proceed));
+                inputFName.requestFocus();
 
             }
         });
