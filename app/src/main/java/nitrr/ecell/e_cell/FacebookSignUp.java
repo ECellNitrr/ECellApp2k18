@@ -102,7 +102,7 @@ public class FacebookSignUp {
 
             bundle.putString("avatar_url", avatar_url.toString());
 
-            prefUtils.saveFbUserInfo(id, jsonObject.getString("first_name"), jsonObject.getString("last_name"), jsonObject.getString("email"), avatar_url.toString());
+            prefUtils.saveFbUserInfo(jsonObject.getString("first_name"), jsonObject.getString("last_name"), jsonObject.getString("email"), avatar_url.toString());
 
         } catch (Exception e) {
             Log.d("Facebook Sign Up Error.", e.getMessage());
