@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -49,9 +47,6 @@ public class FacebookSignUp {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-                String accessToken = loginResult.getAccessToken().getToken();
-                prefUtils.saveFbAccessToken(accessToken);
-
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -73,8 +68,8 @@ public class FacebookSignUp {
 
             @Override
             public void onError(FacebookException error) {
-                deleteAccessToken();
             }
+
         });
 
     }
@@ -109,19 +104,6 @@ public class FacebookSignUp {
         }
 
         return bundle;
-    }
-
-    private void deleteAccessToken() {
-        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                if (currentAccessToken == null) {
-
-                    prefUtils.clearToken();
-                    LoginManager.getInstance().logOut();
-                }
-            }
-        };
     }
 
     public CallbackManager getCallbackManager() {

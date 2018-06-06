@@ -16,18 +16,18 @@ public class PrefUtils {
         this.activity = activity;
     }
 
-    public void saveFbAccessToken(String token) {
+    public void saveAccessToken(String token) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("fb_access_token", token);
+        editor.putString("access_token", token);
         editor.apply();
     }
 
-    public String getFbAccessToken() {
+    public String getAccessToken() {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        return prefs.getString("fb_access_token", null);
+        return prefs.getString("access_token", null);
     }
 
     public void clearToken() {
@@ -53,7 +53,7 @@ public class PrefUtils {
         // Delete this dialog after final build.
         AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
         dialog.setTitle("Retrieved Data");
-        dialog.setMessage("Access Token: " + getFbAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
+        dialog.setMessage("Access Token: " + getAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
         dialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
