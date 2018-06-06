@@ -1,47 +1,29 @@
 package nitrr.ecell.e_cell.sign_up.view;
 
-import android.content.DialogInterface;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.regex.Pattern;
-
-import nitrr.ecell.e_cell.AESCrypt;
-import nitrr.ecell.e_cell.NetworkUtils;
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.sign_up.presenter.SignUpData;
-import nitrr.ecell.e_cell.sign_up.presenter.SignUpDataImp;
 
-public class ManualSignUpActivity extends AppCompatActivity implements SignUpInterface {
+public class ManualSignUpActivity extends AppCompatActivity {
 
-    EditText inputName, inputPhone, inputPassword, inputConfirm;
-    TextInputLayout inputNameLayout, inputPhoneLayout, inputPasswordLayout, inputConfirmLayout;
-    TextView signUpOne, signUpTwo, signUpThree;
-    Button signUp;
+    EditText inputUserName, inputPhone, inputPassword, inputConfirm, inputFName, inputLName, inputEmail;
+    TextInputLayout inputUserNameLayout, inputPhoneLayout, inputPasswordLayout, inputConfirmLayout, inputFNameLayout, inputLNameLayout, inputEmailLayout;
+    Button signUpProceed;
     ProgressBar signUpProgressBar;
-    SignUpData signUpInstance;
-    AESCrypt aesCrypt = new AESCrypt();
-    Boolean proceed = true;
+    CardView cardAbove, cardBelow;
+    Boolean proceed = true, first = true;
 
     @Override
     protected void onStart() {
         super.onStart();
-        assert signUpInstance != null;
-        signUpInstance.getUserData();
     }
 
     @Override
@@ -49,198 +31,57 @@ public class ManualSignUpActivity extends AppCompatActivity implements SignUpInt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manual_signup_layout);
 
-        signUpInstance = new SignUpDataImp(this);
-
-        Typeface ralewayBold = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/ralewaybold.ttf");
-
-        signUpOne = findViewById(R.id.sign_up_one);
-        signUpTwo = findViewById(R.id.sign_up_two);
-        signUpThree = findViewById(R.id.sign_up_three);
-
-        inputNameLayout = findViewById(R.id.man_username_lay);
+        inputUserNameLayout = findViewById(R.id.man_username_lay);
         inputPhoneLayout = findViewById(R.id.man_mob_lay);
         inputPasswordLayout = findViewById(R.id.man_pass_lay);
         inputConfirmLayout = findViewById(R.id.man_re_lay);
+        inputEmailLayout = findViewById(R.id.man_email_lay);
+        inputFNameLayout = findViewById(R.id.man_firstname_lay);
+        inputLNameLayout = findViewById(R.id.man_lastname_lay);
 
-        inputName = findViewById(R.id.man_username);
+        inputUserName = findViewById(R.id.man_username);
         inputPhone = findViewById(R.id.man_mob);
         inputPassword = findViewById(R.id.man_pass);
         inputConfirm = findViewById(R.id.man_re);
+        inputEmail = findViewById(R.id.man_email);
+        inputFName = findViewById(R.id.man_firstname);
+        inputLName = findViewById(R.id.man_lastname);
 
-        signUp = findViewById(R.id.sign_up_but);
+        signUpProceed = findViewById(R.id.sign_up_proceed);
 
         signUpProgressBar = findViewById(R.id.signUpProgressBar);
 
-        inputNameLayout.setTypeface(ralewayBold);
-        inputPhoneLayout.setTypeface(ralewayBold);
-        inputPasswordLayout.setTypeface(ralewayBold);
-        inputConfirmLayout.setTypeface(ralewayBold);
-        signUpOne.setTypeface(ralewayBold);
-        signUpTwo.setTypeface(ralewayBold);
-        signUpThree.setTypeface(ralewayBold);
-        signUp.setTypeface(ralewayBold);
+        cardAbove = findViewById(R.id.card_above);
+        cardBelow = findViewById(R.id.card_below);
 
-
-        inputPhone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String phone = inputPhone.getText().toString().trim();
-                if ((phone.length() != 10) || (Pattern.matches("[0-9]", phone))) {
-                    inputPhoneLayout.setError("Valid Phone Number required.");
-                    inputPhone.requestFocus();
-                    proceed = false;
-
-                } else {
-                    proceed = true;
-                    inputPhoneLayout.setErrorEnabled(false);
-                }
-            }
-        });
-
-        inputPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if ((inputPassword.getText().toString().trim().isEmpty()) || (inputPassword.getText().length() < 8)) {
-                    inputPasswordLayout.setError("Valid Password of at least 8 characters required.");
-                    inputPassword.requestFocus();
-                    proceed = false;
-
-                } else {
-                    proceed = true;
-                    inputPasswordLayout.setErrorEnabled(false);
-                }
-
-            }
-        });
-
-        inputConfirm.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!inputConfirm.getText().toString().equals(inputPassword.getText().toString())) {
-                    inputConfirmLayout.setError("Passwords didn't match.");
-                    inputConfirm.requestFocus();
-                    proceed = false;
-
-                } else {
-                    proceed = true;
-                    inputConfirmLayout.setErrorEnabled(false);
-                }
-
-            }
-        });
-
-        signUp.setOnClickListener(new View.OnClickListener() {
+        signUpProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateDetails()) {
-                    String encPassword = null;
+                if (first)
+                    signUpProceed.setText(getResources().getString(R.string.sign_up));
 
-                    try {
-                        encPassword = aesCrypt.encrypt(inputPassword.getText().toString().trim());
-                    } catch (Exception e) {
-                        Log.d("Encryption Error", e.getMessage());
-                    }
+                if (cardAbove.getAlpha() == 1.0f) {
 
-                    if (proceed) {
-                        signUpInstance.sendData(inputName.getText().toString().trim(), encPassword, inputPhone.getText().toString().trim());
+                    cardAbove.animate().translationY(cardAbove.getHeight() + 350).alpha(0.0f).setDuration(300);
+                    cardBelow.setAlpha(1.0f);
+                    cardBelow.animate().translationY(0).setDuration(1);
 
-                        if (proceed)
-                            Toast.makeText(getApplicationContext(), "Sign Up Success.", Toast.LENGTH_SHORT).show();
+                } else {
 
-                        /*
-                         * OTP Call after successful ..
-                         * */
-
-                        //finish();
-                    }
+                    cardBelow.animate().translationY(cardBelow.getHeight() + 350).alpha(0.0f).setDuration(300);
+                    cardAbove.setAlpha(1.0f);
+                    cardAbove.animate().translationY(0).setDuration(1);
                 }
+
             }
         });
-    }
 
-
-    @Override
-    public void showProgressBar(boolean show) {
-        View view = this.getCurrentFocus();
-
-        if (view != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-
-            if (inputMethodManager != null)
-                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
-        }
-
-        if (show) {
-
-            signUp.setVisibility(View.GONE);
-            signUpProgressBar.setVisibility(View.VISIBLE);
-        } else {
-
-            signUpProgressBar.setVisibility(View.GONE);
-            signUp.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public boolean checkNetwork() {
-
-        if (NetworkUtils.isNetworkAvailable(ManualSignUpActivity.this)) {
-            proceed = true;
-            return true;
-
-        } else {
-
-            final AlertDialog alertDialog = new AlertDialog.Builder(ManualSignUpActivity.this).create();
-            alertDialog.setTitle("Network Error!");
-            alertDialog.setMessage("Internet not Available. Check your Network Connectivity and Try Again.");
-            alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                }
-            });
-
-            proceed = false;
-            alertDialog.show();
-            return false;
-        }
-    }
-
-    @Override
-    public void showErrorMessage(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
 
     private boolean validateDetails() {
-        if (inputName.getText().toString().trim().isEmpty()) {
-            inputNameLayout.setError("Enter a User Name.");
+        if (inputUserName.getText().toString().trim().isEmpty()) {
+            inputUserNameLayout.setError("Enter a User Name.");
             proceed = false;
             return false;
         }
