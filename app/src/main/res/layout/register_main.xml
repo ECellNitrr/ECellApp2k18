@@ -29,12 +29,11 @@
             android:background="@drawable/button_style_border"
             android:clickable="true"
             android:focusable="true"
+            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:transitionName="signInButtonTrans" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/register_sign_up"
@@ -44,12 +43,11 @@
             android:background="@drawable/button_style_filled"
             android:clickable="true"
             android:focusable="true"
+            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@color/colorOuterSpace"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:transitionName="signUpButtonTrans" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,7 +115,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorSonicSilver"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/raleway_bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
