@@ -30,14 +30,6 @@ public class PrefUtils {
         return prefs.getString("access_token", null);
     }
 
-    public void clearToken() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        editor.clear();
-        editor.apply();
-    }
-
     public void saveFbUserInfo(String first_name, String last_name, String email, String avatar_url) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
