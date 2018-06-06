@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -68,21 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_above"
+            <LinearLayout
+                android:id="@+id/lay_first"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="30dp"
-                android:alpha="1.0"
                 android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/colorWhite"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="30dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:background="@drawable/layout_background"
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
@@ -101,8 +93,10 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
                             android:hint="@string/first_name"
+                            android:imeOptions="actionNext"
                             android:inputType="textPersonName"
                             android:maxEms="20"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -128,8 +122,10 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
                             android:hint="@string/last_name"
+                            android:imeOptions="actionNext"
                             android:inputType="textPersonName"
                             android:maxEms="20"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -155,7 +151,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
                             android:hint="@string/username"
+                            android:imeOptions="actionNext"
                             android:inputType="textPersonName"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -182,28 +180,21 @@
                             android:background="@color/colorWhite"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
+                            android:imeOptions="actionDone"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_below"
+            <LinearLayout
+                android:id="@+id/lay_second"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="30dp"
-                android:alpha="0.0"
                 android:animateLayoutChanges="true"
-                android:translationY="350dp"
-                app:cardBackgroundColor="@color/colorWhite"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="30dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:background="@drawable/layout_background"
+                android:translationX="1000dp"
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
@@ -222,7 +213,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
                             android:hint="@string/password"
+                            android:imeOptions="actionNext"
                             android:inputType="textPassword"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -248,7 +241,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
                             android:hint="@string/re_enter_password"
+                            android:imeOptions="actionNext"
                             android:inputType="textPassword"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -276,20 +271,37 @@
                             android:hint="@string/mobile_no"
                             android:inputType="numberSigned"
                             android:maxEms="13"
+                            android:imeOptions="actionDone"
+                            android:maxLines="1"
                             android:paddingTop="10dp" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/sign_up_back"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:alpha="0.0"
+            android:background="@drawable/button_style_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/sign_up_proceed"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button_style_filled"
             android:clickable="true"
             android:focusable="true"
