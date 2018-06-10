@@ -321,4 +321,5 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="49dp"
         android:visibility="gone" />
+
 </RelativeLayout>
