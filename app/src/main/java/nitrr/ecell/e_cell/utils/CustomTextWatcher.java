@@ -15,8 +15,6 @@ public class CustomTextWatcher implements TextWatcher {
     private TextInputLayout layout;
     private String field_name;
 
-    private String text_content;
-
     public CustomTextWatcher(EditText text, TextInputLayout layout, String field_name) {
         this.text = text;
         this.layout = layout;
@@ -33,7 +31,7 @@ public class CustomTextWatcher implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        text_content = text.getText().toString().trim();
+        String text_content = text.getText().toString().trim();
 
         if (text_content.equals("")) {
             layout.setError("Empty fields not allowed.");
@@ -48,7 +46,7 @@ public class CustomTextWatcher implements TextWatcher {
                 layout.setErrorEnabled(false);
                 text.requestFocus();
             } else {
-                layout.setError("First Name should not contain digits.");
+                layout.setError("First Name should not contain digits or empty field.");
             }
 
         }
@@ -60,7 +58,7 @@ public class CustomTextWatcher implements TextWatcher {
             if (pattern.matcher(text_content).matches()) {
                 layout.setErrorEnabled(false);
             } else {
-                layout.setError("Last Name should not contain digits.");
+                layout.setError("Last Name should not contain digits or empty field.");
                 text.requestFocus();
             }
         }
