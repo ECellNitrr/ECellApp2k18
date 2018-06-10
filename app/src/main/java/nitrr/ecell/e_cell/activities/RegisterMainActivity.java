@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import nitrr.ecell.e_cell.utils.FacebookSignUp;
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
 public class RegisterMainActivity extends AppCompatActivity {
     Button signIn, signUp;
@@ -41,12 +41,7 @@ public class RegisterMainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-                        /*
-                         * Sign In Activity Call
-                         * */
-
-                        //finish();
+                        // TODO: Sign In Activity Call
                     }
                 }, 150);
             }
@@ -75,6 +70,6 @@ public class RegisterMainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+        fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 }

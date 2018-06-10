@@ -43,6 +43,7 @@ public class AppClient {
                 return chain.proceed(request);
             }
         };
+
         OkHttpClient.Builder httpClient = getOKHttpClient();
         httpClient.addInterceptor(interceptorReq);
         OkHttpClient okHttpClient = httpClient.build();
@@ -64,6 +65,7 @@ public class AppClient {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             httpClient.addInterceptor(httpLoggingInterceptor);
         }
+
         httpClient.connectTimeout(15, TimeUnit.SECONDS);
         httpClient.writeTimeout(15, TimeUnit.SECONDS);
         httpClient.readTimeout(15, TimeUnit.SECONDS);
