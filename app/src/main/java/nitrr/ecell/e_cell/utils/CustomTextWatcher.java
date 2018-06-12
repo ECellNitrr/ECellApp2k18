@@ -7,7 +7,12 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.EditText;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
+
+import nitrr.ecell.e_cell.R;
 
 public class CustomTextWatcher implements TextWatcher {
     private Activity activity;
@@ -15,7 +20,8 @@ public class CustomTextWatcher implements TextWatcher {
     private TextInputLayout layout;
     private String field_name;
 
-    public CustomTextWatcher(EditText text, TextInputLayout layout, String field_name) {
+    public CustomTextWatcher(Activity activity, EditText text, TextInputLayout layout, String field_name) {
+        this.activity = activity;
         this.text = text;
         this.layout = layout;
         this.field_name = field_name;
@@ -34,7 +40,7 @@ public class CustomTextWatcher implements TextWatcher {
         String text_content = text.getText().toString().trim();
 
         if (text_content.equals("")) {
-            layout.setError("Empty fields not allowed.");
+            layout.setError(activity.getResources().getString(R.string.error_common));
         } else {
             layout.setErrorEnabled(false);
         }
@@ -46,7 +52,7 @@ public class CustomTextWatcher implements TextWatcher {
                 layout.setErrorEnabled(false);
                 text.requestFocus();
             } else {
-                layout.setError("First Name should not contain digits or empty field.");
+                layout.setError(activity.getResources().getString(R.string.error_first_name));
             }
 
         }
@@ -58,14 +64,14 @@ public class CustomTextWatcher implements TextWatcher {
             if (pattern.matcher(text_content).matches()) {
                 layout.setErrorEnabled(false);
             } else {
-                layout.setError("Last Name should not contain digits or empty field.");
+                layout.setError(activity.getResources().getString(R.string.error_last_name));
                 text.requestFocus();
             }
         }
 
         if (field_name.equals(AppConstants.EMAIL)) {
             if (!Patterns.EMAIL_ADDRESS.matcher(text_content).matches()) {
-                layout.setError("Invalid Email Address.");
+                layout.setError(activity.getResources().getString(R.string.error_email));
                 text.requestFocus();
 
             } else {
@@ -74,8 +80,8 @@ public class CustomTextWatcher implements TextWatcher {
         }
 
         if (field_name.equals(AppConstants.PASSWORD)) {
-            if (text_content.length() != 8) {
-                layout.setError("Password's length should at least be eight.");
+            if (text_content.length() != 6) {
+                layout.setError(activity.getResources().getString(R.string.error_pass));
                 text.requestFocus();
 
             } else {
@@ -84,14 +90,30 @@ public class CustomTextWatcher implements TextWatcher {
         }
 
         if (field_name.equals(AppConstants.MOBILE_NO)) {
-            Pattern pattern = Pattern.compile("[0-9]+");
-            if (!pattern.matcher(text_content).matches() || text_content.length() != 10) {
-                layout.setError("Enter a valid mobile number.");
+            if (checkPhoneNumber(text_content)) {
+                layout.setError(activity.getResources().getString(R.string.error_mobile));
                 text.requestFocus();
 
             } else {
                 layout.setErrorEnabled(false);
             }
         }
+    }
+
+    private boolean checkPhoneNumber(String phone) {
+        Set number = new HashSet<>(Arrays.asList(phone.toCharArray()));
+        Pattern pattern = Pattern.compile("[0-9]+");
+
+        if (!pattern.matcher(phone).matches() || phone.length() != 10)
+            return false;
+
+        String first = String.valueOf(phone.charAt(0));
+
+        for (int i = 0; i < 6; i++) {
+            if (first.equals(Integer.toString(i)))
+                return false;
+        }
+
+        return number.size() != 1;
     }
 }

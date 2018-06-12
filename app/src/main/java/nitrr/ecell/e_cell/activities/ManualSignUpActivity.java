@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -21,15 +20,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ManualSignUpActivity extends AppCompatActivity {
+public class ManualSignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText inputUserName, inputPhone, inputPassword, inputConfirm, inputFName, inputLName, inputEmail;
-    private TextInputLayout inputUserNameLayout, inputPhoneLayout, inputPasswordLayout, inputConfirmLayout, inputFNameLayout, inputLNameLayout, inputEmailLayout;
+    private EditText inputPhone, inputPassword, inputConfirm, inputFName, inputLName, inputEmail;
+    private TextInputLayout inputPhoneLayout, inputPasswordLayout, inputConfirmLayout, inputFNameLayout, inputLNameLayout, inputEmailLayout;
     private Button signUpProceed, back;
-    private ProgressBar signUpProgressBar;
     private LinearLayout layoutFirst, layoutSecond;
-    private Boolean proceed = true, first = true;
-    private String userName, mobile, password, firstName, lastName, email;
+    private Boolean proceed, first;
+    private String mobile, password, firstName, lastName, email;
 
     private UserDetails userDetails;
 
@@ -44,7 +42,9 @@ public class ManualSignUpActivity extends AppCompatActivity {
 
     private void initView() {
 
-        inputUserNameLayout = findViewById(R.id.man_username_lay);
+        first = true;
+        proceed = true;
+
         inputPhoneLayout = findViewById(R.id.man_mob_lay);
         inputPasswordLayout = findViewById(R.id.man_pass_lay);
         inputConfirmLayout = findViewById(R.id.man_re_lay);
@@ -52,7 +52,6 @@ public class ManualSignUpActivity extends AppCompatActivity {
         inputFNameLayout = findViewById(R.id.man_firstname_lay);
         inputLNameLayout = findViewById(R.id.man_lastname_lay);
 
-        inputUserName = findViewById(R.id.man_username);
         inputPhone = findViewById(R.id.man_mob);
         inputPassword = findViewById(R.id.man_pass);
         inputConfirm = findViewById(R.id.man_re);
@@ -63,52 +62,10 @@ public class ManualSignUpActivity extends AppCompatActivity {
         signUpProceed = findViewById(R.id.sign_up_proceed);
         back = findViewById(R.id.sign_up_back);
 
-        signUpProgressBar = findViewById(R.id.signUpProgressBar);
-
         layoutFirst = findViewById(R.id.lay_first);
         layoutSecond = findViewById(R.id.lay_second);
 
         back.setEnabled(false);
-
-        signUpProceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (first) {
-                    signUpProceed.setText(getResources().getString(R.string.sign_up));
-                    layoutSecond.animate().translationX(0).setDuration(500);
-                    layoutFirst.animate().translationX(-1000).setDuration(500);
-                    back.animate().alpha(1.0f).setDuration(300);
-
-                    back.setEnabled(true);
-                    first = false;
-                    inputPassword.requestFocus();
-
-                } else {
-                    if (isEmpty()) {
-                        if (validatePassword())
-                            apiCall();
-                    } else {
-                        Toast.makeText(ManualSignUpActivity.this, "Some of the required fields are empty.", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                layoutFirst.animate().translationX(0).setDuration(500);
-                layoutSecond.animate().translationX(1000).setDuration(500);
-                back.animate().alpha(0.0f).setDuration(300);
-
-                back.setEnabled(false);
-                first = true;
-                signUpProceed.setText(getResources().getString(R.string.proceed));
-                inputFName.requestFocus();
-
-            }
-        });
 
         setTextWatcher();
     }
@@ -143,14 +100,12 @@ public class ManualSignUpActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        userName = inputUserName.getText().toString().trim();
         password = inputPassword.getText().toString().trim();
         firstName = inputFName.getText().toString().trim();
         lastName = inputLName.getText().toString().trim();
         mobile = inputPhone.getText().toString().trim();
         email = inputEmail.getText().toString().trim();
 
-        userDetails.setUsername(userName);
         userDetails.setContactNumber(mobile);
         userDetails.setFirstName(firstName);
         userDetails.setLastName(lastName);
@@ -160,17 +115,16 @@ public class ManualSignUpActivity extends AppCompatActivity {
 
     private void setTextWatcher() {
 
-        inputFName.addTextChangedListener(new CustomTextWatcher(inputFName, inputFNameLayout, AppConstants.FIRST_NAME));
-        inputLName.addTextChangedListener(new CustomTextWatcher(inputLName, inputLNameLayout, AppConstants.LAST_NAME));
-        inputUserName.addTextChangedListener(new CustomTextWatcher(inputUserName, inputUserNameLayout, AppConstants.USER_NAME));
-        inputEmail.addTextChangedListener(new CustomTextWatcher(inputEmail, inputEmailLayout, AppConstants.EMAIL));
-        inputPassword.addTextChangedListener(new CustomTextWatcher(inputPassword, inputPasswordLayout, AppConstants.PASSWORD));
-        inputPhone.addTextChangedListener(new CustomTextWatcher(inputPhone, inputPhoneLayout, AppConstants.MOBILE_NO));
+        inputFName.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputFName, inputFNameLayout, AppConstants.FIRST_NAME));
+        inputLName.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputLName, inputLNameLayout, AppConstants.LAST_NAME));
+        inputEmail.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputEmail, inputEmailLayout, AppConstants.EMAIL));
+        inputPassword.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputPassword, inputPasswordLayout, AppConstants.PASSWORD));
+        inputPhone.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputPhone, inputPhoneLayout, AppConstants.MOBILE_NO));
     }
 
     private boolean validatePassword() {
         if (inputPassword.getText().toString().trim().equals(inputConfirm.getText().toString().trim())) {
-            inputConfirmLayout.setError("Passwords didn't match.");
+            inputConfirmLayout.setError(getResources().getString(R.string.error_con_pass));
             inputConfirm.requestFocus();
 
             return false;
@@ -189,6 +143,42 @@ public class ManualSignUpActivity extends AppCompatActivity {
                 return false;
 
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v == signUpProceed) {
+            if (first) {
+                signUpProceed.setText(getResources().getString(R.string.sign_up));
+                layoutSecond.animate().translationX(0).setDuration(500);
+                layoutFirst.animate().translationX(-1000).setDuration(500);
+                back.animate().alpha(1.0f).setDuration(300);
+
+                back.setEnabled(true);
+                first = false;
+                inputPassword.requestFocus();
+
+            } else {
+                if (isEmpty()) {
+                    if (validatePassword())
+                        apiCall();
+                } else {
+                    Toast.makeText(ManualSignUpActivity.this, getResources().getString(R.string.required_fields), Toast.LENGTH_LONG).show();
+                }
+            }
+
+        } else if (v == back) {
+
+            layoutFirst.animate().translationX(0).setDuration(500);
+            layoutSecond.animate().translationX(1000).setDuration(500);
+            back.animate().alpha(0.0f).setDuration(300);
+
+            back.setEnabled(false);
+            first = true;
+            signUpProceed.setText(getResources().getString(R.string.proceed));
+            inputFName.requestFocus();
+        }
     }
 }
 

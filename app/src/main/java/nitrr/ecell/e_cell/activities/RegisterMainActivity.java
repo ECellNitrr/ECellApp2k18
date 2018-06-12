@@ -13,7 +13,7 @@ import android.widget.TextView;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
-public class RegisterMainActivity extends AppCompatActivity {
+public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
     Button signIn, signUp;
     TextView orContinueWith;
     LinearLayout facebookSignUp;
@@ -23,6 +23,18 @@ public class RegisterMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
+
+        init();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void init() {
 
         facebookSignUp = findViewById(R.id.register_facebook);
 
@@ -34,42 +46,31 @@ public class RegisterMainActivity extends AppCompatActivity {
 
         orContinueWith.setTypeface(helvetica);
 
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // TODO: Sign In Activity Call
-                    }
-                }, 150);
-            }
-        });
-
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 150);
-            }
-        });
-
         fbSignUp = new FacebookSignUp(RegisterMainActivity.this, facebookSignUp);
         fbSignUp.initialize();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onClick(View v) {
+        if (v == signIn) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // TODO: Sign In Activity Call
+                }
+            }, 150);
 
-        fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+        } else if (v == signUp) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 150);
+        }
     }
 }

@@ -9,10 +9,6 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDetails implements Serializable{
 
-    @SerializedName("username")
-    @Expose
-    private String username;
-
     @SerializedName("password")
     @Expose
     private String password;
@@ -32,14 +28,6 @@ public class UserDetails implements Serializable{
     @SerializedName("email")
     @Expose
     private String email;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPassword() {
         return password;

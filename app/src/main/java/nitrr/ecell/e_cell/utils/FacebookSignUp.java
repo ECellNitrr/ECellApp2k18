@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.util.Arrays;
 
-import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.R;
 
 public class FacebookSignUp {
 
@@ -41,7 +41,7 @@ public class FacebookSignUp {
         fbSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginManager.getInstance().logInWithReadPermissions(activity, Arrays.asList("public_profile", "email"));
+                LoginManager.getInstance().logInWithReadPermissions(activity, Arrays.asList(AppConstants.PUBLIC_PROFILE, AppConstants.EMAIL));
             }
         });
 
@@ -57,7 +57,7 @@ public class FacebookSignUp {
                 });
 
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id, first_name, last_name, email");
+                parameters.putString(AppConstants.FIELDS, AppConstants.INPUT_FIELDS);
 
                 request.setParameters(parameters);
                 request.executeAsync();
@@ -65,7 +65,7 @@ public class FacebookSignUp {
 
             @Override
             public void onCancel() {
-                Toast.makeText(activity, "Facebook SignUp Cancelled.", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, activity.getResources().getString(R.string.error_fb), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -81,25 +81,25 @@ public class FacebookSignUp {
 
         try {
 
-            String id = jsonObject.getString("id");
+            String id = jsonObject.getString(AppConstants.ID);
 
             URL avatar_url;
             avatar_url = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
 
-            bundle.putString("id", id);
+            bundle.putString(AppConstants.ID, id);
 
-            if (jsonObject.has("first_name"))
-                bundle.putString("first_name", jsonObject.getString("first_name"));
+            if (jsonObject.has(AppConstants.FIRST_NAME))
+                bundle.putString(AppConstants.FIRST_NAME, jsonObject.getString(AppConstants.FIRST_NAME));
 
-            if (jsonObject.has("last_name"))
-                bundle.putString("last_name", jsonObject.getString("last_name"));
+            if (jsonObject.has(AppConstants.LAST_NAME))
+                bundle.putString(AppConstants.LAST_NAME, jsonObject.getString(AppConstants.LAST_NAME));
 
-            if (jsonObject.has("email"))
-                bundle.putString("email", jsonObject.getString("email"));
+            if (jsonObject.has(AppConstants.EMAIL))
+                bundle.putString(AppConstants.EMAIL, jsonObject.getString(AppConstants.EMAIL));
 
-            bundle.putString("avatar_url", avatar_url.toString());
+            bundle.putString(AppConstants.AVATAR_URL, avatar_url.toString());
 
-            prefUtils.saveFbUserInfo(jsonObject.getString("first_name"), jsonObject.getString("last_name"), jsonObject.getString("email"), avatar_url.toString());
+            prefUtils.saveFbUserInfo(jsonObject.getString(AppConstants.FIRST_NAME), jsonObject.getString(AppConstants.LAST_NAME), jsonObject.getString(AppConstants.EMAIL), avatar_url.toString());
 
         } catch (Exception e) {
             Log.d("Facebook Sign Up Error.", e.getMessage());
