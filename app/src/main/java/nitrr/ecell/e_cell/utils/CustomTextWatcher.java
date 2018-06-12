@@ -7,9 +7,6 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.EditText;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import nitrr.ecell.e_cell.R;
@@ -90,7 +87,7 @@ public class CustomTextWatcher implements TextWatcher {
         }
 
         if (field_name.equals(AppConstants.MOBILE_NO)) {
-            if (checkPhoneNumber(text_content)) {
+            if (!checkPhoneNumber(text_content)) {
                 layout.setError(activity.getResources().getString(R.string.error_mobile));
                 text.requestFocus();
 
@@ -101,7 +98,7 @@ public class CustomTextWatcher implements TextWatcher {
     }
 
     private boolean checkPhoneNumber(String phone) {
-        Set number = new HashSet<>(Arrays.asList(phone.toCharArray()));
+
         Pattern pattern = Pattern.compile("[0-9]+");
 
         if (!pattern.matcher(phone).matches() || phone.length() != 10)
@@ -114,6 +111,6 @@ public class CustomTextWatcher implements TextWatcher {
                 return false;
         }
 
-        return number.size() != 1;
+        return true;
     }
 }

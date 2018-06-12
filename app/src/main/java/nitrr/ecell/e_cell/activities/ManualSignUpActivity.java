@@ -62,6 +62,9 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         signUpProceed = findViewById(R.id.sign_up_proceed);
         back = findViewById(R.id.sign_up_back);
 
+        signUpProceed.setOnClickListener(this);
+        back.setOnClickListener(this);
+
         layoutFirst = findViewById(R.id.lay_first);
         layoutSecond = findViewById(R.id.lay_second);
 

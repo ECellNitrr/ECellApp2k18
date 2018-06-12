@@ -40,6 +40,10 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
 
         signIn = findViewById(R.id.register_sign_in);
         signUp = findViewById(R.id.register_sign_up);
+
+        signIn.setOnClickListener(this);
+        signUp.setOnClickListener(this);
+
         orContinueWith = findViewById(R.id.register_orContinueWith);
 
         Typeface helvetica = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/helvetica.ttf");
