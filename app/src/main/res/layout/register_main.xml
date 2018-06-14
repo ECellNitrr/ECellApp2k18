@@ -23,7 +23,7 @@
 
         <Button
             android:id="@+id/register_sign_in"
-            style="@style/parent_button_style"
+            style="@style/parentButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_style_border"
@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/register_sign_up"
-            style="@style/parent_button_style"
+            style="@style/parentButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -47,7 +47,7 @@
             android:orientation="horizontal">
 
             <View
-                style="@style/reg_divide_line"
+                style="@style/regDivideLine"
                 android:layout_width="0dp"
                 android:layout_height="3dp" />
 
@@ -64,7 +64,7 @@
 
 
             <View
-                style="@style/reg_divide_line"
+                style="@style/regDivideLine"
                 android:layout_width="0dp"
                 android:layout_height="3dp" />
 

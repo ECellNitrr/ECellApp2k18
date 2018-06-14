@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/sign_up_one"
-            style="@style/top_text_style"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/sign_up_two"
-            style="@style/top_text_style"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sign_up_one"
@@ -45,7 +45,7 @@
 
         <TextView
             android:id="@+id/sign_up_three"
-            style="@style/top_text_style"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
@@ -59,21 +59,21 @@
 
             <LinearLayout
                 android:id="@+id/lay_first"
-                style="@style/central_layout_style"
+                style="@style/centralLayoutStyle"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_firstname_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
                     <EditText
                         android:id="@+id/man_firstname"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -83,19 +83,19 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <View
-                    style="@style/line_style"
+                    style="@style/lineStyle"
                     android:layout_width="320dp"
                     android:layout_height="1dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_lastname_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/man_lastname"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
@@ -105,20 +105,20 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <View
-                    style="@style/line_style"
+                    style="@style/lineStyle"
                     android:layout_width="320dp"
                     android:layout_height="1dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_email_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp">
 
                     <EditText
                         android:id="@+id/man_email"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/email"
@@ -129,7 +129,7 @@
 
             <LinearLayout
                 android:id="@+id/lay_second"
-                style="@style/central_layout_style"
+                style="@style/centralLayoutStyle"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -137,14 +137,14 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_pass_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
                     <EditText
                         android:id="@+id/man_pass"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
@@ -153,19 +153,19 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <View
-                    style="@style/line_style"
+                    style="@style/lineStyle"
                     android:layout_width="320dp"
                     android:layout_height="1dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_re_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/man_re"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/re_enter_password"
@@ -174,20 +174,20 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <View
-                    style="@style/line_style"
+                    style="@style/lineStyle"
                     android:layout_width="320dp"
                     android:layout_height="1dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/man_mob_lay"
-                    style="@style/textInputLayout_style"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp">
 
                     <EditText
                         android:id="@+id/man_mob"
-                        style="@style/editText_style"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:hint="@string/mobile_no"
@@ -200,7 +200,7 @@
 
         <Button
             android:id="@+id/sign_up_back"
-            style="@style/sign_up_lay_button_style"
+            style="@style/signUpLayoutButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:alpha="0.0"
@@ -210,7 +210,7 @@
 
         <Button
             android:id="@+id/sign_up_proceed"
-            style="@style/sign_up_lay_button_style"
+            style="@style/signUpLayoutButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_style_filled"
