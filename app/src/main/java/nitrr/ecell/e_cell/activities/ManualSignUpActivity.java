@@ -87,7 +87,8 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
-                        // TODO : Call OTP Activity here
+                        Toast.makeText(ManualSignUpActivity.this, "Sign Up success.", Toast.LENGTH_LONG).show();
+                        // TODO : Remove Toast and Call OTP Activity here
                     }
                 } else {
                     Toast.makeText(ManualSignUpActivity.this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
