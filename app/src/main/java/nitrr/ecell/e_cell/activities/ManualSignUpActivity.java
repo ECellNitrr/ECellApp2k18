@@ -126,7 +126,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     }
 
     private boolean validatePassword() {
-        if (inputPassword.getText().toString().trim().equals(inputConfirm.getText().toString().trim())) {
+        if (!inputPassword.getText().toString().trim().equals(inputConfirm.getText().toString().trim())) {
             inputConfirmLayout.setError(getResources().getString(R.string.error_con_pass));
             inputConfirm.requestFocus();
 
