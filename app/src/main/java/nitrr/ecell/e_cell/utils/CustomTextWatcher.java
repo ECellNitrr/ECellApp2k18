@@ -77,7 +77,7 @@ public class CustomTextWatcher implements TextWatcher {
         }
 
         if (field_name.equals(AppConstants.PASSWORD)) {
-            if (text_content.length() != 6) {
+            if (text_content.length() < 6) {
                 layout.setError(activity.getResources().getString(R.string.error_pass));
                 text.requestFocus();
 
