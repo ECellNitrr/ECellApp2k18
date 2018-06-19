@@ -85,6 +85,7 @@
             <EditText
                 android:id="@+id/inputusername"
                 android:layout_width="match_parent"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_height="49dp"
                 android:layout_marginStart="5dp"
                 android:hint="@string/username"
@@ -96,6 +97,7 @@
                 android:id="@+id/inputpassword"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_marginStart="5dp"
                 android:paddingTop="10dp"
                 android:hint="@string/password"/>

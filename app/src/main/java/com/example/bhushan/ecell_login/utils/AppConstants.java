@@ -3,8 +3,8 @@ package com.example.bhushan.ecell_login.utils;
 public class AppConstants {
 
     //URL's
-    public static final String SIGN_UP_URL = "5b1cd76d3200005200c36d05";
-    public static final String SIGN_IN_URL = "";
+    public static final String SIGN_UP_URL = "";
+    public static final String SIGN_IN_URL = "login/";
     public static final String OTP_URL = "";
 
 
