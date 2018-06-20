@@ -1,12 +1,18 @@
 package nitrr.ecell.e_cell.activities;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -28,6 +34,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     private LinearLayout layoutFirst, layoutSecond;
     private Boolean proceed, first;
     private String mobile, password, firstName, lastName, email;
+    private RelativeLayout layout;
 
     private UserDetails userDetails;
 
@@ -44,6 +51,11 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
         first = true;
         proceed = true;
+
+        layout = findViewById(R.id.main);
+        layout.setOnClickListener(this);
+
+        Typeface raleway = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/raleway.ttf");
 
         inputPhoneLayout = findViewById(R.id.man_mob_lay);
         inputPasswordLayout = findViewById(R.id.man_pass_lay);
@@ -67,6 +79,11 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
         layoutFirst = findViewById(R.id.lay_first);
         layoutSecond = findViewById(R.id.lay_second);
+
+        inputFName.requestFocus();
+
+        inputPasswordLayout.setTypeface(raleway);
+        inputConfirmLayout.setTypeface(raleway);
 
         back.setEnabled(false);
 
@@ -93,7 +110,6 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     Toast.makeText(ManualSignUpActivity.this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
@@ -124,6 +140,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         inputEmail.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputEmail, inputEmailLayout, AppConstants.EMAIL));
         inputPassword.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputPassword, inputPasswordLayout, AppConstants.PASSWORD));
         inputPhone.addTextChangedListener(new CustomTextWatcher(ManualSignUpActivity.this, inputPhone, inputPhoneLayout, AppConstants.MOBILE_NO));
+
     }
 
     private boolean validatePassword() {
@@ -161,7 +178,9 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
                 back.setEnabled(true);
                 first = false;
+
                 inputPassword.requestFocus();
+                showKeyboard();
 
             } else {
                 if (isEmpty()) {
@@ -181,8 +200,23 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             back.setEnabled(false);
             first = true;
             signUpProceed.setText(getResources().getString(R.string.proceed));
+
             inputFName.requestFocus();
+            showKeyboard();
+
+        } else if(v == layout){
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         }
     }
+
+
+    private void showKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (inputMethodManager != null) {
+            inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.SHOW_FORCED, 0);
+        }
+    }
+
 }
 

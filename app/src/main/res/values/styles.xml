@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
     <style name="parentButtonStyle">
@@ -17,7 +18,7 @@
     </style>
 
     <style name="signUpLayoutButtonStyle" parent="parentButtonStyle">
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -36,8 +37,12 @@
 
     <style name="centralLayoutStyle">
         <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_margin">30dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
         <item name="android:animateLayoutChanges">true</item>
+        <item name="android:fitsSystemWindows">true</item>
         <item name="android:background">@drawable/layout_background</item>
     </style>
 
@@ -51,8 +56,9 @@
 
     <style name="editTextStyle">
         <item name="android:maxLines">1</item>
-        <item name="android:background">@color/colorWhite</item>
+        <item name="android:background">@null</item>
         <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">7dp</item>
         <item name="android:fontFamily">@font/raleway_bold</item>
     </style>
 

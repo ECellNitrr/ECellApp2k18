@@ -4,6 +4,7 @@ public class AppConstants {
 
     //URL's
     public static final String SIGN_UP_URL = "register/";
+    public static final String FB_SIGN_UP_URL = "";
     public static final String SIGN_IN_URL = "";
     public static final String OTP_URL = "";
 
@@ -19,7 +20,9 @@ public class AppConstants {
     public static final String CON_PASSWORD = "confirm_password";
     public static final String MOBILE_NO = "mobile_number";
 
-    //Facebook_Sign_up
+
+
+    //Facebook_Sign_Up
     public static final String FIELDS = "fields";
     public static final String INPUT_FIELDS = "id, first_name, last_name, email";
     public static final String PUBLIC_PROFILE = "public_profile";
