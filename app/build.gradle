@@ -3,20 +3,17 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-<<<<<<< HEAD
         applicationId "com.example.bhushan.ecell_login"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-=======
         applicationId "nitrr.ecell.e_cell"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         flavorDimensions "default"
->>>>>>> registration
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,8 +23,7 @@ android {
         }
     }
 
-<<<<<<< HEAD
-    productFlavors{
+    productFlavors {
         production {
             applicationIdSuffix ""
             buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
@@ -38,31 +34,18 @@ android {
             versionCode 1
             versionName "1.0"
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-=======
-    productFlavors {
-        production {
-            applicationIdSuffix ""
-            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
-            minSdkVersion 19
-            applicationId 'nitrr.ecell.e_cell'
-            targetSdkVersion 27
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            versionCode 1
-            versionName '1.0'
->>>>>>> registration
         }
     }
 }
 
+
 dependencies {
-<<<<<<< HEAD
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-=======
 
     final BUTTERKNIFE_VERSION = '8.8.1'
     final RETROFIT_VERSION = '2.3.0'
@@ -78,7 +61,6 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:27.1.1"
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.1'
->>>>>>> registration
 
     //Glide
     implementation('com.github.bumptech.glide:glide:4.7.1') {
@@ -90,35 +72,30 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
 
     // Square
-<<<<<<< HEAD
    //  implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
   //  implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
  //   implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
    // implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
-=======
+
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
     implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
->>>>>>> registration
 
     // DataBind
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.1'
 
     // View Injection
-<<<<<<< HEAD
   //  implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
    // annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
-=======
     implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
->>>>>>> registration
 
     implementation 'com.facebook.android:facebook-login:4.33.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-<<<<<<< HEAD
+
 
     // temporary
     implementation "com.squareup.okhttp3:okhttp:3.10.0"
@@ -128,6 +105,4 @@ dependencies {
     }
     implementation "com.squareup.retrofit2:converter-gson:2.4.0"
 
-=======
->>>>>>> registration
 }

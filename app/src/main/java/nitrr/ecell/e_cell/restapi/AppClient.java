@@ -3,7 +3,7 @@ package nitrr.ecell.e_cell.restapi;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import nitrr.ecell.e_cell.BuildConfig;
+import com.example.bhushan.ecell_login.BuildConfig;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

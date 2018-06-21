@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import nitrr.ecell.e_cell.R;
+import com.example.bhushan.ecell_login.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {

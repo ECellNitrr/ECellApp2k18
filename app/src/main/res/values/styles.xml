@@ -1,19 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-<<<<<<< HEAD
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-=======
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
->>>>>>> registration
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-<<<<<<< HEAD
-=======
     <style name="parentButtonStyle">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
@@ -67,5 +61,4 @@
         <item name="android:layout_weight">1</item>
         <item name="android:background">@drawable/solid_line_gray</item>
     </style>
->>>>>>> registration
 </resources>

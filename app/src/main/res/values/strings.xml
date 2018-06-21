@@ -6,18 +6,13 @@
     <string name="facebook">Facebook</string>
     <string name="mobile_no">Mobile No.</string>
     <string name="otp">OTP</string>
-<<<<<<< HEAD
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="re_enter_password">Re-enter Password</string>
     <string name="sign_in_with_username">Sign in with Username</string>
     <string name="sign_in_password">and Password</string>
-=======
-    <string name="password">Password</string>
-    <string name="re_enter_password">Re-enter Password</string>
     <string name="sign_up_one">Sign Up with Username</string>
     <string name="sign_up_two">and Password</string>
->>>>>>> registration
     <string name="forgot_password">Forgot your Password</string>
     <string name="facebook_app_id">227874984654887</string>
     <string name="fb_login_protocol_scheme">fb227874984654887</string>
@@ -26,8 +21,6 @@
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="back">Back</string>
-<<<<<<< HEAD
-=======
     <string name="required_fields">Some of the required fields are empty.</string>
     <string name="error_last_name">Last Name should not contain digits or empty field.</string>
     <string name="error_email">Invalid Email Address.</string>
@@ -37,6 +30,4 @@
     <string name="error_mobile">Enter a valid mobile number.</string>
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
->>>>>>> registration
-
 </resources>

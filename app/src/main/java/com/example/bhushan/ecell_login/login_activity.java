@@ -2,7 +2,7 @@ package com.example.bhushan.ecell_login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.Call;
+//import android.telecom.Call;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +15,9 @@ import com.example.bhushan.ecell_login.Model.Logindetails;
 import com.example.bhushan.ecell_login.restapi.ApiServices;
 import com.example.bhushan.ecell_login.restapi.AppClient;
 
+import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Call;
 
 public class login_activity extends AppCompatActivity {
 
@@ -70,8 +72,8 @@ public class login_activity extends AppCompatActivity {
         setData();
 
         ApiServices apiServices= AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationResponse> call=apiServices.sendRegisterDetails(logindetails);
-        call.enqueue(new Call.Callback<AuthenticationResponse>(){
+        retrofit2.Call<AuthenticationResponse> call=apiServices.sendRegisterDetails(logindetails);
+        call.enqueue(new Callback<AuthenticationResponse>(){
 
             @Override
             public void onResponce(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response ){
