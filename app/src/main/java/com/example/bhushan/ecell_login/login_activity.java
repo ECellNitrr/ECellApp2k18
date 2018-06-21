@@ -72,11 +72,11 @@ public class login_activity extends AppCompatActivity {
         setData();
 
         ApiServices apiServices= AppClient.getInstance().createService(ApiServices.class);
-        retrofit2.Call<AuthenticationResponse> call=apiServices.sendRegisterDetails(logindetails);
+        Call<AuthenticationResponse> call=apiServices.sendLoginDetails(logindetails);
         call.enqueue(new Callback<AuthenticationResponse>(){
 
             @Override
-            public void onResponce(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response ){
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response ){
 
                 if(response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();

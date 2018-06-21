@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".login_activity">
+        <activity android:name="nitrr.ecell.e_cell.activities.RegisterMainActivity">
 
         android:theme="@style/AppTheme">
 
@@ -31,7 +31,8 @@
         </activity>
 
 
-        <activity android:name=".activities.ManualSignUpActivity" />
+        <activity android:name="nitrr.ecell.e_cell.activities.ManualSignUpActivity" />
+        <activity android:name=".login_activity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

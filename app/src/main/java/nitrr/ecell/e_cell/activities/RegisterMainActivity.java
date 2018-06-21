@@ -62,6 +62,10 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
                 @Override
                 public void run() {
                     // TODO: Sign In Activity Call
+                     Intent intent =new Intent(RegisterMainActivity.this,com.example.bhushan.ecell_login.login_activity.class);
+                     startActivity(intent);
+                     finish();
+
                 }
             }, 150);
 
