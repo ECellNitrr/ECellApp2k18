@@ -9,9 +9,11 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GenericResponse implements Serializable{
 
+    @SerializedName("success")
     @Expose
     private Boolean success;
 
+    @SerializedName("message")
     @Expose
     private String message;
 

@@ -9,6 +9,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthenticationResponse extends GenericResponse implements Serializable{
 
+    @SerializedName("token")
     @Expose
     private String token;
 

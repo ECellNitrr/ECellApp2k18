@@ -88,7 +88,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:layout_height="49dp"
                 android:layout_marginStart="5dp"
-                android:hint="@string/username"
+                android:hint="@string/email"
                 android:paddingTop="10dp"
                 />
 

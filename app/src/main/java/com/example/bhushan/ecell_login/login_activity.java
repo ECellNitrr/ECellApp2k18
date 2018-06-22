@@ -3,6 +3,7 @@ package com.example.bhushan.ecell_login;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //import android.telecom.Call;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,10 +22,10 @@ import retrofit2.Call;
 
 public class login_activity extends AppCompatActivity {
 
-    private EditText EditText_UserName,EditText_Password;
+    private EditText EditText_Email,EditText_Password;
     private Button Sign_in;
     private TextView ForgetPassword;
-    private String Username,Password;
+    private String Email,Password;
     private ProgressBar SignInProgressBar;
     private Logindetails logindetails;
 
@@ -33,8 +34,9 @@ public class login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        logindetails =new Logindetails();
 
-        EditText_UserName = findViewById(R.id.inputusername);
+        EditText_Email = findViewById(R.id.inputusername);
         EditText_Password = findViewById(R.id.inputpassword);
         Sign_in = findViewById(R.id.signinbutton);
         ForgetPassword = findViewById(R.id.forgetpassword);
@@ -48,7 +50,12 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkinput()){
-                    apiCall();
+
+                    if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()){
+                     Toast.makeText(login_activity.this,"Invalid email-id",Toast.LENGTH_LONG).show();
+                    }else {
+                        apiCall();
+                    }
                 }
                 else{
                     Toast.makeText(login_activity.this,"Required fields can't be empty.",Toast.LENGTH_LONG).show();
@@ -106,16 +113,16 @@ public class login_activity extends AppCompatActivity {
 
 
     private void setData() {
-        Username = EditText_UserName.getText().toString().trim();
+        Email = EditText_Email.getText().toString().trim();
         Password = EditText_Password.getText().toString().trim();
 
-        logindetails.setUsername(Username);
+        logindetails.setEmail(Email);
         logindetails.setPassword(Password);
 
     }
 
     private boolean checkinput() {
-        String str[] = { EditText_UserName.getText().toString().trim(), EditText_Password.getText().toString().trim()};
+        String str[] = { EditText_Email.getText().toString().trim(), EditText_Password.getText().toString().trim()};
 
         for (String s : str)
             if (s.equals(""))
