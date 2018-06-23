@@ -1,5 +1,6 @@
 package com.example.bhushan.ecell_login;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //import android.telecom.Call;
@@ -23,6 +24,7 @@ import retrofit2.Call;
 public class login_activity extends AppCompatActivity {
 
     private EditText EditText_Email,EditText_Password;
+    private TextInputLayout Layout_Email,Layout_Password;
     private Button Sign_in;
     private TextView ForgetPassword;
     private String Email,Password;
@@ -37,6 +39,8 @@ public class login_activity extends AppCompatActivity {
         logindetails =new Logindetails();
 
         EditText_Email = findViewById(R.id.inputusername);
+        Layout_Email=findViewById(R.id.layout_email);
+        Layout_Password=findViewById(R.id.layout_password);
         EditText_Password = findViewById(R.id.inputpassword);
         Sign_in = findViewById(R.id.signinbutton);
         ForgetPassword = findViewById(R.id.forgetpassword);
