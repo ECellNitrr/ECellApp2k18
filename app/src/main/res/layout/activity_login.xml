@@ -165,6 +165,7 @@
             android:paddingLeft="50dp"
             android:paddingTop="2dp"
             android:onClick="forgot_password"
+            android:focusable="true"
             android:clickable="true"
             android:layout_gravity="center"/>
 

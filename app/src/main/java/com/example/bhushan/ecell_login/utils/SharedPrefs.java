@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import static com.example.bhushan.ecell_login.utils.AppConstants.ACCESS_TOKEN;
+
 public class SharedPrefs {
 
     private Activity activity;
@@ -11,8 +13,6 @@ public class SharedPrefs {
         this.activity = activity;
     }
 
- //   private SharedPreferences sharedPreferences;
-   // private SharedPreferences.Editor editor;
 
 
 
@@ -21,7 +21,7 @@ public class SharedPrefs {
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("access_token",token);
+        editor.putString(ACCESS_TOKEN,token);
         editor.apply();
 
     }
@@ -29,7 +29,7 @@ public class SharedPrefs {
     public String getAccessToken(){
 
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(activity);
-        return sharedPreferences.getString("acess_token",null);
+        return sharedPreferences.getString(ACCESS_TOKEN,null);
 
     }
 

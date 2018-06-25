@@ -9,6 +9,7 @@ public class AppConstants {
 
 
     public static final String AUTH_ID = "auth_id";
+    public static final String ACCESS_TOKEN = "access_token";
 
 
     //Field_Name

@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Call;
 
-public class login_activity extends AppCompatActivity {
+public class login_activity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_Email,EditText_Password;
     private TextInputLayout Layout_Email,Layout_Password;
@@ -36,6 +36,13 @@ public class login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        initview();
+
+    }
+
+    private void initview(){
+
         logindetails =new Logindetails();
 
         EditText_Email = findViewById(R.id.inputusername);
@@ -46,34 +53,9 @@ public class login_activity extends AppCompatActivity {
         ForgetPassword = findViewById(R.id.forgetpassword);
         SignInProgressBar = findViewById(R.id.signinprogressbar);
 
-        //
+        Sign_in.setOnClickListener(this);
+        ForgetPassword.setOnClickListener(this);
 
-        //
-
-        Sign_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkinput()){
-
-                    if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()){
-                     Toast.makeText(login_activity.this,"Invalid email-id",Toast.LENGTH_LONG).show();
-                    }else {
-                        apiCall();
-                    }
-                }
-                else{
-                    Toast.makeText(login_activity.this,"Required fields can't be empty.",Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-
-        ForgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                  // otp activity
-            }
-        });
 
     }
 
@@ -135,4 +117,32 @@ public class login_activity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        if (v==Sign_in){
+
+            if(checkinput()){
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()){
+                    Toast.makeText(login_activity.this,"Invalid email-id",Toast.LENGTH_LONG).show();
+                }else {
+                    apiCall();
+                }
+            }
+            else{
+                Toast.makeText(login_activity.this,"Required fields can't be empty.",Toast.LENGTH_LONG).show();
+            }
+
+
+        }
+        else if (v==ForgetPassword){
+
+            // Reset password activity
+            Toast.makeText(login_activity.this,"Reset password(on progress)",Toast.LENGTH_LONG).show();
+
+
+        }
+
+    }
 }
