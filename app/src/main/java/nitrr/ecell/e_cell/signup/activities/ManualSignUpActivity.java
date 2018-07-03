@@ -1,11 +1,10 @@
-package nitrr.ecell.e_cell.activities;
+package nitrr.ecell.e_cell.signup.activities;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -16,10 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.restapi.ApiServices;
-import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.signup.model.AuthenticationResponse;
+import nitrr.ecell.e_cell.signup.model.UserDetails;
+import nitrr.ecell.e_cell.signup.restapi.ApiServices;
+import nitrr.ecell.e_cell.signup.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomTextWatcher;
 import retrofit2.Call;
@@ -204,7 +203,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             inputFName.requestFocus();
             showKeyboard();
 
-        } else if(v == layout){
+        } else if (v == layout) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         }
     }

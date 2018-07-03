@@ -28,4 +28,15 @@ public class AppConstants {
     public static final String PUBLIC_PROFILE = "public_profile";
     public static final String AVATAR_URL = "avatar_url";
     public static final String ID = "id";
+
+
+    //Home Contents
+    public static final String[] HOME_TITLES = {
+            "EVENTS",
+            "B-QUIZ",
+            "SPEAKERS",
+            "SPONSORS",
+            "MENTORS",
+            "TEAM"
+    };
 }

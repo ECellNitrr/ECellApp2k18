@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.restapi;
+package nitrr.ecell.e_cell.signup.restapi;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +18,11 @@ public class AppClient {
 
     private AppClient() {
 
+    }
+
+    public static synchronized AppClient getInstance() {
+        if (mInstance == null) mInstance = new AppClient();
+        return mInstance;
     }
 
     public <S> S createService(Class<S> serviceClass) {
@@ -71,11 +76,6 @@ public class AppClient {
         httpClient.readTimeout(15, TimeUnit.SECONDS);
 
         return httpClient;
-    }
-
-    public static synchronized AppClient getInstance() {
-        if (mInstance == null) mInstance = new AppClient();
-        return mInstance;
     }
 
 }

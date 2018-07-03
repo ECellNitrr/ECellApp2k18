@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.activities;
+package nitrr.ecell.e_cell.signup.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;

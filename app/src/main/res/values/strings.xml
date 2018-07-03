@@ -27,5 +27,6 @@
     <string name="error_mobile">Enter a valid mobile number.</string>
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
+    <string name="sample_hello_user">Hey User</string>
 
 </resources>

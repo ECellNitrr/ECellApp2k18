@@ -5,6 +5,7 @@
     <color name="colorAccent">#32DC57</color>
     <color name="colorPink">#fe104c</color>
     <color name="colorGray">#f5f5f5</color>
+    <color name="colorWhiteTransparent">#64ffffff</color>
     <color name="colorBackground">#1a1a1e</color>
     <color name="colorText">#65656B</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -13,5 +14,7 @@
     <color name="colorLavenderGray">#CBCBD1</color>
     <color name="colorGradientTop">#32DC57</color>
     <color name="colorGradientBot">#64BD72</color>
-
+    <color name="colorHomeStart">#f9230a</color>
+    <color name="colorHomeEnd">#9f230a</color>
+    <color name="colorHomeBottomBackground">#151516</color>
 </resources>

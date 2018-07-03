@@ -1,7 +1,7 @@
-package nitrr.ecell.e_cell.restapi;
+package nitrr.ecell.e_cell.signup.restapi;
 
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.signup.model.AuthenticationResponse;
+import nitrr.ecell.e_cell.signup.model.UserDetails;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
