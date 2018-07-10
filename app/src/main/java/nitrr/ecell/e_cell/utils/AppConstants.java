@@ -1,5 +1,7 @@
 package nitrr.ecell.e_cell.utils;
 
+import nitrr.ecell.e_cell.R;
+
 public class AppConstants {
 
     //URL's
@@ -34,9 +36,27 @@ public class AppConstants {
     public static final String[] HOME_TITLES = {
             "EVENTS",
             "B-QUIZ",
-            "SPEAKERS",
             "SPONSORS",
-            "MENTORS",
-            "TEAM"
+            "GALLERY",
+            "ABOUT US"
+    };
+
+
+    //Gradient locations
+    public static final int[] GRADIENT_LOCATIONS = {
+            R.drawable.gradient_red,
+            R.drawable.gradient_purple,
+            R.drawable.gradient_blue,
+            R.drawable.gradient_yellow,
+            R.drawable.gradient_green
+    };
+
+    //Home Center Image Locations
+    public static final int[] IMAGE_LOCATIONS = {
+            R.drawable.pawn_red,
+            R.drawable.pawn_purple,
+            R.drawable.pawn_blue,
+            R.drawable.pawn_yellow,
+            R.drawable.pawn_green
     };
 }
