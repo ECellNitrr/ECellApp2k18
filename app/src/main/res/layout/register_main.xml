@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".signup.activities.RegisterMainActivity">
+    tools:context=".activities.RegisterMainActivity">
 
     <ImageView
         android:id="@+id/ecell_image"

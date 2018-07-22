@@ -14,17 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".signup.activities.RegisterMainActivity"
+            android:name=".activities.RegisterMainActivity"
             android:screenOrientation="nosensor">
 
         </activity>
 
         <activity
-            android:name=".signup.activities.ManualSignUpActivity"
+            android:name=".activities.ManualSignUpActivity"
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name=".home.activities.HomeActivity"
+            android:name=".activities.HomeActivity"
             android:screenOrientation="nosensor">
 
             <intent-filter>

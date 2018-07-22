@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.signup.activities;
+package nitrr.ecell.e_cell.activities;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -15,10 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.signup.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.signup.model.UserDetails;
-import nitrr.ecell.e_cell.signup.restapi.ApiServices;
-import nitrr.ecell.e_cell.signup.restapi.AppClient;
+import nitrr.ecell.e_cell.model.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.restapi.ApiServices;
+import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomTextWatcher;
 import retrofit2.Call;

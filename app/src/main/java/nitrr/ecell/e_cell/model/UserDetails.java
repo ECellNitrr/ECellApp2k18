@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.signup.model;
+package nitrr.ecell.e_cell.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;

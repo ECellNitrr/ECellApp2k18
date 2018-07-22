@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.home.activities;
+package nitrr.ecell.e_cell.activities;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
@@ -39,26 +39,32 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.home_tab_layout);
 
         viewPager.setAdapter(new HomeViewPagerAdapter(this));
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
-
                 parentLayout.setBackground(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[position]));
                 setStatusBarColor(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[position]));
                 homeCenterImageView.setImageDrawable(getResources().getDrawable(AppConstants.IMAGE_LOCATIONS[position]));
             }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
         });
+
         tabLayout.setupWithViewPager(viewPager, true);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setStatusBarColor(Drawable gradientColor) {
         Window window = getWindow();
-        Drawable background = gradientColor;
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(getResources().getColor(android.R.color.transparent));
         window.setNavigationBarColor(getResources().getColor(android.R.color.transparent));
-        window.setBackgroundDrawable(background);
+        window.setBackgroundDrawable(gradientColor);
     }
 }

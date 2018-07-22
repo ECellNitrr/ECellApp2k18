@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.signup.restapi;
+package nitrr.ecell.e_cell.restapi;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
