@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -21,6 +22,7 @@ import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomTextWatcher;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -103,6 +105,10 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
+                        String token = jsonResponse.getToken();
+                        PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
+                        utils.saveAccessToken(token);
+
                         Toast.makeText(ManualSignUpActivity.this, "Sign Up success.", Toast.LENGTH_LONG).show();
                         // TODO : Remove Toast and Call OTP Activity here
                     }
@@ -207,7 +213,6 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         }
     }
-
 
     private void showKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
 import nitrr.ecell.e_cell.utils.AppConstants;
@@ -14,6 +15,6 @@ public interface ApiServices {
     Call<AuthenticationResponse> sendRegisterDetails(@Body UserDetails userDetails);
 
     @GET(AppConstants.ABOUT_US_URL)
-    Call<Object> getAboutUsDetails(@Body Object object);
+    Call<AboutUsResponse> getAboutUsDetails();
 
 }

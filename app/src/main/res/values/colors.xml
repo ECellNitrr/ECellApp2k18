@@ -15,15 +15,16 @@
     <color name="colorGradientTop">#32DC57</color>
     <color name="colorGradientBot">#64BD72</color>
     <color name="colorHomeBottomBackground">#151516</color>
+    <color name="colorLightBlack">#353533</color>
 
     <color name="colorHomeStart">#f9230a</color>
     <color name="colorHomeEnd">#9f230a</color>
-    <color name="colorYellow">#e6b125</color>
-    <color name="colorYellowLight">#f1cd1d</color>
-    <color name="colorBlue">#274bc5</color>
-    <color name="colorBlueLight">#4560d5</color>
-    <color name="colorGreen">#31dc42</color>
-    <color name="colorGreenLight">#06e081</color>
-    <color name="colorPurple">#991bba</color>
-    <color name="colorPurpleLight">#af50de</color>
+    <color name="colorYellow">#dd9929</color>
+    <color name="colorYellowLight">#fcf16c</color>
+    <color name="colorBlue">#103cb9</color>
+    <color name="colorBlueLight">#838bf4</color>
+    <color name="colorGreen">#32dc40</color>
+    <color name="colorGreenLight">#00de8e</color>
+    <color name="colorPurple">#981bb9</color>
+    <color name="colorPurpleLight">#be6ef4</color>
 </resources>

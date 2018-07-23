@@ -12,7 +12,7 @@ import java.util.Map;
 public class PrefUtils {
     private Activity activity;
 
-    PrefUtils(Activity activity) {
+    public PrefUtils(Activity activity) {
         this.activity = activity;
     }
 

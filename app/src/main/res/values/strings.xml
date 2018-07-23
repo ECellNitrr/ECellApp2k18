@@ -28,5 +28,9 @@
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
     <string name="sample_hello_user">Hey User</string>
+    <string name="aim">AIM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

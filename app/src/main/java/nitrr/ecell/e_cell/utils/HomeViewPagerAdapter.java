@@ -14,15 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.AboutUsFragment;
 
 public class HomeViewPagerAdapter extends PagerAdapter {
 
-    private Context context;
+    private Activity activity;
     private LayoutInflater inflater;
 
-    public HomeViewPagerAdapter(Context context) {
-        this.context = context;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public HomeViewPagerAdapter(Activity activity) {
+        this.activity = activity;
+        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -32,8 +33,8 @@ public class HomeViewPagerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull final ViewGroup container, int position) {
-        Typeface bebasNeue = Typeface.createFromAsset(context.getAssets(), "fonts/BebasNeue.ttf");
+    public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
+        Typeface bebasNeue = Typeface.createFromAsset(activity.getAssets(), "fonts/BebasNeue.ttf");
 
         View itemView = inflater.inflate(R.layout.home_custom_view, container, false);
         TextView textView = itemView.findViewById(R.id.home_custom_view_text);
@@ -43,9 +44,12 @@ public class HomeViewPagerAdapter extends PagerAdapter {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager manager = ((Activity) context).getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
+                if(position == 4){
 
+                    FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.parentLayout, new AboutUsFragment());
+                    transaction.commit();
+                }
             }
         });
 

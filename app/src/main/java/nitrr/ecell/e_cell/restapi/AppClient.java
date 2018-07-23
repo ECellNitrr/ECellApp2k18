@@ -16,9 +16,7 @@ public class AppClient {
 
     private static AppClient mInstance;
 
-    private AppClient() {
-
-    }
+    private AppClient() { }
 
     public static synchronized AppClient getInstance() {
         if (mInstance == null) mInstance = new AppClient();
