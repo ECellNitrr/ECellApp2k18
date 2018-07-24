@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 import nitrr.ecell.e_cell.events.Model.listitem;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
+public class eventsFragmentAdapter extends RecyclerView.Adapter<eventsFragmentAdapter.ViewHolder>{
 
     private ArrayList<listitem> eventsData;
     private Context context;
     private ImageLoader imageLoader;
 
-    public adapter(ArrayList<listitem> eventsData) {
+    public eventsFragmentAdapter(ArrayList<listitem> eventsData, Context context) {
       this.eventsData=eventsData;
       //  imageLoader = new GlideImageLoader(context);
         this.context = context;
@@ -42,7 +42,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
     public void onBindViewHolder( ViewHolder viewHolder, int i) {
 
         viewHolder.textViewname.setText(eventsData.get(i).getName_response());
-        Glide.with(this.context)
+        Glide.with(context)
                 .load(eventsData.get(i).getIcon_response()).into(viewHolder.imageViewlogo);
 //        viewHolder.imageViewlogo.setImageURI(eventsData.get(i).getLogo());
     }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="nitrr.ecell.e_cell.events.activity.events"
+    tools:context="nitrr.ecell.e_cell.events.activity.eventsFragment"
     android:background="@color/colorBackground">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

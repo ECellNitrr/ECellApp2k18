@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="nitrr.ecell.e_cell.events.activity.events"
+    tools:context="nitrr.ecell.e_cell.events.activity.eventsFragment"
     android:background="@color/colorBackground">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -22,17 +22,21 @@
                 android:layout_width="70dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity=""
+                android:background="@color/colorEventRecyclerview2"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="center_vertical"
                 />
             <LinearLayout
-                android:layout_width="290dp"
+                android:layout_width="280dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:background="@color/colorEventRecyclerview"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/name_id"
                     android:layout_width="match_parent"
+                    android:layout_marginEnd="20dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="45dp"
                     android:textColor="@color/colorWhite"
@@ -46,11 +50,13 @@
                     android:layout_width="200dp"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="end"
+                    android:layout_marginEnd="20dp"
                     android:layout_height="2dp"/>
                 <View
                     android:layout_width="120dp"
                     android:layout_gravity="end"
                     style="@style/lineStyle"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_height="2dp"/>
 
