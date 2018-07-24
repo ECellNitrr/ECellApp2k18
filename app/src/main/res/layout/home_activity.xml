@@ -50,7 +50,7 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/home_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent">
@@ -62,7 +62,7 @@
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp" />
+
         </android.support.v4.view.ViewPager>
     </RelativeLayout>
-
 </LinearLayout>

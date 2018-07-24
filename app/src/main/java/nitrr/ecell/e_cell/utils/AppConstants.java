@@ -35,10 +35,10 @@ public class AppConstants {
 
     //Home Contents
     public static final String[] HOME_TITLES = {
+            "E-SUMMIT",
             "EVENTS",
             "B-QUIZ",
             "SPONSORS",
-            "GALLERY",
             "ABOUT US"
     };
 

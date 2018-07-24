@@ -16,6 +16,8 @@
     <color name="colorGradientBot">#64BD72</color>
     <color name="colorHomeBottomBackground">#151516</color>
     <color name="colorLightBlack">#353533</color>
+    <color name="colorBottomSheet">#afcccf</color>
+
 
     <color name="colorHomeStart">#f9230a</color>
     <color name="colorHomeEnd">#9f230a</color>

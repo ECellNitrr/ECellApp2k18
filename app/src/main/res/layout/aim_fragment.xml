@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorHomeBottomBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/aimText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aim"
+        android:textSize="60sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/colorGreenLight"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:maxLines="5"
+            android:text="sjbskd jjsadk kasdj s sj asj"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="180sp"
+            android:paddingEnd="10dp"
+            android:text="A"
+            android:textColor="@color/colorLightBlack"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/visionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vision"
+        android:textSize="60sp"
+        android:textAlignment="viewEnd"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"        android:textColor="@color/colorGreenLight"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="180sp"
+            android:layout_marginStart="10dp"
+            android:text="V"
+            android:textColor="@color/colorLightBlack"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:maxLines="5"
+            android:text="jjjsd skdjfj as dsffds jadjk sd jksj"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -28,9 +28,19 @@
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
     <string name="sample_hello_user">Hey User</string>
-    <string name="aim">AIM</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab1">Aim</string>
+    <string name="tab2">Team</string>
+    <string name="tab3">Contact Us</string>
+    <string name="vision">VISION</string>
+    <string name="aim">AIM</string>
+    <string name="manager">Manager</string>
+    <string name="hc">Head Coordinator</string>
+    <string name="faculty">Faculty</string>
+    <string name="head_of_career_dev">Head of Career Development</string>
+    <string name="dir">Director</string>
+    <string name="exec">Executive</string>
 
 </resources>
