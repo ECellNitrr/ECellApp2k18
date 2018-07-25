@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,23 +50,14 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.aboutus_bottom_sheet, container, false);
 
-        TabLayout tabLayout = view.findViewById(R.id.bottomTab);
-
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.goal));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.team));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.contact));
-
-
         ViewPager pager = view.findViewById(R.id.aboutUsViewPager);
         setUpViewPager(pager);
-
-        tabLayout.setupWithViewPager(pager);
 
         return view;
     }
 
     private void setUpViewPager(ViewPager viewPager){
-        AboutUsViewPagerAdapter adapter = new AboutUsViewPagerAdapter(getChildFragmentManager());
+        AboutUsViewPagerAdapter adapter = new AboutUsViewPagerAdapter(getChildFragmentManager(), getContext());
 
         adapter.addFragment(new AimFragment());
         adapter.addFragment(new TeamFragment());

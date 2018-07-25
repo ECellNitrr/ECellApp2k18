@@ -35,6 +35,4 @@
             android:orientation="horizontal" />
     </LinearLayout>
 
-    <include layout="@layout/aboutus_bottom_sheet" />
-
 </android.support.design.widget.CoordinatorLayout>
