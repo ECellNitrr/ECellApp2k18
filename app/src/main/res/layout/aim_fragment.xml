@@ -9,72 +9,82 @@
         android:id="@+id/aimText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/aim"
-        android:textSize="60sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
-        android:textColor="@color/colorGreenLight"/>
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/aim"
+        android:textColor="@color/colorGreenLight"
+        android:textSize="70sp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:translationY="-40dp">
 
         <TextView
+            android:id="@+id/aimContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:maxLines="5"
-            android:text="sjbskd jjsadk kasdj s sj asj"
-            android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:maxLines="5"
+            android:singleLine="false"
+            android:text="Lorem ipsum carpe diem"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/aimLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="180sp"
+            android:layout_alignParentEnd="true"
             android:paddingEnd="10dp"
             android:text="A"
-            android:textColor="@color/colorLightBlack"/>
-    </LinearLayout>
+            android:textColor="@color/colorLightBlack"
+            android:textSize="220sp" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/visionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/vision"
-        android:textSize="60sp"
-        android:textAlignment="viewEnd"
-        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"        android:textColor="@color/colorGreenLight"/>
+        android:layout_marginStart="20dp"
+        android:text="@string/vision"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorGreenLight"
+        android:textSize="70sp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:translationY="30dp">
 
         <TextView
+            android:id="@+id/visionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="180sp"
             android:layout_marginStart="10dp"
             android:text="V"
-            android:textColor="@color/colorLightBlack"/>
+            android:textColor="@color/colorLightBlack"
+            android:textSize="220sp" />
 
         <TextView
+            android:id="@+id/visionContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:maxLines="5"
-            android:text="jjjsd skdjfj as dsffds jadjk sd jksj"
-            android:layout_marginStart="20dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
+            android:maxLines="5"
+            android:singleLine="false"
+            android:text="Lorem ipsum carpe diem"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:translationY="50dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
