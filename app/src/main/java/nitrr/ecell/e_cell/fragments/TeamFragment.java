@@ -7,13 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +34,14 @@ public class TeamFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<TeamDetails> studentList = new ArrayList<>();
-    private List<TeamDetails> facultyList;
+    private List<TeamDetails> facultyList = new ArrayList<>();
     private TeamRecyclerViewAdapter adapter;
 
-    private TextView director, hocd, faculty,team, hocdName, dirName, fac1;
+    private TextView director, hocd, faculty, team, hocdName, dirName, fac1;
     private ImageView dirImage, hocdImage, fac1Image;
 
-    public TeamFragment(){}
+    public TeamFragment() {
+    }
 
     @Nullable
     @Override
@@ -54,7 +57,7 @@ public class TeamFragment extends Fragment {
         callAPI();
     }
 
-    private void initialize(){
+    private void initialize() {
         Typeface bebas = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         recyclerView = getView().findViewById(R.id.teamRecyclerView);
@@ -74,6 +77,8 @@ public class TeamFragment extends Fragment {
         dirName = getView().findViewById(R.id.dirName);
 
         fac1Image = getView().findViewById(R.id.fac1Image);
+        dirImage = getView().findViewById(R.id.dirImage);
+        hocdImage = getView().findViewById(R.id.hocdImage);
 
         director.setTypeface(bebas);
         hocd.setTypeface(bebas);
@@ -98,9 +103,10 @@ public class TeamFragment extends Fragment {
 
                     if (jsonResponse != null) {
                         studentList.addAll(jsonResponse.getStudent());
-                        Log.e("json response====",studentList.size()+"");
                         adapter.notifyDataSetChanged();
-                        facultyList = jsonResponse.getFaculty();
+
+                        facultyList.addAll(jsonResponse.getFaculty());
+                        setDetails();
                     }
 
                 } else {
@@ -115,5 +121,39 @@ public class TeamFragment extends Fragment {
         });
     }
 
+    private void setDetails() {
+        for (TeamDetails detail : facultyList) {
+            if (detail.getMemberType().equals("Dir")) {
 
+                if (detail.getImage() != null)
+                    Glide.with(getContext())
+                            .load(detail.getImage())
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(dirImage);
+
+                dirName.setText(detail.getName());
+
+            } else if (detail.getMemberType().equals("HCD")) {
+
+                if (detail.getImage() != null)
+                    Glide.with(getContext())
+                            .load(detail.getImage())
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(hocdImage);
+
+                hocdName.setText(detail.getName());
+
+            } else if (detail.getMemberType().equals("Fclty")) {
+
+                if (detail.getImage() != null)
+                    Glide.with(getContext())
+                            .load(detail.getImage())
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(fac1Image);
+
+                fac1.setText(detail.getName());
+
+            }
+        }
+    }
 }

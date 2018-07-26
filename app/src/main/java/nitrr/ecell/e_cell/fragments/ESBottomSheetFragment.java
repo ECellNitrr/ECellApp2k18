@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,14 +29,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.View.GONE;
+
 public class ESBottomSheetFragment extends DialogFragment {
     private ImageView esImage;
     private TextView es, esDesc, sponLabel;
     private EsRecyclerViewAdapter adapter;
+    private ProgressBar progressBar;
     private List<SpeakerList> details = new ArrayList<>();
 
-    public ESBottomSheetFragment() {
-    }
+    public ESBottomSheetFragment() { }
 
 
     @Override
@@ -88,6 +91,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         es = getView().findViewById(R.id.es_text);
         esDesc = getView().findViewById(R.id.es_content);
         sponLabel = getView().findViewById(R.id.es_label);
+        progressBar = getView().findViewById(R.id.progressSpeaker);
 
         es.setTypeface(bebasNeue);
         sponLabel.setTypeface(bebasNeue);
@@ -105,6 +109,8 @@ public class ESBottomSheetFragment extends DialogFragment {
                     SpeakerResponse speakerResponse = response.body();
 
                     if (speakerResponse != null) {
+                        progressBar.setVisibility(GONE);
+
                         details.addAll(speakerResponse.getList());
                         adapter.notifyDataSetChanged();
                     }
