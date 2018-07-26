@@ -4,6 +4,7 @@ import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
+import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
@@ -19,6 +20,8 @@ public interface ApiServices {
     @GET(AppConstants.ABOUT_US_URL)
     Call<AboutUsResponse> getAboutUsDetails();
 
+    @GET(AppConstants.SPEAKER_URL)
+    Call<SpeakerResponse> getSpeakerDetails();
 
     // TODO: pass url
     @POST(" ")

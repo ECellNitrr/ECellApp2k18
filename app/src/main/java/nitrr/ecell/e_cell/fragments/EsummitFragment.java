@@ -7,47 +7,44 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
 
-public class EsummitFragment extends Fragment {
+public class EsummitFragment extends Fragment implements View.OnClickListener{
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.esummit_fragment, container, false);
     }
 
-    public static EsummitFragment newInstance(String text){
-        EsummitFragment f = new EsummitFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         init();
     }
 
     private void init(){
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
+        LinearLayout esLayout = getView().findViewById(R.id.es_lay);
 
-        TextView textView = getView().findViewById(R.id.esummit_custom_view_text);
+        TextView textView = getView().findViewById(R.id.es_custom_view_text);
+
         textView.setText(AppConstants.HOME_TITLES[0]);
         textView.setTypeface(bebasNeue);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        textView.setOnClickListener(this);
+        esLayout.setOnClickListener(this);
+    }
 
-            }
-        });
-
+    @Override
+    public void onClick(View view) {
+        ESBottomSheetFragment fragment = new ESBottomSheetFragment();
+        fragment.show(getActivity().getSupportFragmentManager(), "e-summit");
     }
 }

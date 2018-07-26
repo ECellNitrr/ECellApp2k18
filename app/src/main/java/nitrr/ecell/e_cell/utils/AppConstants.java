@@ -7,6 +7,7 @@ public class AppConstants {
     //URL's
     public static final String SIGN_UP_URL = "register/";
     public static final String ABOUT_US_URL = "team/list/";
+    public static final String SPEAKER_URL = "speaker/list/";
     public static final String FB_SIGN_UP_URL = "";
     public static final String SIGN_IN_URL = "";
     public static final String OTP_URL = "";

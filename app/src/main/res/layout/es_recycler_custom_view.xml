@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorHomeBottomBackground"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/speakerImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:src="@mipmap/ecell_colored" />
+
+    <TextView
+        android:id="@+id/speakerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample Text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp" />
+
+
+    <TextView
+        android:id="@+id/speakerDesignation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample Text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/speakerTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Sample Text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+</LinearLayout>
