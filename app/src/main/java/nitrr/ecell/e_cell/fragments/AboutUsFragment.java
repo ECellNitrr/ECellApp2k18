@@ -34,7 +34,6 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         init();
-        callAPI();
     }
 
     private void init() {
@@ -48,31 +47,6 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
         textView.setOnClickListener(this);
         aboutUsLay.setOnClickListener(this);
-    }
-
-    private void callAPI() {
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
-        Call<AboutUsResponse> call = services.getAboutUsDetails();
-
-        call.enqueue(new Callback<AboutUsResponse>() {
-            @Override
-            public void onResponse(Call<AboutUsResponse> call, Response<AboutUsResponse> response) {
-                if (response.isSuccessful()) {
-                    AboutUsResponse jsonResponse = response.body();
-
-                    if (jsonResponse != null) {
-                    }
-
-                } else {
-                    Toast.makeText(getActivity(), "Unable to fetch data.", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AboutUsResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     @Override

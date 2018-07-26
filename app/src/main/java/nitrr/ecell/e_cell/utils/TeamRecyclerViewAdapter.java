@@ -2,14 +2,17 @@ package nitrr.ecell.e_cell.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -35,6 +38,11 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull TeamRecyclerViewHolder holder, final int position) {
         String designation = "";
+        Typeface bebas = Typeface.createFromAsset(context.getAssets(), "fonts/BebasNeue.ttf");
+
+        holder.teamName.setTypeface(bebas);
+        holder.teamDesignation.setTypeface(bebas);
+        holder.teamURL.setTypeface(bebas);
 
         if (details.get(position).getName() != null)
             holder.teamName.setText(details.get(position).getName());
@@ -62,7 +70,10 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
         holder.teamDesignation.setText(designation);
 
         if (details.get(position).getImage() != null)
-            
+            Glide.with(context)
+                    .load(details.get(position).getImage())
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(holder.teamImage);
 
         if (details.get(position).getUrl() != null)
             holder.teamURL.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +87,8 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
 
     @Override
     public int getItemCount() {
+        Log.e("Size ====",details.size()+"");
         return details.size();
+
     }
 }
