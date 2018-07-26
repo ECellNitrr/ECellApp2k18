@@ -1,5 +1,8 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
+import nitrr.ecell.e_cell.signin.model.Logindetails;
+
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
@@ -16,5 +19,8 @@ public interface ApiServices {
 
     @GET(AppConstants.EVENTS_URL)
     Call<EventsResponse> getEventsResponse();
+
+    @POST(AppConstants.SIGN_IN_URL)
+    Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
 
 }

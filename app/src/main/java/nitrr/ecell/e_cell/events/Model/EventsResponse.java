@@ -18,13 +18,13 @@ public class EventsResponse implements Serializable {
 
     @SerializedName("Events")
     @Expose
-    private List<listitem> Events;
+    private List<EventsData> Events;
 
     public String getSuccess() {
         return success;
     }
 
-    public List<listitem> getEvents() {
+    public List<EventsData> getEvents() {
         return Events;
     }
 }

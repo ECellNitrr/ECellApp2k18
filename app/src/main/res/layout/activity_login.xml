@@ -5,7 +5,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_activity">
+    tools:context="nitrr.ecell.e_cell.signin.activities.login_activity">
 
     <ImageView
         android:layout_width="match_parent"

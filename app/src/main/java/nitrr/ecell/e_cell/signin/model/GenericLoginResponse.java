@@ -1,4 +1,4 @@
-package com.example.bhushan.ecell_login.Model;
+package nitrr.ecell.e_cell.signin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GenericResponse implements Serializable{
+public class GenericLoginResponse implements Serializable{
 
     @SerializedName("success")
     @Expose

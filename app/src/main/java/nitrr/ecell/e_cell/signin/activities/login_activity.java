@@ -1,6 +1,5 @@
-package com.example.bhushan.ecell_login;
+package nitrr.ecell.e_cell.signin.activities;
 
-import android.app.ProgressDialog;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bhushan.ecell_login.Model.AuthenticationResponse;
-import com.example.bhushan.ecell_login.Model.Logindetails;
-import com.example.bhushan.ecell_login.restapi.ApiServices;
-import com.example.bhushan.ecell_login.restapi.AppClient;
+import nitrr.ecell.e_cell.restapi.ApiServices;
+import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
+import nitrr.ecell.e_cell.signin.model.Logindetails;
+import com.example.bhushan.ecell_login.R;
 
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,14 +66,14 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         setData();
 
         ApiServices apiServices= AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationResponse> call=apiServices.sendLoginDetails(logindetails);
-        call.enqueue(new Callback<AuthenticationResponse>(){
+        Call<AuthenticationLoginResponse> call=apiServices.sendLoginDetails(logindetails);
+        call.enqueue(new Callback<AuthenticationLoginResponse>(){
 
             @Override
-            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response ){
+            public void onResponse(Call<AuthenticationLoginResponse> call, Response<AuthenticationLoginResponse> response ){
 
                 if(response.isSuccessful()) {
-                    AuthenticationResponse jsonResponse = response.body();
+                    AuthenticationLoginResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
                         Toast.makeText(login_activity.this,"login successfull",Toast.LENGTH_LONG).show();
                         // login succcessfull  (home activity)
@@ -87,7 +87,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             }
 
             @Override
-            public void onFailure(Call<AuthenticationResponse> call,Throwable throwable){
+            public void onFailure(Call<AuthenticationLoginResponse> call, Throwable throwable){
                 Toast.makeText(login_activity.this,throwable.getMessage(),Toast.LENGTH_LONG).show();
             }
 

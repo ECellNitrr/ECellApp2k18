@@ -1,10 +1,10 @@
-package com.example.bhushan.ecell_login.utils;
+package nitrr.ecell.e_cell.signin.Utils;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import static com.example.bhushan.ecell_login.utils.AppConstants.ACCESS_TOKEN;
+import static nitrr.ecell.e_cell.utils.AppConstants.ACCESS_TOKEN;
 
 public class SharedPrefs {
 

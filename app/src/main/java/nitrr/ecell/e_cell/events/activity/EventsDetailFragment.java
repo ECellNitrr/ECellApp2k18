@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.events;
+package nitrr.ecell.e_cell.events.activity;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,18 +7,25 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.bhushan.ecell_login.R;
+
+import java.util.ArrayList;
+
+import nitrr.ecell.e_cell.events.Model.EventsData;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link EventDetailFragment.OnFragmentInteractionListener} interface
+ * {@link EventsDetailFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link EventDetailFragment#newInstance} factory method to
+ * Use the {@link EventsDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventDetailFragment extends Fragment {
+public class EventsDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,9 +35,14 @@ public class EventDetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ImageView eventsCoverPic;
+    private TextView eventDetailsDesc,eventDetailsLoc,eventDetailsName,eventDetailsDate;
+    private ArrayList<EventsData> data = new ArrayList<>();
+    EventsData events_data;
+
     private OnFragmentInteractionListener mListener;
 
-    public EventDetailFragment() {
+    public EventsDetailFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +52,11 @@ public class EventDetailFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment EventDetailFragment.
+     * @return A new instance of fragment EventsDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static EventDetailFragment newInstance(String param1, String param2) {
-        EventDetailFragment fragment = new EventDetailFragment();
+    public static EventsDetailFragment newInstance(String param1, String param2) {
+        EventsDetailFragment fragment = new EventsDetailFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +77,21 @@ public class EventDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_detail, container, false);
+        View view=inflater.inflate(R.layout.fragment_events_detail, container, false);
+        eventsCoverPic=(ImageView) view.findViewById(R.id.eventImage);
+        eventDetailsDate=(TextView) view.findViewById(R.id.eventDate);
+        eventDetailsDesc=(TextView) view.findViewById(R.id.eventBody);
+        eventDetailsLoc=(TextView) view.findViewById(R.id.eventLocation);
+        eventDetailsName=(TextView) view.findViewById(R.id.eventName);
+
+        eventDetailsName.setText(events_data.getName_response());
+        eventDetailsLoc.setText(events_data.getVenue_response());
+        eventDetailsDesc.setText(events_data.getDetails_response());
+        eventDetailsDate.setText(events_data.getDate_response());
+        Glide.with(getContext()).load(events_data.getCover_pic_response()).into(eventsCoverPic);
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -78,13 +104,13 @@ public class EventDetailFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
+
+    void setData(EventsData data)
+    {
+        events_data=data;
+    }
+
 
     @Override
     public void onDetach() {
@@ -103,7 +129,6 @@ public class EventDetailFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -16,16 +17,17 @@ import com.example.bhushan.ecell_login.R;
 
 import java.util.ArrayList;
 
-import nitrr.ecell.e_cell.events.Model.listitem;
+import nitrr.ecell.e_cell.events.Model.EventsData;
 
-public class eventsFragmentAdapter extends RecyclerView.Adapter<eventsFragmentAdapter.ViewHolder>{
+public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAdapter.ViewHolder>{
 
-    private ArrayList<listitem> eventsData;
+    private ArrayList<EventsData> eventsDataList;
     private Context context;
     private ImageLoader imageLoader;
+    private LinearLayout linearLayout;
 
-    public eventsFragmentAdapter(ArrayList<listitem> eventsData, Context context) {
-      this.eventsData=eventsData;
+    public EventsFragmentAdapter(ArrayList<EventsData> eventsDataList, Context context) {
+      this.eventsDataList=eventsDataList;
       //  imageLoader = new GlideImageLoader(context);
         this.context = context;
     }
@@ -40,16 +42,22 @@ public class eventsFragmentAdapter extends RecyclerView.Adapter<eventsFragmentAd
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder( ViewHolder viewHolder, int i) {
-
-        viewHolder.textViewname.setText(eventsData.get(i).getName_response());
+        final EventsData eventsData = eventsDataList.get(i);
+        viewHolder.textViewname.setText(eventsData.getName_response());
         Glide.with(context)
-                .load(eventsData.get(i).getIcon_response()).into(viewHolder.imageViewlogo);
-//        viewHolder.imageViewlogo.setImageURI(eventsData.get(i).getLogo());
+                .load(eventsData.getIcon_response()).into(viewHolder.imageViewlogo);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventsDetailFragment eventsDetailFragment=new EventsDetailFragment();
+                eventsDetailFragment.setData(eventsData);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return eventsData.size();
+        return eventsDataList.size();
     }
 
     public class  ViewHolder extends RecyclerView.ViewHolder{
@@ -63,7 +71,7 @@ public class eventsFragmentAdapter extends RecyclerView.Adapter<eventsFragmentAd
 
             textViewname=(TextView) itemView.findViewById(R.id.name_id);
             imageViewlogo=(ImageView) itemView.findViewById(R.id.logo_id);
-
+            linearLayout=(LinearLayout) itemView.findViewById(R.id.linearlayouteventitem);
 
         }
     }

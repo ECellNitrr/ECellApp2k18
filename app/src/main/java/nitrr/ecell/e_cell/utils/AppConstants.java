@@ -4,12 +4,13 @@ public class AppConstants {
 
     //URL's
     public static final String SIGN_UP_URL = "register/";
-    public static final String SIGN_IN_URL = "";
+    public static final String SIGN_IN_URL = "login/";
     public static final String OTP_URL = "";
     public static final String EVENTS_URL = "event/list/";
 
 
     public static final String AUTH_ID = "auth_id";
+    public static final String ACCESS_TOKEN = "access_token";
 
 
     //Field_Name

@@ -3,7 +3,7 @@ package nitrr.ecell.e_cell.events.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class listitem {
+public class EventsData {
 
     @SerializedName("id")
     @Expose
