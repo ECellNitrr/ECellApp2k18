@@ -42,5 +42,11 @@
     <string name="head_of_career_dev">Head of Career Development</string>
     <string name="dir">Director</string>
     <string name="exec">Executive</string>
+    <string name="get_in_touch">GET IN TOUCH</string>
+    <string name="msg">Message</string>
+    <string name="name">Name</string>
+    <string name="address">National Institute of Technology, GE Road, Raipur (492001)</string>
+    <string name="committe_email">ecell@nitrr.ac.in</string>
+    <string name="contact_no">08827544244</string>
 
 </resources>

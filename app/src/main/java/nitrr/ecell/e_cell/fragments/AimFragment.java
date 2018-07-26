@@ -37,7 +37,7 @@ public class AimFragment extends Fragment {
     }
 
     private void initialize(){
-        Typeface raleway = Typeface.createFromAsset(getActivity().getAssets(), "fonts/raleway.ttf");
+        Typeface helvetica = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica.ttf");
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         aimText = getView().findViewById(R.id.aimText);
@@ -52,5 +52,7 @@ public class AimFragment extends Fragment {
         visionLabel.setTypeface(bebasNeue);
         aimText.setTypeface(bebasNeue);
         visionText.setTypeface(bebasNeue);
+        aimContent.setTypeface(helvetica);
+        visionContent.setTypeface(helvetica);
     }
 }

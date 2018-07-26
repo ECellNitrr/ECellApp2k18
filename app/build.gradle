@@ -69,6 +69,9 @@ dependencies {
     implementation 'com.android.support:support-v4:27.0.2'
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
+    // Glide Transformations
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
     implementation 'com.facebook.android:facebook-login:4.33.0'
 

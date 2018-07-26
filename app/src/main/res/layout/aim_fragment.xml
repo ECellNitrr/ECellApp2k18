@@ -24,14 +24,15 @@
 
         <TextView
             android:id="@+id/aimContent"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="60dp"
+            android:lines="5"
             android:maxLines="5"
             android:singleLine="false"
-            android:text="Lorem ipsum carpe diem"
+            android:text="We are all caught up in a void."
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
@@ -75,13 +76,14 @@
 
         <TextView
             android:id="@+id/visionContent"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
             android:maxLines="5"
+            android:lines="5"
             android:singleLine="false"
-            android:text="Lorem ipsum carpe diem"
+            android:text="We are all caught up in a void."
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
             android:translationY="50dp" />
