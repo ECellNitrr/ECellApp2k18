@@ -13,8 +13,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_margin="80dp"
-        android:src="@mipmap/ecell_colored"
-        android:transitionName="imageTrans" />
+        android:src="@mipmap/ecell_colored" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,30 +23,22 @@
 
         <Button
             android:id="@+id/register_sign_in"
+            style="@style/parentButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_style_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_in"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/register_sign_up"
+            style="@style/parentButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_style_filled"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_up"
-            android:textAllCaps="false"
-            android:textColor="@color/colorOuterSpace"
-            android:textSize="20sp" />
+            android:textColor="@color/colorOuterSpace" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,11 +47,9 @@
             android:orientation="horizontal">
 
             <View
+                style="@style/regDivideLine"
                 android:layout_width="0dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:background="@drawable/solid_line_gray" />
+                android:layout_height="3dp" />
 
             <TextView
                 android:id="@+id/register_orContinueWith"
@@ -75,11 +64,9 @@
 
 
             <View
+                style="@style/regDivideLine"
                 android:layout_width="0dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:background="@drawable/solid_line_gray" />
+                android:layout_height="3dp" />
 
         </LinearLayout>
 
@@ -111,11 +98,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/raleway_bold"
                 android:text="@string/facebook"
                 android:textAlignment="center"
                 android:textColor="@color/colorSonicSilver"
-                android:textSize="20sp"
-                android:fontFamily="@font/raleway_bold" />
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

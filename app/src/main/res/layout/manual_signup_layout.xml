@@ -2,7 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:clickable="true"
+    android:id="@+id/main"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true">
 
     <ImageView
         android:layout_width="match_parent"
@@ -25,41 +29,31 @@
 
         <TextView
             android:id="@+id/sign_up_one"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_up"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/colorWhite"
             android:textSize="40sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sign_up_two"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_up_one"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
 
         <TextView
             android:id="@+id/sign_up_three"
+            style="@style/topTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:layout_marginEnd="10dp"
-
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/sign_up_two"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <RelativeLayout
@@ -67,259 +61,165 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
+
             <LinearLayout
                 android:id="@+id/lay_first"
+                style="@style/centralLayoutStyle"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_margin="30dp"
-                android:animateLayoutChanges="true"
-                android:background="@drawable/layout_background"
-                    android:orientation="vertical">
+                android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_firstname_lay"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_firstname_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/man_firstname"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="10dp"
-                        android:textColorHint="@color/colorOuterSpace">
+                        android:hint="@string/first_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxEms="20" />
+                </android.support.design.widget.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/man_firstname"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/first_name"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:maxEms="20"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
+                <View
+                    style="@style/lineStyle"
+                    android:layout_width="320dp"
+                    android:layout_height="1dp" />
 
-                    <View
-                        android:layout_width="320dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/solid_line_lav_gray" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_lastname_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_lastname_lay"
+                    <EditText
+                        android:id="@+id/man_lastname"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:textColorHint="@color/colorOuterSpace">
+                        android:hint="@string/last_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxEms="20" />
+                </android.support.design.widget.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/man_lastname"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/last_name"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:maxEms="20"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
+                <View
+                    style="@style/lineStyle"
+                    android:layout_width="320dp"
+                    android:layout_height="1dp" />
 
-                    <View
-                        android:layout_width="320dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/solid_line_lav_gray" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_email_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_username_lay"
+                    <EditText
+                        android:id="@+id/man_email"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:textColorHint="@color/colorOuterSpace">
-
-                        <EditText
-                            android:id="@+id/man_username"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/username"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:layout_width="320dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/solid_line_lav_gray" />
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_email_lay"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:textColorHint="@color/colorOuterSpace">
-
-                        <EditText
-                            android:id="@+id/man_email"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/email"
-                            android:inputType="textEmailAddress"
-                            android:imeOptions="actionDone"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                        android:hint="@string/email"
+                        android:imeOptions="actionDone"
+                        android:inputType="textEmailAddress" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_second"
+                style="@style/centralLayoutStyle"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_margin="30dp"
-                android:animateLayoutChanges="true"
-                android:background="@drawable/layout_background"
-                android:translationX="1000dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:translationX="1000dp">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_pass_lay"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_pass_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/man_pass"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="10dp"
-                        android:textColorHint="@color/colorOuterSpace">
+                        android:hint="@string/password"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword" />
+                </android.support.design.widget.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/man_pass"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/password"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
+                <View
+                    style="@style/lineStyle"
+                    android:layout_width="320dp"
+                    android:layout_height="1dp" />
 
-                    <View
-                        android:layout_width="320dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/solid_line_lav_gray" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_re_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_re_lay"
+                    <EditText
+                        android:id="@+id/man_re"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:textColorHint="@color/colorOuterSpace">
+                        android:hint="@string/re_enter_password"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword" />
+                </android.support.design.widget.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/man_re"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/re_enter_password"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
+                <View
+                    style="@style/lineStyle"
+                    android:layout_width="320dp"
+                    android:layout_height="1dp" />
 
-                    <View
-                        android:layout_width="320dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/solid_line_lav_gray" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/man_mob_lay"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/man_mob_lay"
+                    <EditText
+                        android:id="@+id/man_mob"
+                        style="@style/editTextStyle"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="25dp"
-                        android:textColorHint="@color/colorOuterSpace">
-
-                        <EditText
-                            android:id="@+id/man_mob"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorWhite"
-                            android:hint="@string/mobile_no"
-                            android:inputType="numberSigned"
-                            android:maxEms="13"
-                            android:imeOptions="actionDone"
-                            android:maxLines="1"
-                            android:paddingTop="10dp" />
-                    </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
-
+                        android:hint="@string/mobile_no"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberSigned"
+                        android:maxEms="13" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
         </RelativeLayout>
 
         <Button
             android:id="@+id/sign_up_back"
+            style="@style/signUpLayoutButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:alpha="0.0"
             android:background="@drawable/button_style_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/back"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/sign_up_proceed"
+            style="@style/signUpLayoutButtonStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:background="@drawable/button_style_filled"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="@font/raleway_bold"
             android:text="@string/proceed"
-            android:textAllCaps="false"
-            android:textColor="@color/colorOuterSpace"
-            android:textSize="20sp" />
+            android:textColor="@color/colorOuterSpace" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/signUpProgressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="49dp"
-        android:visibility="gone" />
-
 </RelativeLayout>

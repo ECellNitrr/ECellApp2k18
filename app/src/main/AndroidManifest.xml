@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.RegisterMainActivity">
+        <activity
+            android:name=".activities.RegisterMainActivity"
+            android:screenOrientation="nosensor">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +24,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ManualSignUpActivity" />
+        <activity
+            android:name=".activities.ManualSignUpActivity"
+            android:screenOrientation="nosensor" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
