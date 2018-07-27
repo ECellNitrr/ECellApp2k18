@@ -7,6 +7,7 @@ public class AppConstants {
     public static final String SIGN_IN_URL = "login/";
     public static final String OTP_URL = "";
     public static final String EVENTS_URL = "event/list/";
+    public static final String SPONSOR_URL ="sponsor/list/";
 
 
     public static final String AUTH_ID = "auth_id";

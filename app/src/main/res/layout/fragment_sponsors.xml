@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:id="@+id/recyclerview_sponsor1"
+       android:layout_height="match_parent"
+       android:background="@color/colorBackground">
+   </android.support.v7.widget.RecyclerView>
+
+</FrameLayout>

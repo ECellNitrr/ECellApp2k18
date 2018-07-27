@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.events.activity;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
         this.context = context;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup viewGroup, int i) {
         View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemlayout_events,viewGroup,false);
