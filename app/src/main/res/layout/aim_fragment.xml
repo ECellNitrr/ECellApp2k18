@@ -66,7 +66,7 @@
         android:orientation="horizontal"
         android:translationY="30dp">
 
-        <TextViewScrollView
+        <TextView
             android:id="@+id/visionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
