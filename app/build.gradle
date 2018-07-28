@@ -8,6 +8,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,12 +17,51 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        production {
+            applicationIdSuffix ""
+            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
+            minSdkVersion 19
+            applicationId 'nitrr.ecell.e_cell'
+            targetSdkVersion 27
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            versionCode 1
+            versionName '1.0'
+        }
+    }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    final BUTTERKNIFE_VERSION = '8.8.1'
+    final RETROFIT_VERSION = '2.3.0'
+    final OKHTTP_VERSION = '3.9.1'
+    final BASIC_LIBRARY_VERSION = '27.1.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //Support
+    implementation "com.android.support:appcompat-v7:$BASIC_LIBRARY_VERSION"
+    implementation "com.android.support:customtabs:$BASIC_LIBRARY_VERSION"
+    implementation "com.android.support:cardview-v7:$BASIC_LIBRARY_VERSION"
+    implementation "com.android.support:design:$BASIC_LIBRARY_VERSION"
+    implementation "com.android.support:recyclerview-v7:$BASIC_LIBRARY_VERSION"
+    //Glide
+    implementation('com.github.bumptech.glide:glide:4.7.1') {
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+        exclude group: "com.android.support"
+    }
+    // Networking
+    implementation 'com.google.code.gson:gson:2.8.2'
+    // Square
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
+    // DataBind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.1'
+    // View Injection
+    implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+    implementation 'com.facebook.android:facebook-login:4.33.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
