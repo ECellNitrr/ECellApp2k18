@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.fragments;
 
+import android.gesture.GestureLibraries;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,12 +8,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
 
 public class EventsFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +42,11 @@ public class EventsFragment extends Fragment {
 
     private void init(){
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
+
+        ImageView imageView = getView().findViewById(R.id.eventsImageView);
+        Glide.with(getContext())
+                .load(AppConstants.IMAGE_LOCATIONS[1])
+                .into(imageView);
 
         TextView textView = getView().findViewById(R.id.events_custom_view_text);
         textView.setText(AppConstants.HOME_TITLES[1]);

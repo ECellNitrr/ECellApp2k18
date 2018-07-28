@@ -7,15 +7,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.DragEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.fragments.AboutUsBottomSheetFragment;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.HomeViewPagerAdapter;
 
@@ -23,8 +22,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private LinearLayout parentLayout;
-    private ImageView homeCenterImageView;
+    private ImageView topImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +34,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        parentLayout = findViewById(R.id.parentLayout);
-        homeCenterImageView = findViewById(R.id.homeCenterImage);
+        topImage = findViewById(R.id.topImage);
+
+        Glide.with(HomeActivity.this)
+                .load("https://scontent.fmaa1-2.fna.fbcdn.net/v/t1.0-9/35081587_916837275155683_4306113943018930176_n.jpg?_nc_cat=0&oh=5a03ca75edbfa1f516031a011dca6032&oe=5C0E08E0")
+                .apply(RequestOptions.circleCropTransform())
+                .into(topImage);
+
         viewPager = findViewById(R.id.home_view_pager);
         tabLayout = findViewById(R.id.home_tab_layout);
 
@@ -49,9 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                parentLayout.setBackground(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[position]));
                 setStatusBarColor(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[position]));
-                homeCenterImageView.setImageDrawable(getResources().getDrawable(AppConstants.IMAGE_LOCATIONS[position]));
             }
 
             @Override

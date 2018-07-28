@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
 
@@ -32,6 +34,12 @@ public class EsummitFragment extends Fragment implements View.OnClickListener{
     private void init(){
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
         LinearLayout esLayout = getView().findViewById(R.id.es_lay);
+
+        ImageView imageView = getView().findViewById(R.id.esImageView);
+        Glide.with(getContext())
+                .load(AppConstants.IMAGE_LOCATIONS[0])
+                .into(imageView);
+
 
         TextView textView = getView().findViewById(R.id.es_custom_view_text);
 

@@ -15,8 +15,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
-            android:src="@mipmap/ecell_colored" />
+            android:layout_marginTop="80dp" />
 
         <TextView
             android:id="@+id/es_text"
@@ -53,9 +52,11 @@
 
         <ProgressBar
             android:id="@+id/progressSpeaker"
+            style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/esRecycler"

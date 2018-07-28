@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
@@ -39,6 +42,11 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
     private void init() {
         final Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
         LinearLayout aboutUsLay = getView().findViewById(R.id.about_us_lay);
+
+        ImageView imageView = getView().findViewById(R.id.aboutImageView);
+        Glide.with(getContext())
+                .load(AppConstants.IMAGE_LOCATIONS[4])
+                .into(imageView);
 
         TextView textView = getView().findViewById(R.id.about_custom_view_text);
 

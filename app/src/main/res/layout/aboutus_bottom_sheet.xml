@@ -16,17 +16,16 @@
             android:id="@+id/aboutUsViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-           >
+            android:layout_alignParentTop="true">
 
             <android.support.v4.view.PagerTitleStrip
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:padding="5dp"
                 android:background="@color/colorLightBlack"
                 android:id="@+id/pagerTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"/>
 

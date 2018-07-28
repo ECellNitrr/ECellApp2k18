@@ -16,6 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +98,11 @@ public class ESBottomSheetFragment extends DialogFragment {
 
         es.setTypeface(bebasNeue);
         sponLabel.setTypeface(bebasNeue);
+
+        Glide.with(getContext())
+                .load("https://scontent.fmaa1-2.fna.fbcdn.net/v/t1.0-9/35081587_916837275155683_4306113943018930176_n.jpg?_nc_cat=0&oh=5a03ca75edbfa1f516031a011dca6032&oe=5C0E08E0")
+                .apply(RequestOptions.circleCropTransform())
+                .into(esImage);
 
     }
 

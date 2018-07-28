@@ -25,4 +25,19 @@ public class MessageDetails implements Serializable{
     @Expose
     private String message;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

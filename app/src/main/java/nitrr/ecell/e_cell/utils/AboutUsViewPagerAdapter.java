@@ -45,7 +45,7 @@ public class AboutUsViewPagerAdapter extends FragmentPagerAdapter {
         }
 
         SpannableStringBuilder sb = new SpannableStringBuilder("  ");
-        drawable.setBounds(0, 0, 70, 70);
+        drawable.setBounds(0, 0, 90, 90);
         ImageSpan span = new ImageSpan(drawable, DynamicDrawableSpan.ALIGN_BASELINE);
         sb.setSpan(span, 0 ,1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 

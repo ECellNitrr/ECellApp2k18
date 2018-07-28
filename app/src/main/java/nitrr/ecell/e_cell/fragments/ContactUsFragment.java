@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,6 +26,9 @@ import retrofit2.Response;
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
     TextView det, add, email, ph, touch;
     ImageView send;
+
+    EditText nameEditText, emailEditText, messageEditText;
+
 
     @Nullable
     @Override
@@ -46,6 +51,9 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         ph = getView().findViewById(R.id.phone);
         touch = getView().findViewById(R.id.contact_us_mid);
         send = getView().findViewById(R.id.send);
+        nameEditText = getView().findViewById(R.id.contactNameEdit);
+        emailEditText = getView().findViewById(R.id.contactEmailEdit);
+        messageEditText = getView().findViewById(R.id.contactMessageEdit);
 
         det.setTypeface(bebas);
         add.setTypeface(bebas);
@@ -58,20 +66,47 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        if (checkNull()) {
 
-        // TODO: send proper object
-        Call<GenericResponse> call = services.sendMessage(new MessageDetails());
-        call.enqueue(new Callback<GenericResponse>() {
-            @Override
-            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                if (response.isSuccessful())
-                    Toast.makeText(getContext(), "Thank you for giving us feedback!", Toast.LENGTH_LONG).show();
-            }
+            ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
-            @Override
-            public void onFailure(Call<GenericResponse> call, Throwable t) {
-            }
-        });
+            MessageDetails details = new MessageDetails();
+            PrefUtils utils = new PrefUtils(getActivity());
+
+            details.setToken(utils.getAccessToken());
+            details.setEmail(emailEditText.getText().toString().trim());
+            details.setName(nameEditText.getText().toString().trim());
+            details.setMessage(messageEditText.getText().toString().trim());
+
+            Call<GenericResponse> call = services.sendMessage(details);
+            call.enqueue(new Callback<GenericResponse>() {
+                @Override
+                public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                    if (response.isSuccessful())
+                        Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<GenericResponse> call, Throwable t) {
+                    Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
+                }
+            });
+
+        } else {
+            Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private boolean checkNull() {
+        if (nameEditText.getText().toString().trim().equals(""))
+            return false;
+
+        if (messageEditText.getText().toString().trim().equals(""))
+            return false;
+
+        if (emailEditText.getText().toString().trim().equals(""))
+            return false;
+
+        return true;
     }
 }

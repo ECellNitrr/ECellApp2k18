@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
@@ -37,6 +40,12 @@ public class BQuizFragment extends Fragment {
 
     private void init(){
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
+
+        ImageView imageView = getView().findViewById(R.id.bqImageView);
+        Glide.with(getContext())
+                .load(AppConstants.IMAGE_LOCATIONS[2])
+                .into(imageView);
+
 
         TextView textView = getView().findViewById(R.id.bquiz_custom_view_text);
         textView.setText(AppConstants.HOME_TITLES[2]);

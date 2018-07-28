@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +26,13 @@ import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.TeamDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.CustomScrollableView;
 import nitrr.ecell.e_cell.utils.TeamRecyclerViewAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.view.View.GONE;
 
 public class TeamFragment extends Fragment {
 
@@ -36,6 +40,8 @@ public class TeamFragment extends Fragment {
     private List<TeamDetails> studentList = new ArrayList<>();
     private List<TeamDetails> facultyList = new ArrayList<>();
     private TeamRecyclerViewAdapter adapter;
+    private ProgressBar progressBar;
+    private CustomScrollableView scrollableView;
 
     private TextView director, hocd, faculty, team, hocdName, dirName, fac1;
     private ImageView dirImage, hocdImage, fac1Image;
@@ -60,6 +66,9 @@ public class TeamFragment extends Fragment {
     private void initialize() {
         Typeface bebas = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
+        scrollableView = getView().findViewById(R.id.scrollView);
+        scrollableView.setScrolling(false);
+
         recyclerView = getView().findViewById(R.id.teamRecyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
@@ -80,6 +89,8 @@ public class TeamFragment extends Fragment {
         dirImage = getView().findViewById(R.id.dirImage);
         hocdImage = getView().findViewById(R.id.hocdImage);
 
+        progressBar = getView().findViewById(R.id.team_progress);
+
         director.setTypeface(bebas);
         hocd.setTypeface(bebas);
         faculty.setTypeface(bebas);
@@ -87,8 +98,6 @@ public class TeamFragment extends Fragment {
         fac1.setTypeface(bebas);
         hocdName.setTypeface(bebas);
         dirName.setTypeface(bebas);
-
-
     }
 
     private void callAPI() {
@@ -99,6 +108,10 @@ public class TeamFragment extends Fragment {
             @Override
             public void onResponse(Call<AboutUsResponse> call, Response<AboutUsResponse> response) {
                 if (response.isSuccessful()) {
+
+                    scrollableView.setScrolling(true);
+                    progressBar.setVisibility(GONE);
+
                     AboutUsResponse jsonResponse = response.body();
 
                     if (jsonResponse != null) {
@@ -127,7 +140,7 @@ public class TeamFragment extends Fragment {
 
                 if (detail.getImage() != null)
                     Glide.with(getContext())
-                            .load(detail.getImage())
+                            .load("https://farm1.staticflickr.com/835/42559728204_d2b7f112e4_k.jpg")
                             .apply(RequestOptions.circleCropTransform())
                             .into(dirImage);
 
