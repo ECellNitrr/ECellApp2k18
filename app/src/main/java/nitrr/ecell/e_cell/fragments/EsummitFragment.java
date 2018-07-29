@@ -36,7 +36,7 @@ public class EsummitFragment extends Fragment implements View.OnClickListener{
         LinearLayout esLayout = getView().findViewById(R.id.es_lay);
 
         ImageView imageView = getView().findViewById(R.id.esImageView);
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[0])
                 .into(imageView);
 

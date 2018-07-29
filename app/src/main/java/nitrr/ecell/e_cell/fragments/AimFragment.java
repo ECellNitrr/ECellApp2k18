@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.lang.reflect.Type;
+
 import nitrr.ecell.e_cell.R;
 
 public class AimFragment extends Fragment {
@@ -37,7 +39,6 @@ public class AimFragment extends Fragment {
     }
 
     private void initialize(){
-        Typeface helvetica = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica.ttf");
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         aimText = getView().findViewById(R.id.aimText);
@@ -52,7 +53,5 @@ public class AimFragment extends Fragment {
         visionLabel.setTypeface(bebasNeue);
         aimText.setTypeface(bebasNeue);
         visionText.setTypeface(bebasNeue);
-        aimContent.setTypeface(helvetica);
-        visionContent.setTypeface(helvetica);
     }
 }

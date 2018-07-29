@@ -42,7 +42,7 @@ public class BQuizFragment extends Fragment {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.bqImageView);
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[2])
                 .into(imageView);
 

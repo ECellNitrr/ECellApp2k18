@@ -5,24 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.AboutUsResponse;
-import nitrr.ecell.e_cell.restapi.ApiServices;
-import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
@@ -44,7 +36,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         LinearLayout aboutUsLay = getView().findViewById(R.id.about_us_lay);
 
         ImageView imageView = getView().findViewById(R.id.aboutImageView);
-        Glide.with(getContext())
+
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[4])
                 .into(imageView);
 

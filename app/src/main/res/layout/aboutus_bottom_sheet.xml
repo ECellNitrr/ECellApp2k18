@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@color/colorHomeBottomBackground">
@@ -19,15 +19,13 @@
             android:layout_alignParentTop="true">
 
             <android.support.v4.view.PagerTitleStrip
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:padding="5dp"
-                android:background="@color/colorLightBlack"
                 android:id="@+id/pagerTitle"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"/>
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorLightBlack"
+                android:padding="4dp" />
 
         </android.support.v4.view.ViewPager>
 

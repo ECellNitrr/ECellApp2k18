@@ -42,7 +42,7 @@ public class SponsorsFragment extends Fragment {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.sponsImageView);
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[3])
                 .into(imageView);
 

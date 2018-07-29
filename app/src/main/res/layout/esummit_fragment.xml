@@ -43,7 +43,7 @@
 
     <LinearLayout
         android:id="@+id/es_lay"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/home_bot_background"

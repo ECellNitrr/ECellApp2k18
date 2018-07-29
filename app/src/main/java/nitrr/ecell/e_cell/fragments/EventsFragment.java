@@ -44,7 +44,7 @@ public class EventsFragment extends Fragment {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.eventsImageView);
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[1])
                 .into(imageView);
 
