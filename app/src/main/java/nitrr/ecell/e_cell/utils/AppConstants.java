@@ -15,6 +15,10 @@ public class AppConstants {
 
     public static final String AUTH_ID = "auth_id";
 
+    //Bquiz Urls
+    public static final String BQUIZ_STATUS = "";
+
+
 
     //Field_Name
     public static final String FIRST_NAME = "first_name";

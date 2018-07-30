@@ -28,6 +28,11 @@
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
     <string name="sample_hello_user">Hey User</string>
+    <string name="bquiz_dialog_title">BQuiz</string>
+    <string name="bquiz_dialog_msg">Bquiz is not active now. Please try again later</string>
+    <string name="bquiz_dialog_retry_btn">Retry</string>
+    <string name="bquiz_dialog_cancel_btn">Cancel</string>
+    <string name="something_went_wrong_msg">Something went wrong. Please try again.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

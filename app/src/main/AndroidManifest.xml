@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.RegisterMainActivity"
-            android:screenOrientation="nosensor"></activity>
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".activities.ManualSignUpActivity"
             android:screenOrientation="nosensor" />
@@ -52,7 +52,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".bquiz.BquizActivity"></activity>
+        <activity android:name=".bquiz.BquizActivity" />
     </application>
 
 </manifest>
