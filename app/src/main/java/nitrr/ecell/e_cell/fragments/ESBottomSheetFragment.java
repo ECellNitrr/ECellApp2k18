@@ -65,7 +65,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         super.onStart();
 
         Dialog d = getDialog();
-        if (d != null) {
+        if (d != null && d.getWindow() != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -80,6 +80,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     }
 
     private void initialize() {
+
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         RecyclerView recyclerView = getView().findViewById(R.id.esRecycler);
@@ -99,7 +100,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         es.setTypeface(bebasNeue);
         sponLabel.setTypeface(bebasNeue);
 
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(R.drawable.esummit)
                 .apply(RequestOptions.circleCropTransform())
                 .into(esImage);

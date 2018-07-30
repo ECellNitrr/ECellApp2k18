@@ -19,6 +19,7 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Black);
     }
 
@@ -34,7 +35,7 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
         super.onStart();
 
         Dialog d = getDialog();
-        if(d != null){
+        if(d != null && d.getWindow() != null){
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 

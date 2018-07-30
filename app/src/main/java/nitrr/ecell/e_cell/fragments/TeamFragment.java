@@ -141,7 +141,7 @@ public class TeamFragment extends Fragment {
 
                 if (detail.getImage() != null && getActivity() != null)
                     Glide.with(getActivity())
-                            .load("https://farm1.staticflickr.com/835/42559728204_d2b7f112e4_k.jpg")
+                            .load(detail.getImage())
                             .apply(RequestOptions.circleCropTransform())
                             .into(dirImage);
 
