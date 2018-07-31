@@ -2,7 +2,9 @@ package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.bhushan.ecell_login.R;
 
 import java.util.List;
 
+import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.sponsor.model.SponsorDetail;
 
 public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSecond.ViewHolder> {
@@ -36,19 +39,26 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-         SponsorDetail listitemsponsor=sponsorDetailList.get(position);
-
-         holder.sponsorwebsite.setText(listitemsponsor.getWebsite_s());
-         holder.sponsorname.setText(listitemsponsor.getName_s());
-         holder.sponsordetail.setText(listitemsponsor.getDetails_s());
-         holder.sponsorcontact.setText(listitemsponsor.getContact_s());
+         final SponsorDetail itemSponsor = sponsorDetailList.get(position);
+//         holder.sponsorwebsite.setText(itemSponsor.getWebsite_s());
+         holder.sponsorname.setText(itemSponsor.getName_s());
+//         holder.sponsordetail.setText(itemSponsor.getDetails_s());
+//         holder.sponsorcontact.setText(itemSponsor.getContact_s());
         Glide.with(context)
-                .load(listitemsponsor.getPic_s()).into(holder.sponsorpic);
-
+                .load(itemSponsor.getPic_s()).into(holder.sponsorpic);
+        holder.cardSponsorDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SponsorsDetailsFragment sponsorsDetailsFragment = new SponsorsDetailsFragment();
+                sponsorsDetailsFragment.setSponsorsData(itemSponsor,context);
+                ((HomeActivity)context).addFragment(sponsorsDetailsFragment);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
+        Log.e("size2====", sponsorDetailList.size()+"");
         return sponsorDetailList.size();
     }
 
@@ -56,6 +66,7 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
 
         TextView sponsorname,sponsordetail,sponsorwebsite,sponsorcontact;
         ImageView sponsorpic;
+        CardView cardSponsorDetail;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -64,7 +75,7 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
             sponsorname=(TextView)itemView.findViewById(R.id.sponsdetailname);
             sponsorwebsite=(TextView)itemView.findViewById(R.id.sponsdetailwebsite);
             sponsorpic=(ImageView)itemView.findViewById(R.id.sponsdetailpic);
-
+            cardSponsorDetail = (CardView) itemView.findViewById(R.id.sponsor_detail_card);
 
         }
     }

@@ -3,7 +3,9 @@ package nitrr.ecell.e_cell.events.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class EventsData {
+import java.io.Serializable;
+
+public class EventsData implements Serializable{
 
     @SerializedName("id")
     @Expose

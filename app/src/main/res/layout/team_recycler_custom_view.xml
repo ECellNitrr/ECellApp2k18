@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/colorHomeBottomBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/teamImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:src="@mipmap/ecell_colored" />
+
+        <View
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/image_border" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/teamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample Text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp" />
+
+
+    <TextView
+        android:id="@+id/teamDesignation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample Text"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/teamURL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View in LinkedIn"
+        android:textAlignment="center"
+        android:textColor="@color/colorSonicSilver"
+        android:textSize="16sp" />
+
+</LinearLayout>

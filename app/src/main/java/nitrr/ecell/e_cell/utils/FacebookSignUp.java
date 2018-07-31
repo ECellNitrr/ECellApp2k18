@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.util.Arrays;
 
-import com.example.bhushan.ecell_login.R;
+import nitrr.ecell.e_cell.R;
 
 public class FacebookSignUp {
 
@@ -48,6 +48,7 @@ public class FacebookSignUp {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                prefUtils.isFacebookLogin(true);
 
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override

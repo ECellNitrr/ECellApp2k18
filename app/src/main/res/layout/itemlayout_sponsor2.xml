@@ -6,6 +6,7 @@
     android:background="@color/colorBackground">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/sponsor_detail_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,29 +19,20 @@
 
             <TextView
                 android:id="@+id/sponsdetailname"
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
+                android:layout_marginTop="0dp"
+                android:paddingTop="8dp"
+                android:textAlignment="center"
+                android:text="aaaa"
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="50dp" />
             <ImageView
                 android:id="@+id/sponsdetailpic"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"/>
             
-            <TextView
-                android:id="@+id/sponsdetaildetails"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-            <TextView
-                android:id="@+id/sponsdetailcontact"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-            <TextView
-                android:id="@+id/sponsdetailwebsite"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-
-
 
 
         </LinearLayout>

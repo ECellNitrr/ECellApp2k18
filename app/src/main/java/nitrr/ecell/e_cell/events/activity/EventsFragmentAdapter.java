@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +13,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.bumptech.glide.Glide;
-import com.example.bhushan.ecell_login.R;
 
 import java.util.ArrayList;
 
+import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.events.Model.EventsData;
 
 public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAdapter.ViewHolder>{
 
     private ArrayList<EventsData> eventsDataList;
     private Context context;
-    private ImageLoader imageLoader;
     private LinearLayout linearLayout;
 
     public EventsFragmentAdapter(ArrayList<EventsData> eventsDataList, Context context) {
       this.eventsDataList=eventsDataList;
-      //  imageLoader = new GlideImageLoader(context);
         this.context = context;
     }
 
@@ -53,12 +52,15 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
             public void onClick(View v) {
                 EventsDetailFragment eventsDetailFragment=new EventsDetailFragment();
                 eventsDetailFragment.setData(eventsData);
+                ((HomeActivity)context).addFragment(eventsDetailFragment);
             }
         });
     }
 
     @Override
     public int getItemCount() {
+
+        Log.e("size====", eventsDataList.size()+"");
         return eventsDataList.size();
     }
 

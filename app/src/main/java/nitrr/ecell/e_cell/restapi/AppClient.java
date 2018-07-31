@@ -3,7 +3,7 @@ package nitrr.ecell.e_cell.restapi;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import com.example.bhushan.ecell_login.BuildConfig;
+import nitrr.ecell.e_cell.BuildConfig;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,8 +16,11 @@ public class AppClient {
 
     private static AppClient mInstance;
 
-    private AppClient() {
+    private AppClient() { }
 
+    public static synchronized AppClient getInstance() {
+        if (mInstance == null) mInstance = new AppClient();
+        return mInstance;
     }
 
     public <S> S createService(Class<S> serviceClass) {
@@ -71,11 +74,6 @@ public class AppClient {
         httpClient.readTimeout(15, TimeUnit.SECONDS);
 
         return httpClient;
-    }
-
-    public static synchronized AppClient getInstance() {
-        if (mInstance == null) mInstance = new AppClient();
-        return mInstance;
     }
 
 }

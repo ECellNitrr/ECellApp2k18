@@ -1,9 +1,8 @@
 package nitrr.ecell.e_cell.signin.activities;
 
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-//import android.telecom.Call;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -12,15 +11,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
 import nitrr.ecell.e_cell.signin.model.Logindetails;
-import com.example.bhushan.ecell_login.R;
-
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Call;
+
+//import android.telecom.Call;
 
 public class login_activity extends AppCompatActivity implements View.OnClickListener {
 

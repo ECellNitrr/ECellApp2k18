@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.bhushan.ecell_login.R;
 
 import java.util.ArrayList;
 
+import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.events.Model.EventsData;
 
 /**

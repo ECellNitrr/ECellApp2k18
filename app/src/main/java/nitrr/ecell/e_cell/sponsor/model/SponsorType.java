@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,13 +16,13 @@ public class SponsorType implements Serializable{
 
     @SerializedName("sponsors")
     @Expose
-    private ArrayList<SponsorDetail> sponserslist;
+    private List<SponsorDetail> sponserslist;
 
     public String getSponsortypename() {
         return sponsortypename;
     }
 
-    public ArrayList<SponsorDetail> getSponserslist() {
+    public List<SponsorDetail> getSponserslist() {
         return sponserslist;
     }
 }

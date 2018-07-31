@@ -12,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.bhushan.ecell_login.R;
-
 import java.util.ArrayList;
 
-import nitrr.ecell.e_cell.events.Model.EventsResponse;
+import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.events.Model.EventsData;
+import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import retrofit2.Call;
@@ -44,25 +43,13 @@ public class EventsFragment extends Fragment {
     private String mParam2;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter<EventsFragmentAdapter.ViewHolder> adapterr;
-    private ArrayList<EventsData> data_events;
+    private EventsFragmentAdapter adapterr;
+    private ArrayList<EventsData> data_events = new ArrayList<>();
     // private EventsFragment activity;
-
-    private OnFragmentInteractionListener mListener;
 
     public EventsFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EventsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static EventsFragment newInstance(String param1, String param2) {
         EventsFragment fragment = new EventsFragment();
         Bundle args = new Bundle();
@@ -89,19 +76,11 @@ public class EventsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_id);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        adapterr = new EventsFragmentAdapter(data_events, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapterr);
         APICall();
-        //
-        return inflater.inflate(R.layout.fragment_events, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return view;
     }
 
     @Override
@@ -112,7 +91,6 @@ public class EventsFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     private void APICall() {
@@ -127,10 +105,8 @@ public class EventsFragment extends Fragment {
                 if (response.isSuccessful()) {
                     EventsResponse eventsResponse = response.body();
                     if (null != eventsResponse) {
-                        data_events = new ArrayList<>(eventsResponse.getEvents());
-                        adapterr = new EventsFragmentAdapter(data_events, getContext());
-                        recyclerView.setAdapter(adapterr);
-
+                        data_events.addAll(eventsResponse.getEvents());
+                        adapterr.notifyDataSetChanged();
                     }
                 } else {
                     Toast.makeText(getContext(), "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
@@ -149,19 +125,5 @@ public class EventsFragment extends Fragment {
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 }

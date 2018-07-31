@@ -9,8 +9,7 @@ import android.widget.EditText;
 
 import java.util.regex.Pattern;
 
-
-import com.example.bhushan.ecell_login.R;
+import nitrr.ecell.e_cell.R;
 
 public class CustomTextWatcher implements TextWatcher {
     private Activity activity;
@@ -114,4 +113,5 @@ public class CustomTextWatcher implements TextWatcher {
 
         return true;
     }
+
 }

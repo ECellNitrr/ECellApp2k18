@@ -12,8 +12,39 @@ import java.util.Map;
 public class PrefUtils {
     private Activity activity;
 
-    PrefUtils(Activity activity) {
+    public PrefUtils(Activity activity) {
         this.activity = activity;
+    }
+
+    public void saveUserName(String name){
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("user", name);
+        editor.apply();
+    }
+
+    public void isFacebookLogin(boolean bool){
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("isFB", Boolean.toString(bool));
+        editor.apply();
+    }
+
+
+    public boolean isFBLogin(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        String str =  prefs.getString("isFB", null);
+
+        if(str.equals("true"))
+            return true;
+        else return false;
+    }
+
+    public String getUserName(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        return prefs.getString("user", null);
     }
 
     public void saveAccessToken(String token) {

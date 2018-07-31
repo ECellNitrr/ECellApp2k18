@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDetails implements Serializable{
+public class UserDetails implements Serializable {
 
     @SerializedName("password")
     @Expose

@@ -4,21 +4,21 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.bhushan.ecell_login.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.sponsor.model.SponsorDetail;
 import nitrr.ecell.e_cell.sponsor.model.SponsorType;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
-import static java.security.AccessController.getContext;
 
 public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirst.ViewHolder> {
 
@@ -26,10 +26,11 @@ public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirs
     private Context context;
     private RecyclerView recyclerView;
     SponsorType sponsorType;
-    private RecyclerView.Adapter<SponsorAdapterSecond.ViewHolder> adapterr;
-    private ArrayList<SponsorDetail> sponsordatasecond;
+    private SponsorAdapterSecond adapterr;
+    private List<SponsorDetail> sponsordatasecond=new ArrayList<>();
 
     public SponsorAdapterFirst(List<SponsorType> listspons1, Context context) {
+      //  Log.e("size====", listspons1.size()+"");
         this.listspons1 = listspons1;
         this.context = context;
     }
@@ -42,9 +43,9 @@ public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirs
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_sponsor2);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        adapterr = new SponsorAdapterSecond(sponsordatasecond,context);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapterr);
 
         return new ViewHolder(view);
     }
@@ -54,14 +55,18 @@ public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirs
          SponsorType listitem1=listspons1.get(position);
          holder.SponsHeading.setText(listitem1.getSponsortypename());
          // 2nd recyclerviewcall
-        sponsordatasecond=new ArrayList<>(sponsorType.getSponserslist());
-        adapterr = new SponsorAdapterSecond(sponsordatasecond,context);
-        recyclerView.setAdapter(adapterr);
+        if(null != listitem1.getSponserslist()){
+            if(0 != listitem1.getSponserslist().size()){
+                sponsordatasecond.addAll(listitem1.getSponserslist());
+                adapterr.notifyDataSetChanged();
+            }
+        }
 
     }
 
     @Override
     public int getItemCount() {
+        Log.e("size====", listspons1.size()+"");
         return listspons1.size();
     }
 

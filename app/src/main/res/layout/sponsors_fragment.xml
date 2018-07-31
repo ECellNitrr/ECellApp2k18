@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_yellow"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <ImageView
+            android:id="@+id/sponsImageView"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="80dp"
+            android:paddingTop="60dp" />
+
+
+        <TextView
+            android:id="@+id/spons_custom_view_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/home_text_border"
+            android:text="@string/sample_hello_user"
+            android:textColor="@color/colorWhite"
+            android:textSize="100sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

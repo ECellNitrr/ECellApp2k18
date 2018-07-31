@@ -6,11 +6,10 @@
     <string name="facebook">Facebook</string>
     <string name="mobile_no">Mobile No.</string>
     <string name="otp">OTP</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="re_enter_password">Re-enter Password</string>
     <string name="sign_in_with_username">Sign in with Username</string>
     <string name="sign_in_password">and Password</string>
+    <string name="password">Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
     <string name="sign_up_one">Sign Up with Username</string>
     <string name="sign_up_two">and Password</string>
     <string name="forgot_password">Forgot your Password</string>
@@ -30,7 +29,33 @@
     <string name="error_mobile">Enter a valid mobile number.</string>
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
+    <string name="sample_hello_user">Hey User</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab1">Aim</string>
+    <string name="tab2">Team</string>
+    <string name="tab3">Contact Us</string>
+    <string name="vision">VISION</string>
+    <string name="aim">AIM</string>
+    <string name="manager">Manager</string>
+    <string name="hc">Head Coordinator</string>
+    <string name="faculty">Faculty</string>
+    <string name="head_of_career_dev">Head of Career Development</string>
+    <string name="dir">Director</string>
+    <string name="exec">Executive</string>
+    <string name="get_in_touch">GET IN TOUCH</string>
+    <string name="msg">Message</string>
+    <string name="name">Name</string>
+    <string name="address">National Institute of Technology, GE Road, Raipur (492001)</string>
+    <string name="committe_email">ecell@nitrr.ac.in</string>
+    <string name="contact_no">08827544244</string>
+    <string name="team">Team</string>
+    <string name="es">E - Summit \'18</string>
+    <string name="our_sponsors">OUR SPONSORS</string>
+    <string name="our_speakers">OUR SPEAKERS</string>
+    <string name="feedback_success">Thank you for giving us feedback!</string>
+    <string name="feedback_failure">Please fill the above details to send feedback!</string>
+    <string name="feedback_json_failure">There was an error sending message, please contact E-Cell team.</string>
+
 </resources>
