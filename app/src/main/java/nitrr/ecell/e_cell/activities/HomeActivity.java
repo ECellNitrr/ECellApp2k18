@@ -1,7 +1,9 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -84,15 +86,37 @@ public class HomeActivity extends AppCompatActivity {
 //        }
 //    }
 
-    public void addFragment(android.support.v4.app.Fragment fragment) {
+    public void addFragment(android.support.v4.app.Fragment fragment, String tag) {
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.parentLayout,fragment);
-            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.addToBackStack(tag);
             fragmentTransaction.commit();
         }
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            HomeActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else
+            super.onBackPressed();
+    }
 }

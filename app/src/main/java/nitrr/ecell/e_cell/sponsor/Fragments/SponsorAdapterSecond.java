@@ -51,7 +51,7 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
             public void onClick(View v) {
                 SponsorsDetailsFragment sponsorsDetailsFragment = new SponsorsDetailsFragment();
                 sponsorsDetailsFragment.setSponsorsData(itemSponsor,context);
-                ((HomeActivity)context).addFragment(sponsorsDetailsFragment);
+                ((HomeActivity)context).addFragment(sponsorsDetailsFragment, "Sponsor Fragment Second");
             }
         });
     }

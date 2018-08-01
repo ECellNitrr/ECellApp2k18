@@ -55,10 +55,11 @@ public class SponsorsFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment());
+                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment(), "Sponsor Fragment");
                 Toast.makeText(getContext(), "sponser Fragment", Toast.LENGTH_LONG).show();
             }
         });
 
     }
+
 }

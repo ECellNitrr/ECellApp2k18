@@ -39,7 +39,7 @@ public class SponsorsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private SponsorAdapterFirst adapterr;
-    private List<SponsorType> sponsdatafirst =new ArrayList<>();
+    private List<SponsorType> sponsdatafirst = new ArrayList<>();
 
     public SponsorsFragment() {
         // Required empty public constructor
@@ -105,6 +105,7 @@ public class SponsorsFragment extends Fragment {
                         Log.e("response====", "Succesfull");
                         sponsdatafirst.addAll(sponsorsResponce.getSponsors());
                         adapterr.notifyDataSetChanged();
+                        Toast.makeText(getContext(), "api call for sponsors", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {

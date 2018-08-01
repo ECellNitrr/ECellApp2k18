@@ -52,7 +52,7 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
             public void onClick(View v) {
                 EventsDetailFragment eventsDetailFragment=new EventsDetailFragment();
                 eventsDetailFragment.setData(eventsData);
-                ((HomeActivity)context).addFragment(eventsDetailFragment);
+                ((HomeActivity)context).addFragment(eventsDetailFragment,"Event Fragment Details");
             }
         });
     }

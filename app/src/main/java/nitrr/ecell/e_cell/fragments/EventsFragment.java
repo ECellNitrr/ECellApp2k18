@@ -57,7 +57,7 @@ public class EventsFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.events.activity.EventsFragment());
+                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.events.activity.EventsFragment(), "Event Fragment Details");
                 Toast.makeText(getContext(), "Event Fragment", Toast.LENGTH_LONG).show();
             }
         });
