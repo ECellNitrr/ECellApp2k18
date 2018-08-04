@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.bquiz.BquizActivity;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
@@ -78,7 +80,7 @@ public class BQuizFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                apiCallForBquizStatus();
             }
         });
 
@@ -94,7 +96,8 @@ public class BQuizFragment extends Fragment {
                     BQuizStatusResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
                         if (jsonResponse.isActive()) {
-                            
+                            Intent intent = new Intent(getActivity(), BquizActivity.class);
+                            startActivity(intent);
                         } else {
                             DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositive, clickListenerNegative, null, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         }
