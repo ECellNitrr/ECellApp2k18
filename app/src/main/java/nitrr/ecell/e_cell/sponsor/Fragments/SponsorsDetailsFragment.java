@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -32,6 +33,7 @@ public class SponsorsDetailsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String check;
     private SponsorDetail sponsorDetail;
     private OnFragmentInteractionListener mListener;
     private TextView nameSpons,wenSpons,contactSpons,detailSpons;
@@ -63,6 +65,7 @@ public class SponsorsDetailsFragment extends Fragment {
     void setSponsorsData(SponsorDetail sponsorDetail,Context context){
         this.context=context;
         this.sponsorDetail = sponsorDetail;
+
     }
 
     @Override
@@ -80,11 +83,15 @@ public class SponsorsDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_sponsors_details, container, false);
 
-        nameSpons=(TextView)view.findViewById(R.id.sponsdetailcontact);
+        nameSpons=(TextView)view.findViewById(R.id.sponsdetailname);
         detailSpons=(TextView)view.findViewById(R.id.sponsdetaildetails);
-        contactSpons=(TextView)view.findViewById(R.id.sponsdetailname);
+        contactSpons=(TextView)view.findViewById(R.id.sponsdetailcontact);
         wenSpons=(TextView)view.findViewById(R.id.sponsdetailwebsite);
         picSpons=(ImageView)view.findViewById(R.id.sponsdetailpic);
+      /*  check=sponsorDetail.getDetails_s();
+        Toast.makeText(getContext(), check, Toast.LENGTH_SHORT).show();*/
+
+
 
 
         wenSpons.setText(sponsorDetail.getWebsite_s());
@@ -95,7 +102,7 @@ public class SponsorsDetailsFragment extends Fragment {
                 .load(sponsorDetail.getPic_s()).into(picSpons);
 
 
-        return inflater.inflate(R.layout.fragment_sponsors_details, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

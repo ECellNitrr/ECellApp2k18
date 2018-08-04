@@ -74,7 +74,9 @@ public class SponsorsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapterr);
 
-        APICall();
+        if(!(sponsdatafirst.size()>0)){
+            APICall();
+        }
 
 
         return view;
@@ -92,6 +94,7 @@ public class SponsorsFragment extends Fragment {
 
     private void APICall() {
 
+        Log.e("api callfunction ====","called");
         ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
         Call<SponsorsResponce> call = services.getSponsorsResponce();
         call.enqueue(new Callback<SponsorsResponce>() {
