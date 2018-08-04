@@ -79,7 +79,10 @@ public class EventsFragment extends Fragment {
         adapterr = new EventsFragmentAdapter(data_events, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapterr);
-        APICall();
+        if(!(data_events.size()>0)){
+            APICall();
+        }
+
         return view;
     }
 

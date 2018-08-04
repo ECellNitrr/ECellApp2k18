@@ -108,7 +108,7 @@ public class SponsorsFragment extends Fragment {
                         Log.e("response====", "Succesfull");
                         sponsdatafirst.addAll(sponsorsResponce.getSponsors());
                         adapterr.notifyDataSetChanged();
-                        Toast.makeText(getContext(), "api call for sponsors", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "api call for sponsors", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {

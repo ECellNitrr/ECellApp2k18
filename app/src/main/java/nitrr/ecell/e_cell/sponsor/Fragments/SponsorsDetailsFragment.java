@@ -83,15 +83,11 @@ public class SponsorsDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_sponsors_details, container, false);
 
-        nameSpons=(TextView)view.findViewById(R.id.sponsdetailname);
-        detailSpons=(TextView)view.findViewById(R.id.sponsdetaildetails);
+        nameSpons=(TextView)view.findViewById(R.id.sponsTitle);
+        detailSpons=(TextView)view.findViewById(R.id.sponsdetaildesc);
         contactSpons=(TextView)view.findViewById(R.id.sponsdetailcontact);
         wenSpons=(TextView)view.findViewById(R.id.sponsdetailwebsite);
-        picSpons=(ImageView)view.findViewById(R.id.sponsdetailpic);
-      /*  check=sponsorDetail.getDetails_s();
-        Toast.makeText(getContext(), check, Toast.LENGTH_SHORT).show();*/
-
-
+        picSpons=(ImageView)view.findViewById(R.id.sponsImage);
 
 
         wenSpons.setText(sponsorDetail.getWebsite_s());

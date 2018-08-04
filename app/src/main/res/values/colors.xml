@@ -16,8 +16,9 @@
     <color name="colorGradientBot">#64BD72</color>
     <color name="colorHomeBottomBackground">#151516</color>
     <color name="colorLightBlack">#353533</color>
-    <color name="colorEventRecyclerview">#696969</color>
-    <color name="colorEventRecyclerview2">#2a2a2a</color>
+    <color name="colorEventRecyclerview">#535455</color>
+    <color name="colorSponsorNameBackground">#7F88F2</color>
+    <color name="colorEventRecyclerview2">#2D2C2C</color>
     <color name="colorBottomSheet">#afcccf</color>
 
 

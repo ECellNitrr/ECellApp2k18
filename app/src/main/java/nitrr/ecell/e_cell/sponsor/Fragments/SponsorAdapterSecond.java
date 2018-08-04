@@ -71,7 +71,7 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
         public ViewHolder(View itemView) {
             super(itemView);
             sponsorcontact=(TextView)itemView.findViewById(R.id.sponsdetailcontact);
-            sponsordetail=(TextView)itemView.findViewById(R.id.sponsdetaildetails);
+            sponsordetail=(TextView)itemView.findViewById(R.id.sponsdetaildesc);
             sponsorname=(TextView)itemView.findViewById(R.id.sponsdetailname);
             sponsorwebsite=(TextView)itemView.findViewById(R.id.sponsdetailwebsite);
             sponsorpic=(ImageView)itemView.findViewById(R.id.sponsdetailpic);

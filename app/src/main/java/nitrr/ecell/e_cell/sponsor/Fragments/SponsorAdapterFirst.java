@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -45,7 +46,7 @@ public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirs
         SponsorType listitem1 = listspons1.get(position);
         holder.SponsHeading.setText(listitem1.getSponsortypename());
         holder.adapterSecond = new SponsorAdapterSecond(sponsorDataSecond, context);
-        holder.RecyclerViewSpons2.setLayoutManager(new LinearLayoutManager(context));
+        holder.RecyclerViewSpons2.setLayoutManager(new GridLayoutManager(context,2));
         sponsorDataSecond.clear();
         holder.RecyclerViewSpons2.setAdapter(holder.adapterSecond);
         // 2nd recyclerviewcall

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBackground">
+    android:background="#26A69A">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
@@ -27,7 +28,6 @@
 
 
 
-
             <TextView
                 android:id="@+id/eventBody"
                 android:layout_width="match_parent"
@@ -44,6 +44,34 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18dp" />
 
+
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wallstreet"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:elevation="2dp"
+                android:padding="8dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="49dp"
+                android:textStyle="bold" />
+
+
+
+            <ImageView
+                android:id="@+id/locImage"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_location_grey"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="4dp"
+                android:layout_below="@+id/eventDate"
+                android:elevation="2dp" />
 
             <TextView
                 android:id="@+id/eventLocation"
@@ -69,19 +97,17 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/eventName"
+                android:id="@+id/eventTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/eventImage"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="12dp"
-                android:text="Name"
+                android:text="Time"
                 android:textColor="@color/colorWhite"
                 android:textSize="20dp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
 
 
         </RelativeLayout>

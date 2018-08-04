@@ -36,7 +36,7 @@ public class EventsDetailFragment extends Fragment {
     private String mParam2;
 
     private ImageView eventsCoverPic;
-    private TextView eventDetailsDesc,eventDetailsLoc,eventDetailsName,eventDetailsDate;
+    private TextView eventDetailsDesc,eventDetailsLoc,eventDetailsName,eventDetailsDate,getEventDetailsTime;
     private ArrayList<EventsData> data = new ArrayList<>();
     EventsData events_data;
 
@@ -82,9 +82,11 @@ public class EventsDetailFragment extends Fragment {
         eventDetailsDate=(TextView) view.findViewById(R.id.eventDate);
         eventDetailsDesc=(TextView) view.findViewById(R.id.eventBody);
         eventDetailsLoc=(TextView) view.findViewById(R.id.eventLocation);
-        eventDetailsName=(TextView) view.findViewById(R.id.eventName);
+        eventDetailsName=(TextView) view.findViewById(R.id.eventTitle);
+        getEventDetailsTime=(TextView) view.findViewById(R.id.eventTime);
 
         eventDetailsName.setText(events_data.getName_response());
+        getEventDetailsTime.setText(events_data.getTime_response());
         eventDetailsLoc.setText(events_data.getVenue_response());
         eventDetailsDesc.setText(events_data.getDetails_response());
         eventDetailsDate.setText(events_data.getDate_response());

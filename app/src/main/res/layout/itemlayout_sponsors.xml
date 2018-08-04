@@ -21,7 +21,7 @@
                 android:id="@+id/sponstypename"
                 android:layout_height="50dp"
                 android:textColor="@color/colorWhite"
-                android:textAlignment="center"
+                android:paddingLeft="10dp"
                 android:textSize="30dp"
                 android:fontFamily="@font/raleway_bold"
                 android:layout_gravity="center_horizontal"
