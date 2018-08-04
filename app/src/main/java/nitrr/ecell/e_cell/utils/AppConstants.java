@@ -61,4 +61,11 @@ public class AppConstants {
             R.drawable.pawn_yellow,
             R.drawable.pawn_green
     };
+
+    //BottomSheetNames
+    public static final String ABOUT_US_SHEET = "about_us";
+    public static final String ESUMMIT_SHEET = "es";
+    public static final String BQUIZ_SHEET = "bq";
+    public static final String SPONSORS_SHEET = "spons";
+    public static final String EVENTS_SHEET = "ev";
 }

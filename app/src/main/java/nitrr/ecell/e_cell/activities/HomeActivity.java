@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private ImageView topImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +33,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        topImage = findViewById(R.id.topImage);
-
-        Glide.with(HomeActivity.this)
-                .load(R.drawable.esummit)
-                .apply(RequestOptions.circleCropTransform())
-                .into(topImage);
 
         viewPager = findViewById(R.id.home_view_pager);
         tabLayout = findViewById(R.id.home_tab_layout);

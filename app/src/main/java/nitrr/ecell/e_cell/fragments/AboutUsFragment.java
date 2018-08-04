@@ -4,24 +4,40 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GestureDetectorCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
+import nitrr.ecell.e_cell.utils.CustomGestureDetector;
 
 public class AboutUsFragment extends Fragment implements View.OnClickListener {
+
+    private GestureDetectorCompat detector;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.about_us_fragment, container, false);
+        View view = inflater.inflate(R.layout.about_us_fragment, container, false);
+
+        if (getActivity() != null)
+            detector = new GestureDetectorCompat(getActivity(), new CustomGestureDetector(getActivity().getSupportFragmentManager(), AppConstants.ABOUT_US_SHEET));
+
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return !detector.onTouchEvent(motionEvent);
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -33,7 +49,6 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
     private void init() {
         final Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
-        LinearLayout aboutUsLay = getView().findViewById(R.id.about_us_lay);
 
         ImageView imageView = getView().findViewById(R.id.aboutImageView);
 
@@ -47,12 +62,13 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         textView.setTypeface(bebasNeue);
 
         textView.setOnClickListener(this);
-        aboutUsLay.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         AboutUsBottomSheetFragment fragment = new AboutUsBottomSheetFragment();
-        fragment.show(getActivity().getSupportFragmentManager(), "about_us");
+
+        if (getActivity() != null)
+            fragment.show(getActivity().getSupportFragmentManager(), "about_us");
     }
 }
