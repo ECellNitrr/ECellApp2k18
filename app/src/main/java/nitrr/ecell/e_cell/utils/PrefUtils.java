@@ -1,8 +1,6 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -16,7 +14,7 @@ public class PrefUtils {
         this.activity = activity;
     }
 
-    public void saveUserName(String name){
+    public void saveUserName(String name) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
@@ -24,7 +22,7 @@ public class PrefUtils {
         editor.apply();
     }
 
-    public void isFacebookLogin(boolean bool){
+    public void isFacebookLogin(boolean bool) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
@@ -33,16 +31,16 @@ public class PrefUtils {
     }
 
 
-    public boolean isFBLogin(){
+    public boolean getIfIsFacebookLogin() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        String str =  prefs.getString("isFB", null);
+        String str = prefs.getString("isFB", null);
 
-        if(str.equals("true"))
+        if (str.equals("true"))
             return true;
         else return false;
     }
 
-    public String getUserName(){
+    public String getUserName() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         return prefs.getString("user", null);
     }
@@ -73,7 +71,7 @@ public class PrefUtils {
         editor.apply();
 
 
-        // Delete this dialog after final build.
+        /* Delete this dialog after final build.
         AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
         dialog.setTitle("Retrieved Data");
         dialog.setMessage("Access Token: " + getAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
@@ -83,7 +81,7 @@ public class PrefUtils {
                 dialog.dismiss();
             }
         });
-        dialog.show();
+        dialog.show(); */
     }
 
     public Map<String, String> getFbUserInfo() {
@@ -98,5 +96,13 @@ public class PrefUtils {
         userInfo.put("avatar_url", prefs.getString("avatar_url", null));
 
         return userInfo;
+    }
+
+    public void clearPrefs(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.clear();
+        editor.apply();
     }
 }

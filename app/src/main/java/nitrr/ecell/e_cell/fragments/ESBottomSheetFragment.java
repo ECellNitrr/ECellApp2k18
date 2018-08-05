@@ -41,7 +41,8 @@ public class ESBottomSheetFragment extends DialogFragment {
     private ProgressBar progressBar;
     private List<SpeakerList> details = new ArrayList<>();
 
-    public ESBottomSheetFragment() { }
+    public ESBottomSheetFragment() {
+    }
 
 
     @Override
@@ -54,7 +55,8 @@ public class ESBottomSheetFragment extends DialogFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        if (getDialog().getWindow() != null)
+            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
         initialize();
         callAPI();
@@ -80,7 +82,6 @@ public class ESBottomSheetFragment extends DialogFragment {
     }
 
     private void initialize() {
-
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         RecyclerView recyclerView = getView().findViewById(R.id.esRecycler);
@@ -128,7 +129,8 @@ public class ESBottomSheetFragment extends DialogFragment {
 
             @Override
             public void onFailure(Call<SpeakerResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                if (getContext() != null)
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
