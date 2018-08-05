@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLeaderboardBackground"
+    tools:context=".bquiz.LeaderboardFragment">
+
+    <TextView
+        android:id="@+id/leaderboard_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/leaderboard_title"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:id="@+id/user_rank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/leaderboard_title"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/gradient_purple"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/user_name_leaderboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/raleway_medium"
+            android:maxLines="1"
+            android:text="@string/def_user_name_leaderboard"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/user_rank_leaderboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_medium"
+            android:text="@string/def_user_rank_leaderboard"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_leaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_rank"
+        android:layout_marginTop="4dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_leaderboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

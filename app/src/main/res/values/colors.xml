@@ -17,8 +17,7 @@
     <color name="colorHomeBottomBackground">#151516</color>
     <color name="colorLightBlack">#353533</color>
     <color name="colorBottomSheet">#afcccf</color>
-
-
+    <color name="colorLeaderboardBackground">#151516</color>
     <color name="colorHomeStart">#f9230a</color>
     <color name="colorHomeEnd">#9f230a</color>
     <color name="colorYellow">#dd9929</color>
@@ -30,4 +29,5 @@
     <color name="colorPurple">#981bb9</color>
     <color name="colorPurpleLight">#be6ef4</color>
     <color name="White">#ffffff</color>
+    <color name="leaderboard_card_background">#37474f</color>
 </resources>
