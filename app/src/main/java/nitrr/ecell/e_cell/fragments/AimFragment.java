@@ -10,13 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Type;
-
 import nitrr.ecell.e_cell.R;
 
 public class AimFragment extends Fragment {
-
-    private TextView aimText, aimContent, aimLabel, visionText, visionContent, visionLabel;
 
     public AimFragment(){}
 
@@ -41,14 +37,11 @@ public class AimFragment extends Fragment {
     private void initialize(){
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
-        aimText = getView().findViewById(R.id.aimText);
-        aimContent = getView().findViewById(R.id.aimContent);
-        aimLabel = getView().findViewById(R.id.aimLabel);
+        TextView aimText = getView().findViewById(R.id.aimText);
+        TextView aimLabel = getView().findViewById(R.id.aimLabel);
 
-        visionText = getView().findViewById(R.id.visionText);
-        visionContent = getView().findViewById(R.id.visionContent);
-        visionLabel = getView().findViewById(R.id.visionLabel);
-
+        TextView visionText = getView().findViewById(R.id.visionText);
+        TextView visionLabel = getView().findViewById(R.id.visionLabel);
         aimLabel.setTypeface(bebasNeue);
         visionLabel.setTypeface(bebasNeue);
         aimText.setTypeface(bebasNeue);

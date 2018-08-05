@@ -1,11 +1,15 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
+import nitrr.ecell.e_cell.signin.model.Logindetails;
+import nitrr.ecell.e_cell.sponsor.model.SponsorsResponce;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,4 +30,12 @@ public interface ApiServices {
     // TODO: pass url
     @POST(" ")
     Call<GenericResponse> sendMessage(@Body MessageDetails details);
+    @GET(AppConstants.EVENTS_URL)
+    Call<EventsResponse> getEventsResponse();
+
+    @POST(AppConstants.SIGN_IN_URL)
+    Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
+
+    @GET(AppConstants.SPONSOR_URL)
+    Call<SponsorsResponce> getSponsorsResponce();
 }

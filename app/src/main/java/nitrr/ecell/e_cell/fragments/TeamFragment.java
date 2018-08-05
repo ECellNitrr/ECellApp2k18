@@ -20,7 +20,6 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
@@ -141,14 +140,13 @@ public class TeamFragment extends Fragment {
 
                 if (detail.getImage() != null && getActivity() != null)
                     Glide.with(getActivity())
-                            .load("https://farm1.staticflickr.com/835/42559728204_d2b7f112e4_k.jpg")
+                            .load(detail.getImage())
                             .apply(RequestOptions.circleCropTransform())
                             .into(dirImage);
 
                 dirName.setText(detail.getName());
 
             } else if (detail.getMemberType().equals("HCD")) {
-
                 if (detail.getImage() != null && getActivity() != null)
                     Glide.with(getActivity())
                             .load(detail.getImage())

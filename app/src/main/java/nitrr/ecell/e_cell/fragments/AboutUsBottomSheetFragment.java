@@ -5,17 +5,26 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.view.ActionMode;
+import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.accessibility.AccessibilityEvent;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AboutUsViewPagerAdapter;
 
-public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFragment{
+public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFragment {
 
-    public AboutUsBottomSheetFragment(){ }
-
+    public AboutUsBottomSheetFragment() {
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +35,8 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        if (getDialog().getWindow() != null)
+            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
     }
 
     @Override
@@ -34,7 +44,7 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
         super.onStart();
 
         Dialog d = getDialog();
-        if(d != null){
+        if (d != null && d.getWindow() != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -53,7 +63,7 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
         return view;
     }
 
-    private void setUpViewPager(ViewPager viewPager){
+    private void setUpViewPager(ViewPager viewPager) {
         AboutUsViewPagerAdapter adapter = new AboutUsViewPagerAdapter(getChildFragmentManager(), getContext());
 
         adapter.addFragment(new AimFragment());
