@@ -32,6 +32,9 @@
     <string name="bquiz_dialog_msg">Bquiz is not active now. Please try again later</string>
     <string name="bquiz_dialog_retry_btn">Retry</string>
     <string name="bquiz_dialog_cancel_btn">Cancel</string>
+    <string name="bquiz_rules_title">Bquiz Rules</string>
+    <string name="bquiz_rules_detail">1. Each question contains 4 options in which one is correct.\n2. You have to select the correct option and submit your answer.\n3.You have to submit your answer within the given time limit else your answer will be marked as wrong.\nAll the best!</string>
+    <string name="bquiz_rules_ok_btn">Got it!</string>
     <string name="something_went_wrong_msg">Something went wrong. Please try again.</string>
     <string name="leaderboard_title">Leaderboard</string>
     <string name="def_user_name_leaderboard">Vrihas Pathak</string>

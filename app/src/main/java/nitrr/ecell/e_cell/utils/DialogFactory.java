@@ -11,12 +11,15 @@ public class DialogFactory {
     }
 
     public static final int BQUIZ_NOT_ACTIVE_ID = 1;
+    public static final int BQUIZ_RULES = 2;
 
     public static void showDialog(int id, final Context context, DialogInterface.OnClickListener clickListenerPositive, DialogInterface.OnClickListener clickListenerNegative, DialogInterface.OnCancelListener cancelListener, Object... d) {
         switch (id) {
             case BQUIZ_NOT_ACTIVE_ID:
                 getDialog(context, clickListenerPositive, clickListenerNegative, cancelListener, d);
                 break;
+            case BQUIZ_RULES:
+                getDialog(context, clickListenerPositive, clickListenerNegative, cancelListener, d);
             default:
                 break;
         }
