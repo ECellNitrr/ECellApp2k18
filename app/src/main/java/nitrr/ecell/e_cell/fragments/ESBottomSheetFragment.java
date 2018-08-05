@@ -47,7 +47,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(android.app.DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Black);
+        setStyle(android.app.DialogFragment.STYLE_NO_FRAME, R.style.AppTheme);
     }
 
     @Override

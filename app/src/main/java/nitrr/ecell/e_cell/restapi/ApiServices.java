@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.restapi;
 
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
+import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.GenericResponse;
@@ -30,4 +31,7 @@ public interface ApiServices {
 
     @GET(AppConstants.BQUIZ_STATUS)
     Call<BQuizStatusResponse> getBquizStatus();
+
+    @GET(AppConstants.BQUIZ_LEADERBOARD)
+    Call<BQuizLeaderboardResponse> getBquizLeaderboard();
 }
