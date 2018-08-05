@@ -38,14 +38,7 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="4" />
 
-    <LinearLayout
-        android:id="@+id/about_us_lay"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/home_bot_background"
-        android:orientation="horizontal" />
 </LinearLayout>

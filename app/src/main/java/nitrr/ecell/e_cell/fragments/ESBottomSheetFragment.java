@@ -47,7 +47,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(android.app.DialogFragment.STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        setStyle(android.app.DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Black);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         super.onStart();
 
         Dialog d = getDialog();
-        if (d != null) {
+        if (d != null && d.getWindow() != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -99,8 +99,8 @@ public class ESBottomSheetFragment extends DialogFragment {
         es.setTypeface(bebasNeue);
         sponLabel.setTypeface(bebasNeue);
 
-        Glide.with(getContext())
-                .load("https://scontent.fmaa1-2.fna.fbcdn.net/v/t1.0-9/35081587_916837275155683_4306113943018930176_n.jpg?_nc_cat=0&oh=5a03ca75edbfa1f516031a011dca6032&oe=5C0E08E0")
+        Glide.with(getActivity())
+                .load(R.drawable.esummit)
                 .apply(RequestOptions.circleCropTransform())
                 .into(esImage);
 

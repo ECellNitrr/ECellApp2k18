@@ -30,7 +30,6 @@ public interface ApiServices {
     // TODO: pass url
     @POST(" ")
     Call<GenericResponse> sendMessage(@Body MessageDetails details);
-
     @GET(AppConstants.EVENTS_URL)
     Call<EventsResponse> getEventsResponse();
 

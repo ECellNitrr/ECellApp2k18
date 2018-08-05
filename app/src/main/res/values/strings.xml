@@ -57,5 +57,9 @@
     <string name="feedback_success">Thank you for giving us feedback!</string>
     <string name="feedback_failure">Please fill the above details to send feedback!</string>
     <string name="feedback_json_failure">There was an error sending message, please contact E-Cell team.</string>
+    <string name="aim_content">At E-Summit \'18 we aspire to create a melange of eminent speakers who have proved themselves in diverse fields and are at zenith of glory. E-Summit \'18 will not just be a conclave of innovative minds and epistemic elocutionists, but it will be the place</string>
+    <string name="aim_content_end">where ideas not only thrive but become the greatest revelations in century.</string>
+    <string name="vision_content">The Entrepreneurship Cell, NIT Raipur is a FORUM for the aspiring young minds who wish to pursue entrepreneurship and reach the pinnacle of glory. The cell aims at manifesting the essence of entrepreneurship in the convoluting gray</string>
+    <string name="vision_content_end"> matters of the young force coming up. This delegation gives wings to ideas and support in form of investors and seed funding along with mentorship guidance to the pioneering and budding entrepreneurs. The cell aims at promoting the start up culture and building up entrepreneurs who have it in them to become the greatest pioneers of this century.</string>
 
 </resources>

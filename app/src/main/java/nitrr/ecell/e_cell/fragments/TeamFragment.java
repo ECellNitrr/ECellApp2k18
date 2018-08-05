@@ -138,18 +138,17 @@ public class TeamFragment extends Fragment {
         for (TeamDetails detail : facultyList) {
             if (detail.getMemberType().equals("Dir")) {
 
-                if (detail.getImage() != null)
-                    Glide.with(getContext())
-                            .load("https://farm1.staticflickr.com/835/42559728204_d2b7f112e4_k.jpg")
+                if (detail.getImage() != null && getActivity() != null)
+                    Glide.with(getActivity())
+                            .load(detail.getImage())
                             .apply(RequestOptions.circleCropTransform())
                             .into(dirImage);
 
                 dirName.setText(detail.getName());
 
             } else if (detail.getMemberType().equals("HCD")) {
-
-                if (detail.getImage() != null)
-                    Glide.with(getContext())
+                if (detail.getImage() != null && getActivity() != null)
+                    Glide.with(getActivity())
                             .load(detail.getImage())
                             .apply(RequestOptions.circleCropTransform())
                             .into(hocdImage);
@@ -158,8 +157,8 @@ public class TeamFragment extends Fragment {
 
             } else if (detail.getMemberType().equals("Fclty")) {
 
-                if (detail.getImage() != null)
-                    Glide.with(getContext())
+                if (detail.getImage() != null && getActivity() != null)
+                    Glide.with(getActivity())
                             .load(detail.getImage())
                             .apply(RequestOptions.circleCropTransform())
                             .into(fac1Image);

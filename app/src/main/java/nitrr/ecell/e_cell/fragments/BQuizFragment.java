@@ -4,7 +4,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GestureDetectorCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,22 +16,27 @@ import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
+import nitrr.ecell.e_cell.utils.CustomGestureDetector;
 
 public class BQuizFragment extends Fragment {
+    private GestureDetectorCompat detector;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.bquiz_fragment, container, false);
-    }
+        View view = inflater.inflate(R.layout.bquiz_fragment, container, false);
 
-    public static BQuizFragment newInstance(String text){
-        BQuizFragment f = new BQuizFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
+        if (getActivity() != null)
+            detector = new GestureDetectorCompat(getActivity(), new CustomGestureDetector(getActivity().getSupportFragmentManager(), AppConstants.BQUIZ_SHEET));
 
-        f.setArguments(b);
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return !detector.onTouchEvent(motionEvent);
+            }
+        });
 
-        return f;
+        return view;
     }
 
     @Override
@@ -42,7 +49,7 @@ public class BQuizFragment extends Fragment {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.bqImageView);
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(AppConstants.IMAGE_LOCATIONS[2])
                 .into(imageView);
 

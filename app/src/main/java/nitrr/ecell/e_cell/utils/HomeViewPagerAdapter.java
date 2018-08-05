@@ -3,9 +3,6 @@ package nitrr.ecell.e_cell.utils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.widget.Toast;
-
-import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.fragments.AboutUsFragment;
 import nitrr.ecell.e_cell.fragments.BQuizFragment;
 import nitrr.ecell.e_cell.fragments.EsummitFragment;

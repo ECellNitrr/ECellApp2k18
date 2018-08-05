@@ -16,7 +16,7 @@
             android:layout_marginBottom="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="OUR DETAILS"
             android:textColor="@color/colorGreenLight"
             android:textSize="60sp" />
@@ -213,7 +213,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:hint="@string/msg"
                     android:imeOptions="actionDone"
-                    android:inputType="textImeMultiLine"
+                    android:inputType="textMultiLine"
                     android:lines="7"
                     android:maxEms="20"
                     android:maxLines="7"

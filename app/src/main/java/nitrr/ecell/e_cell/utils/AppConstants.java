@@ -19,8 +19,6 @@ public class AppConstants {
     public static final String AUTH_ID = "auth_id";
     public static final String ACCESS_TOKEN = "access_token";
 
-
-
     //Field_Name
     public static final String FIRST_NAME = "first_name";
     public static final String LAST_NAME = "last_name";
@@ -66,4 +64,10 @@ public class AppConstants {
             R.drawable.pawn_yellow,
             R.drawable.pawn_green
     };
+    //BottomSheetNames
+    public static final String ABOUT_US_SHEET = "about_us";
+    public static final String ESUMMIT_SHEET = "es";
+    public static final String BQUIZ_SHEET = "bq";
+    public static final String SPONSORS_SHEET = "spons";
+    public static final String EVENTS_SHEET = "ev";
 }

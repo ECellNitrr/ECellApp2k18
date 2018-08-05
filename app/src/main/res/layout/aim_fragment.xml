@@ -1,94 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorHomeBottomBackground"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/aimText"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:text="@string/aim"
-        android:textColor="@color/colorGreenLight"
-        android:textSize="70sp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:translationY="-40dp">
+        android:layout_height="match_parent"
+        android:background="@color/colorHomeBottomBackground"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/aimContent"
-            android:layout_width="220dp"
+            android:id="@+id/aimText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/aim"
+            android:textColor="@color/colorGreenLight"
+            android:textSize="60sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:translationY="-60dp">
+
+            <TextView
+                android:id="@+id/aimContent"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_medium"
+                android:lines="9"
+                android:maxLines="9"
+                android:text="@string/aim_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aimContent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/raleway_medium"
+                android:lines="3"
+                android:maxLines="3"
+                android:text="@string/aim_content_end"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/aimLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:paddingEnd="10dp"
+                android:text="A"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="220sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/visionText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/raleway_medium"
-            android:lines="5"
-            android:maxLines="5"
-            android:singleLine="false"
-            android:text="We are all caught up in a void."
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:text="@string/vision"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorGreenLight"
+            android:textSize="60sp"
+            android:translationY="-20dp" />
 
-        <TextView
-            android:id="@+id/aimLabel"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:paddingEnd="10dp"
-            android:text="A"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="220sp" />
-    </RelativeLayout>
+            android:orientation="horizontal"
+            android:translationY="-30dp">
 
-    <TextView
-        android:id="@+id/visionText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:text="@string/vision"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/colorGreenLight"
-        android:textSize="70sp" />
+            <TextView
+                android:id="@+id/visionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="V"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="220sp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:translationY="30dp">
+            <TextView
+                android:id="@+id/visionContent"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_medium"
+                android:lines="9"
+                android:maxLines="9"
+                android:singleLine="false"
+                android:text="@string/vision_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:translationY="40dp" />
 
-        <TextViewScrollView
-            android:id="@+id/visionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="V"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="220sp" />
 
-        <TextView
-            android:id="@+id/visionContent"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/raleway_medium"
-            android:lines="5"
-            android:maxLines="5"
-            android:singleLine="false"
-            android:text="We are all caught up in a void."
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp"
-            android:translationY="50dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/visionContent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/raleway_medium"
+                android:lines="14"
+                android:translationY="40dp"
+                android:maxLines="14"
+                android:text="@string/vision_content_end"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
 
-    </RelativeLayout>
-</LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

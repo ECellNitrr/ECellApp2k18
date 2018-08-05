@@ -28,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ImageView topImage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +38,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        topImage = findViewById(R.id.topImage);
-
-        Glide.with(HomeActivity.this)
-                .load("https://scontent.fmaa1-2.fna.fbcdn.net/v/t1.0-9/35081587_916837275155683_4306113943018930176_n.jpg?_nc_cat=0&oh=5a03ca75edbfa1f516031a011dca6032&oe=5C0E08E0")
-                .apply(RequestOptions.circleCropTransform())
-                .into(topImage);
-
         viewPager = findViewById(R.id.home_view_pager);
         tabLayout = findViewById(R.id.home_tab_layout);
 
@@ -76,15 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         window.setNavigationBarColor(getResources().getColor(android.R.color.transparent));
         window.setBackgroundDrawable(gradientColor);
     }
-
-//    public void setFragment(Fragment fragment) {
-//        if (fragment != null) {
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.parentLayout, fragment);
-//            fragmentTransaction.commit();
-//        }
-//    }
 
     public void addFragment(android.support.v4.app.Fragment fragment, String tag) {
         if (fragment != null) {
