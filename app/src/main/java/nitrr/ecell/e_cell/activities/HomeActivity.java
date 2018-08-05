@@ -1,10 +1,15 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
@@ -22,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-
+    private ImageView topImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +38,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-
         viewPager = findViewById(R.id.home_view_pager);
         tabLayout = findViewById(R.id.home_tab_layout);
 
@@ -65,4 +69,37 @@ public class HomeActivity extends AppCompatActivity {
         window.setBackgroundDrawable(gradientColor);
     }
 
+    public void addFragment(android.support.v4.app.Fragment fragment, String tag) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.parentLayout,fragment);
+            fragmentTransaction.addToBackStack(tag);
+            fragmentTransaction.commit();
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            HomeActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else
+            super.onBackPressed();
+    }
 }

@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
-
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AboutUsViewPagerAdapter;
 
@@ -26,11 +25,9 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
 
     public AboutUsBottomSheetFragment() {
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Black);
     }
 
@@ -75,5 +72,4 @@ public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFra
 
         viewPager.setAdapter(adapter);
     }
-
 }

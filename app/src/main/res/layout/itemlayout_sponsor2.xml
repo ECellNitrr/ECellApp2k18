@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/sponsor_detail_card"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/itemlayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7F88F2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sponsdetailname"
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
+                android:layout_marginTop="0dp"
+                android:paddingTop="8dp"
+                android:textAlignment="center"
+                android:text="aaaa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <ImageView
+                android:id="@+id/sponsdetailpic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"/>
+            
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

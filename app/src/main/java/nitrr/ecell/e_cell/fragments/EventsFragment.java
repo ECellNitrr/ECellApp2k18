@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomGestureDetector;
 
@@ -61,7 +62,8 @@ public class EventsFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.events.activity.EventsFragment(), "Event Fragment Details");
+              //  Toast.makeText(getContext(), "Event Fragment", Toast.LENGTH_LONG).show();
             }
         });
 

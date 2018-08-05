@@ -80,7 +80,6 @@ public class ESBottomSheetFragment extends DialogFragment {
     }
 
     private void initialize() {
-
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         RecyclerView recyclerView = getView().findViewById(R.id.esRecycler);

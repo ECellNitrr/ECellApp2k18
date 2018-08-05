@@ -20,7 +20,6 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
@@ -148,7 +147,6 @@ public class TeamFragment extends Fragment {
                 dirName.setText(detail.getName());
 
             } else if (detail.getMemberType().equals("HCD")) {
-
                 if (detail.getImage() != null && getActivity() != null)
                     Glide.with(getActivity())
                             .load(detail.getImage())

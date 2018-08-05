@@ -36,7 +36,6 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/white_ring"/>
-
         <TextView
             android:id="@+id/user"
             android:layout_width="match_parent"

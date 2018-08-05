@@ -49,7 +49,6 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
     private void init() {
         final Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
-
         ImageView imageView = getView().findViewById(R.id.aboutImageView);
 
         Glide.with(getActivity())
