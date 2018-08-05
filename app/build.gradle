@@ -74,6 +74,9 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
     implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
+    //ProgressBar Library
+    implementation 'com.github.lzyzsd:circleprogress:+'
+
     implementation 'com.facebook.android:facebook-login:4.33.0'
 
     testImplementation 'junit:junit:4.12'
