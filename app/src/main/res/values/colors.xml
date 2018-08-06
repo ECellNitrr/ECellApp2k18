@@ -33,4 +33,6 @@
     <color name="colorPurpleLight">#be6ef4</color>
     <color name="White">#ffffff</color>
     <color name="leaderboard_card_background">#37474f</color>
+    <color name="color_blue_high">#1a237e</color>
+    <color name="color_blue_low">#3949ab</color>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorHomeBottomBackground"
@@ -11,11 +12,11 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
             android:id="@+id/speakerImage"
             android:layout_width="230dp"
             android:layout_height="230dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:padding="10dp"
             android:src="@mipmap/ecell_colored" />
 
@@ -23,6 +24,14 @@
             android:layout_width="230dp"
             android:layout_height="230dp"
             android:background="@drawable/image_border" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:indicatorColor="@color/colorWhite"
+            app:indicatorName="BallTrianglePathIndicator" />
     </RelativeLayout>
 
     <TextView
