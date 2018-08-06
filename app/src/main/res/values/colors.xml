@@ -33,4 +33,5 @@
     <color name="colorPurpleLight">#be6ef4</color>
     <color name="White">#ffffff</color>
     <color name="leaderboard_card_background">#37474f</color>
+    <color name="focus">#6BDDC8</color>
 </resources>

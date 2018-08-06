@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -24,6 +25,8 @@ import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.sponsor.model.SponsorType;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponce;
+import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +38,12 @@ public class SponsorsFragment extends DialogFragment {
     private ProgressBar progressBarSponsors;
     private SponsorAdapterFirst adapterr;
     private List<SponsorType> sponsdatafirst = new ArrayList<>();
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            APICall();
+        }
+    };
 
     public SponsorsFragment() {
         // Required empty public constructor
@@ -83,15 +92,14 @@ public class SponsorsFragment extends DialogFragment {
         recyclerView.setAdapter(adapterr);
 
         if (!(sponsdatafirst.size() > 0)) {
-            progressBarSponsors.setVisibility(View.VISIBLE);
             APICall();
         }
         return view;
     }
 
     private void APICall() {
-
         Log.e("api callfunction ====", "called");
+        progressBarSponsors.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
         Call<SponsorsResponce> call = services.getSponsorsResponce();
         call.enqueue(new Callback<SponsorsResponce>() {
@@ -110,9 +118,15 @@ public class SponsorsFragment extends DialogFragment {
                     Toast.makeText(getContext(), "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<SponsorsResponce> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                progressBarSponsors.setVisibility(View.GONE);
+                if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                } else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

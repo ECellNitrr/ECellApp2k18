@@ -4,12 +4,15 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,16 +21,16 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
-    TextView det, add, email, ph, touch;
-    ImageView send;
-
-    EditText nameEditText, emailEditText, messageEditText;
+    private TextView det, add, email, ph, touch;
+    private ImageView send;
+    private EditText nameEditText, emailEditText, messageEditText;
 
 
     @Nullable
@@ -66,8 +69,10 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+        if (!NetworkUtils.isNetworkAvailable(getContext())){
+            Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
+        }
         if (checkNull()) {
-
             ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
             MessageDetails details = new MessageDetails();
@@ -88,7 +93,9 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
                 @Override
                 public void onFailure(Call<GenericResponse> call, Throwable t) {
-                    Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
+                    if (NetworkUtils.isNetworkAvailable(getContext())){
+                        Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
+                    }
                 }
             });
 

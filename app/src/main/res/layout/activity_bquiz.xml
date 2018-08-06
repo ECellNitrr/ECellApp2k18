@@ -65,10 +65,25 @@
         app:cardCornerRadius="@dimen/margin_80"
         app:cardElevation="@dimen/margin_4">
 
-        <ImageView
-            android:id="@+id/ivQuestion"
-            android:layout_width="@dimen/margin_160"
-            android:layout_height="@dimen/margin_160" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/progressBar_faculty_research"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                style="@style/AVLoadingIndicatorView"
+                android:visibility="visible"
+                app:indicatorName="BallTrianglePathIndicator"
+                app:indicatorColor="@color/focus" />
+
+            <ImageView
+                android:id="@+id/ivQuestion"
+                android:layout_width="@dimen/margin_160"
+                android:layout_height="@dimen/margin_160" />
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

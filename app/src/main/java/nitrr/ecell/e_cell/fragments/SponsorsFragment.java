@@ -48,7 +48,7 @@ public class SponsorsFragment extends Fragment {
         init();
     }
 
-    private void init(){
+    private void init() {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.sponsImageView);

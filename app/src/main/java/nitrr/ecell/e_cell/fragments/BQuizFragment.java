@@ -107,13 +107,12 @@ public class BQuizFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), BquizActivity.class);
                             startActivity(intent);
                         } else {
-                            DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositive, clickListenerNegative, null, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
+                            DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositive, clickListenerNegative, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         }
                     }
                 } else {
                     Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
