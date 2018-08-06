@@ -48,16 +48,14 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(android.app.DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Black);
+        setStyle(android.app.DialogFragment.STYLE_NO_FRAME, R.style.AppTheme);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         if (getDialog().getWindow() != null)
             getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
         initialize();
         callAPI();
     }
@@ -65,7 +63,6 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-
         Dialog d = getDialog();
         if (d != null && d.getWindow() != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;

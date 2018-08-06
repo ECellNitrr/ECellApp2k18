@@ -13,7 +13,6 @@
             android:id="@+id/contact_us_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
@@ -59,7 +58,6 @@
                 android:layout_height="25dp"
                 android:src="@drawable/close_envelope" />
 
-
             <TextView
                 android:id="@+id/email"
                 android:layout_width="250dp"
@@ -71,7 +69,6 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,6 +96,48 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:id="@+id/fb"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/facebook_logo" />
+
+            <ImageView
+                android:id="@+id/twitter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/twitter" />
+
+            <ImageView
+                android:id="@+id/youtube"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/youtube" />
+
+            <ImageView
+                android:id="@+id/linkedin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/linkedin" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/contact_us_mid"
             android:layout_width="match_parent"
@@ -106,6 +145,7 @@
             android:layout_marginBottom="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/get_in_touch"
             android:textColor="@color/colorGreenLight"
             android:textSize="60sp" />
@@ -114,7 +154,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:orientation="horizontal">
 
             <ImageView

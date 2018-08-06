@@ -42,7 +42,6 @@ public class AimFragment extends Fragment {
 
         TextView visionText = getView().findViewById(R.id.visionText);
         TextView visionLabel = getView().findViewById(R.id.visionLabel);
-
         aimLabel.setTypeface(bebasNeue);
         visionLabel.setTypeface(bebasNeue);
         aimText.setTypeface(bebasNeue);

@@ -59,7 +59,7 @@ public class PrefUtils {
         return prefs.getString("access_token", null);
     }
 
-    public void saveFbUserInfo(String first_name, String last_name, String email, String avatar_url) {
+    public void saveFbUserInfo(String first_name, String last_name, String email) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
@@ -67,9 +67,9 @@ public class PrefUtils {
         editor.putString("first_name", first_name);
         editor.putString("last_name", last_name);
         editor.putString("email", email);
-        editor.putString("avatar_url", avatar_url);
         editor.apply();
 
+        saveUserName(first_name);
 
         /* Delete this dialog after final build.
         AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
@@ -82,20 +82,6 @@ public class PrefUtils {
             }
         });
         dialog.show(); */
-    }
-
-    public Map<String, String> getFbUserInfo() {
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        Map<String, String> userInfo = new HashMap<>();
-
-        userInfo.put("uid", prefs.getString("uid", null));
-        userInfo.put("first_name", prefs.getString("first_name", null));
-        userInfo.put("last_name", prefs.getString("last_name", null));
-        userInfo.put("email", prefs.getString("email", null));
-        userInfo.put("avatar_url", prefs.getString("avatar_url", null));
-
-        return userInfo;
     }
 
     public void clearPrefs(){

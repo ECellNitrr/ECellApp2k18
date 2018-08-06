@@ -24,6 +24,10 @@
             android:screenOrientation="nosensor" />
 
         <activity
+            android:name=".signin.activities.login_activity"
+            android:screenOrientation="nosensor" />
+
+        <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="nosensor">
 

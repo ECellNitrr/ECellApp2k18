@@ -1,6 +1,8 @@
 package nitrr.ecell.e_cell.fragments;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +28,7 @@ import retrofit2.Response;
 
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
     TextView det, add, email, ph, touch;
-    ImageView send;
+    ImageView send, facebook, youtube, linkedin, twitter;
 
     EditText nameEditText, emailEditText, messageEditText;
 
@@ -54,6 +57,10 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         nameEditText = getView().findViewById(R.id.contactNameEdit);
         emailEditText = getView().findViewById(R.id.contactEmailEdit);
         messageEditText = getView().findViewById(R.id.contactMessageEdit);
+        facebook = getView().findViewById(R.id.fb);
+        twitter = getView().findViewById(R.id.twitter);
+        youtube = getView().findViewById(R.id.youtube);
+        linkedin = getView().findViewById(R.id.linkedin);
 
         det.setTypeface(bebas);
         add.setTypeface(bebas);
@@ -62,39 +69,62 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         touch.setTypeface(bebas);
 
         send.setOnClickListener(this);
+        facebook.setOnClickListener(this);
+        twitter.setOnClickListener(this);
+        youtube.setOnClickListener(this);
+        linkedin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (checkNull()) {
+        if (view == send)
+            if (checkNull()) {
 
-            ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+                ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
-            MessageDetails details = new MessageDetails();
-            PrefUtils utils = new PrefUtils(getActivity());
+                MessageDetails details = new MessageDetails();
+                PrefUtils utils = new PrefUtils(getActivity());
 
-            details.setToken(utils.getAccessToken());
-            details.setEmail(emailEditText.getText().toString().trim());
-            details.setName(nameEditText.getText().toString().trim());
-            details.setMessage(messageEditText.getText().toString().trim());
+                details.setToken(utils.getAccessToken());
+                details.setEmail(emailEditText.getText().toString().trim());
+                details.setName(nameEditText.getText().toString().trim());
+                details.setMessage(messageEditText.getText().toString().trim());
 
-            Call<GenericResponse> call = services.sendMessage(details);
-            call.enqueue(new Callback<GenericResponse>() {
-                @Override
-                public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                    if (response.isSuccessful())
-                        Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
-                }
+                Call<GenericResponse> call = services.sendMessage(details);
+                call.enqueue(new Callback<GenericResponse>() {
+                    @Override
+                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                        if (response.isSuccessful())
+                            Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
+                    }
 
-                @Override
-                public void onFailure(Call<GenericResponse> call, Throwable t) {
-                    Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<GenericResponse> call, Throwable t) {
+                        Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
+                    }
+                });
 
-        } else {
-            Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
-        }
+            } else {
+                Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
+            }
+
+        else if (view == facebook)
+            openURL(AppConstants.FACEBOOK);
+
+        else if(view == twitter)
+            openURL(AppConstants.TWITTER);
+
+        else if(view == youtube)
+            openURL(AppConstants.YOUTUBE);
+
+        else if(view == linkedin)
+            openURL(AppConstants.LINKEDIN);
+    }
+
+    private void openURL(String URL) {
+        Uri uri = Uri.parse(URL);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     private boolean checkNull() {

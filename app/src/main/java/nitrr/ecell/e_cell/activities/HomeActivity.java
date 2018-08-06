@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -8,16 +9,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
@@ -27,9 +26,11 @@ import nitrr.ecell.e_cell.utils.PrefUtils;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private PrefUtils utils;
-    private Spinner spinner;
-    private RelativeLayout parentLay;
-    private boolean show = true;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private TextView user;
+    private ImageView menu;
+    private CardView logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initialize() {
-        spinner = findViewById(R.id.spinner);
-        ViewPager viewPager = findViewById(R.id.home_view_pager);
-        TabLayout tabLayout = findViewById(R.id.home_tab_layout);
-        parentLay = findViewById(R.id.parentLayout);
+        viewPager = findViewById(R.id.home_view_pager);
+        tabLayout = findViewById(R.id.home_tab_layout);
+        user = findViewById(R.id.user);
+        menu = findViewById(R.id.menu);
+        logOut = findViewById(R.id.log_out);
+
+        menu.setOnClickListener(this);
+        logOut.setOnClickListener(this);
+
         String topText = "Hey User";
 
         utils = new PrefUtils(HomeActivity.this);
@@ -52,53 +58,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (utils.getUserName() != null)
             topText = "Hey " + utils.getUserName();
 
+        user.setText(topText);
 
-        final String finalTopText = topText;
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, R.layout.spinner_text);
-
-        adapter.setDropDownViewResource(R.layout.spinner_menu);
-        adapter.add(finalTopText);
-        adapter.add("Log Out");
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 1) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                    builder.setMessage("Are you surely want to Log Out?");
-                    builder.setCancelable(true);
-
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            utils.clearPrefs();
-
-                            Intent intent = new Intent(HomeActivity.this, RegisterMainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-
-                spinner.setSelection(0);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
-
-        spinner.setAdapter(adapter);
+        viewPager = findViewById(R.id.home_view_pager);
+        tabLayout = findViewById(R.id.home_tab_layout);
 
         viewPager.setAdapter(new HomeViewPagerAdapter(getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -128,8 +91,65 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         window.setBackgroundDrawable(gradientColor);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            HomeActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else
+            super.onBackPressed();
+    }
+
     @Override
     public void onClick(View view) {
+        if (view == menu) {
+            if (logOut.getVisibility() == View.GONE)
+                logOut.setVisibility(View.VISIBLE);
+            else
+                logOut.setVisibility(View.GONE);
 
+        } else if (view == logOut) {
+            logOut.setVisibility(View.GONE);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+            builder.setMessage("Are you surely want to Log Out?");
+            builder.setCancelable(true);
+
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    utils.clearPrefs();
+
+                    Intent intent = new Intent(HomeActivity.this, RegisterMainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 }

@@ -4,6 +4,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomGestureDetector;
 
@@ -60,7 +63,11 @@ public class SponsorsFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment(), "Sponsor Fragment");
+                FragmentActivity activity = (FragmentActivity) (getActivity());
+                FragmentManager fm = activity.getSupportFragmentManager();
+                nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment sponsorsFragment = nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment.newInstance();
+                sponsorsFragment.show(fm, "sponsors fragment");
             }
         });
 
