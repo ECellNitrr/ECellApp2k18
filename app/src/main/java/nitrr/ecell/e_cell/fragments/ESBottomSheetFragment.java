@@ -111,7 +111,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         typeWriter = getView().findViewById(R.id.typewriterText);
         typeWriter.setTypeface(bebasNeue);
         typeWriter.setCharacterDelay(35);
-        typeWriter.animateText("September 8 and 9, 2018 NIT Raipur");
+        typeWriter.animateText(getString(R.string.date));
     }
 
     private void callAPI() {

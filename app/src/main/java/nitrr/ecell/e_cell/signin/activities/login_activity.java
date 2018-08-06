@@ -1,5 +1,7 @@
 package nitrr.ecell.e_cell.signin.activities;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
@@ -21,15 +23,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//import android.telecom.Call;
 
 public class login_activity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText EditText_Email,EditText_Password;
-    private TextInputLayout Layout_Email,Layout_Password;
+    private EditText EditText_Email, EditText_Password;
+    private TextInputLayout Layout_Email, Layout_Password;
     private Button Sign_in;
     private TextView ForgetPassword;
-    private String Email,Password;
+    private String Email, Password;
     private ProgressBar SignInProgressBar;
     private Logindetails logindetails;
 
@@ -43,13 +44,15 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void initview(){
+    private void initview() {
 
-        logindetails =new Logindetails();
+        logindetails = new Logindetails();
+
+        Typeface raleway = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/raleway.ttf");
 
         EditText_Email = findViewById(R.id.inputusername);
-        Layout_Email=findViewById(R.id.layout_email);
-        Layout_Password=findViewById(R.id.layout_password);
+        Layout_Email = findViewById(R.id.layout_email);
+        Layout_Password = findViewById(R.id.layout_password);
         EditText_Password = findViewById(R.id.inputpassword);
         Sign_in = findViewById(R.id.signinbutton);
         ForgetPassword = findViewById(R.id.forgetpassword);
@@ -58,46 +61,46 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         Sign_in.setOnClickListener(this);
         ForgetPassword.setOnClickListener(this);
 
-
+        Layout_Password.setTypeface(raleway);
     }
 
-    //
-    private void apiCall(){
+    private void apiCall() {
 
         setData();
 
-        ApiServices apiServices= AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationLoginResponse> call=apiServices.sendLoginDetails(logindetails);
-        call.enqueue(new Callback<AuthenticationLoginResponse>(){
+        ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
+        Call<AuthenticationLoginResponse> call = apiServices.sendLoginDetails(logindetails);
+        call.enqueue(new Callback<AuthenticationLoginResponse>() {
 
             @Override
-            public void onResponse(Call<AuthenticationLoginResponse> call, Response<AuthenticationLoginResponse> response ){
+            public void onResponse(Call<AuthenticationLoginResponse> call, Response<AuthenticationLoginResponse> response) {
 
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     AuthenticationLoginResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
-                        Toast.makeText(login_activity.this,"login successfull",Toast.LENGTH_LONG).show();
-                        // login succcessfull  (home activity)
-                    }
-                } else{
-                        Toast.makeText(login_activity.this,"Something went wrong. Please try again",Toast.LENGTH_LONG).show();
+                        Toast.makeText(login_activity.this, "Login Successful.", Toast.LENGTH_LONG).show();
 
+                        Intent intent = new Intent(login_activity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
+                } else {
+                    Toast.makeText(login_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
+
+                }
 
 
             }
 
             @Override
-            public void onFailure(Call<AuthenticationLoginResponse> call, Throwable throwable){
-                Toast.makeText(login_activity.this,throwable.getMessage(),Toast.LENGTH_LONG).show();
+            public void onFailure(Call<AuthenticationLoginResponse> call, Throwable throwable) {
+                Toast.makeText(login_activity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
-
 
 
         });
 
     }
-
 
 
     private void setData() {
@@ -110,7 +113,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     }
 
     private boolean checkinput() {
-        String str[] = { EditText_Email.getText().toString().trim(), EditText_Password.getText().toString().trim()};
+        String str[] = {EditText_Email.getText().toString().trim(), EditText_Password.getText().toString().trim()};
 
         for (String s : str)
             if (s.equals(""))
@@ -122,29 +125,24 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-        if (v==Sign_in){
+        if (v == Sign_in) {
 
-            if(checkinput()){
+            if (checkinput()) {
 
-                if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()){
-                    Toast.makeText(login_activity.this,"Invalid email-id",Toast.LENGTH_LONG).show();
-                }else {
+                if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()) {
+                    Toast.makeText(login_activity.this, "Invalid email-id", Toast.LENGTH_LONG).show();
+                } else {
 
                     apiCall();
                 }
+            } else {
+                Toast.makeText(login_activity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
             }
-            else{
-                Toast.makeText(login_activity.this,"Required fields can't be empty.",Toast.LENGTH_LONG).show();
-            }
 
 
-        }
-        else if (v==ForgetPassword){
+        } else if (v == ForgetPassword) {
 
-            // Reset password activity
-            Toast.makeText(login_activity.this,"Reset password(on progress)",Toast.LENGTH_LONG).show();
-
-
+            Toast.makeText(login_activity.this, "Reset password (on progress)", Toast.LENGTH_LONG).show();
         }
 
     }

@@ -1,11 +1,9 @@
 package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +24,6 @@ import nitrr.ecell.e_cell.sponsor.model.SponsorsResponce;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class SponsorsFragment extends DialogFragment {
     private RecyclerView recyclerView;
@@ -102,15 +97,16 @@ public class SponsorsFragment extends DialogFragment {
                 if (response.isSuccessful()) {
                     SponsorsResponce sponsorsResponce = response.body();
                     if (null != sponsorsResponce) {
+
                         Log.e("response====", "Succesfull");
                         sponsdatafirst.addAll(sponsorsResponce.getSponsors());
                         adapterr.notifyDataSetChanged();
-                        //Toast.makeText(getContext(), "api call for sponsors", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<SponsorsResponce> call, Throwable t) {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
