@@ -2,32 +2,54 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config>
-        <devices>
-          <device id="Nexus 4" />
-          <device id="Nexus 6" />
-        </devices>
-        <pickBest>false</pickBest>
-      </config>
+      <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="9ce1aedf-6b9a-454a-8ece-6f7c607f5a48" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_lzyzsd_circleprogress_1_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+    <list default="true" id="86e2d4e2-52b4-4c8e-99a6-e9069b636cc1" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/events/Model/EventsData.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/events/Model/EventsResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/events/activity/EventsDetailFragment.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/events/activity/EventsFragment.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/events/activity/EventsFragmentAdapter.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/signin/Utils/SharedPrefs.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/signin/activities/login_activity.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/signin/model/AuthenticationLoginResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/signin/model/GenericLoginResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/signin/model/Logindetails.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/Fragments/SponsorAdapterFirst.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/Fragments/SponsorAdapterSecond.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/Fragments/SponsorsDetailsFragment.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/Fragments/SponsorsFragment.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/model/SponsorDetail.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/model/SponsorType.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/sponsor/model/SponsorsResponce.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/CustomGestureDetector.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_from_left.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_to_right.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_location_grey.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logo.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/spons_endpage.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_events.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_events_detail.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sponsors.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sponsors_details.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayout_events.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayout_sponsor2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayout_sponsors.xml" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" />
@@ -57,22 +79,43 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_4_33_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_4_33_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_7_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_7_1.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_7_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_7_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_lzyzsd_circleprogress_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_lzyzsd_circleprogress_1_1_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_butterknife_8_8_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_butterknife_8_8_1.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jp_co_cyberagent_android_gpuimage_gpuimage_library_1_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jp_co_cyberagent_android_gpuimage_gpuimage_library_1_4_1.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jp_wasabeef_glide_transformations_3_3_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jp_wasabeef_glide_transformations_3_3_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-=======
-    <list default="true" id="ea64d0ff-b302-426f-a55d-4c0c44469323" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizAnswerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizAnswerAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsBottomSheetFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsBottomSheetFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AimFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AimFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EsummitFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EsummitFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EventsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EventsFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/SponsorsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/SponsorsFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/TeamFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/TeamFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/HomeViewPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/HomeViewPagerAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_down.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_down.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_up.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_up.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/about_us_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/about_us_fragment.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/aim_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/aim_fragment.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/es_bottom_sheet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/es_bottom_sheet.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/esummit_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/esummit_fragment.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_activity.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/home_activity.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,142 +132,36 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ECellApp2k18" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
+        <projects_view />
       </state>
     </system>
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BquizActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-              <folding />
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="DialogFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="BquizActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="20" column="95" lean-forward="false" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+            <state relative-caret-position="-692">
+              <caret line="58" column="58" lean-forward="false" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
               <folding>
-                <element signature="e#702#870#0" expanded="true" />
-                <element signature="e#869#870#0" expanded="true" />
+                <element signature="e#4623#4624#0" expanded="true" />
+                <element signature="e#4655#4656#0" expanded="true" />
               </folding>
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="activity_bquiz.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
+      <file leaf-file-name="BQuizQuestionResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizQuestionResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-              <folding>
-                <element signature="e#382#401#0" expanded="true" />
-                <element signature="e#828#847#0" expanded="true" />
-                <element signature="e#881#899#0" expanded="true" />
-                <element signature="e#934#952#0" expanded="true" />
-                <element signature="e#988#1006#0" expanded="true" />
-                <element signature="e#1080#1097#0" expanded="true" />
-                <element signature="e#1127#1144#0" expanded="true" />
-                <element signature="e#1305#1324#0" expanded="true" />
-                <element signature="e#1365#1383#0" expanded="true" />
-                <element signature="e#1708#1726#0" expanded="true" />
-                <element signature="e#1770#1788#0" expanded="true" />
-                <element signature="e#1822#1840#0" expanded="true" />
-                <element signature="e#2302#2320#0" expanded="true" />
-                <element signature="e#2397#2415#0" expanded="true" />
-                <element signature="e#2442#2459#0" expanded="true" />
-                <element signature="e#2558#2577#0" expanded="true" />
-                <element signature="e#2612#2631#0" expanded="true" />
-                <element signature="e#2801#2820#0" expanded="true" />
-                <element signature="e#2851#2870#0" expanded="true" />
-                <element signature="e#2904#2922#0" expanded="true" />
-                <element signature="e#3010#3027#0" expanded="true" />
-                <element signature="e#3070#3087#0" expanded="true" />
-                <element signature="e#3516#3534#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_bquiz_answers.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-              <folding>
-                <element signature="e#293#310#0" expanded="true" />
-                <element signature="e#497#514#0" expanded="true" />
-                <element signature="e#551#568#0" expanded="true" />
-                <element signature="e#805#823#0" expanded="true" />
-                <element signature="e#1125#1142#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-=======
-      <file leaf-file-name="BQuizFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1034">
-              <caret line="48" column="54" lean-forward="false" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-<<<<<<< HEAD
-        <option value="valueResourceFile" />
-=======
-        <option value="Class" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-        <option value="layoutResourceFile" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>build</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2291,49 +2228,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml" />
-=======
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizStatusResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/NetworkUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BquizLeaderboardResponse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizAnswerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/bquiz_fragment.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_leaderboard.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizLeaderboardResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizQuestionResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/QuestionDetailsModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/LeaderboardUserDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderboardFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderBoardAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/leaderboard_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-<<<<<<< HEAD
+  <component name="ProjectFrameBounds">
     <option name="y" value="27" />
     <option name="width" value="1920" />
     <option name="height" value="1053" />
-=======
-    <option name="x" value="-1" />
-    <option name="y" value="1075" />
-    <option name="width" value="1922" />
-    <option name="height" value="1086" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2351,12 +2258,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="Scope" />
       <pane id="ProjectPane" />
-=======
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2378,56 +2282,36 @@
             <path>
               <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="e_cell" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bquiz" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-<<<<<<< HEAD
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-=======
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="e_cell" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bquiz" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="e_cell" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
-=======
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Vigyaan/Dispensary-App" />
-=======
-    <property name="settings.editor.selected.configurable" value="preferences.updates" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="Bqu&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java&#10;Dialog&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java&#10;BQU&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java&#10;str&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/res/values/strings.xml&#10;Api&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java&#10;App&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java&#10;BQ&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java&#10;Lea&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderboardFragment.java&#10;gra&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/build.gradle&#10;Le&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderboardFragment.java&#10;color&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/res/values/colors.xml&#10;font&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/res/values/font_certs.xml&#10;About&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsFragment.java&#10;lea&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/res/layout/fragment_leaderboard.xml&#10;bquiz&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/res/layout/bquiz_fragment.xml&#10;Ma&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java&#10;Bquiz&#9;FILE&#9;file:///home/vrihas/AndroidStudioProjects/ECellApp2k18/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizStatusResponse.java&#10;AppC&#9;PSI&#9;JAVA://nitrr.ecell.e_cell.restapi.AppClient&#10;ApiServi&#9;PSI&#9;JAVA://nitrr.ecell.e_cell.restapi.ApiServices" />
-    <property name="device.picker.selection" value="ecaea471" />
-    <property name="DEBUGGABLE_DEVICE" value="lemobile-le_x821-ecaea471" />
-    <property name="DEBUGGABLE_PROCESS" value="nitrr.ecell.e_cell" />
-    <property name="SHOW_ALL_PROCESSES" value="false" />
-    <property name="DEBUGGER_ID" value="Auto" />
-  </component>
-  <component name="RecentsManager">
-    <key name="android.template.packageName">
-      <recent name="nitrr.ecell.e_cell.bquiz" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="nitrr.ecell.e_cell.utils" />
-    </key>
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+    <property name="device.picker.selection" value="95e621dd" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2585,717 +2469,140 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9ce1aedf-6b9a-454a-8ece-6f7c607f5a48" name="Default" comment="" />
-      <created>1533369085393</created>
+      <changelist id="86e2d4e2-52b4-4c8e-99a6-e9069b636cc1" name="Default" comment="" />
+      <created>1533529418895</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1533369085393</updated>
+      <updated>1533529418895</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
-=======
-    <frame x="-1" y="1075" width="1922" height="1086" extended-state="6" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+    <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497309" sideWeight="0.52698046" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3306544" sideWeight="0.50215286" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52238804" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25296018" sideWeight="0.4730195" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3306544" sideWeight="0.49784714" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="6" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderboardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderBoardAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="52" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-          <folding>
-            <element signature="e#1670#1671#0" expanded="false" />
-            <element signature="e#1726#1727#0" expanded="false" />
-            <element signature="e#1897#1898#0" expanded="false" />
-            <element signature="e#2110#2111#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_leaderboard.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="936">
-          <caret line="52" column="42" lean-forward="false" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
-          <folding />
-=======
-        <state relative-caret-position="748">
-          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="558">
-          <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding />
-=======
-        <state relative-caret-position="1738">
-          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="2268">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding>
-            <element signature="e#382#401#0" expanded="true" />
-            <element signature="e#828#847#0" expanded="true" />
-            <element signature="e#881#899#0" expanded="true" />
-            <element signature="e#934#952#0" expanded="true" />
-            <element signature="e#988#1006#0" expanded="true" />
-            <element signature="e#1080#1097#0" expanded="true" />
-            <element signature="e#1127#1144#0" expanded="true" />
-            <element signature="e#1305#1324#0" expanded="true" />
-            <element signature="e#1365#1383#0" expanded="true" />
-            <element signature="e#1708#1726#0" expanded="true" />
-            <element signature="e#1770#1788#0" expanded="true" />
-            <element signature="e#1822#1840#0" expanded="true" />
-            <element signature="e#2302#2320#0" expanded="true" />
-            <element signature="e#2397#2415#0" expanded="true" />
-            <element signature="e#2442#2459#0" expanded="true" />
-            <element signature="e#2558#2577#0" expanded="true" />
-            <element signature="e#2612#2631#0" expanded="true" />
-            <element signature="e#2801#2820#0" expanded="true" />
-            <element signature="e#2851#2870#0" expanded="true" />
-            <element signature="e#2904#2922#0" expanded="true" />
-            <element signature="e#3010#3027#0" expanded="true" />
-            <element signature="e#3070#3087#0" expanded="true" />
-            <element signature="e#3516#3534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
-=======
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="104" column="46" lean-forward="true" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/BQuizStatusResponse.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/RegisterMainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java">
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3366">
-          <caret line="187" column="17" lean-forward="false" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
-          <folding>
-            <element signature="e#382#401#0" expanded="true" />
-            <element signature="e#828#847#0" expanded="true" />
-            <element signature="e#881#899#0" expanded="true" />
-            <element signature="e#934#952#0" expanded="true" />
-            <element signature="e#988#1006#0" expanded="true" />
-            <element signature="e#1080#1097#0" expanded="true" />
-            <element signature="e#1127#1144#0" expanded="true" />
-            <element signature="e#1305#1324#0" expanded="true" />
-            <element signature="e#1365#1383#0" expanded="true" />
-            <element signature="e#1708#1726#0" expanded="true" />
-            <element signature="e#1770#1788#0" expanded="true" />
-            <element signature="e#1822#1840#0" expanded="true" />
-            <element signature="e#2302#2320#0" expanded="true" />
-            <element signature="e#2397#2415#0" expanded="true" />
-            <element signature="e#2442#2459#0" expanded="true" />
-            <element signature="e#2558#2577#0" expanded="true" />
-            <element signature="e#2612#2631#0" expanded="true" />
-            <element signature="e#2801#2820#0" expanded="true" />
-            <element signature="e#2851#2870#0" expanded="true" />
-            <element signature="e#2904#2922#0" expanded="true" />
-            <element signature="e#3010#3027#0" expanded="true" />
-            <element signature="e#3070#3087#0" expanded="true" />
-            <element signature="e#3516#3534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/76f3c69879d3e01c082f49d8661c5590838148e1/retrofit-2.3.0-sources.jar!/retrofit2/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/NetworkUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/PrefUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bquiz_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#382#401#0" expanded="true" />
-            <element signature="e#828#847#0" expanded="true" />
-            <element signature="e#881#899#0" expanded="true" />
-            <element signature="e#934#952#0" expanded="true" />
-            <element signature="e#988#1006#0" expanded="true" />
-            <element signature="e#1080#1097#0" expanded="true" />
-            <element signature="e#1127#1144#0" expanded="true" />
-            <element signature="e#1305#1324#0" expanded="true" />
-            <element signature="e#1365#1383#0" expanded="true" />
-            <element signature="e#1708#1726#0" expanded="true" />
-            <element signature="e#1770#1788#0" expanded="true" />
-            <element signature="e#1822#1840#0" expanded="true" />
-            <element signature="e#2302#2320#0" expanded="true" />
-            <element signature="e#2397#2415#0" expanded="true" />
-            <element signature="e#2442#2459#0" expanded="true" />
-            <element signature="e#2558#2577#0" expanded="true" />
-            <element signature="e#2612#2631#0" expanded="true" />
-            <element signature="e#2801#2820#0" expanded="true" />
-            <element signature="e#2851#2870#0" expanded="true" />
-            <element signature="e#2904#2922#0" expanded="true" />
-            <element signature="e#3010#3027#0" expanded="true" />
-            <element signature="e#3070#3087#0" expanded="true" />
-            <element signature="e#3516#3534#0" expanded="true" />
-          </folding>
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/slide_up.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/slide_down.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/gradient_purple.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/fonts/helvetica.ttf">
-      <provider selected="true" editor-type-id="fontseditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/about_us_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-<<<<<<< HEAD
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-=======
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/font_certs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/manual_signup_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1052">
-          <caret line="77" column="54" lean-forward="false" selection-start-line="77" selection-start-column="54" selection-end-line="77" selection-end-column="54" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EsummitFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="49" column="76" lean-forward="false" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/AppClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/production/debug/nitrr/ecell/e_cell/BuildConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/AboutUsResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/LeaderboardUserDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="280">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="e#382#401#0" expanded="true" />
-            <element signature="e#828#847#0" expanded="true" />
-            <element signature="e#881#899#0" expanded="true" />
-            <element signature="e#934#952#0" expanded="true" />
-            <element signature="e#988#1006#0" expanded="true" />
-            <element signature="e#1080#1097#0" expanded="true" />
-            <element signature="e#1127#1144#0" expanded="true" />
-            <element signature="e#1305#1324#0" expanded="true" />
-            <element signature="e#1365#1383#0" expanded="true" />
-            <element signature="e#1708#1726#0" expanded="true" />
-            <element signature="e#1770#1788#0" expanded="true" />
-            <element signature="e#1822#1840#0" expanded="true" />
-            <element signature="e#2302#2320#0" expanded="true" />
-            <element signature="e#2397#2415#0" expanded="true" />
-            <element signature="e#2442#2459#0" expanded="true" />
-            <element signature="e#2558#2577#0" expanded="true" />
-            <element signature="e#2612#2631#0" expanded="true" />
-            <element signature="e#2801#2820#0" expanded="true" />
-            <element signature="e#2851#2870#0" expanded="true" />
-            <element signature="e#2904#2922#0" expanded="true" />
-            <element signature="e#3010#3027#0" expanded="true" />
-            <element signature="e#3070#3087#0" expanded="true" />
-            <element signature="e#3516#3534#0" expanded="true" />
-=======
-        <state relative-caret-position="286">
-          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding>
-            <element signature="e#492#493#0" expanded="false" />
-            <element signature="e#520#521#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizLeaderboardResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding>
-            <element signature="e#635#636#0" expanded="false" />
-            <element signature="e#666#667#0" expanded="false" />
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_bquiz_answers.xml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="108">
-          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding>
-            <element signature="e#293#310#0" expanded="true" />
-            <element signature="e#497#514#0" expanded="true" />
-            <element signature="e#551#568#0" expanded="true" />
-            <element signature="e#805#823#0" expanded="true" />
-            <element signature="e#1125#1142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2">
         <state />
-=======
-        <state relative-caret-position="638">
-          <caret line="36" column="11" lean-forward="false" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizAnswerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="54" column="9" lean-forward="true" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+          <folding>
+            <element signature="e#1712#1931#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizStatusResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
+        <state relative-caret-position="90">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/76f3c69879d3e01c082f49d8661c5590838148e1/retrofit-2.3.0-sources.jar!/retrofit2/Callback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="43" column="11" lean-forward="true" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        <state relative-caret-position="267">
+          <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="19" column="79" lean-forward="false" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+        <state relative-caret-position="396">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_leaderboard.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="38" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="558">
+          <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/leaderboard_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizQuestionResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-          <folding>
-            <element signature="e#1233#1268#0" expanded="true" />
-            <element signature="e#1708#1743#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderBoardAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding>
-            <element signature="e#1531#1583#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/LeaderboardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+        <state relative-caret-position="90">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="756">
+          <caret line="101" column="31" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="101" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1034">
-          <caret line="48" column="54" lean-forward="false" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="20" column="95" lean-forward="false" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+        <state relative-caret-position="-692">
+          <caret line="58" column="58" lean-forward="false" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
           <folding>
-            <element signature="e#702#870#0" expanded="true" />
-            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#4623#4624#0" expanded="true" />
+            <element signature="e#4655#4656#0" expanded="true" />
           </folding>
         </state>
->>>>>>> 576c98db95203e432c48192afc2647ae02b368ef
       </provider>
     </entry>
   </component>

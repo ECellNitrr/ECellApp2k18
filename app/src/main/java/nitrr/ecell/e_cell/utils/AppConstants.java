@@ -9,17 +9,20 @@ public class AppConstants {
     public static final String ABOUT_US_URL = "team/list/";
     public static final String SPEAKER_URL = "speaker/list/";
     public static final String FB_SIGN_UP_URL = "";
-    public static final String SIGN_IN_URL = "";
     public static final String OTP_URL = "";
 
-
-    public static final String AUTH_ID = "auth_id";
+    public static final String SIGN_IN_URL = "login/";
+    public static final String EVENTS_URL = "event/list/";
+    public static final String SPONSOR_URL ="sponsor/list/";
 
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "";
     public static final String BQUIZ_LEADERBOARD = "v2/5b66b49a3200007400ee11cb";
+    public static final String BQUIZ_QUESTION = "";
 
-
+    //Authentication req.
+    public static final String AUTH_ID = "auth_id";
+    public static final String ACCESS_TOKEN = "access_token";
 
     //Field_Name
     public static final String FIRST_NAME = "first_name";
@@ -66,4 +69,10 @@ public class AppConstants {
             R.drawable.pawn_yellow,
             R.drawable.pawn_green
     };
+    //BottomSheetNames
+    public static final String ABOUT_US_SHEET = "about_us";
+    public static final String ESUMMIT_SHEET = "es";
+    public static final String BQUIZ_SHEET = "bq";
+    public static final String SPONSORS_SHEET = "spons";
+    public static final String EVENTS_SHEET = "ev";
 }

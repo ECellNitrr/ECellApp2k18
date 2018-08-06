@@ -53,9 +53,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
         initialize();
         callAPI();
     }
@@ -63,9 +61,8 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-
         Dialog d = getDialog();
-        if (d != null) {
+        if (d != null && d.getWindow() != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -99,7 +96,7 @@ public class ESBottomSheetFragment extends DialogFragment {
         es.setTypeface(bebasNeue);
         sponLabel.setTypeface(bebasNeue);
 
-        Glide.with(getContext())
+        Glide.with(getActivity())
                 .load(R.drawable.esummit)
                 .apply(RequestOptions.circleCropTransform())
                 .into(esImage);

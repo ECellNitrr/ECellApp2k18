@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.bquiz;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,9 +40,17 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
             final QuestionDetailsModel data = questionDetailsModels.get(position);
             if(null != data){
                 holder.tvAnswerNumber.setText(position + "");
+
                 if(null != data.getValue()){
                     holder.tvAnswerText.setText(data.getValue());
                 }
+
+                holder.cvAnswer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Todo : change color and select answer answer
+                    }
+                });
             }
         }
     }
@@ -54,11 +63,13 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvAnswerNumber, tvAnswerText;
+        CardView cvAnswer;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tvAnswerText = (TextView) itemView.findViewById(R.id.tvAnswerText);
             tvAnswerNumber = (TextView) itemView.findViewById(R.id.tvAnswerNumber);
+            cvAnswer = itemView.findViewById(R.id.cvAnswer);
         }
     }
 

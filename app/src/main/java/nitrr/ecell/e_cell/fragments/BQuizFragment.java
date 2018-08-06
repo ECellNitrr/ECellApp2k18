@@ -50,9 +50,6 @@ public class BQuizFragment extends Fragment {
         BQuizFragment f = new BQuizFragment();
         Bundle b = new Bundle();
         b.putString("msg", text);
-
-        f.setArguments(b);
-
         return f;
     }
 
