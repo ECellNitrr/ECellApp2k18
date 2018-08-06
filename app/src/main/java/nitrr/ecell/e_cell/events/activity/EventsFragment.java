@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.events.activity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -19,6 +20,7 @@ import nitrr.ecell.e_cell.events.Model.EventsData;
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +34,12 @@ public class EventsFragment extends DialogFragment {
     private ProgressBar progressBarEvents;
     private EventsFragmentAdapter adapterr;
     private ArrayList<EventsData> data_events = new ArrayList<>();
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            APICall();
+        }
+    };
 
     public EventsFragment() {
         // Required empty public constructor
@@ -78,13 +86,13 @@ public class EventsFragment extends DialogFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapterr);
         if (!(data_events.size() > 0)) {
-            progressBarEvents.setVisibility(View.VISIBLE);
             APICall();
         }
         return view;
     }
 
     private void APICall() {
+        progressBarEvents.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
         Call<EventsResponse> call = services.getEventsResponse();
         call.enqueue(new Callback<EventsResponse>() {
@@ -98,18 +106,20 @@ public class EventsFragment extends DialogFragment {
                         adapterr.notifyDataSetChanged();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<EventsResponse> call, Throwable t) {
-              if (!NetworkUtils.isNetworkAvailable(getContext())){
-
-              }else {
-                  Toast.makeText(getContext(), "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
-              }
+                progressBarEvents.setVisibility(View.GONE);
+                if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                } else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
+
 }

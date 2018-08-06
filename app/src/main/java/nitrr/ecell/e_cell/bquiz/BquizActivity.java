@@ -18,7 +18,7 @@ public class BquizActivity extends AppCompatActivity {
     }
 
     private void showBQuizRulesDialog(){
-        DialogFactory.showDialog(DialogFactory.BQUIZ_RULES,this,clickListenerPositive,null,null,getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn));
+        DialogFactory.showDialog(DialogFactory.BQUIZ_RULES,this,clickListenerPositive,null,true,getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn));
     }
 
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {

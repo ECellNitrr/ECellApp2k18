@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.fragments;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,7 +28,9 @@ import nitrr.ecell.e_cell.model.SpeakerList;
 import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.EsRecyclerViewAdapter;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,9 +43,16 @@ public class ESBottomSheetFragment extends DialogFragment {
     private EsRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
     private List<SpeakerList> details = new ArrayList<>();
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            callAPI();
+        }
+    };
 
-    public ESBottomSheetFragment() { }
 
+    public ESBottomSheetFragment() {
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,18 +114,17 @@ public class ESBottomSheetFragment extends DialogFragment {
     }
 
     private void callAPI() {
+        progressBar.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
         Call<SpeakerResponse> response = services.getSpeakerDetails();
-
         response.enqueue(new Callback<SpeakerResponse>() {
             @Override
             public void onResponse(Call<SpeakerResponse> call, Response<SpeakerResponse> response) {
+                progressBar.setVisibility(GONE);
                 if (response.isSuccessful()) {
                     SpeakerResponse speakerResponse = response.body();
 
                     if (speakerResponse != null) {
-                        progressBar.setVisibility(GONE);
-
                         details.addAll(speakerResponse.getList());
                         adapter.notifyDataSetChanged();
                     }
@@ -124,7 +133,12 @@ public class ESBottomSheetFragment extends DialogFragment {
 
             @Override
             public void onFailure(Call<SpeakerResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(GONE);
+                if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                } else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
