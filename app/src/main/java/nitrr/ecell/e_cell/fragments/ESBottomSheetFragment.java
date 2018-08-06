@@ -28,6 +28,7 @@ import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.EsRecyclerViewAdapter;
+import nitrr.ecell.e_cell.utils.TypeWriter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +40,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     private TextView es, esDesc, sponLabel;
     private EsRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
+    private TypeWriter typeWriter;
     private List<SpeakerList> details = new ArrayList<>();
 
     public ESBottomSheetFragment() {
@@ -54,8 +56,10 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         if (getDialog().getWindow() != null)
             getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         initialize();
         callAPI();
     }
@@ -103,6 +107,11 @@ public class ESBottomSheetFragment extends DialogFragment {
                 .apply(RequestOptions.circleCropTransform())
                 .into(esImage);
 
+
+        typeWriter = getView().findViewById(R.id.typewriterText);
+        typeWriter.setTypeface(bebasNeue);
+        typeWriter.setCharacterDelay(35);
+        typeWriter.animateText("September 8 and 9, 2018 NIT Raipur");
     }
 
     private void callAPI() {
