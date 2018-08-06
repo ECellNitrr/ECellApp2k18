@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ImageView topImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
