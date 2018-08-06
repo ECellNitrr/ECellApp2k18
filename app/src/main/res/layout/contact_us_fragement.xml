@@ -73,7 +73,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:orientation="horizontal">
@@ -99,12 +99,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/fb"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="2"
                 android:clickable="true"
                 android:focusable="true"
@@ -112,8 +114,8 @@
 
             <ImageView
                 android:id="@+id/twitter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="2"
                 android:clickable="true"
                 android:focusable="true"
@@ -121,17 +123,26 @@
 
             <ImageView
                 android:id="@+id/youtube"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="2"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/youtube" />
 
             <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/instagram" />
+
+            <ImageView
                 android:id="@+id/linkedin"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="2"
                 android:clickable="true"
                 android:focusable="true"
@@ -175,7 +186,7 @@
                     android:id="@+id/contactNameEdit"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
-                    android:fontFamily="@font/raleway_bold"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="@string/name"
                     android:imeOptions="actionNext"
                     android:inputType="textPersonName"
@@ -212,7 +223,7 @@
                     android:id="@+id/contactEmailEdit"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
-                    android:fontFamily="@font/raleway_bold"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="@string/email"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
@@ -249,7 +260,7 @@
                     android:id="@+id/contactMessageEdit"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
-                    android:fontFamily="@font/raleway_bold"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="@string/msg"
                     android:imeOptions="actionDone"
                     android:inputType="textMultiLine"

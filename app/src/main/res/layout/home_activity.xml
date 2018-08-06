@@ -56,6 +56,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_medium"
                 android:text="@string/sample_hello_user"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textColor="@color/colorWhite"
                 android:textSize="26sp" />
 

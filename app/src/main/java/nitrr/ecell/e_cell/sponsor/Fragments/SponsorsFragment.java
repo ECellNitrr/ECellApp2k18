@@ -113,7 +113,7 @@ public class SponsorsFragment extends DialogFragment {
             }
             @Override
             public void onFailure(Call<SponsorsResponce> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

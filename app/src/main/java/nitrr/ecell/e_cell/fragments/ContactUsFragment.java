@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
     TextView det, add, email, ph, touch;
-    ImageView send, facebook, youtube, linkedin, twitter;
+    ImageView send, facebook, youtube, linkedin, twitter, instagram;
 
     EditText nameEditText, emailEditText, messageEditText;
 
@@ -61,6 +61,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         twitter = getView().findViewById(R.id.twitter);
         youtube = getView().findViewById(R.id.youtube);
         linkedin = getView().findViewById(R.id.linkedin);
+        instagram = getView().findViewById(R.id.instagram);
 
         det.setTypeface(bebas);
         add.setTypeface(bebas);
@@ -72,6 +73,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         facebook.setOnClickListener(this);
         twitter.setOnClickListener(this);
         youtube.setOnClickListener(this);
+        instagram.setOnClickListener(this);
         linkedin.setOnClickListener(this);
     }
 
@@ -119,6 +121,9 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
         else if(view == linkedin)
             openURL(AppConstants.LINKEDIN);
+
+        else if(view == instagram)
+            openURL(AppConstants.INSTAGRAM);
     }
 
     private void openURL(String URL) {
