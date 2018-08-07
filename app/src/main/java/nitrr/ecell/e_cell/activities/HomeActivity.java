@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private TextView user;
     private ImageView menu;
     private CardView logOut;
+    private LinearLayout homeTopLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         user = findViewById(R.id.user);
         menu = findViewById(R.id.menu);
         logOut = findViewById(R.id.log_out);
+        homeTopLayout = findViewById(R.id.homeTopLayout);
 
         menu.setOnClickListener(this);
         logOut.setOnClickListener(this);
+        homeTopLayout.setOnClickListener(this);
 
         String topText = "Hey User";
 
@@ -72,6 +75,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onPageSelected(int position) {
                 setStatusBarColor(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[position]));
+
+                if (logOut.getVisibility() == View.VISIBLE)
+                    logOut.setVisibility(View.GONE);
             }
 
             @Override
@@ -94,7 +100,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+        if (logOut.getVisibility() == View.VISIBLE)
+            logOut.setVisibility(View.GONE);
+
+        else if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure you want to exit?")
                     .setCancelable(false)
@@ -117,7 +126,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view == menu) {
+        if (view == homeTopLayout) {
+            if (logOut.getVisibility() == View.VISIBLE)
+                logOut.setVisibility(View.GONE);
+
+        } else if (view == menu) {
             if (logOut.getVisibility() == View.GONE)
                 logOut.setVisibility(View.VISIBLE);
             else
@@ -150,6 +163,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             AlertDialog dialog = builder.create();
             dialog.show();
+
         }
     }
 }
