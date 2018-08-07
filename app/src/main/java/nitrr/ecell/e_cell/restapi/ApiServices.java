@@ -1,5 +1,7 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.otp.Model.AuthenticationVerifyOtpResponse;
+import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
@@ -13,7 +15,6 @@ import nitrr.ecell.e_cell.signin.model.Logindetails;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponce;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -24,10 +25,10 @@ public interface ApiServices {
     Call<AuthenticationResponse> sendRegisterDetails(@Body UserDetails userDetails);
 
     @POST(AppConstants.SEND_OTP_URL)
-    Call<> sendMobileNo(@Body String mobileNoOtp);
+    Call<SendOtpResponse> sendMobileNo(@Body String mobileNoOtp);
 
     @POST(AppConstants.VERIFY_OTP_URL)
-    Call<> sendOtpEntered(@Body String otpEntered);
+    Call<AuthenticationVerifyOtpResponse> sendOtpEntered(@Body String otpEntered);
 
     @POST(AppConstants.FB_SIGN_UP_URL)
     Call<AuthenticationResponse> sendFacebookRegistrationDetails(@Body FacebookSignInUserDetails details);

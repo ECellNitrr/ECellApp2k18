@@ -24,6 +24,12 @@
             android:screenOrientation="nosensor" />
         <activity
             android:name=".activities.HomeActivity"
+            android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".otp.activity.otp_activity"
+            android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".splashScreen.splashScreen"
             android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,8 +61,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".OTP.activity.otp_activity" />
-        <activity android:name=".splashScreen.splashScreen"></activity>
     </application>
 
 </manifest>
