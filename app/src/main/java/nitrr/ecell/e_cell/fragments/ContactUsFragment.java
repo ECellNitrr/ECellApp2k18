@@ -85,9 +85,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
                 ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
                 MessageDetails details = new MessageDetails();
-                PrefUtils utils = new PrefUtils(getActivity());
 
-                details.setToken(utils.getAccessToken());
                 details.setEmail(emailEditText.getText().toString().trim());
                 details.setName(nameEditText.getText().toString().trim());
                 details.setMessage(messageEditText.getText().toString().trim());
