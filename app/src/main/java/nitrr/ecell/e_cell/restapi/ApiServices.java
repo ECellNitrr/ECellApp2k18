@@ -23,6 +23,12 @@ public interface ApiServices {
     @POST(AppConstants.SIGN_UP_URL)
     Call<AuthenticationResponse> sendRegisterDetails(@Body UserDetails userDetails);
 
+    @POST(AppConstants.SEND_OTP_URL)
+    Call<> sendMobileNo(@Body String mobileNoOtp);
+
+    @POST(AppConstants.VERIFY_OTP_URL)
+    Call<> sendOtpEntered(@Body String otpEntered);
+
     @POST(AppConstants.FB_SIGN_UP_URL)
     Call<AuthenticationResponse> sendFacebookRegistrationDetails(@Body FacebookSignInUserDetails details);
 
