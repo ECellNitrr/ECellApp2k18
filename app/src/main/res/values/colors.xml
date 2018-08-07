@@ -7,6 +7,7 @@
     <color name="colorGray">#f5f5f5</color>
     <color name="colorWhiteTransparent">#64ffffff</color>
     <color name="colorBackground">#1a1a1e</color>
+    <color name="colorBackgroundSponsor">#B47CFF</color>
     <color name="colorText">#65656B</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorOuterSpace">#4b4b4c</color>
@@ -33,6 +34,9 @@
     <color name="colorPurpleLight">#be6ef4</color>
     <color name="White">#ffffff</color>
     <color name="leaderboard_card_background">#37474f</color>
-    <color name="color_blue_high">#1a237e</color>
-    <color name="color_blue_low">#3949ab</color>
+    <color name="color_blue_high">#455a64</color>
+    <color name="color_purple_high">#673ab7</color>
+    <color name="color_purple_bg">#307c4dff</color>
+    <color name="focus">#6BDDC8</color>
+    <color name="colorBlack">#000000</color>
 </resources>

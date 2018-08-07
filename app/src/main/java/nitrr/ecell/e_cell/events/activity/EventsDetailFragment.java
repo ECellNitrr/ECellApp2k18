@@ -1,9 +1,10 @@
 package nitrr.ecell.e_cell.events.activity;
 
 import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -20,8 +26,9 @@ import nitrr.ecell.e_cell.events.Model.EventsData;
 public class EventsDetailFragment extends DialogFragment {
 
     EventsData events_data;
-    private ImageView eventsCoverPic;
-    private TextView eventDetailsDesc, eventDetailsLoc, eventDetailsName, eventDetailsDate, getEventDetailsTime;
+    private ImageView eventsCoverPic, arrowDismiss;
+    private TextView eventDetailsDesc, eventDetailsLoc, eventDetailsName, eventDetailsDate, eventDetailsTime;
+    private AVLoadingIndicatorView loadingIndicatorView;
     private ArrayList<EventsData> data = new ArrayList<>();
 
     public EventsDetailFragment() {
@@ -68,14 +75,37 @@ public class EventsDetailFragment extends DialogFragment {
         eventDetailsDesc = (TextView) view.findViewById(R.id.eventBody);
         eventDetailsLoc = (TextView) view.findViewById(R.id.eventLocation);
         eventDetailsName = (TextView) view.findViewById(R.id.eventTitle);
-        getEventDetailsTime = (TextView) view.findViewById(R.id.eventTime);
+        eventDetailsTime = (TextView) view.findViewById(R.id.eventTime);
+        arrowDismiss = (ImageView) view.findViewById(R.id.arrow_dismiss_event_details);
+        loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.indicator_progress_bar_event_details);
 
         eventDetailsName.setText(events_data.getName_response());
-        getEventDetailsTime.setText(events_data.getTime_response());
+        eventDetailsTime.setText(events_data.getTime_response());
         eventDetailsLoc.setText(events_data.getVenue_response());
         eventDetailsDesc.setText(events_data.getDetails_response());
         eventDetailsDate.setText(events_data.getDate_response());
-        Glide.with(getContext()).load(events_data.getCover_pic_response()).into(eventsCoverPic);
+        Glide.with(getContext()).load(events_data.getCover_pic_response())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        loadingIndicatorView.setVisibility(View.GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        loadingIndicatorView.setVisibility(View.GONE);
+                        return false;
+                    }
+                })
+                .into(eventsCoverPic);
+
+        arrowDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventsDetailFragment.this.dismiss();
+            }
+        });
         return view;
     }
 

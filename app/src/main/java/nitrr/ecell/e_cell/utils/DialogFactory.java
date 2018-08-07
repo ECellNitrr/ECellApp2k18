@@ -21,8 +21,10 @@ public class DialogFactory {
                 break;
             case BQUIZ_RULES:
                 getDialog(context, clickListenerPositive, clickListenerNegative, isCancellable, d);
+                break;
             case CONNECTION_PROBLEM_DIALOG:
                 getDialog(context, clickListenerPositive, clickListenerNegative, isCancellable, d);
+                break;
             default:
                 break;
         }

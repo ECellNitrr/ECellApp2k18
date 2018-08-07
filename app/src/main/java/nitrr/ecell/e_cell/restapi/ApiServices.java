@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
@@ -11,7 +12,7 @@ import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
 import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
 import nitrr.ecell.e_cell.signin.model.Logindetails;
-import nitrr.ecell.e_cell.sponsor.model.SponsorsResponce;
+import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -46,5 +47,8 @@ public interface ApiServices {
     Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
 
     @GET(AppConstants.SPONSOR_URL)
-    Call<SponsorsResponce> getSponsorsResponce();
+    Call<SponsorsResponse> getSponsorsResponce();
+
+    @GET(AppConstants.BQUIZ_QUESTION)
+    Call<BQuizQuestionResponse> getQuestion();
 }

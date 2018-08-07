@@ -18,7 +18,9 @@ public class AppConstants {
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "";
     public static final String BQUIZ_LEADERBOARD = "v2/5b66b49a3200007400ee11cb";
+    public static final String BQUIZ_QUESTION = "";
 
+    //Authentication req.
     public static final String AUTH_ID = "auth_id";
     public static final String ACCESS_TOKEN = "access_token";
 

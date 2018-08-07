@@ -26,6 +26,7 @@
             android:background="@drawable/image_border" />
 
         <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/indicator_progress_bar_events"
             style="@style/AVLoadingIndicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,7 +1,9 @@
 package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
@@ -14,7 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.wang.avi.AVLoadingIndicatorView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
@@ -23,38 +31,53 @@ import nitrr.ecell.e_cell.sponsor.model.SponsorDetail;
 
 public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSecond.ViewHolder> {
 
-    private List<SponsorDetail> sponsorDetailList;
+    private List<SponsorDetail> sponsorDetailList = new ArrayList<>();
     private Context context;
+    private LayoutInflater layoutInflater;
 
-    public SponsorAdapterSecond(List<SponsorDetail> sponsorDetailList, Context context) {
-        this.sponsorDetailList = sponsorDetailList;
+    public SponsorAdapterSecond(Context context) {
         this.context = context;
+        layoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setSponsorDetailList(List<SponsorDetail> sponsorDetailList) {
+        this.sponsorDetailList = sponsorDetailList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.itemlayout_sponsor2,parent,false);
+        View view = layoutInflater.inflate(R.layout.itemlayout_sponsor2, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-         final SponsorDetail itemSponsor = sponsorDetailList.get(position);
-//         holder.sponsorwebsite.setText(itemSponsor.getWebsite_s());
-         holder.sponsorname.setText(itemSponsor.getName_s());
-//         holder.sponsordetail.setText(itemSponsor.getDetails_s());
-//         holder.sponsorcontact.setText(itemSponsor.getContact_s());
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final SponsorDetail itemSponsor = sponsorDetailList.get(position);
+        holder.sponsorname.setText(itemSponsor.getName_s());
         Glide.with(context)
-                .load(itemSponsor.getPic_s()).into(holder.sponsorpic);
+                .load(itemSponsor.getPic_s())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        holder.loadingIndicatorView.setVisibility(View.INVISIBLE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.loadingIndicatorView.setVisibility(View.INVISIBLE);
+                        return false;
+                    }
+                })
+                .into(holder.sponsorpic);
         holder.cardSponsorDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentActivity activity = (FragmentActivity) (context);
                 FragmentManager fm = activity.getSupportFragmentManager();
-                SponsorsDetailsFragment sponsorsDetailsFragment = new SponsorsDetailsFragment();
-                sponsorsDetailsFragment.setSponsorsData(itemSponsor,context);
+                SponsorsDetailsFragment sponsorsDetailsFragment = SponsorsDetailsFragment.newInstance();
+                sponsorsDetailsFragment.setSponsorsData(itemSponsor, context);
                 sponsorsDetailsFragment.show(fm, "sponsor details fragment");
             }
         });
@@ -62,25 +85,22 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
 
     @Override
     public int getItemCount() {
-        Log.e("size2====", sponsorDetailList.size()+"");
         return sponsorDetailList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView sponsorname,sponsordetail,sponsorwebsite,sponsorcontact;
+        TextView sponsorname;
         ImageView sponsorpic;
         CardView cardSponsorDetail;
+        AVLoadingIndicatorView loadingIndicatorView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            sponsorcontact=(TextView)itemView.findViewById(R.id.sponsdetailcontact);
-            sponsordetail=(TextView)itemView.findViewById(R.id.sponsdetaildesc);
-            sponsorname=(TextView)itemView.findViewById(R.id.sponsdetailname);
-            sponsorwebsite=(TextView)itemView.findViewById(R.id.sponsdetailwebsite);
-            sponsorpic=(ImageView)itemView.findViewById(R.id.sponsdetailpic);
+            sponsorname = (TextView) itemView.findViewById(R.id.sponsdetailname);
+            sponsorpic = (ImageView) itemView.findViewById(R.id.sponsdetailpic);
             cardSponsorDetail = (CardView) itemView.findViewById(R.id.sponsor_detail_card);
-
+            loadingIndicatorView = (AVLoadingIndicatorView) itemView.findViewById(R.id.indicator_progress_bar_spons_image);
         }
     }
 

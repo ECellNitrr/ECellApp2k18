@@ -2,14 +2,21 @@ package nitrr.ecell.e_cell.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -33,7 +40,7 @@ public class EsRecyclerViewAdapter extends RecyclerView.Adapter<EsRecyclerViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EsRecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final EsRecyclerViewHolder holder, int position) {
         Typeface bebas = Typeface.createFromAsset(context.getAssets(), "fonts/BebasNeue.ttf");
 
         if (details.get(position).getName() != null)
@@ -48,6 +55,19 @@ public class EsRecyclerViewAdapter extends RecyclerView.Adapter<EsRecyclerViewHo
         if(details.get(position).getProfile_pic() != null)
             Glide.with(context)
                     .load(details.get(position).getProfile_pic())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            holder.loadingIndicatorView.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            holder.loadingIndicatorView.setVisibility(View.GONE);
+                            return false;
+                        }
+                    })
                     .apply(RequestOptions.circleCropTransform())
                     .into(holder.speakerImage);
 

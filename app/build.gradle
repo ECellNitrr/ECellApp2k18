@@ -20,7 +20,7 @@ android {
     productFlavors {
         production {
             applicationIdSuffix ""
-            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://ecell-backend.herokuapp.com/\"")
 //            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
             minSdkVersion 19
             applicationId 'nitrr.ecell.e_cell'
@@ -80,6 +80,7 @@ dependencies {
     implementation 'com.wang.avi:library:2.1.3'
 
     implementation 'com.facebook.android:facebook-login:4.33.0'
+    implementation 'com.android.support:customtabs:27.1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

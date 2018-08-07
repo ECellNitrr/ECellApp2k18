@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ import static android.view.View.GONE;
 public class ESBottomSheetFragment extends DialogFragment {
     private ImageView esImage;
     private TextView es, esDesc, sponLabel;
+    private SwipeRefreshLayout swipeRefreshLayoutESummit;
     private EsRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
     private List<SpeakerList> details = new ArrayList<>();
@@ -89,6 +91,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     private void initialize() {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
+        swipeRefreshLayoutESummit = getView().findViewById(R.id.swipeRefreshLayoutESummit);
         RecyclerView recyclerView = getView().findViewById(R.id.esRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -111,6 +114,14 @@ public class ESBottomSheetFragment extends DialogFragment {
                 .apply(RequestOptions.circleCropTransform())
                 .into(esImage);
 
+        swipeRefreshLayoutESummit.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                callAPI();
+                swipeRefreshLayoutESummit.setRefreshing(false);
+            }
+        });
+
     }
 
     private void callAPI() {
@@ -128,16 +139,21 @@ public class ESBottomSheetFragment extends DialogFragment {
                         details.addAll(speakerResponse.getList());
                         adapter.notifyDataSetChanged();
                     }
+                } else if (getContext() != null) {
+                    Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<SpeakerResponse> call, Throwable t) {
                 progressBar.setVisibility(GONE);
-                if (!NetworkUtils.isNetworkAvailable(getContext())) {
-                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
-                } else {
-                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                if (getContext() != null) {
+                    if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                        DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                    } else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+
+                    }
                 }
             }
         });
