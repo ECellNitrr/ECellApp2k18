@@ -9,7 +9,7 @@ public class AppConstants {
     public static final String ABOUT_US_URL = "team/list/";
     public static final String SPEAKER_URL = "speaker/list/";
     public static final String FB_SIGN_UP_URL = "";
-    public static final String MESSAGE_URL = "";
+    public static final String MESSAGE_URL = "message/";
     public static final String OTP_URL = "";
     public static final String SIGN_IN_URL = "applogin/";
     public static final String EVENTS_URL = "event/list/";
