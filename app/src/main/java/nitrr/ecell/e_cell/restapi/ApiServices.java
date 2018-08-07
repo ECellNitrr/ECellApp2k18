@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.bquiz.model.Answer;
 import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
@@ -51,4 +52,7 @@ public interface ApiServices {
 
     @GET(AppConstants.BQUIZ_QUESTION)
     Call<BQuizQuestionResponse> getQuestion();
+
+    @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
+    Call<GenericResponse> submitAnswer(@Body Answer answer);
 }

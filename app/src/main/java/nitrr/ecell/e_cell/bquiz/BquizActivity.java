@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -25,16 +26,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.bquiz.model.Answer;
 import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.bquiz.model.QuestionDetailsModel;
+import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.SelectAnswerInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BquizActivity extends AppCompatActivity {
+public class BquizActivity extends AppCompatActivity implements SelectAnswerInterface{
 
     private CardView cvQuestion, cvQuestionImage;
     private TextView tvQuestion, timer;
@@ -45,6 +49,7 @@ public class BquizActivity extends AppCompatActivity {
     private BquizAnswerAdapter adapter;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     MyCountDownTimer myCountDownTimer;
+    private Answer answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class BquizActivity extends AppCompatActivity {
         initview();
         showBQuizRulesDialog();
         initAdapter();
+        apiCall();
     }
 
     private void initview(){
@@ -66,6 +72,7 @@ public class BquizActivity extends AppCompatActivity {
         donutProgress = findViewById(R.id.donut_progress);
         rvAnswers = findViewById(R.id.rvAnswers);
         rvAnswers.setLayoutManager(new LinearLayoutManager(this));
+        answer = new Answer();
     }
 
     private void showBQuizRulesDialog(){
@@ -80,7 +87,7 @@ public class BquizActivity extends AppCompatActivity {
     };
 
     private void initAdapter(){
-        adapter = new BquizAnswerAdapter(this, questionDetailsModels);
+        adapter = new BquizAnswerAdapter(this, questionDetailsModels, this);
         rvAnswers.setAdapter(adapter);
     }
 
@@ -95,6 +102,7 @@ public class BquizActivity extends AppCompatActivity {
                     if(null != question){
                         setData(question);
                         questionDetailsModels.addAll(question.getOptions());
+                        answer.setQuestionId(question.getId());
                     }
                 }
             }
@@ -120,6 +128,9 @@ public class BquizActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                    adapter.notifyDataSetChanged();
+                    myCountDownTimer = new MyCountDownTimer(10000, 1000);
+                    myCountDownTimer.start();
                     return false;
                 }
 
@@ -129,12 +140,40 @@ public class BquizActivity extends AppCompatActivity {
         }
         else{
             //todo : set placeholder image for bquiz
+            Glide.with(this).load(R.drawable.contact_us_drawable).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
+            myCountDownTimer = new MyCountDownTimer(10000, 1000);
+            myCountDownTimer.start();
         }
     }
 
-    private void startTimer(int time){
+    private void submitAnswer(Answer answer){
+        //todo: Add a progress dialog
+        ApiServices api = AppClient.getInstance().createService(ApiServices.class);
+        Call<GenericResponse> call = api.submitAnswer(answer);
+        call.enqueue(new Callback<GenericResponse>() {
+            @Override
+            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                if(response.isSuccessful()){
+                    GenericResponse responseBody = response.body();
+                    if(null != responseBody){
+                        if (responseBody.getSuccess()){
+                            //todo:Answer submitted
+                        }
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Call<GenericResponse> call, Throwable t) {
+                Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    public void selectAnswer(Integer optionId) {
+        answer.setOptionId(optionId);
     }
 
     public class MyCountDownTimer extends CountDownTimer {
@@ -147,13 +186,14 @@ public class BquizActivity extends AppCompatActivity {
         public void onTick(long millisUntilFinished) {
 
             int progress = (int) (millisUntilFinished/1000);
-
-//            progressBar.setProgress(progressBar.getMax()-progress);
+            donutProgress.setProgress(donutProgress.getMax()-progress);
         }
 
         @Override
         public void onFinish() {
-            finish();
+
+//            finish();
+            //todo: api call for submitting selected answer or null
         }
     }
 }

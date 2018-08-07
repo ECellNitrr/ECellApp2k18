@@ -13,18 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.bquiz.model.Answer;
 import nitrr.ecell.e_cell.bquiz.model.QuestionDetailsModel;
+import nitrr.ecell.e_cell.utils.SelectAnswerInterface;
 
 public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.MyViewHolder>{
 
     private Context context;
     private LayoutInflater layoutInflater;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
+    private SelectAnswerInterface callback;
 
-    public BquizAnswerAdapter(Context context, List<QuestionDetailsModel> questionDetailsModels) {
+    public BquizAnswerAdapter(Context context, List<QuestionDetailsModel> questionDetailsModels, SelectAnswerInterface callback) {
         this.context = context;
         this.questionDetailsModels = questionDetailsModels;
         layoutInflater = LayoutInflater.from(context);
+        this.callback = callback;
     }
 
     @NonNull
@@ -39,7 +43,7 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
         if(null != questionDetailsModels){
             final QuestionDetailsModel data = questionDetailsModels.get(position);
             if(null != data){
-                holder.tvAnswerNumber.setText(position + "");
+                holder.tvAnswerNumber.setText(position + ".");
 
                 if(null != data.getValue()){
                     holder.tvAnswerText.setText(data.getValue());
@@ -49,6 +53,7 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
                     @Override
                     public void onClick(View v) {
                         //Todo : change color and select answer answer
+                        callback.selectAnswer(data.getKey());
                     }
                 });
             }
@@ -67,8 +72,8 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tvAnswerText = (TextView) itemView.findViewById(R.id.tvAnswerText);
-            tvAnswerNumber = (TextView) itemView.findViewById(R.id.tvAnswerNumber);
+            tvAnswerText = itemView.findViewById(R.id.tvAnswerText);
+            tvAnswerNumber = itemView.findViewById(R.id.tvAnswerNumber);
             cvAnswer = itemView.findViewById(R.id.cvAnswer);
         }
     }
