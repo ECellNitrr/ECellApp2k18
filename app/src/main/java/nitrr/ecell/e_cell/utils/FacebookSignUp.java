@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,13 @@ import java.net.URL;
 import java.util.Arrays;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.model.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.restapi.ApiServices;
+import nitrr.ecell.e_cell.restapi.AppClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FacebookSignUp {
 
@@ -27,12 +35,14 @@ public class FacebookSignUp {
     private View fbSignUp;
     private CallbackManager callbackManager;
     private PrefUtils prefUtils;
+    private FacebookSignInUserDetails details = new FacebookSignInUserDetails();
 
     public FacebookSignUp(Activity activity, View fbSignUp) {
         this.activity = activity;
         this.fbSignUp = fbSignUp;
 
         prefUtils = new PrefUtils(activity);
+        prefUtils.isFacebookLogin(true);
     }
 
     public void initialize() {
@@ -100,7 +110,13 @@ public class FacebookSignUp {
 
             bundle.putString(AppConstants.AVATAR_URL, avatar_url.toString());
 
-            prefUtils.saveFbUserInfo(jsonObject.getString(AppConstants.FIRST_NAME), jsonObject.getString(AppConstants.LAST_NAME), jsonObject.getString(AppConstants.EMAIL), avatar_url.toString());
+            prefUtils.saveFbUserInfo(jsonObject.getString(AppConstants.FIRST_NAME), jsonObject.getString(AppConstants.LAST_NAME), jsonObject.getString(AppConstants.EMAIL));
+
+            details.setFacebook(prefUtils.getIfIsFacebookLogin());
+            details.setName(jsonObject.getString(AppConstants.FIRST_NAME) + " " + jsonObject.getString(AppConstants.LAST_NAME));
+            details.setEmail(jsonObject.getString(AppConstants.EMAIL));
+
+            apiCall();
 
         } catch (Exception e) {
             Log.d("Facebook Sign Up Error.", e.getMessage());
@@ -111,5 +127,27 @@ public class FacebookSignUp {
 
     public CallbackManager getCallbackManager() {
         return callbackManager;
+    }
+
+    private void apiCall() {
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
+        Call<AuthenticationResponse> call = services.sendFacebookRegistrationDetails(details);
+
+        call.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                if (response.isSuccessful())
+                    if (response.body() != null) {
+                        prefUtils.saveAccessToken(response.body().getToken());
+
+                        // TODO: Call OTP Activity Here
+                    }
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                Toast.makeText(activity, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

@@ -31,6 +31,15 @@
             android:textColor="@color/colorWhite"
             android:textSize="30sp" />
 
+        <nitrr.ecell.e_cell.utils.TypeWriter
+            android:id="@+id/typewriterText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
+
         <TextView
             android:id="@+id/es_content"
             android:layout_width="340dp"
@@ -67,7 +76,7 @@
             android:id="@+id/esRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
     </ScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>

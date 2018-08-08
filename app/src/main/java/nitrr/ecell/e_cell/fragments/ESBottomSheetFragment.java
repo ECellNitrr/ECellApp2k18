@@ -32,6 +32,7 @@ import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.EsRecyclerViewAdapter;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
+import nitrr.ecell.e_cell.utils.TypeWriter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,6 +45,7 @@ public class ESBottomSheetFragment extends DialogFragment {
     private SwipeRefreshLayout swipeRefreshLayoutESummit;
     private EsRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
+    private TypeWriter typeWriter;
     private List<SpeakerList> details = new ArrayList<>();
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
         @Override
@@ -65,7 +67,10 @@ public class ESBottomSheetFragment extends DialogFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        if (getDialog().getWindow() != null)
+            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         initialize();
         callAPI();
     }
@@ -121,7 +126,10 @@ public class ESBottomSheetFragment extends DialogFragment {
                 swipeRefreshLayoutESummit.setRefreshing(false);
             }
         });
-
+        typeWriter = getView().findViewById(R.id.typewriterText);
+        typeWriter.setTypeface(bebasNeue);
+        typeWriter.setCharacterDelay(35);
+        typeWriter.animateText(getString(R.string.date));
     }
 
     private void callAPI() {
@@ -155,6 +163,7 @@ public class ESBottomSheetFragment extends DialogFragment {
 
                     }
                 }
+
             }
         });
     }

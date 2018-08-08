@@ -15,14 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.sponsor.model.SponsorType;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
@@ -103,6 +98,7 @@ public class SponsorsFragment extends DialogFragment {
         Log.e("api callfunction ====", "called");
         progressBarSponsors.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+
         Call<SponsorsResponse> call = services.getSponsorsResponce();
         call.enqueue(new Callback<SponsorsResponse>() {
             @Override
@@ -119,7 +115,6 @@ public class SponsorsFragment extends DialogFragment {
                     Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<SponsorsResponse> call, Throwable t) {
                 progressBarSponsors.setVisibility(View.GONE);

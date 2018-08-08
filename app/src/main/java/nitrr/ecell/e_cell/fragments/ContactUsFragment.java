@@ -1,6 +1,8 @@
 package nitrr.ecell.e_cell.fragments;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,8 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,15 +22,17 @@ import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
-import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
+
     private TextView det, add, email, ph, touch;
-    private ImageView send;
+    private ImageView send, facebook, youtube, linkedin, twitter, instagram;
     private EditText nameEditText, emailEditText, messageEditText;
+
 
 
     @Nullable
@@ -57,6 +59,11 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         nameEditText = getView().findViewById(R.id.contactNameEdit);
         emailEditText = getView().findViewById(R.id.contactEmailEdit);
         messageEditText = getView().findViewById(R.id.contactMessageEdit);
+        facebook = getView().findViewById(R.id.fb);
+        twitter = getView().findViewById(R.id.twitter);
+        youtube = getView().findViewById(R.id.youtube);
+        linkedin = getView().findViewById(R.id.linkedin);
+        instagram = getView().findViewById(R.id.instagram);
 
         det.setTypeface(bebas);
         add.setTypeface(bebas);
@@ -65,20 +72,25 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         touch.setTypeface(bebas);
 
         send.setOnClickListener(this);
+        facebook.setOnClickListener(this);
+        twitter.setOnClickListener(this);
+        youtube.setOnClickListener(this);
+        instagram.setOnClickListener(this);
+        linkedin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (!NetworkUtils.isNetworkAvailable(getContext())){
-            Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
-        }
+        if (view == send){
+            if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
+            }
         if (checkNull()) {
+
             ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
             MessageDetails details = new MessageDetails();
-            PrefUtils utils = new PrefUtils(getActivity());
 
-            details.setToken(utils.getAccessToken());
             details.setEmail(emailEditText.getText().toString().trim());
             details.setName(nameEditText.getText().toString().trim());
             details.setMessage(messageEditText.getText().toString().trim());
@@ -93,15 +105,34 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
                 @Override
                 public void onFailure(Call<GenericResponse> call, Throwable t) {
-                    if (NetworkUtils.isNetworkAvailable(getContext())){
-                        Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
                 }
             });
 
         } else {
             Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
         }
+    }
+        else if (view == facebook)
+            openURL(AppConstants.FACEBOOK);
+
+        else if(view == twitter)
+            openURL(AppConstants.TWITTER);
+
+        else if(view == youtube)
+            openURL(AppConstants.YOUTUBE);
+
+        else if(view == linkedin)
+            openURL(AppConstants.LINKEDIN);
+
+        else if(view == instagram)
+            openURL(AppConstants.INSTAGRAM);
+    }
+
+    private void openURL(String URL) {
+        Uri uri = Uri.parse(URL);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     private boolean checkNull() {
