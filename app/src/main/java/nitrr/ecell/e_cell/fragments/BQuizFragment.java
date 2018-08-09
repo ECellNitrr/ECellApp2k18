@@ -6,8 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.bquiz.BquizActivity;
-import nitrr.ecell.e_cell.bquiz.LeaderboardFragment;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
@@ -33,13 +30,27 @@ import retrofit2.Response;
 public class BQuizFragment extends Fragment {
 
     private ProgressBar progressBarBquizFragment;
-    private DialogInterface.OnClickListener clickListenerNegative = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener clickListenerNegativeStatus = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
         }
     };
-    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener clickListenerPositiveRules = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+            Intent intent = new Intent(getActivity(), BquizActivity.class);
+            startActivity(intent);
+        }
+    };
+    private DialogInterface.OnClickListener clickListenerNegativeRules = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
+    private DialogInterface.OnClickListener clickListenerPositiveStatus = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             apiCallForBquizStatus();
@@ -82,14 +93,14 @@ public class BQuizFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                apiCallForBquizStatus();
-//                progressBarBquizFragment.setVisibility(View.VISIBLE);
+                apiCallForBquizStatus();
+                progressBarBquizFragment.setVisibility(View.VISIBLE);
 //                FragmentActivity activity = (FragmentActivity) (getActivity());
 //                FragmentManager fm = activity.getSupportFragmentManager();
 //                LeaderboardFragment leaderboardFragment = LeaderboardFragment.newInstance();
 //                leaderboardFragment.show(fm, "");
-                Intent i = new Intent(getActivity(), BquizActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getActivity(), BquizActivity.class);
+//                startActivity(i);
             }
         });
 
@@ -106,10 +117,9 @@ public class BQuizFragment extends Fragment {
                     BQuizStatusResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
                         if (jsonResponse.isActive()) {
-                            Intent intent = new Intent(getActivity(), BquizActivity.class);
-                            startActivity(intent);
+                            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, getContext(), clickListenerPositiveRules, clickListenerNegativeRules, false, getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn));
                         } else {
-                            DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositive, clickListenerNegative, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
+                            DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositiveStatus, clickListenerNegativeStatus, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         }
                     }
                 } else {
@@ -119,6 +129,7 @@ public class BQuizFragment extends Fragment {
 
             @Override
             public void onFailure(Call<BQuizStatusResponse> call, Throwable t) {
+                progressBarBquizFragment.setVisibility(View.GONE);
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

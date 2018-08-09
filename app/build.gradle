@@ -20,9 +20,9 @@ android {
     productFlavors {
         production {
             applicationIdSuffix ""
-            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
-//            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
-            buildConfigField("String", "BASE_URL", "\"http://192.168.2.5:8080/\"")
+//            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
+//            buildConfigField("String", "BASE_URL", "\"http://192.168.2.5:8080/\"")
             minSdkVersion 19
             applicationId 'nitrr.ecell.e_cell'
             targetSdkVersion 27

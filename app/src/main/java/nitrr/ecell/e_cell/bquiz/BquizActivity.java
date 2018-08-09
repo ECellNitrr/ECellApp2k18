@@ -1,6 +1,5 @@
 package nitrr.ecell.e_cell.bquiz;
 
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +30,6 @@ import nitrr.ecell.e_cell.bquiz.model.QuestionDetailsModel;
 import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.SelectAnswerInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,13 +47,13 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     MyCountDownTimer myCountDownTimer;
     private Answer answer;
+    private int disqualificationCoounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bquiz);
         initview();
-        showBQuizRulesDialog();
         initAdapter();
         apiCall();
     }
@@ -74,17 +71,6 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         rvAnswers.setLayoutManager(new LinearLayoutManager(this));
         answer = new Answer();
     }
-
-    private void showBQuizRulesDialog(){
-        DialogFactory.showDialog(DialogFactory.BQUIZ_RULES,this,clickListenerPositive,null,true,getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn));
-    }
-
-    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-        }
-    };
 
     private void initAdapter(){
         adapter = new BquizAnswerAdapter(this, questionDetailsModels, this);
@@ -114,7 +100,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         });
     }
 
-    private void setData(BQuizQuestionResponse question){
+    private void setData(final BQuizQuestionResponse question){
         if(null != question.getText()){
             tvQuestion.setText(question.getText());
         }
@@ -129,8 +115,14 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                     adapter.notifyDataSetChanged();
-                    myCountDownTimer = new MyCountDownTimer(10000, 1000);
-                    myCountDownTimer.start();
+                    if(0 != question.getTime()){
+                        myCountDownTimer = new MyCountDownTimer(question.getTime()*1000, 1000);
+                        myCountDownTimer.start();
+                    }
+                    else{
+                        myCountDownTimer = new MyCountDownTimer(20000, 1000);
+                        myCountDownTimer.start();
+                    }
                     return false;
                 }
 
@@ -139,11 +131,16 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     .into(ivQuestion);
         }
         else{
-            //todo : set placeholder image for bquiz
-            Glide.with(this).load(R.drawable.contact_us_drawable).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
+            Glide.with(this).load(R.drawable.bquiz_logo).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
-            myCountDownTimer = new MyCountDownTimer(10000, 1000);
-            myCountDownTimer.start();
+            if(0 != question.getTime()){
+                myCountDownTimer = new MyCountDownTimer(question.getTime()*1000, 1000);
+                myCountDownTimer.start();
+            }
+            else{
+                myCountDownTimer = new MyCountDownTimer(20000, 1000);
+                myCountDownTimer.start();
+            }
         }
     }
 
@@ -169,6 +166,17 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
