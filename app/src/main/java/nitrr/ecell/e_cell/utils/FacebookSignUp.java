@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.otp.activity.otp_activity;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import retrofit2.Call;
@@ -140,10 +142,13 @@ public class FacebookSignUp {
                         prefUtils.saveAccessToken(response.body().getToken());
 
                         Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
-                        // TODO: Call OTP Activity Here
+
+                        Intent intent = new Intent(activity, otp_activity.class);
+                        activity.startActivity(intent);
+                        activity.finish();
                     }
                 } else
-                    Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "Not Successful.", Toast.LENGTH_LONG).show();
             }
 
             @Override

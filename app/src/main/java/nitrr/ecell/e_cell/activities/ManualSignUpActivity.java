@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,9 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.net.Inet4Address;
+
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.otp.activity.otp_activity;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
@@ -92,7 +96,6 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void apiCall() {
-
         setData();
 
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
@@ -107,14 +110,17 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                     if (null != jsonResponse) {
                         String token = jsonResponse.getToken();
                         PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
-                        utils.saveAccessToken(token);
+                        utils.saveAccessToken("Token " + token);
                         utils.saveUserName(firstName);
 
-                        Toast.makeText(ManualSignUpActivity.this, "Sign Up success.", Toast.LENGTH_LONG).show();
-                        // TODO : Remove Toast and Call OTP Activity here
+                        Toast.makeText(ManualSignUpActivity.this, token, Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(ManualSignUpActivity.this, otp_activity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 } else {
-                    Toast.makeText(ManualSignUpActivity.this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ManualSignUpActivity.this, response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
