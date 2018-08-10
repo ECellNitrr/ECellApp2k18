@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.fragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
@@ -64,8 +65,17 @@ public class EsummitFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         ESBottomSheetFragment fragment = new ESBottomSheetFragment();
         fragment.show(getActivity().getSupportFragmentManager(), "e-summit");
+        view.setClickable(false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (view != null) {
+                    view.setClickable(true);
+                }
+            }
+        }, 1000);
     }
 }

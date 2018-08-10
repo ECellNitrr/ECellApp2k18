@@ -13,8 +13,7 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
-import nitrr.ecell.e_cell.signin.model.Logindetails;
+import nitrr.ecell.e_cell.model.LoginDetails;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
@@ -55,7 +54,7 @@ public interface ApiServices {
     Call<EventsResponse> getEventsResponse();
 
     @POST(AppConstants.SIGN_IN_URL)
-    Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
+    Call<AuthenticationResponse>sendLoginDetails(@Body LoginDetails loginDetails);
 
     @GET(AppConstants.SPONSOR_URL)
     Call<SponsorsResponse> getSponsorsResponce();

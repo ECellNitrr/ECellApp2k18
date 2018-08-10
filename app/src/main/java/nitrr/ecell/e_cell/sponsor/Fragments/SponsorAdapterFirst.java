@@ -43,11 +43,12 @@ public class SponsorAdapterFirst extends RecyclerView.Adapter<SponsorAdapterFirs
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SponsorType sponsorTypeData = sectionedSponsorTypeList.get(position);
-        holder.SponsHeading.setText(sponsorTypeData.getSponsortypename());
         gridSponsorAdapter = new SponsorAdapterSecond(context);
         holder.gridRecyclerViewSpons.setLayoutManager(new GridLayoutManager(context, 2));
         holder.gridRecyclerViewSpons.setAdapter(gridSponsorAdapter);
         if (sponsorTypeData.getSponserslist() != null && sponsorTypeData.getSponserslist().size() != 0) {
+            holder.SponsHeading.setVisibility(View.VISIBLE);
+            holder.SponsHeading.setText(sponsorTypeData.getSponsortypename());
             gridSponsorAdapter.setSponsorDetailList(sponsorTypeData.getSponserslist());
             gridSponsorAdapter.notifyDataSetChanged();
         }

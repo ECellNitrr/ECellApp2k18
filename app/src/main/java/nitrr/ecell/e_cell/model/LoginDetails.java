@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.signin.model;
+package nitrr.ecell.e_cell.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Logindetails implements Serializable{
+public class LoginDetails implements Serializable{
 
     @SerializedName("email")
     @Expose
