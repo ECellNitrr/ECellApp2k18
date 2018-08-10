@@ -3,7 +3,6 @@ package nitrr.ecell.e_cell.restapi;
 import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
-import nitrr.ecell.e_cell.otp.Model.AuthenticationVerifyOtpResponse;
 import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
 import nitrr.ecell.e_cell.model.AboutUsResponse;
@@ -13,8 +12,10 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
-import nitrr.ecell.e_cell.signin.model.Logindetails;
+import nitrr.ecell.e_cell.model.LoginDetails;
+import nitrr.ecell.e_cell.otp.Model.VerifyOtp;
+import nitrr.ecell.e_cell.otp.Model.otpSendNumber;
+import nitrr.ecell.e_cell.otp.Model.sendOtp;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
@@ -28,10 +29,10 @@ public interface ApiServices {
     Call<AuthenticationResponse> sendRegisterDetails(@Body UserDetails userDetails);
 
     @POST(AppConstants.SEND_OTP_URL)
-    Call<SendOtpResponse> sendMobileNo(@Body String mobileNoOtp);
+    Call<SendOtpResponse> sendMobileNo(@Body otpSendNumber otpSendNumber);
 
     @POST(AppConstants.VERIFY_OTP_URL)
-    Call<AuthenticationVerifyOtpResponse> sendOtpEntered(@Body String otpEntered);
+    Call<VerifyOtp> sendOtpEntered(@Body sendOtp sendOtp);
 
     @POST(AppConstants.FB_SIGN_UP_URL)
     Call<AuthenticationResponse> sendFacebookRegistrationDetails(@Body FacebookSignInUserDetails details);
@@ -55,7 +56,7 @@ public interface ApiServices {
     Call<EventsResponse> getEventsResponse();
 
     @POST(AppConstants.SIGN_IN_URL)
-    Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
+    Call<AuthenticationResponse>sendLoginDetails(@Body LoginDetails loginDetails);
 
     @GET(AppConstants.SPONSOR_URL)
     Call<SponsorsResponse> getSponsorsResponce();
