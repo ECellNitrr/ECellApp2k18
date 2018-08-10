@@ -21,8 +21,9 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.AppConstants;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +33,6 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
     private TextView det, add, email, ph, touch;
     private ImageView send, facebook, youtube, linkedin, twitter, instagram;
     private EditText nameEditText, emailEditText, messageEditText;
-
 
 
     @Nullable
@@ -81,51 +81,52 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        if (view == send){
+        if (view == send) {
             if (!NetworkUtils.isNetworkAvailable(getContext())) {
                 Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
             }
-        if (checkNull()) {
+            if (checkNull()) {
 
-            ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+                ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
 
-            MessageDetails details = new MessageDetails();
+                PrefUtils utils = new PrefUtils(getActivity());
+                MessageDetails details = new MessageDetails();
 
-            details.setEmail(emailEditText.getText().toString().trim());
-            details.setName(nameEditText.getText().toString().trim());
-            details.setMessage(messageEditText.getText().toString().trim());
+                details.setToken(utils.getAccessToken());
+                details.setEmail(emailEditText.getText().toString().trim());
+                details.setName(nameEditText.getText().toString().trim());
+                details.setMessage(messageEditText.getText().toString().trim());
 
-            Call<GenericResponse> call = services.sendMessage(details);
-            call.enqueue(new Callback<GenericResponse>() {
-                @Override
-                public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                    if (response.isSuccessful())
-                        Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
-                }
+                Call<GenericResponse> call = services.sendMessage(details);
+                call.enqueue(new Callback<GenericResponse>() {
+                    @Override
+                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                        if (response.isSuccessful())
+                            Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
+                    }
 
-                @Override
-                public void onFailure(Call<GenericResponse> call, Throwable t) {
-                    Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<GenericResponse> call, Throwable t) {
+                        Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
+                    }
+                });
 
-        } else {
-            Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
-        }
-    }
-        else if (view == facebook)
+            } else {
+                Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
+            }
+        } else if (view == facebook)
             openURL(AppConstants.FACEBOOK);
 
-        else if(view == twitter)
+        else if (view == twitter)
             openURL(AppConstants.TWITTER);
 
-        else if(view == youtube)
+        else if (view == youtube)
             openURL(AppConstants.YOUTUBE);
 
-        else if(view == linkedin)
+        else if (view == linkedin)
             openURL(AppConstants.LINKEDIN);
 
-        else if(view == instagram)
+        else if (view == instagram)
             openURL(AppConstants.INSTAGRAM);
     }
 
