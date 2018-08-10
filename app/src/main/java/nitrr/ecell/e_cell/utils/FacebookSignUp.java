@@ -1,7 +1,6 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -136,12 +135,15 @@ public class FacebookSignUp {
         call.enqueue(new Callback<AuthenticationResponse>() {
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
-                if (response.isSuccessful())
+                if (response.isSuccessful()) {
                     if (response.body() != null) {
                         prefUtils.saveAccessToken(response.body().getToken());
 
+                        Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
                         // TODO: Call OTP Activity Here
                     }
+                } else
+                    Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
             }
 
             @Override

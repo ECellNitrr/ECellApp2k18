@@ -29,7 +29,6 @@ import retrofit2.Response;
 
 public class BQuizFragment extends Fragment {
 
-    private ProgressBar progressBarBquizFragment;
     private DialogInterface.OnClickListener clickListenerNegativeStatus = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -68,7 +67,6 @@ public class BQuizFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bquiz_fragment, container, false);
-        progressBarBquizFragment = (ProgressBar) view.findViewById(R.id.progress_bar_bquiz_fragment);
         return view;
     }
 
@@ -93,10 +91,9 @@ public class BQuizFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BquizActivity.class);
-                startActivity(intent);
-//                apiCallForBquizStatus();
-//                progressBarBquizFragment.setVisibility(View.VISIBLE);
+//                Intent intent = new Intent(getActivity(), BquizActivity.class);
+//                startActivity(intent);
+                apiCallForBquizStatus();
 //                FragmentActivity activity = (FragmentActivity) (getActivity());
 //                FragmentManager fm = activity.getSupportFragmentManager();
 //                LeaderboardFragment leaderboardFragment = LeaderboardFragment.newInstance();
@@ -112,7 +109,6 @@ public class BQuizFragment extends Fragment {
         call.enqueue(new Callback<BQuizStatusResponse>() {
             @Override
             public void onResponse(Call<BQuizStatusResponse> call, Response<BQuizStatusResponse> response) {
-                progressBarBquizFragment.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     BQuizStatusResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
@@ -129,7 +125,6 @@ public class BQuizFragment extends Fragment {
 
             @Override
             public void onFailure(Call<BQuizStatusResponse> call, Throwable t) {
-                progressBarBquizFragment.setVisibility(View.GONE);
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

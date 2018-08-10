@@ -14,14 +14,14 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.model.MessageDetails;
 import nitrr.ecell.e_cell.model.SpeakerResponse;
 import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
-import nitrr.ecell.e_cell.signin.model.Logindetails;
+import nitrr.ecell.e_cell.model.LoginDetails;
 import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiServices {
 
@@ -56,13 +56,13 @@ public interface ApiServices {
     Call<EventsResponse> getEventsResponse();
 
     @POST(AppConstants.SIGN_IN_URL)
-    Call<AuthenticationLoginResponse>sendLoginDetails(@Body Logindetails logindetails);
+    Call<AuthenticationResponse>sendLoginDetails(@Body LoginDetails loginDetails);
 
     @GET(AppConstants.SPONSOR_URL)
     Call<SponsorsResponse> getSponsorsResponce();
 
     @GET(AppConstants.BQUIZ_QUESTION)
-    Call<BQuizQuestionResponse> getQuestion();
+    Call<BQuizQuestionResponse> getQuestion(@Query("retryQuestion") Boolean retryQuestion);
 
     @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
     Call<GenericResponse> submitAnswer(@Body Answer answer);

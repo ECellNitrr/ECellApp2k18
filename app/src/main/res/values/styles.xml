@@ -35,6 +35,11 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="ProgressDialog">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+    </style>
+
     <style name="centralLayoutStyle">
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_marginTop">20dp</item>

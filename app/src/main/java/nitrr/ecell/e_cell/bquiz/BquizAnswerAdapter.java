@@ -46,7 +46,7 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
         if(null != questionDetailsModels){
             final QuestionDetailsModel data = questionDetailsModels.get(position);
             if(null != data){
-                holder.tvAnswerNumber.setText(position + ".");
+                holder.tvAnswerNumber.setText((position+1) + ".");
 
                 if(null != data.getValue()){
                     holder.tvAnswerText.setText(data.getValue());

@@ -108,7 +108,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                         String token = jsonResponse.getToken();
                         PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
                         utils.saveAccessToken(token);
-                        utils.saveUserName(firstName + " " + lastName);
+                        utils.saveUserName(firstName);
 
                         Toast.makeText(ManualSignUpActivity.this, "Sign Up success.", Toast.LENGTH_LONG).show();
                         // TODO : Remove Toast and Call OTP Activity here

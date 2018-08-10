@@ -19,6 +19,7 @@ import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +29,7 @@ public class LeaderboardFragment extends DialogFragment {
     private LeaderBoardAdapter leaderBoardAdapter;
     private RecyclerView recyclerViewLeaderboard;
     private ProgressBar progressBarLeaderboard;
+    private PrefUtils prefUtils;
     private TextView userRankLeaderboard, userNameLeadeboard;
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
         @Override
@@ -69,6 +71,7 @@ public class LeaderboardFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        prefUtils = new PrefUtils(getActivity());
         initialize(view);
         setUpLeaderboardRecyclerView();
         apiCallForBquizLeaderboard();
@@ -100,7 +103,7 @@ public class LeaderboardFragment extends DialogFragment {
                     BQuizLeaderboardResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
                         leaderBoardAdapter.setLeaderboardUserDetailsList(jsonResponse.getLeaderboard());
-                        //userNameLeadeboard.setText();
+                        userNameLeadeboard.setText(prefUtils.getUserName());
                         userRankLeaderboard.setText(String.valueOf(jsonResponse.getUserRank()));
                         leaderBoardAdapter.notifyDataSetChanged();
                     }

@@ -35,6 +35,7 @@ import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import nitrr.ecell.e_cell.utils.SelectAnswerInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,11 +49,14 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     private RecyclerView rvAnswers;
     private DonutProgress donutProgress;
     private Button btnSubmitAnswer;
+    private Boolean retryQuestion = false;
 
     private BquizAnswerAdapter adapter;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     MyCountDownTimer myCountDownTimer;
     private Answer answer;
+    private ProgressDialog progressDialog;
+    private int countbackPress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         setContentView(R.layout.activity_bquiz);
         initview();
         initAdapter();
+        progressDialog.showDialog("Charge your brain. Question is coming", this);
         apiCall();
     }
 
@@ -89,7 +94,9 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         rvAnswers = findViewById(R.id.rvAnswers);
         rvAnswers.setLayoutManager(new LinearLayoutManager(this));
         answer = new Answer();
+        progressDialog = new ProgressDialog();
         btnSubmitAnswer.setOnClickListener(this);
+        makeLayoutsVisible();
     }
 
     private void initAdapter(){
@@ -99,13 +106,15 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     private void apiCall(){
         ApiServices api = AppClient.getInstance().createService(ApiServices.class);
-        Call<BQuizQuestionResponse> call = api.getQuestion();
+        Call<BQuizQuestionResponse> call = api.getQuestion(retryQuestion);
         call.enqueue(new Callback<BQuizQuestionResponse>() {
             @Override
             public void onResponse(Call<BQuizQuestionResponse> call, Response<BQuizQuestionResponse> response) {
                 if(response.isSuccessful()){
                     BQuizQuestionResponse question = response.body();
                     if(null != question){
+                        retryQuestion = false;
+                        makeLayoutsVisible();
                         setData(question);
                         questionDetailsModels.addAll(question.getOptions());
                         answer.setOptionId(null);
@@ -116,9 +125,12 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
             @Override
             public void onFailure(Call<BQuizQuestionResponse> call, Throwable t) {
-
+                retryQuestion = true;
+                progressDialog.showDialog("Some Error occured.Please wait while we get your question.",BquizActivity.this);
+                apiCall();
             }
         });
+        progressDialog.hideDialog();
     }
 
     private void setData(final BQuizQuestionResponse question){
@@ -130,6 +142,9 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     .load(question.getImageUrl()).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                    retryQuestion = true;
+                    progressDialog.showDialog("Some Error occured.Please wait while we get your question.",BquizActivity.this);
+                    apiCall();
                     return false;
                 }
 
@@ -170,7 +185,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void submitAnswer(Answer answer){
-        //todo: Add a progress dialog
+        progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
         ApiServices api = AppClient.getInstance().createService(ApiServices.class);
         Call<GenericResponse> call = api.submitAnswer(answer);
         call.enqueue(new Callback<GenericResponse>() {
@@ -180,7 +195,8 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     GenericResponse responseBody = response.body();
                     if(null != responseBody){
                         if (responseBody.getSuccess()){
-                            //todo:Answer submitted
+                            makeLayoutsInvisible();
+                            tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
                         }
                     }
                 }
@@ -191,6 +207,24 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
             }
         });
+        progressDialog.hideDialog();
+    }
+
+    private void makeLayoutsInvisible(){
+        rvAnswers.setVisibility(View.GONE);
+        timer.setVisibility(View.GONE);
+        donutProgress.setVisibility(View.GONE);
+        btnSubmitAnswer.setVisibility(View.GONE);
+
+    }
+
+
+    private void makeLayoutsVisible(){
+        rvAnswers.setVisibility(View.VISIBLE);
+        timer.setVisibility(View.VISIBLE);
+        donutProgress.setVisibility(View.VISIBLE);
+        btnSubmitAnswer.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -210,7 +244,20 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, BquizActivity.this, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                BquizActivity.super.onBackPressed();
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
+
+
+
     }
 
     @Override
