@@ -70,18 +70,6 @@ public class PrefUtils {
         editor.apply();
 
         saveUserName(first_name);
-
-        /* Delete this dialog after final build.
-        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
-        dialog.setTitle("Retrieved Data");
-        dialog.setMessage("Access Token: " + getAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
-        dialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show(); */
     }
 
     public void clearPrefs(){
