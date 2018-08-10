@@ -84,4 +84,7 @@
     <string name="spinner_text">Title</string>
     <string name="log_out">Log Out</string>
     <string name="date">September 8 and 9, 2018 NIT Raipur</string>
+
+    //Notification
+    <string name="default_notification_channel_id">Random number</string>
 </resources>
