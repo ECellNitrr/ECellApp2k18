@@ -11,13 +11,13 @@ public class SplashScreenResponse extends GenericResponse implements Serializabl
 
     @SerializedName("version")
     @Expose
-    private float version;
+    private String version;
 
     @SerializedName("url")
     @Expose
     private String url;
 
-    public float getVersion() {
+    public String getVersion() {
         return version;
     }
 

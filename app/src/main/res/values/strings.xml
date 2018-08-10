@@ -45,6 +45,9 @@
     <string name="network_issue_title">Network Issue</string>
     <string name="network_issue_details">No internet connection. Please try again.</string>
     <string name="no_internet_connection_msg">No Internet Connection. Please check your internet connection</string>
+    <string name="update_msg">Please Update the app for Better experience</string>
+    <string name="app_update">App Update</string>
+    <string name="update_btn">Update</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

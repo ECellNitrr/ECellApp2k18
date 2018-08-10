@@ -72,8 +72,11 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
-                        Toast.makeText(login_activity.this, response.message(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(login_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(login_activity.this, jsonResponse.getToken(), Toast.LENGTH_LONG).show();
+
                         prefUtils.saveAccessToken("Token " + jsonResponse.getToken());
+
 
                         Intent intent = new Intent(login_activity.this, HomeActivity.class);
                         startActivity(intent);

@@ -3,6 +3,7 @@ package nitrr.ecell.e_cell.restapi;
 import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
 import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
+import nitrr.ecell.e_cell.model.SplashScreenResponse;
 import nitrr.ecell.e_cell.otp.Model.AuthenticationVerifyOtpResponse;
 import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
 import nitrr.ecell.e_cell.events.Model.EventsResponse;
@@ -61,4 +62,7 @@ public interface ApiServices {
 
     @GET(AppConstants.BQUIZ_QUESTION)
     Call<BQuizQuestionResponse> getQuestion();
+
+    @GET(AppConstants.SPLASHSCREEN_URL)
+    Call<SplashScreenResponse> getAppUpdate();
 }
