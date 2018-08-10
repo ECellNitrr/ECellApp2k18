@@ -3,11 +3,11 @@ package nitrr.ecell.e_cell.utils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import nitrr.ecell.e_cell.fragments.AboutUsFragment;
-import nitrr.ecell.e_cell.fragments.BQuizFragment;
-import nitrr.ecell.e_cell.fragments.EsummitFragment;
-import nitrr.ecell.e_cell.fragments.EventsFragment;
-import nitrr.ecell.e_cell.fragments.SponsorsFragment;
+import nitrr.ecell.e_cell.fragments.HomeAboutUsFragment;
+import nitrr.ecell.e_cell.fragments.HomeBQuizFragment;
+import nitrr.ecell.e_cell.fragments.HomeEsummitFragment;
+import nitrr.ecell.e_cell.fragments.HomeEventsFragment;
+import nitrr.ecell.e_cell.fragments.HomeSponsorsFragment;
 
 public class HomeViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -24,15 +24,15 @@ public class HomeViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new EsummitFragment();
+                return new HomeEsummitFragment();
             case 1:
-                return new EventsFragment();
+                return new HomeEventsFragment();
             case 2:
-                return new BQuizFragment();
+                return new HomeBQuizFragment();
             case 3:
-                return new SponsorsFragment();
+                return new HomeSponsorsFragment();
             case 4:
-                return new AboutUsFragment();
+                return new HomeAboutUsFragment();
         }
         return null;
     }

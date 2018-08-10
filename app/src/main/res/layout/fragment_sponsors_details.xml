@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sponsors_gradient_bg"
-    tools:context=".sponsor.Fragments.SponsorsDetailsFragment">
+    tools:context=".fragments.SponsorsDetailsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

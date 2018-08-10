@@ -4,10 +4,10 @@ import android.support.v4.app.FragmentManager;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-import nitrr.ecell.e_cell.events.activity.EventsFragment;
+import nitrr.ecell.e_cell.fragments.EventsFragment;
 import nitrr.ecell.e_cell.fragments.AboutUsBottomSheetFragment;
 import nitrr.ecell.e_cell.fragments.ESBottomSheetFragment;
-import nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment;
+import nitrr.ecell.e_cell.fragments.SponsorsFragment;
 
 public class CustomGestureDetector extends GestureDetector.SimpleOnGestureListener {
 

@@ -21,17 +21,17 @@
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name=".signin.activities.login_activity"
+            android:name=".activities.login_activity"
             android:screenOrientation="nosensor" />
 
         <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="nosensor"/>
         <activity
-            android:name=".otp.activity.otp_activity"
+            android:name=".activities.otp_activity"
             android:screenOrientation="nosensor"/>
         <activity
-            android:name=".splashScreen.splashScreen"
+            android:name=".activities.splashScreen"
             android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,7 +64,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".bquiz.BquizActivity" />
+        <activity android:name=".activities.BquizActivity" />
 
     </application>
 

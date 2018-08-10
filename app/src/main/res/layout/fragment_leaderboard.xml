@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLeaderboardBackground"
-    tools:context=".bquiz.LeaderboardFragment">
+    tools:context=".fragments.LeaderboardFragment">
 
     <TextView
         android:id="@+id/leaderboard_title"

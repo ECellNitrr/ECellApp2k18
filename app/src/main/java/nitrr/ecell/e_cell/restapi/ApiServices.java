@@ -1,21 +1,23 @@
 package nitrr.ecell.e_cell.restapi;
 
-import nitrr.ecell.e_cell.bquiz.model.Answer;
-import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
-import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
-import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
-import nitrr.ecell.e_cell.otp.Model.AuthenticationVerifyOtpResponse;
-import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
-import nitrr.ecell.e_cell.events.Model.EventsResponse;
-import nitrr.ecell.e_cell.model.AboutUsResponse;
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.FacebookSignInUserDetails;
-import nitrr.ecell.e_cell.model.GenericResponse;
-import nitrr.ecell.e_cell.model.MessageDetails;
-import nitrr.ecell.e_cell.model.SpeakerResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.model.LoginDetails;
-import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
+import nitrr.ecell.e_cell.model.bquiz.Answer;
+import nitrr.ecell.e_cell.model.bquiz.BQuizQuestionResponse;
+import nitrr.ecell.e_cell.model.bquiz.BQuizStatusResponse;
+import nitrr.ecell.e_cell.model.bquiz.BQuizLeaderboardResponse;
+import nitrr.ecell.e_cell.model.otp.SendOtpResponse;
+import nitrr.ecell.e_cell.model.events.EventsResponse;
+import nitrr.ecell.e_cell.model.aboutus.AboutUsResponse;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.auth.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+import nitrr.ecell.e_cell.model.aboutus.MessageDetails;
+import nitrr.ecell.e_cell.model.esummit.SpeakerResponse;
+import nitrr.ecell.e_cell.model.aboutus.UserDetails;
+import nitrr.ecell.e_cell.model.auth.LoginDetails;
+import nitrr.ecell.e_cell.model.otp.VerifyOtp;
+import nitrr.ecell.e_cell.model.otp.otpSendNumber;
+import nitrr.ecell.e_cell.model.otp.sendOtp;
+import nitrr.ecell.e_cell.model.sponsors.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,10 +31,10 @@ public interface ApiServices {
     Call<AuthenticationResponse> sendRegisterDetails(@Body UserDetails userDetails);
 
     @POST(AppConstants.SEND_OTP_URL)
-    Call<SendOtpResponse> sendMobileNo(@Body String mobileNoOtp);
+    Call<SendOtpResponse> sendMobileNo(@Body otpSendNumber otpSendNumber);
 
     @POST(AppConstants.VERIFY_OTP_URL)
-    Call<AuthenticationVerifyOtpResponse> sendOtpEntered(@Body String otpEntered);
+    Call<VerifyOtp> sendOtpEntered(@Body sendOtp sendOtp);
 
     @POST(AppConstants.FB_SIGN_UP_URL)
     Call<AuthenticationResponse> sendFacebookRegistrationDetails(@Body FacebookSignInUserDetails details);

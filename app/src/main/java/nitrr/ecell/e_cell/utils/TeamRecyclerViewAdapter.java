@@ -23,7 +23,7 @@ import com.bumptech.glide.request.target.Target;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.TeamDetails;
+import nitrr.ecell.e_cell.model.aboutus.TeamDetails;
 
 public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerViewHolder> {
 
