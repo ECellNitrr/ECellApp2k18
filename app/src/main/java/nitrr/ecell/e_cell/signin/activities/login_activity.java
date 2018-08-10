@@ -53,7 +53,6 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         EditText_Password = findViewById(R.id.inputpassword);
         Sign_in = findViewById(R.id.signinbutton);
         ForgetPassword = findViewById(R.id.forgetpassword);
-        SignInProgressBar = findViewById(R.id.signinprogressbar);
 
         Sign_in.setOnClickListener(this);
         ForgetPassword.setOnClickListener(this);
