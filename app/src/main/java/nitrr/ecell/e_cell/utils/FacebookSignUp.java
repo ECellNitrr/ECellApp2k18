@@ -139,7 +139,7 @@ public class FacebookSignUp {
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        prefUtils.saveAccessToken(response.body().getToken());
+                        prefUtils.saveAccessToken("Token " + response.body().getToken());
 
                         Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
 

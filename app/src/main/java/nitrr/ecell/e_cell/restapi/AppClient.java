@@ -28,7 +28,7 @@ public class AppClient {
         OkHttpClient client = httpClient.build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.10:8080/").client(client)
+                .baseUrl(BuildConfig.BASE_URL).client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

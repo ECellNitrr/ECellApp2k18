@@ -45,8 +45,8 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initview() {
-prefUtils = new PrefUtils(otp_activity.this);
-userDetails=new UserDetails();
+        prefUtils = new PrefUtils(otp_activity.this);
+        userDetails = new UserDetails();
 
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
         EditText_otp = findViewById(R.id.input_otp);
@@ -59,34 +59,23 @@ userDetails=new UserDetails();
         OTP_button.setOnClickListener(this);
         Proceed_afterotp_button.setOnClickListener(this);
 
-        SecondLayout.setVisibility(View.INVISIBLE);
-        FirstLayout.setVisibility(View.VISIBLE);
-
-        if (!prefUtils.getIfIsFacebookLogin())
-        {
-
-            SecondLayout.setVisibility(View.VISIBLE);
-            FirstLayout.setVisibility(View.INVISIBLE);
-
-
-        }
-        else
-        {
-            SecondLayout.setVisibility(View.INVISIBLE);
+        if (prefUtils.getIfIsFacebookLogin()) {
             FirstLayout.setVisibility(View.VISIBLE);
-            Mobile_no = EditText_mobilenumber.getText().toString().trim();
+            SecondLayout.setVisibility(View.GONE);
 
+        } else {
+            SecondLayout.setVisibility(View.VISIBLE);
+            FirstLayout.setVisibility(View.GONE);
         }
-
     }
 
     private void apicallSendOtp() {
 
         Mobile_no = EditText_mobilenumber.getText().toString().trim();
 
-          otpSendNumber otpSendNumber=new otpSendNumber();
-          otpSendNumber.setMobile_no(Mobile_no);
-          otpSendNumber.setToken(prefUtils.getAccessToken());
+        otpSendNumber otpSendNumber = new otpSendNumber();
+        otpSendNumber.setMobile_no(Mobile_no);
+        otpSendNumber.setToken(prefUtils.getAccessToken());
 
 
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
