@@ -63,7 +63,6 @@ public class SponsorsFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ((HomeActivity)getContext()).addFragment(new nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment(), "Sponsor Fragment");
                 FragmentActivity activity = (FragmentActivity) (getActivity());
                 FragmentManager fm = activity.getSupportFragmentManager();
                 nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment sponsorsFragment = nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment.newInstance();

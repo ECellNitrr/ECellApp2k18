@@ -22,6 +22,7 @@
             android:gravity="right"
             android:layout_marginLeft="@dimen/margin_24"
             android:textSize="14sp"
+            android:textColor="@color/colorText"
             android:text="A."/>
 
         <TextView
@@ -31,6 +32,7 @@
             android:gravity="right"
             android:layout_marginLeft="@dimen/margin_8"
             android:textSize="14sp"
+            android:textColor="@color/colorText"
             android:text="Google"/>
 
     </LinearLayout>

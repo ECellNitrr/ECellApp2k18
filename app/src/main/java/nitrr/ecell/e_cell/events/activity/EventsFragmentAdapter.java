@@ -1,8 +1,10 @@
 package nitrr.ecell.e_cell.events.activity;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +19,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -41,15 +48,28 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
         return new ViewHolder(view);
     }
 
-    //  @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final EventsData eventsData = eventsDataList.get(i);
         viewHolder.textViewname.setText(eventsData.getName_response());
         Glide.with(context)
-                .load(eventsData.getIcon_response()).into(viewHolder.imageViewlogo);
-        viewHolder.linearLayoutEventDetails.setOnClickListener(new View.OnClickListener() {
+                .load(eventsData.getIcon_response())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        viewHolder.loadingIndicatorView.setVisibility(View.GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        viewHolder.loadingIndicatorView.setVisibility(View.GONE);
+                        return false;
+                    }
+                })
+                .into(viewHolder.imageViewlogo);
+                viewHolder.linearLayoutEventDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentActivity activity = (FragmentActivity) (context);
@@ -73,6 +93,7 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
         public TextView textViewname;
         public ImageView imageViewlogo;
         LinearLayout linearLayoutEventDetails;
+        AVLoadingIndicatorView loadingIndicatorView;
 
 
         public ViewHolder(View itemView) {
@@ -80,6 +101,7 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
             linearLayoutEventDetails = (LinearLayout) itemView.findViewById(R.id.event_details_linear_layout);
             textViewname = (TextView) itemView.findViewById(R.id.name_id);
             imageViewlogo = (ImageView) itemView.findViewById(R.id.logo_id);
+            loadingIndicatorView = (AVLoadingIndicatorView) itemView.findViewById(R.id.indicator_progress_bar);
 
         }
     }

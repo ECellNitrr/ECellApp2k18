@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.signin.activities.login_activity;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,7 +36,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void init() {
-
         facebookSignUp = findViewById(R.id.register_facebook);
 
         signIn = findViewById(R.id.register_sign_in);
@@ -59,9 +59,12 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
         if (v == signIn) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
+
                 @Override
                 public void run() {
-                    // TODO: Sign In Activity Call
+                    Intent intent = new Intent(RegisterMainActivity.this, login_activity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }, 150);
 

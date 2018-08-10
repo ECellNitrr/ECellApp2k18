@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".otp.activity.otp_activity">
+
+
+    <LinearLayout
+        android:id="@+id/ll_logo"
+        android:layout_width="200dp"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:background="@drawable/ecell_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="217dp"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_first"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="350dp"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@color/colorWhite"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/input_mobilenumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColorHint="@color/colorBackground"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="@string/mobile_no"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/customborder"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/otp_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground"
+                android:layout_gravity="center"
+                android:text="@string/otp"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"
+                android:clickable="true"
+                android:focusable="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_second"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@color/colorWhite"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/input_otp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColorHint="@color/colorBackground"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="@string/otp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/customborder"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/proceedafterotp_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground"
+                android:layout_gravity="center"
+                android:text="@string/proceed"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"
+                android:clickable="true"
+                android:focusable="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/otpprogressbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/AlertDialog.AppCompat"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="49dp"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>

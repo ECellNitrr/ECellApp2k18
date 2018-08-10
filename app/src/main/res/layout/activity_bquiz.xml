@@ -4,19 +4,19 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillViewport="true"
-    android:background="#253143">
+    android:background="@color/bquizLightBg">
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="#253143">
+        android:background="@color/bquizLightBg">
 
         <RelativeLayout
             android:id="@+id/llDarkBg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_224"
-            android:background="#00081c"/>
+            android:background="@color/bquizDarkBg"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

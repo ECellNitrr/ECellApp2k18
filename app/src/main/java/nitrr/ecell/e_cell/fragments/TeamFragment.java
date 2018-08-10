@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,6 +46,7 @@ public class TeamFragment extends Fragment {
     private TeamRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
     private CustomScrollableView scrollableView;
+    private SwipeRefreshLayout swipeRefreshLayoutTeam;
 
     private TextView director, hocd, faculty, team, hocdName, dirName, fac1;
     private ImageView dirImage, hocdImage, fac1Image;
@@ -74,6 +76,8 @@ public class TeamFragment extends Fragment {
 
     private void initialize(View view) {
         Typeface bebas = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
+
+        swipeRefreshLayoutTeam = view.findViewById(R.id.swipeRefreshLayoutTeam);
 
         scrollableView = view.findViewById(R.id.scrollView);
         scrollableView.setScrolling(false);
@@ -107,6 +111,14 @@ public class TeamFragment extends Fragment {
         fac1.setTypeface(bebas);
         hocdName.setTypeface(bebas);
         dirName.setTypeface(bebas);
+
+        swipeRefreshLayoutTeam.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                callAPI();
+                swipeRefreshLayoutTeam.setRefreshing(false);
+            }
+        });
     }
 
     private void callAPI() {
@@ -127,18 +139,21 @@ public class TeamFragment extends Fragment {
                         facultyList.addAll(jsonResponse.getFaculty());
                         setDetails();
                     }
-                } else {
-                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                } else if (getContext() != null) {
+                    Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<AboutUsResponse> call, Throwable t) {
                 progressBar.setVisibility(GONE);
-                if (!NetworkUtils.isNetworkAvailable(getContext())) {
-                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
-                } else {
-                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                if (getContext() != null) {
+                    if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                        DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                    } else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+
+                    }
                 }
             }
         });

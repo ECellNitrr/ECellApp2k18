@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ public class EventsFragment extends DialogFragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBarEvents;
     private EventsFragmentAdapter adapterr;
+    private SwipeRefreshLayout swipeRefreshLayoutEvents;
     private ArrayList<EventsData> data_events = new ArrayList<>();
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
         @Override
@@ -79,7 +81,7 @@ public class EventsFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-
+        swipeRefreshLayoutEvents = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutEvents);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_id);
         progressBarEvents = (ProgressBar) view.findViewById(R.id.progress_bar_events);
         adapterr = new EventsFragmentAdapter(data_events, getContext());
@@ -88,6 +90,13 @@ public class EventsFragment extends DialogFragment {
         if (!(data_events.size() > 0)) {
             APICall();
         }
+        swipeRefreshLayoutEvents.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                APICall();
+                swipeRefreshLayoutEvents.setRefreshing(false);
+            }
+        });
         return view;
     }
 
@@ -105,18 +114,21 @@ public class EventsFragment extends DialogFragment {
                         data_events.addAll(eventsResponse.getEvents());
                         adapterr.notifyDataSetChanged();
                     }
-                } else {
-                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                } else if (getContext() != null) {
+                    Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<EventsResponse> call, Throwable t) {
                 progressBarEvents.setVisibility(View.GONE);
-                if (!NetworkUtils.isNetworkAvailable(getContext())) {
-                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
-                } else {
-                    Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                if (getContext() != null) {
+                    if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                        DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                    } else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+
+                    }
                 }
             }
         });

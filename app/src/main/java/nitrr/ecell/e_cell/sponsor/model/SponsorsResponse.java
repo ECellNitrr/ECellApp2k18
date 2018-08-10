@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SponsorsResponce implements Serializable{
+public class SponsorsResponse implements Serializable{
 
 @SerializedName("success")
     @Expose

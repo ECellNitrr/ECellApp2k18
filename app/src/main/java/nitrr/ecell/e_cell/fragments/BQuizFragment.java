@@ -93,14 +93,14 @@ public class BQuizFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiCallForBquizStatus();
-                progressBarBquizFragment.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(getActivity(), BquizActivity.class);
+                startActivity(intent);
+//                apiCallForBquizStatus();
+//                progressBarBquizFragment.setVisibility(View.VISIBLE);
 //                FragmentActivity activity = (FragmentActivity) (getActivity());
 //                FragmentManager fm = activity.getSupportFragmentManager();
 //                LeaderboardFragment leaderboardFragment = LeaderboardFragment.newInstance();
 //                leaderboardFragment.show(fm, "");
-//                Intent i = new Intent(getActivity(), BquizActivity.class);
-//                startActivity(i);
             }
         });
 

@@ -1,5 +1,7 @@
 package nitrr.ecell.e_cell.bquiz;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -8,6 +10,8 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,24 +34,25 @@ import nitrr.ecell.e_cell.bquiz.model.QuestionDetailsModel;
 import nitrr.ecell.e_cell.model.GenericResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.SelectAnswerInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BquizActivity extends AppCompatActivity implements SelectAnswerInterface{
+public class BquizActivity extends AppCompatActivity implements SelectAnswerInterface, View.OnClickListener{
 
     private CardView cvQuestion, cvQuestionImage;
     private TextView tvQuestion, timer;
     private ImageView ivQuestion;
     private RecyclerView rvAnswers;
     private DonutProgress donutProgress;
+    private Button btnSubmitAnswer;
 
     private BquizAnswerAdapter adapter;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     MyCountDownTimer myCountDownTimer;
     private Answer answer;
-    private int disqualificationCoounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,19 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         apiCall();
     }
 
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
+    private DialogInterface.OnClickListener clickListenerNegative = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
+
     private void initview(){
         cvQuestion = findViewById(R.id.cvQuestion);
         cvQuestionImage = findViewById(R.id.cvQuestionImage);
@@ -67,9 +85,11 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
         ivQuestion = findViewById(R.id.ivQuestion);
         donutProgress = findViewById(R.id.donut_progress);
+        btnSubmitAnswer = findViewById(R.id.btnSubmitAnswer);
         rvAnswers = findViewById(R.id.rvAnswers);
         rvAnswers.setLayoutManager(new LinearLayoutManager(this));
         answer = new Answer();
+        btnSubmitAnswer.setOnClickListener(this);
     }
 
     private void initAdapter(){
@@ -88,6 +108,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     if(null != question){
                         setData(question);
                         questionDetailsModels.addAll(question.getOptions());
+                        answer.setOptionId(null);
                         answer.setQuestionId(question.getId());
                     }
                 }
@@ -116,10 +137,12 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                     adapter.notifyDataSetChanged();
                     if(0 != question.getTime()){
+                        donutProgress.setMax(question.getTime());
                         myCountDownTimer = new MyCountDownTimer(question.getTime()*1000, 1000);
                         myCountDownTimer.start();
                     }
                     else{
+                        donutProgress.setMax(20);
                         myCountDownTimer = new MyCountDownTimer(20000, 1000);
                         myCountDownTimer.start();
                     }
@@ -134,10 +157,12 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             Glide.with(this).load(R.drawable.bquiz_logo).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
             if(0 != question.getTime()){
+                donutProgress.setMax(question.getTime());
                 myCountDownTimer = new MyCountDownTimer(question.getTime()*1000, 1000);
                 myCountDownTimer.start();
             }
             else{
+                donutProgress.setMax(20);
                 myCountDownTimer = new MyCountDownTimer(20000, 1000);
                 myCountDownTimer.start();
             }
@@ -170,7 +195,16 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     @Override
     protected void onStop() {
-
+        Toast.makeText(BquizActivity.this, getString(R.string.bquiz_penalty_text), Toast.LENGTH_LONG).show();
+        if(myCountDownTimer.getTimeLeft()>=5000){
+            long timeLeft = myCountDownTimer.getTimeLeft()-5000;
+            myCountDownTimer.cancel();
+            myCountDownTimer = new MyCountDownTimer(timeLeft, 1000);
+            myCountDownTimer.start();
+        }
+        else{
+            submitAnswer(answer);
+        }
         super.onStop();
     }
 
@@ -184,24 +218,45 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         answer.setOptionId(optionId);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnSubmitAnswer:
+                submitAnswer(answer);
+                break;
+        }
+    }
+
     public class MyCountDownTimer extends CountDownTimer {
+
+        long timeLeft=0;
 
         public MyCountDownTimer(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
         }
 
+        public long getTimeLeft(){
+            return timeLeft;
+        }
+
         @Override
         public void onTick(long millisUntilFinished) {
-
+            timeLeft = millisUntilFinished;
             int progress = (int) (millisUntilFinished/1000);
+            if(Integer.toString(progress).length()>1){
+                timer.setText("00:"+Integer.toString(progress));
+            }
+            else{
+                timer.setText("00:0"+Integer.toString(progress));
+            }
             donutProgress.setProgress(donutProgress.getMax()-progress);
         }
 
         @Override
         public void onFinish() {
 
-//            finish();
-            //todo: api call for submitting selected answer or null
+            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, BquizActivity.this, clickListenerPositive, clickListenerNegative, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn));
+            submitAnswer(answer);
         }
     }
 }

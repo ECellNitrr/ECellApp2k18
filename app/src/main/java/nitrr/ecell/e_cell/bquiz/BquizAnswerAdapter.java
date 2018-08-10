@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
     private LayoutInflater layoutInflater;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     private SelectAnswerInterface callback;
+    private int lastSelected = -1;
+//    private int lastSecondSelected = -2;
 
     public BquizAnswerAdapter(Context context, List<QuestionDetailsModel> questionDetailsModels, SelectAnswerInterface callback) {
         this.context = context;
@@ -39,7 +42,7 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         if(null != questionDetailsModels){
             final QuestionDetailsModel data = questionDetailsModels.get(position);
             if(null != data){
@@ -54,8 +57,22 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
                     public void onClick(View v) {
                         //Todo : change color and select answer answer
                         callback.selectAnswer(data.getKey());
+                        lastSelected = holder.getAdapterPosition();
+                        notifyDataSetChanged();
+                        Log.e("card clicked ====", "true");
                     }
                 });
+
+                if(position == lastSelected){
+                    holder.cvAnswer.setCardBackgroundColor(context.getResources().getColor(R.color.bquizDarkBg));
+                    holder.tvAnswerText.setTextColor(context.getResources().getColor(R.color.colorWhite));
+                    holder.tvAnswerNumber.setTextColor(context.getResources().getColor(R.color.colorWhite));
+                }
+                else{
+                    holder.cvAnswer.setCardBackgroundColor(context.getResources().getColor(R.color.colorWhite));
+                    holder.tvAnswerText.setTextColor(context.getResources().getColor(R.color.colorText));
+                    holder.tvAnswerNumber.setTextColor(context.getResources().getColor(R.color.colorText));
+                }
             }
         }
     }
