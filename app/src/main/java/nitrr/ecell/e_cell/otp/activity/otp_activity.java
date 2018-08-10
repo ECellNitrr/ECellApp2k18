@@ -30,14 +30,10 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_activity);
-
         initview();
-
-
     }
 
     private void initview() {
-
 
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
         EditText_otp = findViewById(R.id.input_otp);
@@ -68,13 +64,11 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                     SendOtpResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
                         Toast.makeText(otp_activity.this, "OTP sent , enter otp", Toast.LENGTH_LONG).show();
-
                         SecondLayout.setVisibility(View.VISIBLE);
                         FirstLayout.setVisibility(View.INVISIBLE);
                     }
                 } else {
                     Toast.makeText(otp_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
-
                 }
 
             }
@@ -138,8 +132,6 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
         }
         else
             return true;
-
-
 
     }
 

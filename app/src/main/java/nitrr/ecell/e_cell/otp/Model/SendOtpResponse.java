@@ -17,7 +17,6 @@ public class SendOtpResponse implements Serializable{
     @Expose
     private String message;
 
-
     public Boolean getSuccess() {
         return success;
     }
