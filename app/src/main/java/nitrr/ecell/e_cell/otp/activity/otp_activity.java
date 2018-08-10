@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 public class otp_activity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_mobilenumber, EditText_otp;
-    private Button OTP_button, Proceed_afterotp_button;
+    private TextView OTP_button, Proceed_afterotp_button;
     private String Mobile_no, OTP_entered;
     private LinearLayout FirstLayout, SecondLayout;
 
@@ -32,13 +33,9 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_otp_activity);
 
         initview();
-
-
     }
 
     private void initview() {
-
-
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
         EditText_otp = findViewById(R.id.input_otp);
         OTP_button = findViewById(R.id.otp_button);
