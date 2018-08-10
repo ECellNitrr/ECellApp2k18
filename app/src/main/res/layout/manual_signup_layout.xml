@@ -210,24 +210,25 @@
             </RelativeLayout>
 
             <Button
+                android:id="@+id/sign_up_proceed"
+                style="@style/signUpLayoutButtonStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style_filled"
+                android:text="@string/proceed"
+                android:textColor="@color/colorOuterSpace" />
+
+            <Button
                 android:id="@+id/sign_up_back"
                 style="@style/signUpLayoutButtonStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
                 android:alpha="0.0"
                 android:background="@drawable/button_style_border"
                 android:text="@string/back"
                 android:textColor="@color/colorWhite" />
 
-            <Button
-                android:id="@+id/sign_up_proceed"
-                style="@style/signUpLayoutButtonStyle"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/button_style_filled"
-                android:text="@string/proceed"
-                android:textColor="@color/colorOuterSpace" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
