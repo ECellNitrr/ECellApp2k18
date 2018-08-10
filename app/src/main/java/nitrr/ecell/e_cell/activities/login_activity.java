@@ -19,6 +19,7 @@ import nitrr.ecell.e_cell.model.auth.LoginDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,9 +32,9 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     private Button Sign_in;
     private TextView ForgetPassword;
     private String Email, Password;
-    private ProgressBar SignInProgressBar;
     private LoginDetails loginDetails;
     private PrefUtils prefUtils;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         ForgetPassword.setOnClickListener(this);
 
         Layout_Password.setTypeface(raleway);
+        progressDialog = new ProgressDialog();
     }
 
     private void apiCall() {
@@ -67,6 +69,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
@@ -88,6 +91,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable throwable) {
+                progressDialog.hideDialog();
                 Toast.makeText(login_activity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -119,6 +123,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                 if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()) {
                     Toast.makeText(login_activity.this, "Invalid email-id", Toast.LENGTH_LONG).show();
                 } else {
+                    progressDialog.showDialog("Logging in. Please wait...", login_activity.this);
                     apiCall();
                 }
             } else {

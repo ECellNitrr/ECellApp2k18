@@ -23,6 +23,7 @@ import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomTextWatcher;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,6 +39,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     private RelativeLayout layout;
 
     private UserDetails userDetails;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,18 +94,19 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         back.setEnabled(false);
 
         setTextWatcher();
+        progressDialog = new ProgressDialog();
     }
 
     private void apiCall() {
+        progressDialog.showDialog("Registering you.Please wait...", this);
         setData();
-
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
         Call<AuthenticationResponse> call = apiServices.sendRegisterDetails(userDetails);
         call.enqueue(new Callback<AuthenticationResponse>() {
 
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
-
+                progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
@@ -125,6 +128,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(ManualSignUpActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

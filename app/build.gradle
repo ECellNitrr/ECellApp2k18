@@ -22,7 +22,7 @@ android {
             applicationIdSuffix ""
 //            buildConfigField("String", "BASE_URL", "\"https://ecellnitrr.herokuapp.com/\"")
 //            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
-            buildConfigField("String", "BASE_URL", "\"http://192.168.2.10:8080/\"")
+            buildConfigField("String", "BASE_URL", "\"https://cb0f3bc8.ngrok.io/\"")
             minSdkVersion 19
             applicationId 'nitrr.ecell.e_cell'
             targetSdkVersion 27
