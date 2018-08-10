@@ -33,7 +33,6 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
 
         initview();
 
-
     }
 
     private void initview() {
