@@ -54,6 +54,9 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
 
+        PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
+        utils.isFacebookLogin(false);
+
         first = true;
         proceed = true;
 

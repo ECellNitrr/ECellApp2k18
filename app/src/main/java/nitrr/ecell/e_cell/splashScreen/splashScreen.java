@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -14,7 +13,6 @@ import nitrr.ecell.e_cell.BuildConfig;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.activities.RegisterMainActivity;
-import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.model.SplashScreenResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
@@ -62,7 +60,6 @@ public class splashScreen extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<SplashScreenResponse> call, Throwable t) {
                 progressBarSplashScreen.setVisibility(View.GONE);
@@ -90,7 +87,6 @@ public class splashScreen extends AppCompatActivity {
                 final String appPackageName = getPackageName();
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-
                 } catch (android.content.ActivityNotFoundException anfe) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
                 }

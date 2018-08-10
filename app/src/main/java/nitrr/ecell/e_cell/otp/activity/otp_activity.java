@@ -10,15 +10,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.activities.HomeActivity;
-import nitrr.ecell.e_cell.otp.Model.AuthenticationVerifyOtpResponse;
-import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
+import nitrr.ecell.e_cell.otp.Model.VerifyOtp;
+import nitrr.ecell.e_cell.otp.Model.otpSendNumber;
+import nitrr.ecell.e_cell.otp.Model.sendOtp;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
 public class otp_activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,15 +31,22 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     private TextView OTP_button, Proceed_afterotp_button;
     private String Mobile_no, OTP_entered;
     private LinearLayout FirstLayout, SecondLayout;
+    private PrefUtils prefUtils;
+    private UserDetails userDetails;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_activity);
         initview();
+
     }
 
     private void initview() {
+        prefUtils = new PrefUtils(otp_activity.this);
+        userDetails = new UserDetails();
+
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
         EditText_otp = findViewById(R.id.input_otp);
         OTP_button = findViewById(R.id.otp_button);
@@ -46,29 +58,39 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
         OTP_button.setOnClickListener(this);
         Proceed_afterotp_button.setOnClickListener(this);
 
-        SecondLayout.setVisibility(View.INVISIBLE);
-        FirstLayout.setVisibility(View.VISIBLE);
+        if (prefUtils.getIfIsFacebookLogin()) {
+            FirstLayout.setVisibility(View.VISIBLE);
+            SecondLayout.setVisibility(View.GONE);
 
+        } else {
+            SecondLayout.setVisibility(View.VISIBLE);
+            FirstLayout.setVisibility(View.GONE);
+        }
     }
 
     private void apicallSendOtp() {
 
         Mobile_no = EditText_mobilenumber.getText().toString().trim();
 
+        otpSendNumber otpSendNumber = new otpSendNumber();
+        otpSendNumber.setMobile_no(Mobile_no);
+        otpSendNumber.setToken(prefUtils.getAccessToken());
+
+
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
-        Call<SendOtpResponse> call = apiServices.sendMobileNo(Mobile_no);
+        Call<SendOtpResponse> call = apiServices.sendMobileNo(otpSendNumber);
         call.enqueue(new Callback<SendOtpResponse>() {
             @Override
             public void onResponse(Call<SendOtpResponse> call, Response<SendOtpResponse> response) {
                 if (response.isSuccessful()) {
                     SendOtpResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
-                        Toast.makeText(otp_activity.this, "OTP sent , enter otp", Toast.LENGTH_LONG).show();
+                        Toast.makeText(otp_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         SecondLayout.setVisibility(View.VISIBLE);
                         FirstLayout.setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    Toast.makeText(otp_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(otp_activity.this, response.message(), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -83,17 +105,22 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void apicallVerifyOtp() {
+        sendOtp sendOtp = new sendOtp();
+        PrefUtils utils = new PrefUtils(otp_activity.this);
 
         OTP_entered = EditText_otp.getText().toString().trim();
 
+        sendOtp.setOtpEnterd(OTP_entered);
+        sendOtp.setToken(utils.getAccessToken());
+
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationVerifyOtpResponse> call = apiServices.sendOtpEntered(OTP_entered);
-        call.enqueue(new Callback<AuthenticationVerifyOtpResponse>() {
+        Call<VerifyOtp> call = apiServices.sendOtpEntered(sendOtp);
+        call.enqueue(new Callback<VerifyOtp>() {
             @Override
-            public void onResponse(Call<AuthenticationVerifyOtpResponse> call, Response<AuthenticationVerifyOtpResponse> response) {
+            public void onResponse(Call<VerifyOtp> call, Response<VerifyOtp> response) {
 
                 if (response.isSuccessful()) {
-                    AuthenticationVerifyOtpResponse jsonResponse = response.body();
+                    VerifyOtp jsonResponse = response.body();
                     if (null != jsonResponse) {
                         Toast.makeText(otp_activity.this, "Otp verified", Toast.LENGTH_LONG).show();
 

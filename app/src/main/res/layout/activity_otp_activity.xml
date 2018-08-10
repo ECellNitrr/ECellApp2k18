@@ -67,7 +67,8 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/otp_border"
             android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:paddingTop="20dp"
+            android:visibility="gone">
 
             <EditText
                 android:id="@+id/input_otp"
