@@ -9,6 +9,9 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MessageDetails implements Serializable{
 
+    @SerializedName("Authorization")
+    @Expose
+    private String token;
 
     @SerializedName("name")
     @Expose
@@ -21,6 +24,10 @@ public class MessageDetails implements Serializable{
     @SerializedName("msg")
     @Expose
     private String message;
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public void setName(String name) {
         this.name = name;

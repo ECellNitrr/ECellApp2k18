@@ -1,12 +1,13 @@
 package nitrr.ecell.e_cell.otp.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.model.UserDetails;
@@ -22,11 +23,12 @@ import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
 public class otp_activity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_mobilenumber, EditText_otp;
-    private Button OTP_button, Proceed_afterotp_button;
+    private TextView OTP_button, Proceed_afterotp_button;
     private String Mobile_no, OTP_entered;
     private LinearLayout FirstLayout, SecondLayout;
     private PrefUtils prefUtils;
@@ -66,10 +68,6 @@ userDetails=new UserDetails();
             SecondLayout.setVisibility(View.VISIBLE);
             FirstLayout.setVisibility(View.INVISIBLE);
 
-            //Mobile_no=userDetails.getContactNumber();
-
-            apicallSendOtp();
-
 
         }
         else
@@ -88,7 +86,8 @@ userDetails=new UserDetails();
 
           otpSendNumber otpSendNumber=new otpSendNumber();
           otpSendNumber.setMobile_no(Mobile_no);
-          otpSendNumber.setToken("Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjEsImVtYWlsIjoiaGFyc2hpdGNoYXVkaGFyeTk4QGdtYWlsLmNvbSJ9.M1BZB8i_jsUsQvBFcPloiE_cm5F-PNw3-yH10OzH_lo");
+          otpSendNumber.setToken(prefUtils.getAccessToken());
+
 
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
         Call<SendOtpResponse> call = apiServices.sendMobileNo(otpSendNumber);

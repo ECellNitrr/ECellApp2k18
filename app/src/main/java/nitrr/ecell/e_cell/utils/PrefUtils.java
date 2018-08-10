@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class PrefUtils {
     private Activity activity;
 
@@ -23,21 +20,17 @@ public class PrefUtils {
     }
 
     public void isFacebookLogin(boolean bool) {
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("isFB", Boolean.toString(bool));
+        editor.putBoolean("isFB", bool);
         editor.apply();
     }
 
 
     public boolean getIfIsFacebookLogin() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        String str = prefs.getString("isFB", null);
 
-        if (str.equals("true"))
-            return true;
-        else return false;
+        return prefs.getBoolean("isFB", false);
     }
 
     public String getUserName() {
@@ -70,25 +63,26 @@ public class PrefUtils {
         editor.apply();
 
         saveUserName(first_name);
-
-        /* Delete this dialog after final build.
-        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
-        dialog.setTitle("Retrieved Data");
-        dialog.setMessage("Access Token: " + getAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
-        dialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show(); */
     }
 
-    public void clearPrefs(){
+    public void clearPrefs() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.clear();
+        editor.apply();
+    }
+
+    public boolean getIsLoggedIn() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        return preferences.getBoolean("isLoggedIn", false);
+    }
+
+    public void setIsLoggedIn(boolean loggedIn) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean("isLoggedIn", loggedIn);
         editor.apply();
     }
 }

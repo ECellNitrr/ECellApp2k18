@@ -23,6 +23,7 @@ import java.util.Arrays;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.otp.activity.otp_activity;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import retrofit2.Call;
@@ -136,12 +137,18 @@ public class FacebookSignUp {
         call.enqueue(new Callback<AuthenticationResponse>() {
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
-                if (response.isSuccessful())
+                if (response.isSuccessful()) {
                     if (response.body() != null) {
                         prefUtils.saveAccessToken(response.body().getToken());
 
-                        // TODO: Call OTP Activity Here
+                        Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(activity, otp_activity.class);
+                        activity.startActivity(intent);
+                        activity.finish();
                     }
+                } else
+                    Toast.makeText(activity, "Not Successful.", Toast.LENGTH_LONG).show();
             }
 
             @Override
