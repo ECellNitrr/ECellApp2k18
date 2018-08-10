@@ -20,7 +20,7 @@ android {
     productFlavors {
         production {
             applicationIdSuffix ""
-            buildConfigField("String", "BASE_URL", "\"http://192.168.2.10:8080/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.2.6:8080/\"")
 //            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
             minSdkVersion 19
             applicationId 'nitrr.ecell.e_cell'

@@ -16,9 +16,9 @@ import android.widget.Toast;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.model.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.LoginDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.model.LoginDetails;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,23 +72,26 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
-                        Toast.makeText(login_activity.this, "Login Successful.", Toast.LENGTH_LONG).show();
-                        prefUtils.saveAccessToken(jsonResponse.getToken());
+                        Toast.makeText(login_activity.this, response.message(), Toast.LENGTH_LONG).show();
+                        prefUtils.saveAccessToken("Token " + jsonResponse.getToken());
+
                         Intent intent = new Intent(login_activity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     }
                 } else {
-                    Toast.makeText(login_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(login_activity.this, response.message(), Toast.LENGTH_LONG).show();
 
                 }
             }
+
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable throwable) {
                 Toast.makeText(login_activity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
+
     private void setData() {
         Email = EditText_Email.getText().toString().trim();
         Password = EditText_Password.getText().toString().trim();

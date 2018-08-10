@@ -110,10 +110,9 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                     if (null != jsonResponse) {
                         String token = jsonResponse.getToken();
                         PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
-                        utils.saveAccessToken(token);
+                        utils.saveAccessToken("Token " + token);
                         utils.saveUserName(firstName);
 
-                        Toast.makeText(ManualSignUpActivity.this, response.message(), Toast.LENGTH_LONG).show();
                         Toast.makeText(ManualSignUpActivity.this, token, Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(ManualSignUpActivity.this, otp_activity.class);

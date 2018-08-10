@@ -9,7 +9,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MessageDetails implements Serializable{
 
-    @SerializedName("token")
+    @SerializedName("Authorization")
     @Expose
     private String token;
 
