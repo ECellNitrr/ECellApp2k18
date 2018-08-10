@@ -15,10 +15,11 @@ import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.activities.HomeActivity;
+import nitrr.ecell.e_cell.model.AuthenticationResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.signin.model.AuthenticationLoginResponse;
-import nitrr.ecell.e_cell.signin.model.Logindetails;
+import nitrr.ecell.e_cell.model.LoginDetails;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,24 +33,20 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     private TextView ForgetPassword;
     private String Email, Password;
     private ProgressBar SignInProgressBar;
-    private Logindetails logindetails;
-
+    private LoginDetails loginDetails;
+    private PrefUtils prefUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         initview();
-
     }
 
     private void initview() {
-
-        logindetails = new Logindetails();
-
+        loginDetails = new LoginDetails();
+        prefUtils = new PrefUtils(this);
         Typeface raleway = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/raleway.ttf");
-
         EditText_Email = findViewById(R.id.inputusername);
         Layout_Email = findViewById(R.id.layout_email);
         Layout_Password = findViewById(R.id.layout_password);
@@ -65,21 +62,18 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void apiCall() {
-
         setData();
-
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationLoginResponse> call = apiServices.sendLoginDetails(logindetails);
-        call.enqueue(new Callback<AuthenticationLoginResponse>() {
+        Call<AuthenticationResponse> call = apiServices.sendLoginDetails(loginDetails);
+        call.enqueue(new Callback<AuthenticationResponse>() {
 
             @Override
-            public void onResponse(Call<AuthenticationLoginResponse> call, Response<AuthenticationLoginResponse> response) {
-
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                 if (response.isSuccessful()) {
-                    AuthenticationLoginResponse jsonResponse = response.body();
-                    if (null != jsonResponse) {
+                    AuthenticationResponse jsonResponse = response.body();
+                    if (null != jsonResponse && jsonResponse.getSuccess()) {
                         Toast.makeText(login_activity.this, "Login Successful.", Toast.LENGTH_LONG).show();
-
+                        prefUtils.saveAccessToken(jsonResponse.getToken());
                         Intent intent = new Intent(login_activity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
@@ -88,27 +82,18 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(login_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
 
                 }
-
-
             }
-
             @Override
-            public void onFailure(Call<AuthenticationLoginResponse> call, Throwable throwable) {
+            public void onFailure(Call<AuthenticationResponse> call, Throwable throwable) {
                 Toast.makeText(login_activity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
-
-
         });
-
     }
-
-
     private void setData() {
         Email = EditText_Email.getText().toString().trim();
         Password = EditText_Password.getText().toString().trim();
-
-        logindetails.setEmail(Email);
-        logindetails.setPassword(Password);
+        loginDetails.setEmail(Email);
+        loginDetails.setPassword(Password);
 
     }
 
@@ -126,20 +111,15 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
 
         if (v == Sign_in) {
-
             if (checkinput()) {
-
                 if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()) {
                     Toast.makeText(login_activity.this, "Invalid email-id", Toast.LENGTH_LONG).show();
                 } else {
-
                     apiCall();
                 }
             } else {
                 Toast.makeText(login_activity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
             }
-
-
         } else if (v == ForgetPassword) {
 
             Toast.makeText(login_activity.this, "Reset password (on progress)", Toast.LENGTH_LONG).show();

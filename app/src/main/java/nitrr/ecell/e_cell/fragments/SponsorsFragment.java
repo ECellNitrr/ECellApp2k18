@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.fragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -56,7 +57,7 @@ public class SponsorsFragment extends Fragment {
                 .load(AppConstants.IMAGE_LOCATIONS[3])
                 .into(imageView);
 
-        TextView textView = getView().findViewById(R.id.spons_custom_view_text);
+        final TextView textView = getView().findViewById(R.id.spons_custom_view_text);
         textView.setText(AppConstants.HOME_TITLES[3]);
         textView.setTypeface(bebasNeue);
 
@@ -67,6 +68,15 @@ public class SponsorsFragment extends Fragment {
                 FragmentManager fm = activity.getSupportFragmentManager();
                 nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment sponsorsFragment = nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment.newInstance();
                 sponsorsFragment.show(fm, "sponsors fragment");
+                textView.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (textView != null) {
+                            textView.setClickable(true);
+                        }
+                    }
+                }, 1000);
             }
         });
 

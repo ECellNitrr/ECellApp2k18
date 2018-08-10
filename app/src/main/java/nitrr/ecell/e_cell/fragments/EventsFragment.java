@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.fragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -49,7 +50,7 @@ public class EventsFragment extends Fragment {
         init();
     }
 
-    private void init(){
+    private void init() {
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
 
         ImageView imageView = getView().findViewById(R.id.eventsImageView);
@@ -57,7 +58,7 @@ public class EventsFragment extends Fragment {
                 .load(AppConstants.IMAGE_LOCATIONS[1])
                 .into(imageView);
 
-        TextView textView = getView().findViewById(R.id.events_custom_view_text);
+        final TextView textView = getView().findViewById(R.id.events_custom_view_text);
         textView.setText(AppConstants.HOME_TITLES[1]);
         textView.setTypeface(bebasNeue);
 
@@ -68,6 +69,15 @@ public class EventsFragment extends Fragment {
                 FragmentManager fm = activity.getSupportFragmentManager();
                 nitrr.ecell.e_cell.events.activity.EventsFragment eventsFragment = nitrr.ecell.e_cell.events.activity.EventsFragment.newInstance();
                 eventsFragment.show(fm, "events fragment");
+                textView.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (textView != null) {
+                            textView.setClickable(true);
+                        }
+                    }
+                }, 1000);
             }
         });
 

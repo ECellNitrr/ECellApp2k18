@@ -3,6 +3,7 @@ package nitrr.ecell.e_cell.events.activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -77,6 +78,15 @@ public class EventsFragmentAdapter extends RecyclerView.Adapter<EventsFragmentAd
                 EventsDetailFragment eventsDetailFragment = EventsDetailFragment.newInstance();
                 eventsDetailFragment.setData(eventsData);
                 eventsDetailFragment.show(fm, "event details fragment");
+                viewHolder.linearLayoutEventDetails.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (viewHolder.linearLayoutEventDetails != null) {
+                            viewHolder.linearLayoutEventDetails.setClickable(true);
+                        }
+                    }
+                }, 1000);
             }
         });
     }

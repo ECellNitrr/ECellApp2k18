@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.sponsor.Fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -79,6 +80,15 @@ public class SponsorAdapterSecond extends RecyclerView.Adapter<SponsorAdapterSec
                 SponsorsDetailsFragment sponsorsDetailsFragment = SponsorsDetailsFragment.newInstance();
                 sponsorsDetailsFragment.setSponsorsData(itemSponsor, context);
                 sponsorsDetailsFragment.show(fm, "sponsor details fragment");
+                holder.cardSponsorDetail.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (holder.cardSponsorDetail != null) {
+                            holder.cardSponsorDetail.setClickable(true);
+                        }
+                    }
+                }, 1000);
             }
         });
     }
