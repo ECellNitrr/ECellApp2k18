@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.adapters;
+package nitrr.ecell.e_cell.adapters.sponsor;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
-import nitrr.ecell.e_cell.adapters.SponsorSectionAdapter;
+import nitrr.ecell.e_cell.adapters.sponsor.SponsorSectionAdapter;
 import nitrr.ecell.e_cell.model.sponsors.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;

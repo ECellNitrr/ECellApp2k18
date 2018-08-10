@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.adapters;
+package nitrr.ecell.e_cell.adapters.bquiz;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.adapters.LeaderBoardAdapter;
+import nitrr.ecell.e_cell.adapters.bquiz.LeaderBoardAdapter;
 import nitrr.ecell.e_cell.model.bquiz.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;

@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.utils;
+package nitrr.ecell.e_cell.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

@@ -5,21 +5,12 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.view.ActionMode;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.accessibility.AccessibilityEvent;
+
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.utils.AboutUsViewPagerAdapter;
+import nitrr.ecell.e_cell.adapters.aboutus.AboutUsViewPagerAdapter;
 
 public class AboutUsBottomSheetFragment extends android.support.v4.app.DialogFragment {
 

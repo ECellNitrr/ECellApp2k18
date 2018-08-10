@@ -1,4 +1,4 @@
-package nitrr.ecell.e_cell.utils;
+package nitrr.ecell.e_cell.adapters.aboutus;
 
 import android.content.Context;
 import android.content.Intent;

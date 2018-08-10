@@ -30,7 +30,7 @@ import nitrr.ecell.e_cell.model.esummit.SpeakerResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;
-import nitrr.ecell.e_cell.utils.EsRecyclerViewAdapter;
+import nitrr.ecell.e_cell.adapters.EsRecyclerViewAdapter;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.TypeWriter;
 import retrofit2.Call;

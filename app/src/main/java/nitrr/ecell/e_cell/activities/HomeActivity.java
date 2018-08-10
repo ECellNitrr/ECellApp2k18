@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
-import nitrr.ecell.e_cell.utils.HomeViewPagerAdapter;
+import nitrr.ecell.e_cell.adapters.HomeViewPagerAdapter;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
