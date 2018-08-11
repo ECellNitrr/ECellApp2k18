@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.SpeakerList;
-import nitrr.ecell.e_cell.model.SpeakerResponse;
+import nitrr.ecell.e_cell.model.esummit.SpeakerList;
+import nitrr.ecell.e_cell.model.esummit.SpeakerResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.DialogFactory;

@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.GenericResponse;
-import nitrr.ecell.e_cell.model.MessageDetails;
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+import nitrr.ecell.e_cell.model.aboutus.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;

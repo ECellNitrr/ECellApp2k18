@@ -2,7 +2,6 @@ package nitrr.ecell.e_cell.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -16,12 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.net.Inet4Address;
-
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.otp.activity.otp_activity;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.aboutus.UserDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;

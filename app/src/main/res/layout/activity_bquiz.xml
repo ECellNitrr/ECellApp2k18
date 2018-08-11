@@ -1,109 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<ScrollView
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fillViewport="true"
+    android:background="@color/bquizLightBg">
 
-    <RelativeLayout
-        android:id="@+id/llDarkBg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_224"
-        android:background="#253143"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/llDarkBg"
-        android:background="#f4f4f5"/>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cvQuestion"
-        android:layout_width="match_parent"
+    <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/margin_200"
-        android:layout_marginTop="@dimen/margin_90"
-        android:layout_marginLeft="@dimen/margin_16"
-        android:layout_marginRight="@dimen/margin_16"
-        android:layout_centerHorizontal="true"
-        app:cardElevation="@dimen/margin_2"
-        app:cardCornerRadius="@dimen/margin_4">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/bquizLightBg">
+
+        <RelativeLayout
+            android:id="@+id/llDarkBg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_224"
+            android:background="@color/bquizDarkBg"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_100"
-            android:layout_marginBottom="@dimen/margin_16">
+            android:layout_below="@+id/llDarkBg" />
 
-            <TextView
-                android:id="@+id/timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="00:30"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/margin_200"
+            android:layout_marginTop="@dimen/margin_90"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_centerHorizontal="true"
+            app:cardElevation="@dimen/margin_2"
+            app:cardCornerRadius="@dimen/margin_4">
 
-            <TextView
-                android:id="@+id/tvQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/timer"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_marginRight="@dimen/margin_16"
-                android:textSize="@dimen/margin_16"
-                android:text="Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_16">
+
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:layout_alignParentRight="true"
+                    android:textSize="24sp"
+                    android:text="00:30"/>
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_medium"
+                    android:textSize="@dimen/margin_16"
+                    android:text="Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?"/>
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cvQuestionImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_20"
-        android:layout_centerHorizontal="true"
-        app:cardCornerRadius="@dimen/margin_80"
-        app:cardElevation="@dimen/margin_4">
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvQuestionImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <com.wang.avi.AVLoadingIndicatorView
-                android:id="@+id/progressBar_faculty_research"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="@dimen/margin_80"
+            app:cardElevation="@dimen/margin_4"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_height="wrap_content">
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progressBar_faculty_research"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    style="@style/AVLoadingIndicatorView"
+                    android:visibility="visible"
+                    app:indicatorName="BallTrianglePathIndicator"
+                    app:indicatorColor="@color/colorAccent" />
+
+                <ImageView
+                    android:id="@+id/ivQuestion"
+                    android:layout_width="@dimen/margin_150"
+                    android:layout_height="@dimen/margin_150"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"/>
+
+                <com.github.lzyzsd.circleprogress.DonutProgress
+                    android:id="@+id/donut_progress"
+                    android:layout_width="@dimen/margin_160"
+                    android:layout_height="@dimen/margin_160"
+                    android:layout_centerHorizontal="true"
+                    app:donut_finished_stroke_width="@dimen/margin_6"
+                    app:donut_unfinished_stroke_width="@dimen/margin_6"
+                    app:donut_unfinished_color="@color/colorAccent"
+                    app:donut_finished_color="@color/colorWhiteTransparent"
+                    app:donut_max="10"
+                    app:donut_progress="0"
+                    app:donut_text_size="0dp"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+        <!--
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:id="@+id/donut_progress"
+                android:layout_width="@dimen/margin_170"
+                android:layout_height="@dimen/margin_170"
+                android:layout_marginTop="@dimen/margin_15"
                 android:layout_centerHorizontal="true"
-                style="@style/AVLoadingIndicatorView"
-                android:visibility="visible"
-                app:indicatorName="BallTrianglePathIndicator"
-                app:indicatorColor="@color/focus" />
+                app:donut_finished_stroke_width="@dimen/margin_8"
+                app:donut_unfinished_stroke_width="@dimen/margin_8"
+                app:donut_unfinished_color="@color/colorWhiteTransparent"
+                app:donut_finished_color="@color/colorAccent"
+                app:donut_text_color="@color/colorWhiteTransparent"/>-->
 
-            <ImageView
-                android:id="@+id/ivQuestion"
-                android:layout_width="@dimen/margin_160"
-                android:layout_height="@dimen/margin_160" />
-        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cvQuestion"
+            android:layout_margin="@dimen/margin_16" />
 
-    </android.support.v7.widget.CardView>
+        <Button
+            android:id="@+id/btnSubmitAnswer"
+            android:layout_width="@dimen/margin_200"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvAnswers"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_8"
+            android:background="@drawable/bquiz_button_style"
+            android:textColor="@color/colorWhite"
+            android:text="Submit"
+            android:textSize="16sp"/>
 
-    <com.github.lzyzsd.circleprogress.DonutProgress
-        android:id="@+id/donut_progress"
-        android:layout_width="@dimen/margin_170"
-        android:layout_height="@dimen/margin_170"
-        android:layout_marginTop="@dimen/margin_15"
-        android:layout_centerHorizontal="true"
-        app:donut_finished_stroke_width="@dimen/margin_8"
-        app:donut_unfinished_stroke_width="@dimen/margin_8"
-        app:donut_unfinished_color="@color/colorWhiteTransparent"
-        app:donut_finished_color="@color/colorAccent"
-        app:donut_text_color="@color/colorWhiteTransparent"/>
+    </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cvQuestion"
-        android:layout_margin="@dimen/margin_16" />
-
-</RelativeLayout>
+</ScrollView>

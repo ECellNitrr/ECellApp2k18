@@ -1,28 +1,30 @@
 package nitrr.ecell.e_cell.restapi;
 
-import nitrr.ecell.e_cell.bquiz.model.BQuizQuestionResponse;
-import nitrr.ecell.e_cell.bquiz.model.BQuizStatusResponse;
-import nitrr.ecell.e_cell.bquiz.model.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.model.SplashScreenResponse;
-import nitrr.ecell.e_cell.otp.Model.SendOtpResponse;
-import nitrr.ecell.e_cell.events.Model.EventsResponse;
-import nitrr.ecell.e_cell.model.AboutUsResponse;
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.FacebookSignInUserDetails;
-import nitrr.ecell.e_cell.model.GenericResponse;
-import nitrr.ecell.e_cell.model.MessageDetails;
-import nitrr.ecell.e_cell.model.SpeakerResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
-import nitrr.ecell.e_cell.model.LoginDetails;
-import nitrr.ecell.e_cell.otp.Model.VerifyOtp;
-import nitrr.ecell.e_cell.otp.Model.otpSendNumber;
-import nitrr.ecell.e_cell.otp.Model.sendOtp;
-import nitrr.ecell.e_cell.sponsor.model.SponsorsResponse;
+import nitrr.ecell.e_cell.model.bquiz.Answer;
+import nitrr.ecell.e_cell.model.bquiz.BQuizQuestionResponse;
+import nitrr.ecell.e_cell.model.bquiz.BQuizStatusResponse;
+import nitrr.ecell.e_cell.model.bquiz.BQuizLeaderboardResponse;
+import nitrr.ecell.e_cell.model.otp.SendOtpResponse;
+import nitrr.ecell.e_cell.model.events.EventsResponse;
+import nitrr.ecell.e_cell.model.aboutus.AboutUsResponse;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.auth.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+import nitrr.ecell.e_cell.model.aboutus.MessageDetails;
+import nitrr.ecell.e_cell.model.esummit.SpeakerResponse;
+import nitrr.ecell.e_cell.model.aboutus.UserDetails;
+import nitrr.ecell.e_cell.model.auth.LoginDetails;
+import nitrr.ecell.e_cell.model.otp.VerifyOtp;
+import nitrr.ecell.e_cell.model.otp.otpSendNumber;
+import nitrr.ecell.e_cell.model.otp.sendOtp;
+import nitrr.ecell.e_cell.model.sponsors.SponsorsResponse;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiServices {
 
@@ -63,8 +65,11 @@ public interface ApiServices {
     Call<SponsorsResponse> getSponsorsResponce();
 
     @GET(AppConstants.BQUIZ_QUESTION)
-    Call<BQuizQuestionResponse> getQuestion();
+    Call<BQuizQuestionResponse> getQuestion(@Query("retryQuestion") Boolean retryQuestion);
 
     @GET(AppConstants.SPLASHSCREEN_URL)
     Call<SplashScreenResponse> getAppUpdate();
+
+    @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
+    Call<GenericResponse> submitAnswer(@Body Answer answer);
 }

@@ -3,7 +3,7 @@
     android:id="@+id/swipeRefreshLayoutSponsors"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nitrr.ecell.e_cell.sponsor.Fragments.SponsorsFragment">
+    tools:context="nitrr.ecell.e_cell.fragments.SponsorsFragment">
 
 
     <RelativeLayout

@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.signin.activities.login_activity;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {

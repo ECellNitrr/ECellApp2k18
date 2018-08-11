@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.AboutUsResponse;
-import nitrr.ecell.e_cell.model.TeamDetails;
+import nitrr.ecell.e_cell.model.aboutus.AboutUsResponse;
+import nitrr.ecell.e_cell.model.aboutus.TeamDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.CustomScrollableView;

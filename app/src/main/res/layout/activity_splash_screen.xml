@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1A1A1E"
-    tools:context=".splashScreen.splashScreen">
+    tools:context=".activities.SplashScreenActivity">
 
     <RelativeLayout
         android:id="@+id/ecell_logo"
@@ -17,13 +17,5 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/ecell_splashscreen"
         android:layout_centerInParent="true" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar_splash_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ecell_logo"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
 
 </RelativeLayout>

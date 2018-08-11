@@ -32,11 +32,14 @@
     <color name="colorGreenLight">#00de8e</color>
     <color name="colorPurple">#981bb9</color>
     <color name="colorPurpleLight">#be6ef4</color>
-    <color name="White">#ffffff</color>
     <color name="leaderboard_card_background">#37474f</color>
     <color name="color_blue_high">#455a64</color>
     <color name="color_purple_high">#673ab7</color>
     <color name="color_purple_bg">#307c4dff</color>
     <color name="focus">#6BDDC8</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="bquizDarkBg">#00081c</color>
+    <color name="bquizLightBg">#253143</color>
+
 </resources>

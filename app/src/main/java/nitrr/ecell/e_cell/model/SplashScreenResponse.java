@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SplashScreenResponse extends GenericResponse implements Serializable {
 

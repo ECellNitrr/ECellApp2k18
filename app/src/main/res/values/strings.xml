@@ -37,6 +37,9 @@
     <string name="bquiz_rules_title">Bquiz Rules</string>
     <string name="bquiz_rules_detail">1. Each question contains 4 options in which one is correct.\n2. You have to select the correct option and submit your answer.\n3.You have to submit your answer within the given time limit else your answer will be marked as wrong.\nAll the best!</string>
     <string name="bquiz_rules_ok_btn">Got it!</string>
+    <string name="bquiz_timeout_title">Time Out !!</string>
+    <string name="bquiz_timeout_text">Pick your pace. Better luck next time.</string>
+    <string name="bquiz_penalty_text">You have been penalised for 5 seconds for changing your screen while playing.</string>
     <string name="something_went_wrong_msg">Something went wrong. Please try again.</string>
     <string name="leaderboard_title">Leaderboard</string>
     <string name="def_user_name_leaderboard">Vrihas Pathak</string>
