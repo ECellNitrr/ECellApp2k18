@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button signIn, signUp;
-    TextView orContinueWith;
-    LinearLayout facebookSignUp;
-    FacebookSignUp fbSignUp;
+    private Button signIn, signUp;
+    private TextView orContinueWith;
+    private LinearLayout facebookSignUp;
+    private FacebookSignUp fbSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
         Typeface helvetica = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/helvetica.ttf");
 
         orContinueWith.setTypeface(helvetica);
-
         fbSignUp = new FacebookSignUp(RegisterMainActivity.this, facebookSignUp);
         fbSignUp.initialize();
     }

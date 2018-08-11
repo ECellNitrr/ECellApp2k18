@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.adapters.BquizAnswerAdapter;
+import nitrr.ecell.e_cell.adapters.bquiz.BquizAnswerAdapter;
 import nitrr.ecell.e_cell.model.bquiz.Answer;
 import nitrr.ecell.e_cell.model.bquiz.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.model.bquiz.QuestionDetailsModel;

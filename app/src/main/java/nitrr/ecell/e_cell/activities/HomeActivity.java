@@ -17,10 +17,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.AppConstants;
-import nitrr.ecell.e_cell.utils.HomeViewPagerAdapter;
+import nitrr.ecell.e_cell.adapters.HomeViewPagerAdapter;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,7 +36,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-
         setStatusBarColor(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[0]));
         initialize();
     }

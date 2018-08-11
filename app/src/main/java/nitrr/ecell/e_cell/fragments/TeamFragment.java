@@ -31,7 +31,7 @@ import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.CustomScrollableView;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
-import nitrr.ecell.e_cell.utils.TeamRecyclerViewAdapter;
+import nitrr.ecell.e_cell.adapters.aboutus.TeamRecyclerViewAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

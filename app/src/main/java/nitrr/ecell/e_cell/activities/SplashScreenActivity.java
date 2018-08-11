@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
 import nitrr.ecell.e_cell.BuildConfig;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.SplashScreenResponse;
@@ -29,12 +32,16 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         prefUtils = new PrefUtils(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 apiCallForUpdateCheck();
+//                Intent i = new Intent(SplashScreenActivity.this, HomeActivity.class);
+//                startActivity(i);
+//                finish();
             }
         }, 1000);
     }

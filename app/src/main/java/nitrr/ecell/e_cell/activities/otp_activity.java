@@ -18,6 +18,7 @@ import nitrr.ecell.e_cell.model.otp.sendOtp;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,6 +31,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout FirstLayout, SecondLayout;
     private PrefUtils prefUtils;
     private UserDetails userDetails;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -63,10 +65,11 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
             SecondLayout.setVisibility(View.VISIBLE);
             FirstLayout.setVisibility(View.GONE);
         }
+        progressDialog = new ProgressDialog();
     }
 
     private void apicallSendOtp() {
-
+        progressDialog.showDialog("Sending you OTP.Please wait...", this);
         Mobile_no = EditText_mobilenumber.getText().toString().trim();
 
         otpSendNumber otpSendNumber = new otpSendNumber();
@@ -79,6 +82,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
         call.enqueue(new Callback<SendOtpResponse>() {
             @Override
             public void onResponse(Call<SendOtpResponse> call, Response<SendOtpResponse> response) {
+                progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     SendOtpResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
@@ -94,14 +98,15 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(otp_activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
-
     }
 
     private void apicallVerifyOtp() {
+        progressDialog.showDialog("Verifying OTP. Please wait...", this);
         sendOtp sendOtp = new sendOtp();
         PrefUtils utils = new PrefUtils(otp_activity.this);
 
@@ -115,6 +120,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
         call.enqueue(new Callback<VerifyOtp>() {
             @Override
             public void onResponse(Call<VerifyOtp> call, Response<VerifyOtp> response) {
+                progressDialog.hideDialog();
 
                 if (response.isSuccessful()) {
                     VerifyOtp jsonResponse = response.body();
@@ -135,11 +141,11 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(otp_activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
-
 
     }
 
