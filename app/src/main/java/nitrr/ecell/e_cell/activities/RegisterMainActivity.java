@@ -5,10 +5,14 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
@@ -36,7 +40,14 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void init() {
+        FacebookSdk.setApplicationId(getResources().getString(R.string.facebook_app_id));
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        LoginButton loginButton = new LoginButton(this);
+        loginButton.setVisibility(View.INVISIBLE);
+
         facebookSignUp = findViewById(R.id.register_facebook);
+        facebookSignUp.addView(loginButton);
 
         signIn = findViewById(R.id.register_sign_in);
         signUp = findViewById(R.id.register_sign_up);

@@ -39,9 +39,10 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 apiCallForUpdateCheck();
-//                Intent i = new Intent(SplashScreenActivity.this, HomeActivity.class);
-//                startActivity(i);
-//                finish();
+                Intent i = new Intent(SplashScreenActivity.this, RegisterMainActivity.class);
+                startActivity(i);
+                finish();
+
             }
         }, 1000);
     }
