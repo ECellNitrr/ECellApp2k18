@@ -40,14 +40,7 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void init() {
-        FacebookSdk.setApplicationId(getResources().getString(R.string.facebook_app_id));
-        FacebookSdk.sdkInitialize(getApplicationContext());
-
-        LoginButton loginButton = new LoginButton(this);
-        loginButton.setVisibility(View.INVISIBLE);
-
         facebookSignUp = findViewById(R.id.register_facebook);
-        facebookSignUp.addView(loginButton);
 
         signIn = findViewById(R.id.register_sign_in);
         signUp = findViewById(R.id.register_sign_up);
