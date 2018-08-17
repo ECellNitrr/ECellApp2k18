@@ -60,6 +60,11 @@
         <activity
             android:name=".activities.splashScreen"
             android:screenOrientation="nosensor">
+        </activity>
+
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

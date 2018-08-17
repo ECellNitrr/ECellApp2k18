@@ -85,4 +85,17 @@ public class PrefUtils {
         editor.putBoolean("isLoggedIn", loggedIn);
         editor.apply();
     }
+
+    public boolean getIsFirstTimeLaunch() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        return preferences.getBoolean("isLoggedIn", true);
+    }
+
+    public void setIsFirstTimeLaunch(boolean loggedIn) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean("isLoggedIn", loggedIn);
+        editor.apply();
+    }
 }
