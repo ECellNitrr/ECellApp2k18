@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 import nitrr.ecell.e_cell.utils.ProgressDialog;
@@ -24,14 +27,12 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
-
         init();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
