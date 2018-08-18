@@ -76,7 +76,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(login_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         Toast.makeText(login_activity.this, jsonResponse.getToken(), Toast.LENGTH_LONG).show();
 
-                        prefUtils.saveAccessToken("Token " + jsonResponse.getToken());
+                        prefUtils.saveAccessToken(jsonResponse.getToken());
 
 
                         Intent intent = new Intent(login_activity.this, HomeActivity.class);

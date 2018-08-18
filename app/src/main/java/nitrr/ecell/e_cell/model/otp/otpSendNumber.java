@@ -13,26 +13,12 @@ public class otpSendNumber implements Serializable {
     @Expose
     private String mobile_no;
 
-    @SerializedName("Authorization")
-    @Expose
-    private String token;
-
     public String getMobile_no() {
         return mobile_no;
     }
 
     public void setMobile_no(String mobile_no) {
         this.mobile_no = mobile_no;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-
-
     }
 
 }

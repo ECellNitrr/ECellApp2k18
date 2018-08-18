@@ -6,25 +6,20 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class VerifyOtp implements Serializable {
+public class VerifyOtp extends GenericResponse implements Serializable {
 
-    @SerializedName("success")
+    @SerializedName("token")
     @Expose
-    private Boolean success;
+    private String token;
 
-    @SerializedName("message")
-    @Expose
-    private String message;
-
-
-    public Boolean getSuccess() {
-        return success;
+    public String getToken() {
+        return token;
     }
 
-    public String getMessage() {
-        return message;
+    public void setToken(String token) {
+        this.token = token;
     }
-
-
 }

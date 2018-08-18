@@ -1,6 +1,7 @@
 package nitrr.ecell.e_cell.restapi;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -48,6 +49,7 @@ public class AppClient {
                 Request request = chain.request().newBuilder()
                         .addHeader("authId", prefUtils.getAccessToken()).build();
 
+//                Log.e("Header====",     );
                 return chain.proceed(request);
             }
         };

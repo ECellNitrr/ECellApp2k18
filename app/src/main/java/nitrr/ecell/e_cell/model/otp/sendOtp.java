@@ -18,6 +18,14 @@ public class sendOtp implements Serializable {
     @Expose
     private String token;
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getOtpEnterd() {
         return otpEnterd;
     }
@@ -26,11 +34,4 @@ public class sendOtp implements Serializable {
         this.otpEnterd = otpEnterd;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
 }
