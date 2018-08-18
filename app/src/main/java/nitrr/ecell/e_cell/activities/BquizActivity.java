@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -271,8 +272,27 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             case R.id.btnSubmitAnswer:
                 submitAnswer(answer);
                 break;
+            case R.id.ivQuestion:
+                openPopupImage();
+                break;
         }
     }
+
+    private void openPopupImage() {
+
+        AppCompatDialog avdialog = new AppCompatDialog(this);
+        avdialog.setContentView(R.layout.image_popup_dialog);
+        avdialog.setCancelable(true);
+//        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 1.0f, 0.5f, true);
+        ImageView ivImagePopup = avdialog.findViewById(R.id.ivQuestionImage);
+        if (ivImagePopup != null) {
+            //todo:Place url or bitmat here
+            Glide.with(this).load("blah blah").into(ivImagePopup);
+        }
+        avdialog.show();
+
+    }
+
 
     public class MyCountDownTimer extends CountDownTimer {
 
