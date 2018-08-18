@@ -1,9 +1,12 @@
 package nitrr.ecell.e_cell.restapi;
 
+import android.support.v7.app.AppCompatActivity;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import nitrr.ecell.e_cell.BuildConfig;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,8 +18,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AppClient {
 
     private static AppClient mInstance;
+    private static PrefUtils prefUtils;
 
-    private AppClient() { }
+    private AppClient() {
+    }
 
     public static synchronized AppClient getInstance() {
         if (mInstance == null) mInstance = new AppClient();
@@ -35,13 +40,13 @@ public class AppClient {
         return retrofit.create(serviceClass);
     }
 
-    public <S> S createServiceWithAuth(Class<S> serviceClass) {
+    public <S> S createServiceWithAuth(Class<S> serviceClass, final AppCompatActivity activity) {
+        prefUtils = new PrefUtils(activity);
         Interceptor interceptorReq = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request().newBuilder().build();
-//                        .addHeader("authId",
-//                                TinyDB.getInstance().getString(FireBaseConstants.AUTH_ID)).build();
+                Request request = chain.request().newBuilder()
+                        .addHeader("authId", prefUtils.getAccessToken()).build();
 
                 return chain.proceed(request);
             }

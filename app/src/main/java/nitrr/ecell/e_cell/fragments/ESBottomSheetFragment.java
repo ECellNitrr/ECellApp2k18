@@ -134,7 +134,7 @@ public class ESBottomSheetFragment extends DialogFragment {
 
     private void callAPI() {
         progressBar.setVisibility(View.VISIBLE);
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
         Call<SpeakerResponse> response = services.getSpeakerDetails();
         response.enqueue(new Callback<SpeakerResponse>() {
             @Override

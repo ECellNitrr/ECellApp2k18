@@ -87,7 +87,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
             }
             if (checkNull()) {
 
-                ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+                ApiServices services = AppClient.getInstance().createService(ApiServices.class);
 
                 PrefUtils utils = new PrefUtils(getActivity());
                 MessageDetails details = new MessageDetails();

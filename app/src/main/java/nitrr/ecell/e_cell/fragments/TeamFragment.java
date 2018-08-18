@@ -123,7 +123,7 @@ public class TeamFragment extends Fragment {
 
     private void callAPI() {
         progressBar.setVisibility(View.VISIBLE);
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
         Call<AboutUsResponse> call = services.getAboutUsDetails();
         call.enqueue(new Callback<AboutUsResponse>() {
             @Override

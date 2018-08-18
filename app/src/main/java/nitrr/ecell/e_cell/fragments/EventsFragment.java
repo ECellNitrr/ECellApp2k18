@@ -101,7 +101,7 @@ public class EventsFragment extends DialogFragment {
 
     private void APICall() {
         progressBarEvents.setVisibility(View.VISIBLE);
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
         Call<EventsResponse> call = services.getEventsResponse();
         call.enqueue(new Callback<EventsResponse>() {
             @Override

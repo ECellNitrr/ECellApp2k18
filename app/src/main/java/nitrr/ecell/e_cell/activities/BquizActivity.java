@@ -105,7 +105,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void apiCall(){
-        ApiServices api = AppClient.getInstance().createService(ApiServices.class);
+        ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<BQuizQuestionResponse> call = api.getQuestion(retryQuestion);
         call.enqueue(new Callback<BQuizQuestionResponse>() {
             @Override
@@ -186,7 +186,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     private void submitAnswer(Answer answer){
         progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
-        ApiServices api = AppClient.getInstance().createService(ApiServices.class);
+        ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<GenericResponse> call = api.submitAnswer(answer);
         call.enqueue(new Callback<GenericResponse>() {
             @Override

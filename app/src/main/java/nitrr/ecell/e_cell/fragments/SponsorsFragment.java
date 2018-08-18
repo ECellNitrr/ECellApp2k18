@@ -98,7 +98,7 @@ public class SponsorsFragment extends DialogFragment {
     private void APICall() {
         Log.e("api callfunction ====", "called");
         progressBarSponsors.setVisibility(View.VISIBLE);
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
 
         Call<SponsorsResponse> call = services.getSponsorsResponce();
         call.enqueue(new Callback<SponsorsResponse>() {
