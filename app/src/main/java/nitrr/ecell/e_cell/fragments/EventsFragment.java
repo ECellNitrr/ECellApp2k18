@@ -110,8 +110,12 @@ public class EventsFragment extends DialogFragment {
                 if (response.isSuccessful()) {
                     EventsResponse eventsResponse = response.body();
                     if (null != eventsResponse) {
-                        data_events.addAll(eventsResponse.getEvents());
-                        adapterr.notifyDataSetChanged();
+                        if (eventsResponse.getSuccess()) {
+                            data_events.addAll(eventsResponse.getEvents());
+                            adapterr.notifyDataSetChanged();
+                        }else {
+                            Toast.makeText(getContext(), eventsResponse.getMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
                 } else if (getContext() != null) {
                     Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();

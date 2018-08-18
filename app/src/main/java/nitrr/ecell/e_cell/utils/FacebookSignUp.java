@@ -49,7 +49,6 @@ public class FacebookSignUp {
         FacebookSdk.sdkInitialize(activity.getApplicationContext());
 
         prefUtils = new PrefUtils(activity);
-        prefUtils.isFacebookLogin(true);
     }
 
     public void initialize() {
