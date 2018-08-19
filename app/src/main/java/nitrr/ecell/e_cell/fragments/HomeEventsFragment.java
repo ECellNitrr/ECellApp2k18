@@ -79,6 +79,8 @@ public class HomeEventsFragment extends Fragment {
                 }, 1000);
             }
         });
+        ImageView ivSwipeUp = getView().findViewById(R.id.swipeUpGif);
+        Glide.with(this).asGif().load(R.drawable.swipe_up_gif).into(ivSwipeUp);
 
     }
 }

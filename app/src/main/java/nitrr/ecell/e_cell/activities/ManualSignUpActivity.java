@@ -130,7 +130,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
                 progressDialog.hideDialog();
-                Toast.makeText(ManualSignUpActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ManualSignUpActivity.this, t.getMessage()+"Failure", Toast.LENGTH_LONG).show();
             }
         });
     }
