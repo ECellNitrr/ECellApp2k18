@@ -145,7 +145,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     utils.clearPrefs();
-
                     Intent intent = new Intent(HomeActivity.this, RegisterMainActivity.class);
                     startActivity(intent);
                     finish();

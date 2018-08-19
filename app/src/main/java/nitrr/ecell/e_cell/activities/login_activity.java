@@ -30,7 +30,6 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     private EditText EditText_Email, EditText_Password;
     private TextInputLayout Layout_Email, Layout_Password;
     private Button Sign_in;
-    private TextView ForgetPassword;
     private String Email, Password;
     private LoginDetails loginDetails;
     private PrefUtils prefUtils;
@@ -52,10 +51,8 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         Layout_Password = findViewById(R.id.layout_password);
         EditText_Password = findViewById(R.id.inputpassword);
         Sign_in = findViewById(R.id.signinbutton);
-        ForgetPassword = findViewById(R.id.forgetpassword);
 
         Sign_in.setOnClickListener(this);
-        ForgetPassword.setOnClickListener(this);
 
         Layout_Password.setTypeface(raleway);
         progressDialog = new ProgressDialog();
@@ -75,6 +72,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
                         Toast.makeText(login_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         prefUtils.saveAccessToken(jsonResponse.getToken());
+                        prefUtils.setIsLoggedIn(true);
                         Intent intent = new Intent(login_activity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
@@ -125,10 +123,6 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             } else {
                 Toast.makeText(login_activity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
             }
-        } else if (v == ForgetPassword) {
-
-            Toast.makeText(login_activity.this, "Reset password (on progress)", Toast.LENGTH_LONG).show();
         }
-
     }
 }

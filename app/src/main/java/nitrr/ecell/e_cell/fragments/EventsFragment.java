@@ -111,6 +111,7 @@ public class EventsFragment extends DialogFragment {
                     EventsResponse eventsResponse = response.body();
                     if (null != eventsResponse) {
                         if (eventsResponse.getSuccess()) {
+                            data_events.clear();
                             data_events.addAll(eventsResponse.getEvents());
                             adapterr.notifyDataSetChanged();
                         }else {

@@ -130,6 +130,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                     if (null != jsonResponse) {
                         if (jsonResponse.getSuccess()) {
                             Toast.makeText(otp_activity.this, "Otp verified", Toast.LENGTH_LONG).show();
+                            prefUtils.setIsLoggedIn(true);
                             Intent intent = new Intent(otp_activity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();

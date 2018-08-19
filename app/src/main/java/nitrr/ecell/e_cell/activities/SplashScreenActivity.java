@@ -35,16 +35,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         prefUtils = new PrefUtils(this);
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                apiCallForUpdateCheck();
-//                Intent i = new Intent(SplashScreenActivity.this, RegisterMainActivity.class);
-//                startActivity(i);
-//                finish();
-//
-//            }
-//        }, 1000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                apiCallForUpdateCheck();
+            }
+        }, 1000);
     }
 
     private void apiCallForUpdateCheck() {

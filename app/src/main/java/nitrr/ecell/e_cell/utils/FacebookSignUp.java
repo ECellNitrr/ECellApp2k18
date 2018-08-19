@@ -149,15 +149,13 @@ public class FacebookSignUp {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         prefUtils.saveAccessToken(response.body().getToken());
-
                         Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
-
                         Intent intent = new Intent(activity, otp_activity.class);
                         activity.startActivity(intent);
                         activity.finish();
                     }
                 } else
-                    Toast.makeText(activity, "Not Successful.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "Not Successful."+ response.body().getMessage(), Toast.LENGTH_LONG).show();
             }
 
             @Override

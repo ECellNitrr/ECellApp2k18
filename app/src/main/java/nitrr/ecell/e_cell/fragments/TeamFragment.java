@@ -133,9 +133,10 @@ public class TeamFragment extends Fragment {
                     scrollableView.setScrolling(true);
                     AboutUsResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
+                        studentList.clear();
                         studentList.addAll(jsonResponse.getStudent());
                         adapter.notifyDataSetChanged();
-
+                        facultyList.clear();
                         facultyList.addAll(jsonResponse.getFaculty());
                         setDetails();
                     }

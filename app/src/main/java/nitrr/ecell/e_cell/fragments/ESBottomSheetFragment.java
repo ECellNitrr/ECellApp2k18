@@ -144,6 +144,7 @@ public class ESBottomSheetFragment extends DialogFragment {
                     SpeakerResponse speakerResponse = response.body();
 
                     if (speakerResponse != null) {
+                        details.clear();
                         details.addAll(speakerResponse.getList());
                         adapter.notifyDataSetChanged();
                     }
