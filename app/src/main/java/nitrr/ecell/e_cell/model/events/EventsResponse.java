@@ -7,22 +7,15 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EventsResponse implements Serializable {
+public class EventsResponse extends GenericResponse implements Serializable {
 
-    @SerializedName("sucess")
-    @Expose
-    private String success;
-
-
-    @SerializedName("Events")
+    @SerializedName("events")
     @Expose
     private List<EventsData> Events;
-
-    public String getSuccess() {
-        return success;
-    }
 
     public List<EventsData> getEvents() {
         return Events;
