@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/eventsImageView"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
             android:paddingBottom="10dp"
@@ -34,5 +34,18 @@
             android:textColor="@color/colorWhite"
             android:textSize="100sp"
             android:textStyle="bold" />
+
     </RelativeLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4" />
+
+    <ImageView
+        android:id="@+id/swipeUpGif"
+        android:layout_width="@dimen/margin_64"
+        android:layout_height="@dimen/margin_64"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/margin_16" />
 </LinearLayout>

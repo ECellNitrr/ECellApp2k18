@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ImageView
     android:id="@+id/ivQuestionImage"
     android:layout_width="match_parent"

@@ -57,4 +57,12 @@
     <dimen name="margin_256">256dp</dimen>
     <dimen name="margin_300">300dp</dimen>
 
+    //Welcome slider
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="slide_title">30dp</dimen>
+    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+
 </resources>

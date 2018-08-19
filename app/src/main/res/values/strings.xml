@@ -92,4 +92,10 @@
 
     //Notification
     <string name="default_notification_channel_id">Random number</string>
+
+    //Welcome Screen
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
 </resources>

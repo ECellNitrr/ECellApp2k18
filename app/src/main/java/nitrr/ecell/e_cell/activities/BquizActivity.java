@@ -1,6 +1,9 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -58,6 +61,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     private Answer answer;
     private ProgressDialog progressDialog;
     private int countbackPress = 0;
+    private Bitmap bm = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +101,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         answer = new Answer();
         progressDialog = new ProgressDialog();
         btnSubmitAnswer.setOnClickListener(this);
+        ivQuestion.setOnClickListener(this);
         makeLayoutsVisible();
     }
 
@@ -151,6 +156,9 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                    //todo:Save image so that zooming doesnt load image again
+                    BitmapDrawable bmDrawable = (BitmapDrawable) resource;
+                    bm = bmDrawable.getBitmap();
                     adapter.notifyDataSetChanged();
                     if(0 != question.getTime()){
                         donutProgress.setMax(question.getTime());
@@ -170,6 +178,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     .into(ivQuestion);
         }
         else{
+            bm = BitmapFactory.decodeResource(getResources(), R.drawable.bquiz_logo);
             Glide.with(this).load(R.drawable.bquiz_logo).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
             if(0 != question.getTime()){
@@ -186,7 +195,6 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void submitAnswer(Answer answer){
-        progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
         ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<GenericResponse> call = api.submitAnswer(answer);
         call.enqueue(new Callback<GenericResponse>() {
@@ -198,6 +206,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                         if (responseBody.getSuccess()){
                             makeLayoutsInvisible();
                             tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
+                            myCountDownTimer.cancel();
                         }
                     }
                 }
@@ -270,6 +279,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSubmitAnswer:
+                progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
                 submitAnswer(answer);
                 break;
             case R.id.ivQuestion:
@@ -283,11 +293,11 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         AppCompatDialog avdialog = new AppCompatDialog(this);
         avdialog.setContentView(R.layout.image_popup_dialog);
         avdialog.setCancelable(true);
-//        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 1.0f, 0.5f, true);
+        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 1.0f, 0.5f, true);
         ImageView ivImagePopup = avdialog.findViewById(R.id.ivQuestionImage);
         if (ivImagePopup != null) {
             //todo:Place url or bitmat here
-            Glide.with(this).load("blah blah").into(ivImagePopup);
+            Glide.with(this).load(bm).into(ivImagePopup);
         }
         avdialog.show();
 

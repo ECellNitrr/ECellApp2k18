@@ -3,6 +3,11 @@ package nitrr.ecell.e_cell.utils;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialog;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 
 public class DialogFactory {
 
@@ -50,4 +55,29 @@ public class DialogFactory {
         }
         alertDialog.show();
     }
+
+    public static void setDynamicDialogHeightWidth(AppCompatActivity activity, AppCompatDialog dialog, float widthDimen, float heightDimen, boolean isHeightDynamic) {
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((WindowManager) activity.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
+
+        int displayWidth = displayMetrics.widthPixels;
+        int displayHeight = displayMetrics.heightPixels;
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(dialog.getWindow().getAttributes());
+
+        int dialogWindowWidth = (int) (displayWidth * widthDimen);
+        layoutParams.width = dialogWindowWidth;
+
+        int dialogWindowHeight = (int) (displayHeight * heightDimen);
+
+        if (isHeightDynamic) {
+            layoutParams.height = dialogWindowHeight;
+        } else {
+            layoutParams.height = (ViewGroup.LayoutParams.MATCH_PARENT);//dialogWindowHeight;
+        }
+        dialog.getWindow().setAttributes(layoutParams);
+    }
+
 }
