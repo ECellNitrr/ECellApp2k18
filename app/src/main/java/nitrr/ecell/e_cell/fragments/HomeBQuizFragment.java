@@ -22,11 +22,14 @@ import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeBQuizFragment extends Fragment {
+
+    private ProgressDialog progressDialog;
 
     private DialogInterface.OnClickListener clickListenerNegativeStatus = new DialogInterface.OnClickListener() {
         @Override
@@ -76,6 +79,7 @@ public class HomeBQuizFragment extends Fragment {
     }
 
     private void init() {
+        progressDialog = new ProgressDialog();
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
         ImageView imageView = getView().findViewById(R.id.bqImageView);
         Glide.with(getActivity())
@@ -90,13 +94,8 @@ public class HomeBQuizFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), BquizActivity.class);
-//                startActivity(intent);
+                progressDialog.showDialog("Checking, if Bquiz is active now...", getContext());
                 apiCallForBquizStatus();
-//                FragmentActivity activity = (FragmentActivity) (getActivity());
-//                FragmentManager fm = activity.getSupportFragmentManager();
-//                LeaderboardFragment leaderboardFragment = LeaderboardFragment.newInstance();
-//                leaderboardFragment.show(fm, "");
             }
         });
 
@@ -108,11 +107,12 @@ public class HomeBQuizFragment extends Fragment {
         call.enqueue(new Callback<BQuizStatusResponse>() {
             @Override
             public void onResponse(Call<BQuizStatusResponse> call, Response<BQuizStatusResponse> response) {
+                progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     BQuizStatusResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
                         if (jsonResponse.isActive()) {
-                            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, getContext(), clickListenerPositiveRules, clickListenerNegativeRules, false, getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn));
+                            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, getContext(), clickListenerPositiveRules, clickListenerNegativeRules, false, getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         } else {
                             DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositiveStatus, clickListenerNegativeStatus, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         }
@@ -124,6 +124,7 @@ public class HomeBQuizFragment extends Fragment {
 
             @Override
             public void onFailure(Call<BQuizStatusResponse> call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

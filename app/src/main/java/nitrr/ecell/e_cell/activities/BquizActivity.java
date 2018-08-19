@@ -200,12 +200,14 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         call.enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                progressDialog.hideDialog();
                 if(response.isSuccessful()){
                     GenericResponse responseBody = response.body();
                     if(null != responseBody){
                         if (responseBody.getSuccess()){
                             makeLayoutsInvisible();
                             tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
+                            Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
                             myCountDownTimer.cancel();
                         }
                     }
@@ -214,10 +216,10 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
             }
         });
-        progressDialog.hideDialog();
     }
 
     private void makeLayoutsInvisible(){
@@ -247,6 +249,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             myCountDownTimer.start();
         }
         else{
+            progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
             submitAnswer(answer);
         }
         super.onStop();
@@ -264,7 +267,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             public void onClick(DialogInterface dialog, int which) {
 
             }
-        }, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
+        }, true, getString(R.string.bquiz_back_press), getString(R.string.bquiz_quit_text), getString(R.string.bquiz_quit), getString(R.string.bquiz_dialog_cancel_btn));
 
 
 
@@ -279,7 +282,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSubmitAnswer:
-                progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
+                progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
                 submitAnswer(answer);
                 break;
             case R.id.ivQuestion:
@@ -293,10 +296,9 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         AppCompatDialog avdialog = new AppCompatDialog(this);
         avdialog.setContentView(R.layout.image_popup_dialog);
         avdialog.setCancelable(true);
-        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 1.0f, 0.5f, true);
+        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 0.75f, 0.40f, true);
         ImageView ivImagePopup = avdialog.findViewById(R.id.ivQuestionImage);
         if (ivImagePopup != null) {
-            //todo:Place url or bitmat here
             Glide.with(this).load(bm).into(ivImagePopup);
         }
         avdialog.show();
@@ -332,7 +334,8 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         @Override
         public void onFinish() {
 
-            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, BquizActivity.this, clickListenerPositive, clickListenerNegative, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn));
+            progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
+            myCountDownTimer.cancel();
             submitAnswer(answer);
         }
     }

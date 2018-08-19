@@ -45,6 +45,7 @@ public class SponsorSectionAdapter extends RecyclerView.Adapter<SponsorSectionAd
         gridSponsorAdapter = new SponsorGridAdapter(context);
         holder.gridRecyclerViewSpons.setLayoutManager(new GridLayoutManager(context, 2));
         holder.gridRecyclerViewSpons.setAdapter(gridSponsorAdapter);
+        holder.gridRecyclerViewSpons.setNestedScrollingEnabled(false);
         if (sponsorTypeData.getSponserslist() != null && sponsorTypeData.getSponserslist().size() != 0) {
             holder.SponsHeading.setVisibility(View.VISIBLE);
             holder.SponsHeading.setText(sponsorTypeData.getSponsortypename());

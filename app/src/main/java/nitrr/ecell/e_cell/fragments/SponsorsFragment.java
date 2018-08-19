@@ -84,6 +84,7 @@ public class SponsorsFragment extends DialogFragment {
         sectionedSponsorAdapter = new SponsorSectionAdapter(getContext());
         sectionedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         sectionedRecyclerView.setAdapter(sectionedSponsorAdapter);
+        sectionedRecyclerView.setNestedScrollingEnabled(false);
         APICall();
         swipeRefreshLayoutSponsors.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
