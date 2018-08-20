@@ -12,12 +12,12 @@ import nitrr.ecell.e_cell.model.auth.GenericResponse;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AboutUsResponse extends GenericResponse implements Serializable {
 
-    @SerializedName("Faculty")
+    @SerializedName("faculty")
     @Expose
     private List<TeamDetails> faculty;
 
 
-    @SerializedName("Student")
+    @SerializedName("student")
     @Expose
     private List<TeamDetails> student;
 
