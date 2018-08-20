@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.model.SplashScreenResponse;
 import nitrr.ecell.e_cell.model.bquiz.Answer;
 import nitrr.ecell.e_cell.model.bquiz.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.model.bquiz.BQuizStatusResponse;
@@ -22,6 +23,7 @@ import nitrr.ecell.e_cell.utils.AppConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -65,6 +67,9 @@ public interface ApiServices {
 
     @GET(AppConstants.BQUIZ_QUESTION)
     Call<BQuizQuestionResponse> getQuestion(@Query("retryQuestion") Boolean retryQuestion);
+
+    @GET(AppConstants.SPLASHSCREEN_URL)
+    Call<SplashScreenResponse> getAppUpdate();
 
     @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
     Call<GenericResponse> submitAnswer(@Body Answer answer);

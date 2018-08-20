@@ -65,6 +65,19 @@ public class PrefUtils {
         saveUserName(first_name);
     }
 
+    public void saveFcmToken(String fcm) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("fcm_token", fcm);
+        editor.apply();
+    }
+
+    public String getFcmToken() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        return prefs.getString("fcm_token", null);
+    }
+
+
     public void clearPrefs() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();

@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="0dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitCenter" />
 
                 <com.wang.avi.AVLoadingIndicatorView
                     android:id="@+id/indicator_progress_bar_spons_image"

@@ -15,6 +15,7 @@ public class AppConstants {
     public static final String SIGN_IN_URL = "applogin/";
     public static final String EVENTS_URL = "event/list/";
     public static final String SPONSOR_URL ="sponsor/list/";
+    public static final String SPLASHSCREEN_URL ="is_update_available/";
 
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "bquiz/is_active";

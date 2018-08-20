@@ -123,7 +123,7 @@ public class TeamFragment extends Fragment {
 
     private void callAPI() {
         progressBar.setVisibility(View.VISIBLE);
-        ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
         Call<AboutUsResponse> call = services.getAboutUsDetails();
         call.enqueue(new Callback<AboutUsResponse>() {
             @Override
@@ -133,9 +133,10 @@ public class TeamFragment extends Fragment {
                     scrollableView.setScrolling(true);
                     AboutUsResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
+                        studentList.clear();
                         studentList.addAll(jsonResponse.getStudent());
                         adapter.notifyDataSetChanged();
-
+                        facultyList.clear();
                         facultyList.addAll(jsonResponse.getFaculty());
                         setDetails();
                     }

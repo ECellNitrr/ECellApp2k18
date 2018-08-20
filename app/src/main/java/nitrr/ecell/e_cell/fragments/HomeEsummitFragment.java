@@ -62,6 +62,8 @@ public class HomeEsummitFragment extends Fragment implements View.OnClickListene
         textView.setTypeface(bebasNeue);
 
         textView.setOnClickListener(this);
+        ImageView ivSwipeUp = getView().findViewById(R.id.swipeUpGif);
+        Glide.with(this).asGif().load(R.drawable.swipe_up_gif).into(ivSwipeUp);
     }
 
     @Override

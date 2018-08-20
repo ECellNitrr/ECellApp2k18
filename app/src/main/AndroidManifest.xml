@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/esummit"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/esummit"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -42,7 +42,10 @@
 
         <activity
             android:name=".activities.RegisterMainActivity"
-            android:screenOrientation="nosensor" />
+            android:screenOrientation="nosensor" >
+
+        </activity>
+
         <activity
             android:name=".activities.ManualSignUpActivity"
             android:screenOrientation="nosensor" />
@@ -53,18 +56,28 @@
 
         <activity
             android:name=".activities.HomeActivity"
-            android:screenOrientation="nosensor"/>
+            android:screenOrientation="nosensor">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
         <activity
             android:name=".activities.otp_activity"
             android:screenOrientation="nosensor"/>
         <activity
-            android:name=".activities.splashScreen"
-            android:screenOrientation="nosensor">
+            android:name=".activities.SplashScreenActivity"
+            android:screenOrientation="nosensor"
+            android:launchMode="singleTop">
         </activity>
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -88,6 +101,9 @@
 
         <activity android:name=".activities.BquizActivity" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="46718d8d9197ffb1a01ebf20e1e4cdce7ced8b0a" />
     </application>
 
 </manifest>

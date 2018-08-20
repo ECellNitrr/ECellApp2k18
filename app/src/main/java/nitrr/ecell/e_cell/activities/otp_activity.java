@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import nitrr.ecell.e_cell.model.otp.otpSendNumber;
 import nitrr.ecell.e_cell.model.otp.sendOtp;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
+import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
@@ -38,7 +41,6 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_activity);
-
         initview();
 
     }
@@ -75,7 +77,6 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
 
         otpSendNumber otpSendNumber = new otpSendNumber();
         otpSendNumber.setMobile_no(Mobile_no);
-        otpSendNumber.setToken(prefUtils.getAccessToken());
 
 
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
@@ -88,13 +89,11 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                     SendOtpResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
                         Toast.makeText(otp_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
-
                         SecondLayout.setVisibility(View.VISIBLE);
                         FirstLayout.setVisibility(View.INVISIBLE);
                     }
                 } else {
                     Toast.makeText(otp_activity.this, response.message(), Toast.LENGTH_LONG).show();
-
                 }
 
             }
@@ -102,7 +101,11 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onFailure(Call call, Throwable t) {
                 progressDialog.hideDialog();
-                Toast.makeText(otp_activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                if (!NetworkUtils.isNetworkAvailable(otp_activity.this)) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, otp_activity.this, clickListenerPositiveSendOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                } else {
+                    Toast.makeText(otp_activity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -111,47 +114,64 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     private void apicallVerifyOtp() {
         progressDialog.showDialog("Verifying OTP. Please wait...", this);
         sendOtp sendOtp = new sendOtp();
-        PrefUtils utils = new PrefUtils(otp_activity.this);
 
         OTP_entered = EditText_otp.getText().toString().trim();
-
         sendOtp.setOtpEnterd(OTP_entered);
-        sendOtp.setToken(utils.getAccessToken());
+        sendOtp.setToken(prefUtils.getAccessToken());
 
-        ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
+        ApiServices apiServices = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<VerifyOtp> call = apiServices.sendOtpEntered(sendOtp);
         call.enqueue(new Callback<VerifyOtp>() {
             @Override
             public void onResponse(Call<VerifyOtp> call, Response<VerifyOtp> response) {
                 progressDialog.hideDialog();
-
                 if (response.isSuccessful()) {
                     VerifyOtp jsonResponse = response.body();
                     if (null != jsonResponse) {
-                        Toast.makeText(otp_activity.this, "Otp verified", Toast.LENGTH_LONG).show();
-
-                        Intent intent = new Intent(otp_activity.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if (jsonResponse.getSuccess()) {
+                            Toast.makeText(otp_activity.this, "Otp verified", Toast.LENGTH_LONG).show();
+                            prefUtils.setIsLoggedIn(true);
+                            Intent intent = new Intent(otp_activity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(otp_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
                 } else {
-                    Toast.makeText(otp_activity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(otp_activity.this, getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
 
                 }
-
-
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
                 progressDialog.hideDialog();
-                Toast.makeText(otp_activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                if (!NetworkUtils.isNetworkAvailable(otp_activity.this)) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, otp_activity.this, clickListenerPositiveVerifyOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                } else {
+                    Toast.makeText(otp_activity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
 
+                }
             }
         });
 
+
     }
 
+    private DialogInterface.OnClickListener clickListenerPositiveVerifyOtp = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            apicallVerifyOtp();
+        }
+    };
+
+    private DialogInterface.OnClickListener clickListenerPositiveSendOtp = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+           apicallSendOtp();
+        }
+    };
 
     private boolean checkmobileno() {
         String MobilePattern = "[0-9]{10}";
@@ -161,8 +181,6 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
             return false;
         } else
             return true;
-
-
     }
 
     @Override

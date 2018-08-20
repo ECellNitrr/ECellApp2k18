@@ -11,10 +11,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fasterxml.jackson.databind.util.BeanUtil;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.auth.GenericResponse;
@@ -31,7 +34,8 @@ import retrofit2.Response;
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
 
     private TextView det, add, email, ph, touch;
-    private ImageView send, facebook, youtube, linkedin, twitter, instagram;
+    private ImageView facebook, youtube, linkedin, twitter, instagram;
+    private Button sendBtn;
     private EditText nameEditText, emailEditText, messageEditText;
 
 
@@ -55,7 +59,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         email = getView().findViewById(R.id.email);
         ph = getView().findViewById(R.id.phone);
         touch = getView().findViewById(R.id.contact_us_mid);
-        send = getView().findViewById(R.id.send);
+        sendBtn = getView().findViewById(R.id.send);
         nameEditText = getView().findViewById(R.id.contactNameEdit);
         emailEditText = getView().findViewById(R.id.contactEmailEdit);
         messageEditText = getView().findViewById(R.id.contactMessageEdit);
@@ -71,7 +75,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         ph.setTypeface(bebas);
         touch.setTypeface(bebas);
 
-        send.setOnClickListener(this);
+        sendBtn.setOnClickListener(this);
         facebook.setOnClickListener(this);
         twitter.setOnClickListener(this);
         youtube.setOnClickListener(this);
@@ -81,13 +85,13 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        if (view == send) {
+        if (view == sendBtn) {
             if (!NetworkUtils.isNetworkAvailable(getContext())) {
                 Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
             }
             if (checkNull()) {
 
-                ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+                ApiServices services = AppClient.getInstance().createService(ApiServices.class);
 
                 PrefUtils utils = new PrefUtils(getActivity());
                 MessageDetails details = new MessageDetails();

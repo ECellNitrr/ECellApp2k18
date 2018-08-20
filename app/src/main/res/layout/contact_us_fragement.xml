@@ -278,7 +278,7 @@
             android:layout_height="0dp"
             android:layout_weight="3" />
 
-        <ImageView
+        <Button
             android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -286,7 +286,10 @@
             android:background="@color/colorLightBlack"
             android:clickable="true"
             android:focusable="true"
-            android:padding="10dp"
-            android:src="@drawable/sent_mail" />
+            android:text="@string/send"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/raleway_bold"
+            android:padding="10dp" />
     </LinearLayout>
 </ScrollView>

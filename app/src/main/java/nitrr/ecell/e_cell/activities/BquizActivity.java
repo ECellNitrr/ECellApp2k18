@@ -2,6 +2,7 @@ package nitrr.ecell.e_cell.activities;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
@@ -59,7 +60,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     MyCountDownTimer myCountDownTimer;
     private Answer answer;
     private ProgressDialog progressDialog;
-    private int countbackPress = 0;
+    private Boolean isPenaltyApplicable = true;
     private Bitmap bm = null;
 
     @Override
@@ -110,20 +111,27 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void apiCall(){
-        ApiServices api = AppClient.getInstance().createService(ApiServices.class);
+        ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<BQuizQuestionResponse> call = api.getQuestion(retryQuestion);
         call.enqueue(new Callback<BQuizQuestionResponse>() {
             @Override
             public void onResponse(Call<BQuizQuestionResponse> call, Response<BQuizQuestionResponse> response) {
                 if(response.isSuccessful()){
                     BQuizQuestionResponse question = response.body();
-                    if(null != question){
+                    if(null != question && question.getSuccess()){
+                        isPenaltyApplicable = true;
                         retryQuestion = false;
                         makeLayoutsVisible();
                         setData(question);
                         questionDetailsModels.addAll(question.getOptions());
                         answer.setOptionId(null);
                         answer.setQuestionId(question.getId());
+                    }
+                    else{
+
+                        makeLayoutsInvisible();
+                        tvQuestion.setText("Your have already answered all the questions, kindly wait for next question.");
+                        Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
                     }
                 }
             }
@@ -156,8 +164,8 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                     //todo:Save image so that zooming doesnt load image again
-                    //                    BitmapDrawable bmDrawable = (BitmapDrawable) resource;
-//                    bm = bmDrawable.getBitmap();
+                    BitmapDrawable bmDrawable = (BitmapDrawable) resource;
+                    bm = bmDrawable.getBitmap();
                     adapter.notifyDataSetChanged();
                     if(0 != question.getTime()){
                         donutProgress.setMax(question.getTime());
@@ -177,6 +185,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     .into(ivQuestion);
         }
         else{
+            bm = BitmapFactory.decodeResource(getResources(), R.drawable.bquiz_logo);
             Glide.with(this).load(R.drawable.bquiz_logo).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
             if(0 != question.getTime()){
@@ -193,18 +202,21 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void submitAnswer(Answer answer){
-        progressDialog.showDialog("Submitting your answer. Please wait.",BquizActivity.this);
-        ApiServices api = AppClient.getInstance().createService(ApiServices.class);
+        ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<GenericResponse> call = api.submitAnswer(answer);
         call.enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                progressDialog.hideDialog();
                 if(response.isSuccessful()){
                     GenericResponse responseBody = response.body();
                     if(null != responseBody){
                         if (responseBody.getSuccess()){
+                            isPenaltyApplicable = false;
                             makeLayoutsInvisible();
                             tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
+                            Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
+                            myCountDownTimer.cancel();
                         }
                     }
                 }
@@ -212,10 +224,10 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
             }
         });
-        progressDialog.hideDialog();
     }
 
     private void makeLayoutsInvisible(){
@@ -237,15 +249,18 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     @Override
     protected void onStop() {
-        Toast.makeText(BquizActivity.this, getString(R.string.bquiz_penalty_text), Toast.LENGTH_LONG).show();
-        if(myCountDownTimer.getTimeLeft()>=5000){
-            long timeLeft = myCountDownTimer.getTimeLeft()-5000;
-            myCountDownTimer.cancel();
-            myCountDownTimer = new MyCountDownTimer(timeLeft, 1000);
-            myCountDownTimer.start();
-        }
-        else{
-            submitAnswer(answer);
+        if(isPenaltyApplicable){
+            Toast.makeText(BquizActivity.this, getString(R.string.bquiz_penalty_text), Toast.LENGTH_LONG).show();
+            if(myCountDownTimer.getTimeLeft()>=5000){
+                long timeLeft = myCountDownTimer.getTimeLeft()-5000;
+                myCountDownTimer.cancel();
+                myCountDownTimer = new MyCountDownTimer(timeLeft, 1000);
+                myCountDownTimer.start();
+            }
+            else{
+                progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
+                submitAnswer(answer);
+            }
         }
         super.onStop();
     }
@@ -256,13 +271,15 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 BquizActivity.super.onBackPressed();
+                isPenaltyApplicable = false;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                isPenaltyApplicable = true;
 
             }
-        }, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
+        }, true, getString(R.string.bquiz_back_press), getString(R.string.bquiz_quit_text), getString(R.string.bquiz_quit), getString(R.string.bquiz_dialog_cancel_btn));
 
 
 
@@ -277,6 +294,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSubmitAnswer:
+                progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
                 submitAnswer(answer);
                 break;
             case R.id.ivQuestion:
@@ -290,11 +308,10 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         AppCompatDialog avdialog = new AppCompatDialog(this);
         avdialog.setContentView(R.layout.image_popup_dialog);
         avdialog.setCancelable(true);
-        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 1.0f, 0.5f, true);
+        DialogFactory.setDynamicDialogHeightWidth(this, avdialog, 0.75f, 0.40f, true);
         ImageView ivImagePopup = avdialog.findViewById(R.id.ivQuestionImage);
         if (ivImagePopup != null) {
-            //todo:Place url or bitmat here
-            Glide.with(this).load("blah blah").into(ivImagePopup);
+            Glide.with(this).load(bm).into(ivImagePopup);
         }
         avdialog.show();
 
@@ -329,7 +346,8 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         @Override
         public void onFinish() {
 
-            DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, BquizActivity.this, clickListenerPositive, clickListenerNegative, true, getString(R.string.bquiz_timeout_title), getString(R.string.bquiz_timeout_text), getString(R.string.bquiz_rules_ok_btn));
+            progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
+            myCountDownTimer.cancel();
             submitAnswer(answer);
         }
     }

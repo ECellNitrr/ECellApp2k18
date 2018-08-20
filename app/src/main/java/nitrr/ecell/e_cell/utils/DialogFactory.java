@@ -18,6 +18,7 @@ public class DialogFactory {
     public static final int BQUIZ_NOT_ACTIVE_ID = 1;
     public static final int BQUIZ_RULES = 2;
     public static final int CONNECTION_PROBLEM_DIALOG = 3;
+    public static final int UPDATE_APP = 4;
 
     public static void showDialog(int id, final Context context, DialogInterface.OnClickListener clickListenerPositive, DialogInterface.OnClickListener clickListenerNegative, boolean isCancellable, Object... d) {
         switch (id) {
@@ -28,6 +29,9 @@ public class DialogFactory {
                 getDialog(context, clickListenerPositive, clickListenerNegative, isCancellable, d);
                 break;
             case CONNECTION_PROBLEM_DIALOG:
+                getDialog(context, clickListenerPositive, clickListenerNegative, isCancellable, d);
+                break;
+            case UPDATE_APP:
                 getDialog(context, clickListenerPositive, clickListenerNegative, isCancellable, d);
                 break;
             default:

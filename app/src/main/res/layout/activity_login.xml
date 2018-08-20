@@ -129,24 +129,11 @@
                 style="@style/signUpLayoutButtonStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/button_style_filled"
                 android:text="@string/sign_in"
                 android:textColor="@color/colorOuterSpace" />
 
-            <TextView
-                android:id="@+id/forgetpassword"
-                android:layout_width="250dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingLeft="50dp"
-                android:paddingTop="2dp"
-                android:text="@string/forgot_password"
-                android:textColor="@color/colorSonicSilver"
-                android:textSize="16dp" />
 
 
         </LinearLayout>

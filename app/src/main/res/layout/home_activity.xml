@@ -37,8 +37,8 @@
         <ImageView
             android:id="@+id/topImage"
             android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/white_ring" />
+            android:layout_height="65dp"
+            android:background="@mipmap/ecell_white" />
 
         <View
             android:layout_width="0dp"
@@ -55,10 +55,10 @@
                 android:id="@+id/user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_medium"
-                android:text="@string/sample_hello_user"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="@font/raleway_medium"
+                android:maxLines="1"
+                android:text="@string/sample_hello_user"
                 android:textColor="@color/colorWhite"
                 android:textSize="26sp" />
 
@@ -89,12 +89,13 @@
 
         <TextView
             android:layout_width="120dp"
-            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/raleway_medium"
             android:text="@string/log_out"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="20sp" />
     </android.support.v7.widget.CardView>
+
 </RelativeLayout>

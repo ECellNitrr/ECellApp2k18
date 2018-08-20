@@ -5,15 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
 
@@ -42,11 +45,17 @@ public class FacebookSignUp {
         this.activity = activity;
         this.fbSignUp = fbSignUp;
 
+        FacebookSdk.setApplicationId(activity.getResources().getString(R.string.facebook_app_id));
+        FacebookSdk.sdkInitialize(activity.getApplicationContext());
+
         prefUtils = new PrefUtils(activity);
-        prefUtils.isFacebookLogin(true);
     }
 
     public void initialize() {
+        LoginButton button = new LoginButton(activity);
+        button.setVisibility(View.INVISIBLE);
+        ((LinearLayout)fbSignUp).addView(button);
+
         callbackManager = CallbackManager.Factory.create();
 
         fbSignUp.setOnClickListener(new View.OnClickListener() {
@@ -139,16 +148,14 @@ public class FacebookSignUp {
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        prefUtils.saveAccessToken("Token " + response.body().getToken());
-
+                        prefUtils.saveAccessToken(response.body().getToken());
                         Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
-
                         Intent intent = new Intent(activity, otp_activity.class);
                         activity.startActivity(intent);
                         activity.finish();
                     }
                 } else
-                    Toast.makeText(activity, "Not Successful.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "Not Successful."+ response.body().getMessage(), Toast.LENGTH_LONG).show();
             }
 
             @Override
