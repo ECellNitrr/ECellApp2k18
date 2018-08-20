@@ -5,33 +5,34 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.signin.activities.login_activity;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button signIn, signUp;
-    TextView orContinueWith;
-    LinearLayout facebookSignUp;
-    FacebookSignUp fbSignUp;
+    private Button signIn, signUp;
+    private TextView orContinueWith;
+    private LinearLayout facebookSignUp;
+    private FacebookSignUp fbSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
-
         init();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
@@ -49,7 +50,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
         Typeface helvetica = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/helvetica.ttf");
 
         orContinueWith.setTypeface(helvetica);
-
         fbSignUp = new FacebookSignUp(RegisterMainActivity.this, facebookSignUp);
         fbSignUp.initialize();
     }

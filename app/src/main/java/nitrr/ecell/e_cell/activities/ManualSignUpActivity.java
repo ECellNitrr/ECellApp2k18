@@ -1,7 +1,7 @@
 package nitrr.ecell.e_cell.activities;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -16,13 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.AuthenticationResponse;
-import nitrr.ecell.e_cell.model.UserDetails;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.aboutus.UserDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.CustomTextWatcher;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,6 +39,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     private RelativeLayout layout;
 
     private UserDetails userDetails;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initView() {
+
+        PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
+        utils.isFacebookLogin(false);
 
         first = true;
         proceed = true;
@@ -89,38 +94,43 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         back.setEnabled(false);
 
         setTextWatcher();
+        progressDialog = new ProgressDialog();
     }
 
     private void apiCall() {
-
+        progressDialog.showDialog("Registering you.Please wait...", this);
         setData();
-
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
         Call<AuthenticationResponse> call = apiServices.sendRegisterDetails(userDetails);
         call.enqueue(new Callback<AuthenticationResponse>() {
 
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
-
+                progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
                         String token = jsonResponse.getToken();
                         PrefUtils utils = new PrefUtils(ManualSignUpActivity.this);
                         utils.saveAccessToken(token);
-                        utils.saveUserName(firstName + " " + lastName);
-
-                        Toast.makeText(ManualSignUpActivity.this, "Sign Up success.", Toast.LENGTH_LONG).show();
-                        // TODO : Remove Toast and Call OTP Activity here
+                        utils.saveUserName(firstName);
+                        if(jsonResponse.getSuccess()) {
+                            Intent intent = new Intent(ManualSignUpActivity.this, otp_activity.class);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(ManualSignUpActivity.this, jsonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else {
-                    Toast.makeText(ManualSignUpActivity.this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ManualSignUpActivity.this, response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
-                Toast.makeText(ManualSignUpActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                progressDialog.hideDialog();
+                Toast.makeText(ManualSignUpActivity.this, t.getMessage()+"Failure", Toast.LENGTH_LONG).show();
             }
         });
     }

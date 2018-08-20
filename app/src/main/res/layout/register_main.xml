@@ -1,108 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:orientation="vertical"
-    tools:context=".activities.RegisterMainActivity">
+    android:background="@color/colorBackground">
 
-    <ImageView
-        android:id="@+id/ecell_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_margin="80dp"
-        android:src="@mipmap/ecell_colored" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:background="@color/colorBackground"
+        android:orientation="vertical"
+        tools:context=".activities.RegisterMainActivity">
 
-        <Button
-            android:id="@+id/register_sign_in"
-            style="@style/parentButtonStyle"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_style_border"
-            android:text="@string/sign_in"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/register_sign_up"
-            style="@style/parentButtonStyle"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_style_filled"
-            android:text="@string/sign_up"
-            android:textColor="@color/colorOuterSpace" />
+        <ImageView
+            android:id="@+id/ecell_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ecell_colored" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal">
-
-            <View
-                style="@style/regDivideLine"
-                android:layout_width="0dp"
-                android:layout_height="3dp" />
-
-            <TextView
-                android:id="@+id/register_orContinueWith"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/or_continue_with"
-                android:textAlignment="center"
-                android:textColor="@color/colorSonicSilver"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <View
-                style="@style/regDivideLine"
-                android:layout_width="0dp"
-                android:layout_height="3dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/register_facebook"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_style_filled"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/register_sign_in"
+                style="@style/parentButtonStyle"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:visibility="gone" />
+                android:background="@drawable/button_style_border"
+                android:text="@string/sign_in"
+                android:textColor="@android:color/white" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/facebook_logo" />
+            <Button
+                android:id="@+id/register_sign_up"
+                style="@style/parentButtonStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_style_filled"
+                android:text="@string/sign_up"
+                android:textColor="@color/colorOuterSpace" />
 
-            <TextView
-                android:id="@+id/register_facebook_text"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@string/facebook"
-                android:textAlignment="center"
-                android:textColor="@color/colorSonicSilver"
-                android:textSize="20sp" />
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <View
+                    style="@style/regDivideLine"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp" />
+
+                <TextView
+                    android:id="@+id/register_orContinueWith"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/or_continue_with"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSonicSilver"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <View
+                    style="@style/regDivideLine"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register_facebook"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_style_filled"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/facebook_logo" />
+
+                <TextView
+                    android:id="@+id/register_facebook_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/facebook"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSonicSilver"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

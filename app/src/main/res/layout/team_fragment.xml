@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<nitrr.ecell.e_cell.utils.CustomScrollableView
-    android:id="@+id/scrollView"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipeRefreshLayoutTeam"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <nitrr.ecell.e_cell.utils.CustomScrollableView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="350dp"
-            android:layout_marginTop="350dp" />
+            android:layout_marginTop="350dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/dir"
@@ -53,7 +58,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/image_border" />
+                    android:background="@drawable/image_border_team" />
 
             </RelativeLayout>
 
@@ -101,7 +106,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/image_border" />
+                    android:background="@drawable/image_border_team" />
 
             </RelativeLayout>
 
@@ -149,7 +154,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/image_border" />
+                    android:background="@drawable/image_border_team" />
 
             </RelativeLayout>
 
@@ -180,4 +185,6 @@
             android:layout_marginBottom="20dp" />
 
     </LinearLayout>
-</nitrr.ecell.e_cell.utils.CustomScrollableView>
+
+    </nitrr.ecell.e_cell.utils.CustomScrollableView>
+</android.support.v4.widget.SwipeRefreshLayout>

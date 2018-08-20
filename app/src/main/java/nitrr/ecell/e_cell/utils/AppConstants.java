@@ -8,13 +8,21 @@ public class AppConstants {
     public static final String SIGN_UP_URL = "appregister/";
     public static final String ABOUT_US_URL = "team/list/";
     public static final String SPEAKER_URL = "speaker/list/";
-    public static final String FB_SIGN_UP_URL = "";
+    public static final String FB_SIGN_UP_URL = "oauth/login/facebook/";
     public static final String SEND_OTP_URL = "send_otp/";
     public static final String VERIFY_OTP_URL ="verify_otp/ ";
     public static final String MESSAGE_URL = "message/";
     public static final String SIGN_IN_URL = "applogin/";
     public static final String EVENTS_URL = "event/list/";
     public static final String SPONSOR_URL ="sponsor/list/";
+    public static final String SPLASHSCREEN_URL ="is_update_available/";
+
+    //Bquiz Urls
+    public static final String BQUIZ_STATUS = "bquiz/is_active";
+    public static final String BQUIZ_LEADERBOARD = "v2/5b66b49a3200007400ee11cb";
+//    public static final String BQUIZ_QUESTION = "v2/5b682c6d3300005b0432db31";
+    public static final String BQUIZ_QUESTION = "bquiz/get_question/";
+    public static final String BQUIZ_SUBMIT_ANSWER = "bquiz/submit_answer/";
 
     public static final String FACEBOOK = "https://www.facebook.com/ecellnitrr";
     public static final String YOUTUBE = "https://www.youtube.com/c/EntrepreneurshipCellNITRaipur";
@@ -22,6 +30,7 @@ public class AppConstants {
     public static final String LINKEDIN = "https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur";
     public static final String INSTAGRAM = "https://www.instagram.com/ecell.nitraipur";
 
+    //Authentication req.
     public static final String AUTH_ID = "auth_id";
     public static final String ACCESS_TOKEN = "access_token";
 

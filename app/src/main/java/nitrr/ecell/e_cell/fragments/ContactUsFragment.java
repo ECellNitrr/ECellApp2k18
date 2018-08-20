@@ -6,31 +6,37 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
+
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.GenericResponse;
-import nitrr.ecell.e_cell.model.MessageDetails;
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+import nitrr.ecell.e_cell.model.aboutus.MessageDetails;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.PrefUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactUsFragment extends Fragment implements View.OnClickListener {
-    TextView det, add, email, ph, touch;
-    ImageView send, facebook, youtube, linkedin, twitter, instagram;
 
-    EditText nameEditText, emailEditText, messageEditText;
+    private TextView det, add, email, ph, touch;
+    private ImageView facebook, youtube, linkedin, twitter, instagram;
+    private Button sendBtn;
+    private EditText nameEditText, emailEditText, messageEditText;
 
 
     @Nullable
@@ -53,7 +59,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         email = getView().findViewById(R.id.email);
         ph = getView().findViewById(R.id.phone);
         touch = getView().findViewById(R.id.contact_us_mid);
-        send = getView().findViewById(R.id.send);
+        sendBtn = getView().findViewById(R.id.send);
         nameEditText = getView().findViewById(R.id.contactNameEdit);
         emailEditText = getView().findViewById(R.id.contactEmailEdit);
         messageEditText = getView().findViewById(R.id.contactMessageEdit);
@@ -69,7 +75,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         ph.setTypeface(bebas);
         touch.setTypeface(bebas);
 
-        send.setOnClickListener(this);
+        sendBtn.setOnClickListener(this);
         facebook.setOnClickListener(this);
         twitter.setOnClickListener(this);
         youtube.setOnClickListener(this);
@@ -79,13 +85,18 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        if (view == send)
+        if (view == sendBtn) {
+            if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
+            }
             if (checkNull()) {
 
-                ApiServices services = AppClient.getInstance().createServiceWithAuth(ApiServices.class);
+                ApiServices services = AppClient.getInstance().createService(ApiServices.class);
 
+                PrefUtils utils = new PrefUtils(getActivity());
                 MessageDetails details = new MessageDetails();
 
+                details.setToken(utils.getAccessToken());
                 details.setEmail(emailEditText.getText().toString().trim());
                 details.setName(nameEditText.getText().toString().trim());
                 details.setMessage(messageEditText.getText().toString().trim());
@@ -107,20 +118,19 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
             } else {
                 Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
             }
-
-        else if (view == facebook)
+        } else if (view == facebook)
             openURL(AppConstants.FACEBOOK);
 
-        else if(view == twitter)
+        else if (view == twitter)
             openURL(AppConstants.TWITTER);
 
-        else if(view == youtube)
+        else if (view == youtube)
             openURL(AppConstants.YOUTUBE);
 
-        else if(view == linkedin)
+        else if (view == linkedin)
             openURL(AppConstants.LINKEDIN);
 
-        else if(view == instagram)
+        else if (view == instagram)
             openURL(AppConstants.INSTAGRAM);
     }
 

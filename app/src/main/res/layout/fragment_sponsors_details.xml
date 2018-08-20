@@ -1,79 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorBackground"
     android:layout_height="match_parent"
-    tools:context=".sponsor.Fragments.SponsorsDetailsFragment">
+    android:background="@drawable/sponsors_gradient_bg"
+    tools:context=".fragments.SponsorsDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/spons_endpage"
-        android:id="@+id/relativeLayout">
-
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/sponsImage"
-            android:layout_width="260sp"
-            android:layout_height="160dp"
-            android:layout_marginTop="60dp"
-            android:scaleType="fitXY"
+            android:id="@+id/arrow_dismiss_sponsor_details"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_arrow_back" />
 
-        <TextView
-            android:id="@+id/sponsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:textColor="#B71C1C"
-            android:textSize="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_below="@+id/sponsImage"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
+        <LinearLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/sponsdetaildesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="30dp"
-            android:maxLines="3"
-            android:text="Description"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            android:layout_below="@+id/sponsTitle"
-            android:layout_centerHorizontal="true" />
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp">
 
+                <ImageView
+                    android:id="@+id/sponsImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/indicator_progress_bar_sponsor_details"
+                    style="@style/AVLoadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:indicatorColor="@color/colorWhite"
+                    app:indicatorName="BallTrianglePathIndicator" />
 
-        <TextView
-            android:id="@+id/sponsdetailwebsite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="  Sponsor Website"
-            android:textColor="#000000"
-            android:textAlignment="center"
-            android:layout_marginTop="30dp"
-            android:paddingTop="10dp"
-            android:textSize="20dp"
-            android:layout_below="@+id/sponsdetaildesc"
-            android:layout_centerHorizontal="true" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/sponsdetailcontact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="contact"
-            android:layout_below="@id/sponsdetailwebsite"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:textSize="25dp"
-            android:textColor="#000000"/>
+            <TextView
+                android:id="@+id/sponsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Title"
+                android:textColor="@color/colorWhite"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/sponsdetaildesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_medium"
+                android:gravity="center"
+                android:maxLines="5"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="Description"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/sponsdetailcontact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/raleway_medium"
+                android:gravity="center"
+                android:text="contact"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/sponsdetailwebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_rounded_corner_spons"
+                android:fontFamily="@font/raleway_medium"
+                android:padding="8dp"
+                android:text="@string/sponsor_website"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
-</LinearLayout>
+</ScrollView>
 

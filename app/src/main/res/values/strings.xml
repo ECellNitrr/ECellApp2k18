@@ -13,8 +13,10 @@
     <string name="sign_up_one">Sign Up with Username</string>
     <string name="sign_up_two">and Password</string>
     <string name="forgot_password">Forgot your Password</string>
-    <string name="facebook_app_id">227874984654887</string>
-    <string name="fb_login_protocol_scheme">fb227874984654887</string>
+
+    <string name="facebook_app_id">1942342869359654</string>
+    <string name="fb_login_protocol_scheme">fb1942342869359654</string>
+
     <string name="proceed">Proceed</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -30,6 +32,30 @@
     <string name="error_con_pass">Passwords didn\'t match.</string>
     <string name="error_fb">Facebook SignUp Cancelled.</string>
     <string name="sample_hello_user">Hey User</string>
+    <string name="bquiz_dialog_title">BQuiz</string>
+    <string name="bquiz_dialog_msg">Bquiz is not active now. Please try again later</string>
+    <string name="bquiz_dialog_retry_btn">Retry</string>
+    <string name="bquiz_dialog_cancel_btn">Cancel</string>
+    <string name="bquiz_rules_title">Bquiz Rules</string>
+    <string name="bquiz_rules_detail">1. Each question contains 4 options in which one is correct.\n2. You have to select the correct option and submit your answer.\n3.You have to submit your answer within the given time limit else your answer will be marked as wrong.\nAll the best!</string>
+    <string name="bquiz_rules_ok_btn">Play Now!</string>
+    <string name="bquiz_timeout_title">Time Out !!</string>
+    <string name="bquiz_back_press">Quit</string>
+    <string name="bquiz_quit_text">Are you sure, you want to quit?</string>
+    <string name="bquiz_timeout_text">Pick your pace. Better luck next time.</string>
+    <string name="bquiz_penalty_text">You have been penalised for 5 seconds for changing your screen while playing.</string>
+    <string name="bquiz_quit">Quit</string>
+    <string name="something_went_wrong_msg">Something went wrong. Please try again.</string>
+    <string name="leaderboard_title">Leaderboard</string>
+    <string name="def_user_name_leaderboard">Vrihas Pathak</string>
+    <string name="def_user_rank_leaderboard">Rank</string>
+    <string name="rank_hash">\#</string>
+    <string name="network_issue_title">Network Issue</string>
+    <string name="network_issue_details">No internet connection. Please try again.</string>
+    <string name="no_internet_connection_msg">No Internet Connection. Please check your internet connection</string>
+    <string name="update_msg">Please Update the app for Better experience</string>
+    <string name="app_update">App Update</string>
+    <string name="update_btn">Update</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -61,9 +87,14 @@
     <string name="aim_content_end">where ideas not only thrive but become the greatest revelations in century.</string>
     <string name="vision_content">The Entrepreneurship Cell, NIT Raipur is a FORUM for the aspiring young minds who wish to pursue entrepreneurship and reach the pinnacle of glory. The cell aims at manifesting the essence of entrepreneurship in the convoluting gray</string>
     <string name="vision_content_end"> matters of the young force coming up. This delegation gives wings to ideas and support in form of investors and seed funding along with mentorship guidance to the pioneering and budding entrepreneurs. The cell aims at promoting the start up culture and building up entrepreneurs who have it in them to become the greatest pioneers of this century.</string>
+    <string name="sponsor_website">Visit Sponsor Website</string>
+    <string name="about_esummit">The Entrepreneurship Summit is not just and event to provide platform where the students, faculty, investors, participants, speakers and start-ups can interact with each other and gain traction to improve them. We believe in a growth where everyone grows together and hence is this summit. The bright minds shall gain the motivation, resources and the pathway to realise their potential and convert their ideas to innovative start-ups.</string>
     <string name="spinner_text">Title</string>
     <string name="log_out">Log Out</string>
     <string name="date">September 8 and 9, 2018 NIT Raipur</string>
+    <string name="send">SEND</string>
 
+    //Notification
+    <string name="default_notification_channel_id">Random number</string>
 
 </resources>

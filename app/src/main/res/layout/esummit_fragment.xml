@@ -38,6 +38,14 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="4" />
+
+    <ImageView
+        android:id="@+id/swipeUpGif"
+        android:layout_width="@dimen/margin_64"
+        android:layout_height="@dimen/margin_64"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_gravity="bottom"
+        />
 </LinearLayout>
