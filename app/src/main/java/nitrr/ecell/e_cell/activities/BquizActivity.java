@@ -60,7 +60,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     MyCountDownTimer myCountDownTimer;
     private Answer answer;
     private ProgressDialog progressDialog;
-    private int countbackPress = 0;
+    private Boolean isPenaltyApplicable = true;
     private Bitmap bm = null;
 
     @Override
@@ -118,13 +118,20 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             public void onResponse(Call<BQuizQuestionResponse> call, Response<BQuizQuestionResponse> response) {
                 if(response.isSuccessful()){
                     BQuizQuestionResponse question = response.body();
-                    if(null != question){
+                    if(null != question && question.getSuccess()){
+                        isPenaltyApplicable = true;
                         retryQuestion = false;
                         makeLayoutsVisible();
                         setData(question);
                         questionDetailsModels.addAll(question.getOptions());
                         answer.setOptionId(null);
                         answer.setQuestionId(question.getId());
+                    }
+                    else{
+
+                        makeLayoutsInvisible();
+                        tvQuestion.setText("Your have already answered all the questions, kindly wait for next question.");
+                        Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
                     }
                 }
             }
@@ -205,6 +212,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     GenericResponse responseBody = response.body();
                     if(null != responseBody){
                         if (responseBody.getSuccess()){
+                            isPenaltyApplicable = false;
                             makeLayoutsInvisible();
                             tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
                             Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
@@ -241,16 +249,18 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
     @Override
     protected void onStop() {
-        Toast.makeText(BquizActivity.this, getString(R.string.bquiz_penalty_text), Toast.LENGTH_LONG).show();
-        if(myCountDownTimer.getTimeLeft()>=5000){
-            long timeLeft = myCountDownTimer.getTimeLeft()-5000;
-            myCountDownTimer.cancel();
-            myCountDownTimer = new MyCountDownTimer(timeLeft, 1000);
-            myCountDownTimer.start();
-        }
-        else{
-            progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
-            submitAnswer(answer);
+        if(isPenaltyApplicable){
+            Toast.makeText(BquizActivity.this, getString(R.string.bquiz_penalty_text), Toast.LENGTH_LONG).show();
+            if(myCountDownTimer.getTimeLeft()>=5000){
+                long timeLeft = myCountDownTimer.getTimeLeft()-5000;
+                myCountDownTimer.cancel();
+                myCountDownTimer = new MyCountDownTimer(timeLeft, 1000);
+                myCountDownTimer.start();
+            }
+            else{
+                progressDialog.showDialog("Submitting your answer. Please wait...",BquizActivity.this);
+                submitAnswer(answer);
+            }
         }
         super.onStop();
     }
@@ -261,10 +271,12 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 BquizActivity.super.onBackPressed();
+                isPenaltyApplicable = false;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                isPenaltyApplicable = true;
 
             }
         }, true, getString(R.string.bquiz_back_press), getString(R.string.bquiz_quit_text), getString(R.string.bquiz_quit), getString(R.string.bquiz_dialog_cancel_btn));
