@@ -47,7 +47,6 @@ public class TeamFragment extends Fragment {
     private ProgressBar progressBar;
     private CustomScrollableView scrollableView;
     private SwipeRefreshLayout swipeRefreshLayoutTeam;
-
     private TextView director, hocd, faculty, team, hocdName, dirName, fac1;
     private ImageView dirImage, hocdImage, fac1Image;
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {

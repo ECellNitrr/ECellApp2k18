@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +32,7 @@ public class SponsorsFragment extends DialogFragment {
     private RecyclerView sectionedRecyclerView;
     private SwipeRefreshLayout swipeRefreshLayoutSponsors;
     private ProgressBar progressBarSponsors;
+    private Toolbar toolbar;
     private SponsorSectionAdapter sectionedSponsorAdapter;
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
         @Override
@@ -76,7 +79,16 @@ public class SponsorsFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sponsors, container, false);
-
+        toolbar = view.findViewById(R.id.sponsors_toolbar);
+        toolbar.setTitle("Sponsors");
+        toolbar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.colorWhite));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_expand_more));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SponsorsFragment.this.dismiss();
+            }
+        });
         swipeRefreshLayoutSponsors = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutSponsors);
         sectionedRecyclerView = view.findViewById(R.id.recyclerview_sponsor1);
         progressBarSponsors = (ProgressBar) view.findViewById(R.id.progress_bar_sponsors);

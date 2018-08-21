@@ -148,6 +148,19 @@
             android:text="Submit"
             android:textSize="16sp"/>
 
+        <Button
+            android:id="@+id/btnRetryQuestion"
+            android:layout_width="@dimen/margin_256"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvAnswers"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_16"
+            android:background="@drawable/bquiz_button_style"
+            android:textColor="@color/colorWhite"
+            android:text="Get next question"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
     </RelativeLayout>
 
 </ScrollView>

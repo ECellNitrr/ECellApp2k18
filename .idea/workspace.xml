@@ -11,59 +11,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="930cdc66-4749-4e18-9b7a-f65fcf865c3e" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_expand_more.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_expand_more.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_expand_more.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_expand_more.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_expand_more.png" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_answers_1_4_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_answers_1_4_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_beta_1_2_9.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_beta_1_2_9.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_crashlytics_2_9_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_crashlytics_2_9_4.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_crashlytics_core_2_6_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_crashlytics_sdk_android_crashlytics_core_2_6_3.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_4_35_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_4_35_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_lzyzsd_circleprogress_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_lzyzsd_circleprogress_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_15_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_15_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_15_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_15_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_15_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_15_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_16_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_16_0_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_15_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_15_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_15_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_15_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_16_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_16_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_impl_16_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_impl_16_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_16_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_16_0_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_core_16_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_core_16_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_16_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_16_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_16_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_16_0_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_16_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_16_0_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_impl_16_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_impl_16_0_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_17_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_17_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_wang_avi_library_2_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_wang_avi_library_2_1_3.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_fabric_sdk_android_fabric_1_4_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_fabric_sdk_android_fabric_1_4_3.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ECellApp2k18.iml" afterPath="$PROJECT_DIR$/ECellApp2k18.iml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/RegisterMainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/RegisterMainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/login_activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/LoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/otp_activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/OtpActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/adapters/bquiz/BquizAnswerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/adapters/bquiz/BquizAnswerAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsBottomSheetFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/AboutUsBottomSheetFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/ESBottomSheetFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EventsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/EventsFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/SponsorsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/SponsorsFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/TeamFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/TeamFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/FacebookSignUp.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/FacebookSignUp.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/manual_signup_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/manual_signup_layout.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/aboutus/AboutUsResponse.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/aboutus/AboutUsResponse.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/AppClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/AppClient.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/aboutus_bottom_sheet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/aboutus_bottom_sheet.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/es_bottom_sheet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/es_bottom_sheet.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_events.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_events.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sponsors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sponsors.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/team_recycler_custom_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/team_recycler_custom_view.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,7 +60,38 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-486">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BquizActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="861">
+              <caret line="167" column="154" lean-forward="false" selection-start-line="167" selection-start-column="154" selection-end-line="167" selection-end-column="154" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -2279,34 +2285,7 @@
             </path>
             <path>
               <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="e_cell" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="e_cell" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -2509,8 +2488,8 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2653,28 +2632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1658">
-          <caret line="167" column="154" lean-forward="false" selection-start-line="167" selection-start-column="154" selection-end-line="167" selection-end-column="154" />
-          <folding>
-            <element signature="e#2866#3034#0" expanded="true" />
-            <element signature="e#3033#3034#0" expanded="true" />
-            <element signature="e#3104#3272#0" expanded="true" />
-            <element signature="e#3271#3272#0" expanded="true" />
-            <element signature="e#10516#10554#0" expanded="true" />
-            <element signature="e#11221#11473#0" expanded="true" />
-            <element signature="e#11472#11473#0" expanded="true" />
-            <element signature="e#11475#11674#0" expanded="true" />
-            <element signature="e#11673#11674#0" expanded="true" />
-            <element signature="e#11682#11718#0" expanded="true" />
-            <element signature="e#11720#11755#0" expanded="true" />
-            <element signature="e#11757#11787#0" expanded="true" />
-            <element signature="e#11789#11832#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2683,33 +2640,57 @@
         <state relative-caret-position="280">
           <caret line="42" column="16" lean-forward="false" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
           <folding>
-            <element signature="e#698#717#0" expanded="true" />
-            <element signature="e#1159#1178#0" expanded="true" />
-            <element signature="e#1216#1234#0" expanded="true" />
-            <element signature="e#1273#1291#0" expanded="true" />
-            <element signature="e#1331#1349#0" expanded="true" />
-            <element signature="e#1431#1448#0" expanded="true" />
-            <element signature="e#1482#1499#0" expanded="true" />
-            <element signature="e#1679#1697#0" expanded="true" />
-            <element signature="e#1978#1996#0" expanded="true" />
-            <element signature="e#2042#2059#0" expanded="true" />
-            <element signature="e#2440#2459#0" expanded="true" />
-            <element signature="e#2506#2524#0" expanded="true" />
-            <element signature="e#2572#2590#0" expanded="true" />
-            <element signature="e#2794#2812#0" expanded="true" />
-            <element signature="e#3195#3213#0" expanded="true" />
-            <element signature="e#3298#3316#0" expanded="true" />
-            <element signature="e#3347#3364#0" expanded="true" />
-            <element signature="e#4270#4289#0" expanded="true" />
-            <element signature="e#4332#4351#0" expanded="true" />
-            <element signature="e#4629#4648#0" expanded="true" />
-            <element signature="e#4691#4710#0" expanded="true" />
-            <element signature="e#4822#4839#0" expanded="true" />
-            <element signature="e#4894#4911#0" expanded="true" />
-            <element signature="e#6228#6246#0" expanded="true" />
-            <element signature="e#6346#6365#0" expanded="true" />
-            <element signature="e#6550#6567#0" expanded="true" />
+            <element signature="e#698#717#0" expanded="false" />
+            <element signature="e#1159#1178#0" expanded="false" />
+            <element signature="e#1216#1234#0" expanded="false" />
+            <element signature="e#1273#1291#0" expanded="false" />
+            <element signature="e#1331#1349#0" expanded="false" />
+            <element signature="e#1431#1448#0" expanded="false" />
+            <element signature="e#1482#1499#0" expanded="false" />
+            <element signature="e#1679#1697#0" expanded="false" />
+            <element signature="e#1978#1996#0" expanded="false" />
+            <element signature="e#2042#2059#0" expanded="false" />
+            <element signature="e#2440#2459#0" expanded="false" />
+            <element signature="e#2506#2524#0" expanded="false" />
+            <element signature="e#2572#2590#0" expanded="false" />
+            <element signature="e#2794#2812#0" expanded="false" />
+            <element signature="e#3195#3213#0" expanded="false" />
+            <element signature="e#3298#3316#0" expanded="false" />
+            <element signature="e#3347#3364#0" expanded="false" />
+            <element signature="e#4270#4289#0" expanded="false" />
+            <element signature="e#4332#4351#0" expanded="false" />
+            <element signature="e#4629#4648#0" expanded="false" />
+            <element signature="e#4691#4710#0" expanded="false" />
+            <element signature="e#4822#4839#0" expanded="false" />
+            <element signature="e#4894#4911#0" expanded="false" />
+            <element signature="e#6228#6246#0" expanded="false" />
+            <element signature="e#6346#6365#0" expanded="false" />
+            <element signature="e#6550#6567#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-486">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="167" column="154" lean-forward="false" selection-start-line="167" selection-start-column="154" selection-end-line="167" selection-end-column="154" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

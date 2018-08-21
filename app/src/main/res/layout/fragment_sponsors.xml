@@ -8,16 +8,36 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorHomeBottomBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_sponsors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/sponsors_toolbar"
+                    style="@style/HeaderBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.AppBarLayout>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_sponsor1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/app_bar_sponsors"
+                android:layout_marginTop="4dp"
                 android:background="@color/colorBackground">
 
             </android.support.v7.widget.RecyclerView>

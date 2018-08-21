@@ -5,9 +5,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,7 @@ public class EventsFragment extends DialogFragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBarEvents;
     private EventsFragmentAdapter adapterr;
+    private Toolbar toolbar;
     private SwipeRefreshLayout swipeRefreshLayoutEvents;
     private ArrayList<EventsData> data_events = new ArrayList<>();
     private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
@@ -79,7 +83,18 @@ public class EventsFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_events, container, false);
+        View view = inflater.inflate(R.layout.fragment_events, container, false);((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar = view.findViewById(R.id.events_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle("Events");
+        toolbar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.colorWhite));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_expand_more));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventsFragment.this.dismiss();
+            }
+        });
         swipeRefreshLayoutEvents = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutEvents);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_id);
         progressBarEvents = (ProgressBar) view.findViewById(R.id.progress_bar_events);
