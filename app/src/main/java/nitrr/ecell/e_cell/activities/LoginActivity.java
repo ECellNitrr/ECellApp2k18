@@ -9,8 +9,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -25,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class login_activity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_Email, EditText_Password;
     private TextInputLayout Layout_Email, Layout_Password;
@@ -70,15 +68,15 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
                 if (response.isSuccessful()) {
                     AuthenticationResponse jsonResponse = response.body();
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
-                        Toast.makeText(login_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         prefUtils.saveAccessToken(jsonResponse.getToken());
                         prefUtils.setIsLoggedIn(true);
-                        Intent intent = new Intent(login_activity.this, HomeActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     }
                 } else {
-                    Toast.makeText(login_activity.this, response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, response.message(), Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -86,7 +84,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onFailure(Call<AuthenticationResponse> call, Throwable throwable) {
                 progressDialog.hideDialog();
-                Toast.makeText(login_activity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -115,13 +113,13 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         if (v == Sign_in) {
             if (checkinput()) {
                 if (!Patterns.EMAIL_ADDRESS.matcher(EditText_Email.getText().toString()).matches()) {
-                    Toast.makeText(login_activity.this, "Invalid email-id", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Invalid email-id", Toast.LENGTH_LONG).show();
                 } else {
-                    progressDialog.showDialog("Logging in. Please wait...", login_activity.this);
+                    progressDialog.showDialog("Logging in. Please wait...", LoginActivity.this);
                     apiCall();
                 }
             } else {
-                Toast.makeText(login_activity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
             }
         }
     }

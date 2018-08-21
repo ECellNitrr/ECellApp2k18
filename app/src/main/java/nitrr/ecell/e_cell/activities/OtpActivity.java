@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class otp_activity extends AppCompatActivity implements View.OnClickListener {
+public class OtpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_mobilenumber, EditText_otp;
     private TextView OTP_button, Proceed_afterotp_button;
@@ -46,7 +46,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initview() {
-        prefUtils = new PrefUtils(otp_activity.this);
+        prefUtils = new PrefUtils(OtpActivity.this);
         userDetails = new UserDetails();
 
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
@@ -88,12 +88,12 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                 if (response.isSuccessful()) {
                     SendOtpResponse jsonResponse = response.body();
                     if (null != jsonResponse) {
-                        Toast.makeText(otp_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(OtpActivity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         SecondLayout.setVisibility(View.VISIBLE);
                         FirstLayout.setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    Toast.makeText(otp_activity.this, response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpActivity.this, response.message(), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -101,10 +101,10 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onFailure(Call call, Throwable t) {
                 progressDialog.hideDialog();
-                if (!NetworkUtils.isNetworkAvailable(otp_activity.this)) {
-                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, otp_activity.this, clickListenerPositiveSendOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                if (!NetworkUtils.isNetworkAvailable(OtpActivity.this)) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, OtpActivity.this, clickListenerPositiveSendOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
                 } else {
-                    Toast.makeText(otp_activity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpActivity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -129,17 +129,17 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                     VerifyOtp jsonResponse = response.body();
                     if (null != jsonResponse) {
                         if (jsonResponse.getSuccess()) {
-                            Toast.makeText(otp_activity.this, "Otp verified", Toast.LENGTH_LONG).show();
+                            Toast.makeText(OtpActivity.this, "Otp verified", Toast.LENGTH_LONG).show();
                             prefUtils.setIsLoggedIn(true);
-                            Intent intent = new Intent(otp_activity.this, HomeActivity.class);
+                            Intent intent = new Intent(OtpActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(otp_activity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(OtpActivity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 } else {
-                    Toast.makeText(otp_activity.this, getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpActivity.this, getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -147,10 +147,10 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onFailure(Call call, Throwable t) {
                 progressDialog.hideDialog();
-                if (!NetworkUtils.isNetworkAvailable(otp_activity.this)) {
-                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, otp_activity.this, clickListenerPositiveVerifyOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                if (!NetworkUtils.isNetworkAvailable(OtpActivity.this)) {
+                    DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, OtpActivity.this, clickListenerPositiveVerifyOtp, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
                 } else {
-                    Toast.makeText(otp_activity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpActivity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -193,7 +193,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
                 apicallSendOtp();
 
             } else {
-                Toast.makeText(otp_activity.this, "Invalid phone no.", Toast.LENGTH_LONG).show();
+                Toast.makeText(OtpActivity.this, "Invalid phone no.", Toast.LENGTH_LONG).show();
             }
 
 
@@ -201,7 +201,7 @@ public class otp_activity extends AppCompatActivity implements View.OnClickListe
 
             String str = EditText_otp.getText().toString().trim();
             if (str.equals("")) {
-                Toast.makeText(otp_activity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
+                Toast.makeText(OtpActivity.this, "Required fields can't be empty.", Toast.LENGTH_LONG).show();
             } else {
                 apicallVerifyOtp();
             }

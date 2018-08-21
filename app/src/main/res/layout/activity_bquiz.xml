@@ -62,7 +62,7 @@
                     android:gravity="center"
                     android:fontFamily="@font/raleway_medium"
                     android:textSize="@dimen/margin_16"
-                    android:text="Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?Identify the logo and guess the brand?"/>
+                    android:text="Getting your question ready.Please wait."/>
 
 
             </RelativeLayout>

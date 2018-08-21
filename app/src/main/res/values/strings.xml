@@ -37,7 +37,7 @@
     <string name="bquiz_dialog_retry_btn">Retry</string>
     <string name="bquiz_dialog_cancel_btn">Cancel</string>
     <string name="bquiz_rules_title">Bquiz Rules</string>
-    <string name="bquiz_rules_detail">1. Each question contains 4 options in which one is correct.\n2. You have to select the correct option and submit your answer.\n3.You have to submit your answer within the given time limit else your answer will be marked as wrong.\nAll the best!</string>
+    <string name="bquiz_rules_detail">1. All the questions are single correct type i.e. each question has only one correct option.\n2. As soon as the quiz rolls in, the timer begins.\n3. Players need to submit the answers in the allotted time, else the selected option will be submitted automatically.\n4. Going away from B-Quiz screen, while timer is running, will get you a <b>penalty of 5 seconds</b>.\n5. In case, there is any image in the question, tap on the image to magnify it.\n6. Once you submit your answer or quit BQuiz, the question can’t be attended again.\n\nAll the best. Beat the rest with your smartness.\nCheers! </string>
     <string name="bquiz_rules_ok_btn">Play Now!</string>
     <string name="bquiz_timeout_title">Time Out !!</string>
     <string name="bquiz_back_press">Quit</string>
@@ -57,8 +57,6 @@
     <string name="app_update">App Update</string>
     <string name="update_btn">Update</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab1">Aim</string>
     <string name="tab2">Team</string>
     <string name="tab3">Contact Us</string>

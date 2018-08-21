@@ -42,37 +42,31 @@
 
         <activity
             android:name=".activities.RegisterMainActivity"
-            android:screenOrientation="nosensor" >
-
-        </activity>
+            android:screenOrientation="nosensor"/>
 
         <activity
             android:name=".activities.ManualSignUpActivity"
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name=".activities.login_activity"
+            android:name=".activities.LoginActivity"
             android:screenOrientation="nosensor" />
 
         <activity
             android:name=".activities.HomeActivity"
-            android:screenOrientation="nosensor">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
+            android:screenOrientation="nosensor"/>
         <activity
-            android:name=".activities.otp_activity"
+            android:name=".activities.OtpActivity"
             android:screenOrientation="nosensor"/>
         <activity
             android:name=".activities.SplashScreenActivity"
             android:screenOrientation="nosensor"
             android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

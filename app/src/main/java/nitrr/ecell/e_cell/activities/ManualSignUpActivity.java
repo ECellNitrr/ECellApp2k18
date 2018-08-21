@@ -3,8 +3,11 @@ package nitrr.ecell.e_cell.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -37,6 +41,8 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
     private Boolean proceed, first;
     private String mobile, password, firstName, lastName, email;
     private RelativeLayout layout;
+    private TextView tvPrivacyPolicy, tvTermsAndConditions;
+    private LinearLayout llTC;
 
     private UserDetails userDetails;
     private ProgressDialog progressDialog;
@@ -85,6 +91,12 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
         layoutFirst = findViewById(R.id.lay_first);
         layoutSecond = findViewById(R.id.lay_second);
+        llTC = findViewById(R.id.llTC);
+        llTC.setVisibility(View.GONE);
+        tvPrivacyPolicy = findViewById(R.id.tvPrivacyPolicy);
+        tvTermsAndConditions = findViewById(R.id.tvTermsAndConditions);
+        tvPrivacyPolicy.setOnClickListener(this);
+        tvTermsAndConditions.setOnClickListener(this);
 
         inputFName.requestFocus();
 
@@ -115,7 +127,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                         utils.saveAccessToken(token);
                         utils.saveUserName(firstName);
                         if(jsonResponse.getSuccess()) {
-                            Intent intent = new Intent(ManualSignUpActivity.this, otp_activity.class);
+                            Intent intent = new Intent(ManualSignUpActivity.this, OtpActivity.class);
                             startActivity(intent);
                             finish();
                         }else {
@@ -191,12 +203,11 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                 layoutSecond.animate().translationX(0).setDuration(500);
                 layoutFirst.animate().translationX(-1000).setDuration(500);
                 back.animate().alpha(1.0f).setDuration(300);
-
                 back.setEnabled(true);
                 first = false;
-
                 inputPassword.requestFocus();
                 showKeyboard();
+                llTC.setVisibility(View.VISIBLE);
 
             } else {
                 if (isEmpty()) {
@@ -213,6 +224,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             layoutSecond.animate().translationX(1000).setDuration(500);
             back.animate().alpha(0.0f).setDuration(300);
 
+            llTC.setVisibility(View.GONE);
             back.setEnabled(false);
             first = true;
             signUpProceed.setText(getResources().getString(R.string.proceed));
@@ -223,6 +235,12 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         } else if (v == layout) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         }
+        else if(v == tvPrivacyPolicy){
+            openWebsiteUrl("https://ecell.nitrr.ac.in/privacy_policy/");
+        }
+        else if(v == tvTermsAndConditions){
+            openWebsiteUrl("https://ecell.nitrr.ac.in/terms/");
+        }
     }
 
     private void showKeyboard() {
@@ -231,6 +249,18 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
         if (inputMethodManager != null) {
             inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.SHOW_FORCED, 0);
         }
+    }
+
+    private void openWebsiteUrl(String url) {
+            Uri uri = Uri.parse(url);
+            CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            intentBuilder.setStartAnimations(this, R.anim.slide_up, R.anim.slide_down);
+            intentBuilder.setExitAnimations(this, android.R.anim.slide_in_left,
+                    android.R.anim.slide_out_right);
+            CustomTabsIntent customTabsIntent = intentBuilder.build();
+            customTabsIntent.launchUrl(this, uri);
     }
 
 }
