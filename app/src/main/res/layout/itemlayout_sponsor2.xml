@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sponsor_detail_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardBackgroundColor="#404045"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="4dp"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="top">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/sponsdetailpic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="0dp"
+                    android:scaleType="fitCenter" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/indicator_progress_bar_spons_image"
+                    style="@style/AVLoadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:visibility="visible"
+                    app:indicatorColor="@color/colorWhite"
+                    app:indicatorName="BallTrianglePathIndicator" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/sponsdetailname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            tools:text="Sponsor's Name" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

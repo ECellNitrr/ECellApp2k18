@@ -1,18 +1,22 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
 
@@ -20,6 +24,14 @@ import java.net.URL;
 import java.util.Arrays;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
+import nitrr.ecell.e_cell.model.auth.FacebookSignInUserDetails;
+import nitrr.ecell.e_cell.activities.OtpActivity;
+import nitrr.ecell.e_cell.restapi.ApiServices;
+import nitrr.ecell.e_cell.restapi.AppClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FacebookSignUp {
 
@@ -27,15 +39,23 @@ public class FacebookSignUp {
     private View fbSignUp;
     private CallbackManager callbackManager;
     private PrefUtils prefUtils;
+    private FacebookSignInUserDetails details = new FacebookSignInUserDetails();
 
     public FacebookSignUp(Activity activity, View fbSignUp) {
         this.activity = activity;
         this.fbSignUp = fbSignUp;
 
+        FacebookSdk.setApplicationId(activity.getResources().getString(R.string.facebook_app_id));
+        FacebookSdk.sdkInitialize(activity.getApplicationContext());
+
         prefUtils = new PrefUtils(activity);
     }
 
     public void initialize() {
+        LoginButton button = new LoginButton(activity);
+        button.setVisibility(View.INVISIBLE);
+        ((LinearLayout)fbSignUp).addView(button);
+
         callbackManager = CallbackManager.Factory.create();
 
         fbSignUp.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +68,7 @@ public class FacebookSignUp {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                prefUtils.isFacebookLogin(true);
 
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
@@ -99,7 +120,13 @@ public class FacebookSignUp {
 
             bundle.putString(AppConstants.AVATAR_URL, avatar_url.toString());
 
-            prefUtils.saveFbUserInfo(jsonObject.getString(AppConstants.FIRST_NAME), jsonObject.getString(AppConstants.LAST_NAME), jsonObject.getString(AppConstants.EMAIL), avatar_url.toString());
+            prefUtils.saveFbUserInfo(jsonObject.getString(AppConstants.FIRST_NAME), jsonObject.getString(AppConstants.LAST_NAME), jsonObject.getString(AppConstants.EMAIL));
+
+            details.setFacebook(prefUtils.getIfIsFacebookLogin());
+            details.setName(jsonObject.getString(AppConstants.FIRST_NAME) + " " + jsonObject.getString(AppConstants.LAST_NAME));
+            details.setEmail(jsonObject.getString(AppConstants.EMAIL));
+
+            apiCall();
 
         } catch (Exception e) {
             Log.d("Facebook Sign Up Error.", e.getMessage());
@@ -110,5 +137,31 @@ public class FacebookSignUp {
 
     public CallbackManager getCallbackManager() {
         return callbackManager;
+    }
+
+    private void apiCall() {
+        ApiServices services = AppClient.getInstance().createService(ApiServices.class);
+        Call<AuthenticationResponse> call = services.sendFacebookRegistrationDetails(details);
+
+        call.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        prefUtils.saveAccessToken(response.body().getToken());
+                        Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(activity, OtpActivity.class);
+                        activity.startActivity(intent);
+                        activity.finish();
+                    }
+                } else
+                    Toast.makeText(activity, "Not Successful."+ response.body().getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                Toast.makeText(activity, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

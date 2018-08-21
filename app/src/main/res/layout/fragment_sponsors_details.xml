@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sponsors_gradient_bg"
+    tools:context=".fragments.SponsorsDetailsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/arrow_dismiss_sponsor_details"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <LinearLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp">
+
+                <ImageView
+                    android:id="@+id/sponsImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/indicator_progress_bar_sponsor_details"
+                    style="@style/AVLoadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:indicatorColor="@color/colorWhite"
+                    app:indicatorName="BallTrianglePathIndicator" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/sponsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Title"
+                android:textColor="@color/colorWhite"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/sponsdetaildesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/raleway_medium"
+                android:gravity="center"
+                android:maxLines="5"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="Description"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/sponsdetailcontact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/raleway_medium"
+                android:gravity="center"
+                android:text="contact"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/sponsdetailwebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_rounded_corner_spons"
+                android:fontFamily="@font/raleway_medium"
+                android:padding="8dp"
+                android:text="@string/sponsor_website"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
+

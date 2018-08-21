@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorHomeBottomBackground"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ecell_splashscreen" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout_first"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/otp_border"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <EditText
+                android:id="@+id/input_mobilenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/raleway_medium"
+                android:hint="@string/mobile_no"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/otp_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/customborder"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/raleway_bold"
+                android:text="@string/otp"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_second"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/otp_border"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/input_otp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/raleway_medium"
+                android:hint="@string/otp"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/proceedafterotp_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/customborder"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/raleway_bold"
+                android:text="@string/proceed"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

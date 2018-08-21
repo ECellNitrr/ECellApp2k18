@@ -9,33 +9,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.facebook.FacebookSdk;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button signIn, signUp;
-    TextView orContinueWith;
-    LinearLayout facebookSignUp;
-    FacebookSignUp fbSignUp;
+    private Button signIn, signUp;
+    private TextView orContinueWith;
+    private LinearLayout facebookSignUp;
+    private FacebookSignUp fbSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
-
         init();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         fbSignUp.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
     private void init() {
-
         facebookSignUp = findViewById(R.id.register_facebook);
 
         signIn = findViewById(R.id.register_sign_in);
@@ -49,7 +47,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
         Typeface helvetica = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/helvetica.ttf");
 
         orContinueWith.setTypeface(helvetica);
-
         fbSignUp = new FacebookSignUp(RegisterMainActivity.this, facebookSignUp);
         fbSignUp.initialize();
     }
@@ -59,9 +56,11 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
         if (v == signIn) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
+
                 @Override
                 public void run() {
-                    // TODO: Sign In Activity Call
+                    Intent intent = new Intent(RegisterMainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
             }, 150);
 
@@ -72,7 +71,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
                 public void run() {
                     Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             }, 150);
         }

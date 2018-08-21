@@ -1,19 +1,41 @@
 package nitrr.ecell.e_cell.utils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class PrefUtils {
     private Activity activity;
 
-    PrefUtils(Activity activity) {
+    public PrefUtils(Activity activity) {
         this.activity = activity;
+    }
+
+    public void saveUserName(String name) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("user", name);
+        editor.apply();
+    }
+
+    public void isFacebookLogin(boolean bool) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("isFB", bool);
+        editor.apply();
+    }
+
+
+    public boolean getIfIsFacebookLogin() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+
+        return prefs.getBoolean("isFB", false);
+    }
+
+    public String getUserName() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        return prefs.getString("user", null);
     }
 
     public void saveAccessToken(String token) {
@@ -30,7 +52,7 @@ public class PrefUtils {
         return prefs.getString("access_token", null);
     }
 
-    public void saveFbUserInfo(String first_name, String last_name, String email, String avatar_url) {
+    public void saveFbUserInfo(String first_name, String last_name, String email) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = prefs.edit();
@@ -38,34 +60,55 @@ public class PrefUtils {
         editor.putString("first_name", first_name);
         editor.putString("last_name", last_name);
         editor.putString("email", email);
-        editor.putString("avatar_url", avatar_url);
         editor.apply();
 
-
-        // Delete this dialog after final build.
-        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
-        dialog.setTitle("Retrieved Data");
-        dialog.setMessage("Access Token: " + getAccessToken() + "\nName : " + first_name + " " + last_name + "\nEmail : " + email + "\nAvatar URL : " + avatar_url);
-        dialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+        saveUserName(first_name);
     }
 
-    public Map<String, String> getFbUserInfo() {
-
+    public void saveFcmToken(String fcm) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        Map<String, String> userInfo = new HashMap<>();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("fcm_token", fcm);
+        editor.apply();
+    }
 
-        userInfo.put("uid", prefs.getString("uid", null));
-        userInfo.put("first_name", prefs.getString("first_name", null));
-        userInfo.put("last_name", prefs.getString("last_name", null));
-        userInfo.put("email", prefs.getString("email", null));
-        userInfo.put("avatar_url", prefs.getString("avatar_url", null));
+    public String getFcmToken() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        return prefs.getString("fcm_token", null);
+    }
 
-        return userInfo;
+
+    public void clearPrefs() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.clear();
+        editor.apply();
+    }
+
+    public boolean getIsLoggedIn() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        return preferences.getBoolean("isLoggedIn", false);
+    }
+
+    public void setIsLoggedIn(boolean loggedIn) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean("isLoggedIn", loggedIn);
+        editor.apply();
+    }
+
+    public boolean getIsFirstTimeLaunch() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        return preferences.getBoolean("isLoggedIn", true);
+    }
+
+    public void setIsFirstTimeLaunch(boolean loggedIn) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean("isLoggedIn", loggedIn);
+        editor.apply();
     }
 }

@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowActionBarOverlay">true</item>
+
     </style>
 
     <style name="parentButtonStyle">
@@ -33,6 +34,11 @@
         <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:textAlignment">viewEnd</item>
         <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="ProgressDialog">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
     </style>
 
     <style name="centralLayoutStyle">
@@ -67,4 +73,19 @@
         <item name="android:layout_weight">1</item>
         <item name="android:background">@drawable/solid_line_gray</item>
     </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="SlidingDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_left</item>
+    </style>
+
+    <style name="HeaderBar">
+        <item name="android:background">@color/colorBlack</item>
+    </style>
+
 </resources>
