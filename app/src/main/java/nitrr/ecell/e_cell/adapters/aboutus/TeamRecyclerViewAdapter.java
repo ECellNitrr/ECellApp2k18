@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +76,7 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
 
         holder.teamDesignation.setText(designation);
 
-        if (details.get(position).getImage() != null)
+        if (!TextUtils.isEmpty(details.get(position).getImage())) {
             Glide.with(context)
                     .load(details.get(position).getImage())
                     .listener(new RequestListener<Drawable>() {
@@ -93,6 +94,24 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
                     })
                     .apply(RequestOptions.circleCropTransform())
                     .into(holder.teamImage);
+        }else {
+            Glide.with(context).load(R.mipmap.ecell_white)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            holder.loadingIndicatorView.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            holder.loadingIndicatorView.setVisibility(View.GONE);
+                            return false;
+                        }
+                    })
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(holder.teamImage);
+        }
 
         if (details.get(position).getUrl() != null)
             holder.teamURL.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +125,6 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
 
     @Override
     public int getItemCount() {
-        Log.e("Size ====", details.size() + "");
         return details.size();
-
     }
 }

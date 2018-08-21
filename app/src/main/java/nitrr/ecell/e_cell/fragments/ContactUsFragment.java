@@ -27,6 +27,7 @@ import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,18 +38,21 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
     private ImageView facebook, youtube, linkedin, twitter, instagram;
     private Button sendBtn;
     private EditText nameEditText, emailEditText, messageEditText;
+    private ProgressDialog progressDialog;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.contact_us_fragement, container, false);
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         init();
+        progressDialog = new ProgressDialog();
     }
 
     private void init() {
@@ -86,6 +90,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if (view == sendBtn) {
+            progressDialog.showDialog("Submitting your feedback...", getContext());
             if (!NetworkUtils.isNetworkAvailable(getContext())) {
                 Snackbar.make(view, getResources().getString(R.string.no_internet_connection_msg), Snackbar.LENGTH_LONG).show();
             }
@@ -105,17 +110,23 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
                 call.enqueue(new Callback<GenericResponse>() {
                     @Override
                     public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                        progressDialog.hideDialog();
                         if (response.isSuccessful())
                             Toast.makeText(getContext(), R.string.feedback_success, Toast.LENGTH_LONG).show();
+                            emailEditText.setText("");
+                            nameEditText.setText("");
+                            messageEditText.setText("");
                     }
 
                     @Override
                     public void onFailure(Call<GenericResponse> call, Throwable t) {
+                        progressDialog.hideDialog();
                         Toast.makeText(getContext(), R.string.feedback_json_failure, Toast.LENGTH_LONG).show();
                     }
                 });
 
             } else {
+                progressDialog.hideDialog();
                 Toast.makeText(getContext(), R.string.feedback_failure, Toast.LENGTH_LONG).show();
             }
         } else if (view == facebook)

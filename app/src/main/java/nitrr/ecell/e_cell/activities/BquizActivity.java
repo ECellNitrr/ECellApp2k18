@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -52,7 +53,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     private ImageView ivQuestion;
     private RecyclerView rvAnswers;
     private DonutProgress donutProgress;
-    private Button btnSubmitAnswer;
+    private Button btnSubmitAnswer, btnRetryQuestion;
     private Boolean retryQuestion = false;
 
     private BquizAnswerAdapter adapter;
@@ -67,6 +68,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bquiz);
+        bm = BitmapFactory.decodeResource(getResources(), R.drawable.bquiz_logo);
         initview();
         initAdapter();
         progressDialog.showDialog("Charge your brain. Question is coming", this);
@@ -92,14 +94,22 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
         tvQuestion = findViewById(R.id.tvQuestion);
         timer = findViewById(R.id.timer);
+        timer.setVisibility(View.GONE);
 
         ivQuestion = findViewById(R.id.ivQuestion);
         donutProgress = findViewById(R.id.donut_progress);
+
+        btnRetryQuestion = findViewById(R.id.btnRetryQuestion);
         btnSubmitAnswer = findViewById(R.id.btnSubmitAnswer);
+        btnRetryQuestion.setVisibility(View.GONE);
+        btnSubmitAnswer.setVisibility(View.GONE);
+
         rvAnswers = findViewById(R.id.rvAnswers);
         rvAnswers.setLayoutManager(new LinearLayoutManager(this));
         answer = new Answer();
         progressDialog = new ProgressDialog();
+
+        btnRetryQuestion.setOnClickListener(this);
         btnSubmitAnswer.setOnClickListener(this);
         ivQuestion.setOnClickListener(this);
         makeLayoutsVisible();
@@ -116,9 +126,11 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         call.enqueue(new Callback<BQuizQuestionResponse>() {
             @Override
             public void onResponse(Call<BQuizQuestionResponse> call, Response<BQuizQuestionResponse> response) {
+                progressDialog.hideDialog();
                 if(response.isSuccessful()){
                     BQuizQuestionResponse question = response.body();
                     if(null != question && question.getSuccess()){
+                        btnRetryQuestion.setVisibility(View.GONE);
                         isPenaltyApplicable = true;
                         retryQuestion = false;
                         makeLayoutsVisible();
@@ -128,9 +140,10 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                         answer.setQuestionId(question.getId());
                     }
                     else{
-
+                        btnRetryQuestion.setVisibility(View.VISIBLE);
+                        isPenaltyApplicable = false;
                         makeLayoutsInvisible();
-                        tvQuestion.setText("Your have already answered all the questions, kindly wait for next question.");
+                        tvQuestion.setText(question.getMessage());
                         Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
                     }
                 }
@@ -138,12 +151,12 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
             @Override
             public void onFailure(Call<BQuizQuestionResponse> call, Throwable t) {
+                progressDialog.hideDialog();
                 retryQuestion = true;
                 progressDialog.showDialog("Some Error occured.Please wait while we get your question.",BquizActivity.this);
                 apiCall();
             }
         });
-        progressDialog.hideDialog();
     }
 
     private void setData(final BQuizQuestionResponse question){
@@ -156,6 +169,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                     retryQuestion = true;
+                    myCountDownTimer.cancel();
                     progressDialog.showDialog("Some Error occured.Please wait while we get your question.",BquizActivity.this);
                     apiCall();
                     return false;
@@ -163,7 +177,6 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                    //todo:Save image so that zooming doesnt load image again
                     BitmapDrawable bmDrawable = (BitmapDrawable) resource;
                     bm = bmDrawable.getBitmap();
                     adapter.notifyDataSetChanged();
@@ -185,7 +198,6 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     .into(ivQuestion);
         }
         else{
-            bm = BitmapFactory.decodeResource(getResources(), R.drawable.bquiz_logo);
             Glide.with(this).load(R.drawable.bquiz_logo).apply(RequestOptions.circleCropTransform()).into(ivQuestion);
             adapter.notifyDataSetChanged();
             if(0 != question.getTime()){
@@ -214,9 +226,13 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                         if (responseBody.getSuccess()){
                             isPenaltyApplicable = false;
                             makeLayoutsInvisible();
-                            tvQuestion.setText("Your Answer has been successfully submitted, kindly wait for next question.");
+                            tvQuestion.setText(responseBody.getMessage());
                             Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
                             myCountDownTimer.cancel();
+                            btnRetryQuestion.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            Toast.makeText(BquizActivity.this, "Please submit again.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -299,6 +315,10 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                 break;
             case R.id.ivQuestion:
                 openPopupImage();
+                break;
+            case R.id.btnRetryQuestion:
+                progressDialog.showDialog("Charge your brain. Question is coming", this);
+                apiCall();
                 break;
         }
     }

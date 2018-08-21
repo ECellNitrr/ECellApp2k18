@@ -26,7 +26,7 @@ import java.util.Arrays;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.auth.FacebookSignInUserDetails;
-import nitrr.ecell.e_cell.activities.otp_activity;
+import nitrr.ecell.e_cell.activities.OtpActivity;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import retrofit2.Call;
@@ -150,7 +150,7 @@ public class FacebookSignUp {
                     if (response.body() != null) {
                         prefUtils.saveAccessToken(response.body().getToken());
                         Toast.makeText(activity, "Success.", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(activity, otp_activity.class);
+                        Intent intent = new Intent(activity, OtpActivity.class);
                         activity.startActivity(intent);
                         activity.finish();
                     }

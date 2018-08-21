@@ -54,7 +54,6 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
                 holder.cvAnswer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Todo : change color and select answer answer
                         callback.selectAnswer(data.getKey());
                         lastSelected = holder.getAdapterPosition();
                         notifyDataSetChanged();

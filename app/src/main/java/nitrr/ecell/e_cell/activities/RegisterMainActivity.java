@@ -5,17 +5,14 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.facebook.FacebookSdk;
-import com.facebook.login.widget.LoginButton;
 
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.utils.FacebookSignUp;
-import nitrr.ecell.e_cell.utils.ProgressDialog;
 
 public class RegisterMainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button signIn, signUp;
@@ -62,9 +59,8 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
 
                 @Override
                 public void run() {
-                    Intent intent = new Intent(RegisterMainActivity.this, login_activity.class);
+                    Intent intent = new Intent(RegisterMainActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             }, 150);
 
@@ -75,7 +71,6 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
                 public void run() {
                     Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             }, 150);
         }
