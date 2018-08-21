@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -75,6 +76,10 @@
       <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
 >>>>>>> ab0aa16c93819d2c0c98e685c65861e385b86e6b
+=======
+  <component name="ChangeListManager">
+    <list default="true" id="3c5ec4fb-478a-41f7-8d7e-177fe89dc1c5" name="Default" comment="" />
+>>>>>>> master
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,6 +100,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -190,21 +196,14 @@
       <find>bquiz_rules</find>
       <find>bquiz</find>
     </findStrings>
+=======
+    <leaf />
+>>>>>>> master
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
-    <option name="myGradleHomes">
-      <map>
-        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-all/9br9xq1tocpiv8o6njlyu5op1/gradle-4.4" />
-      </map>
-    </option>
-    <option name="myGradleVersions">
-      <map>
-        <entry key="$PROJECT_DIR$" value="4.4" />
-      </map>
-    </option>
     <option name="availableProjects">
       <map>
         <entry>
@@ -229,6 +228,7 @@
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
     <option name="availableTasks">
       <map>
         <entry key="$PROJECT_DIR$">
@@ -2301,6 +2301,8 @@
         </entry>
       </map>
     </option>
+=======
+>>>>>>> master
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -2310,6 +2312,7 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -2337,6 +2340,11 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="y" value="1075" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1" />
+    <option name="y" value="-5" />
+>>>>>>> master
     <option name="width" value="1922" />
     <option name="height" value="1086" />
   </component>
@@ -2356,15 +2364,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
+=======
+>>>>>>> master
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="ECellApp2k18" type="1abcf292:AndroidViewProjectNode" />
+<<<<<<< HEAD
               <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
@@ -2420,10 +2432,15 @@
               <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
 >>>>>>> ab0aa16c93819d2c0c98e685c65861e385b86e6b
             </path>
+=======
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+>>>>>>> master
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2439,6 +2456,17 @@
     <property name="sourceResolution" value="XHDPI" />
     <property name="resolutions" value="XXHDPI&#10;MDPI&#10;HDPI&#10;XHDPI&#10;XXXHDPI" />
     <property name="format" value="PNG" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+>>>>>>> master
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2464,7 +2492,7 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -2472,6 +2500,7 @@
       </option>
       <envs />
       <patterns />
+<<<<<<< HEAD
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -2520,6 +2549,8 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+=======
+>>>>>>> master
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -2596,11 +2627,19 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="930cdc66-4749-4e18-9b7a-f65fcf865c3e" name="Default" comment="" />
       <created>1534827186362</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1534827186362</updated>
+=======
+      <changelist id="3c5ec4fb-478a-41f7-8d7e-177fe89dc1c5" name="Default" comment="" />
+      <created>1533367367611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533367367611</updated>
+>>>>>>> master
     </task>
     <servers />
   </component>
@@ -2614,6 +2653,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-1" y="1075" width="1922" height="1086" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -2657,6 +2697,43 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3306544" sideWeight="0.50215286" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.255603" sideWeight="0.4730195" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3300866" sideWeight="0.49784714" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> master
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2669,6 +2746,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -2727,10 +2805,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2618">
           <caret line="167" column="92" lean-forward="true" selection-start-line="167" selection-start-column="92" selection-end-line="167" selection-end-column="92" />
+=======
+        <state relative-caret-position="72">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -2757,12 +2840,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="211" column="12" lean-forward="false" selection-start-line="211" selection-start-column="12" selection-end-line="211" selection-end-column="12" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1458">
+          <caret line="81" column="53" lean-forward="true" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
+          <folding />
+>>>>>>> master
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -2788,11 +2887,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizQuestionResponse.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/QuestionDetailsModel.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/PrefUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="40" column="24" lean-forward="true" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizStatusResponse.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
+>>>>>>> master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="280">
           <caret line="42" column="16" lean-forward="false" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
         </state>
@@ -2805,10 +2938,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+=======
+        <state relative-caret-position="1422">
+          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/BquizActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
@@ -2821,10 +2959,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1738">
+          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
 <<<<<<< HEAD
 =======
@@ -2839,10 +2993,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="89" column="89" lean-forward="true" selection-start-line="89" selection-start-column="89" selection-end-line="89" selection-end-column="89" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/ManualSignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1738">
+          <caret line="104" column="46" lean-forward="true" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2041">
@@ -2903,12 +3072,81 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_recycler_custom_view.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bquiz.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/BQuizStatusResponse.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/AppClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/RegisterMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/activities/HomeActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/GenericResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="43" lean-forward="true" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/AppConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/76f3c69879d3e01c082f49d8661c5590838148e1/retrofit-2.3.0-sources.jar!/retrofit2/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/NetworkUtils.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/restapi/ApiServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/DialogFactory.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/fragments/BQuizFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizStatusResponse.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/utils/PrefUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/QuestionDetailsModel.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/model/BQuizQuestionResponse.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/bquiz/BquizActivity.java" />
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1003">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
+<<<<<<< HEAD
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -2985,16 +3223,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="52" column="38" lean-forward="false" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+=======
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nitrr/ecell/e_cell/model/SplashScreenResponse.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="110">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
 >>>>>>> ab0aa16c93819d2c0c98e685c65861e385b86e6b
+=======
+        <state relative-caret-position="288">
+          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding />
+>>>>>>> master
         </state>
       </provider>
     </entry>
