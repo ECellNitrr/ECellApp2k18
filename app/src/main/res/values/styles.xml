@@ -85,7 +85,7 @@
     </style>
 
     <style name="HeaderBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorBlack</item>
     </style>
 
 </resources>
