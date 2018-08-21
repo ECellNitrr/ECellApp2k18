@@ -84,4 +84,8 @@
         <item name="android:windowExitAnimation">@anim/slide_out_to_left</item>
     </style>
 
+    <style name="HeaderBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>
