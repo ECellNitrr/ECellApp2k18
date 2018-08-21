@@ -7,7 +7,7 @@ public class TeamDetails {
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
 
 
     @SerializedName("name")
@@ -15,7 +15,7 @@ public class TeamDetails {
     private String name;
 
 
-    @SerializedName("url")
+    @SerializedName("profile_url")
     @Expose
     private String url;
 
@@ -30,7 +30,7 @@ public class TeamDetails {
     private String memberType;
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 

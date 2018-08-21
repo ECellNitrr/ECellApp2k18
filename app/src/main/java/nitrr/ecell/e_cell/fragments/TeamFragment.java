@@ -121,6 +121,8 @@ public class TeamFragment extends Fragment {
     }
 
     private void callAPI() {
+        studentList.clear();
+        facultyList.clear();
         progressBar.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createService(ApiServices.class);
         Call<AboutUsResponse> call = services.getAboutUsDetails();
@@ -132,10 +134,8 @@ public class TeamFragment extends Fragment {
                     scrollableView.setScrolling(true);
                     AboutUsResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
-                        studentList.clear();
                         studentList.addAll(jsonResponse.getStudent());
                         adapter.notifyDataSetChanged();
-                        facultyList.clear();
                         facultyList.addAll(jsonResponse.getFaculty());
                         setDetails();
                     }
@@ -151,7 +151,7 @@ public class TeamFragment extends Fragment {
                     if (!NetworkUtils.isNetworkAvailable(getContext())) {
                         DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
                     } else {
-                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg) + "  " + t.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }
