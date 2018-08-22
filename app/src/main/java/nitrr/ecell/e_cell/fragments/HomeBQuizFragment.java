@@ -54,6 +54,7 @@ public class HomeBQuizFragment extends Fragment {
     private DialogInterface.OnClickListener clickListenerPositiveStatus = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
+            progressDialog.showDialog("Checking, if Bquiz is active now...", getContext());
             apiCallForBquizStatus();
         }
     };

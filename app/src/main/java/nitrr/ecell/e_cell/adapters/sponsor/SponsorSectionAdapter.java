@@ -67,8 +67,8 @@ public class SponsorSectionAdapter extends RecyclerView.Adapter<SponsorSectionAd
         public ViewHolder(View itemView) {
             super(itemView);
 
-            SponsHeading = (TextView) itemView.findViewById(R.id.sponstypename);
-            gridRecyclerViewSpons = (RecyclerView) itemView.findViewById(R.id.recyclerview_sponsor2);
+            SponsHeading = itemView.findViewById(R.id.sponstypename);
+            gridRecyclerViewSpons = itemView.findViewById(R.id.recyclerview_sponsor2);
 
         }
     }

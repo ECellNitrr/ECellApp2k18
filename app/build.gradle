@@ -29,8 +29,8 @@ android {
         applicationId "nitrr.ecell.e_cell"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -44,16 +44,16 @@ android {
     productFlavors {
         production {
             applicationIdSuffix ""
-//            buildConfigField("String", "BASE_URL", "\"https://ecell.nitrr.ac.in/\"")
+            buildConfigField("String", "BASE_URL", "\"https://ecell.nitrr.ac.in/\"")
 //            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
 //            buildConfigField("String", "BASE_URL", "\"http://18.204.111.26/\"")
-            buildConfigField("String", "BASE_URL", "\"https://67778133.ngrok.io/\"")
+//            buildConfigField("String", "BASE_URL", "\"https://67778133.ngrok.io/\"")
             minSdkVersion 19
             applicationId 'nitrr.ecell.e_cell'
             targetSdkVersion 27
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            versionCode 1
-            versionName '1.0'
+            versionCode 2
+            versionName '1.1'
         }
     }
     buildToolsVersion '27.0.3'
