@@ -67,6 +67,7 @@
         android:textSize="16sp" />
 
     <View
+        android:id="@+id/viewLinkedin"
         android:layout_width="120dp"
         android:layout_height="2dp"
         android:background="@color/colorGreenLight"

@@ -1,104 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorHomeBottomBackground"
-    android:orientation="vertical">
+    android:background="@color/colorHomeBottomBackground">
 
-    <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/ecell_splashscreen" />
-
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/layout_first"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/otp_border"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ecell_splashscreen" />
 
-            <EditText
-                android:id="@+id/input_mobilenumber"
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_first"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/raleway_medium"
-                android:hint="@string/mobile_no"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/otp_border"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
-            <TextView
-                android:id="@+id/otp_button"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/customborder"
-                android:clickable="true"
-                android:focusable="true"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@string/otp"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/input_mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/raleway_medium"
+                    android:hint="@string/mobile_no"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otp_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/customborder"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/otp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_second"
-            android:layout_width="280dp"
+            <LinearLayout
+                android:id="@+id/layout_second"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/otp_border"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/input_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/raleway_medium"
+                    android:hint="@string/otp"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/proceedafterotp_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/customborder"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/proceed"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/otp_border"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:visibility="gone">
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/margin_16"
+            android:text="00:30"/>
 
-            <EditText
-                android:id="@+id/input_otp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/raleway_medium"
-                android:hint="@string/otp"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
+       <RelativeLayout
+           android:id="@+id/rlResendOtp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="@dimen/margin_8"
+           android:layout_marginTop="@dimen/margin_16">
 
-            <TextView
-                android:id="@+id/proceedafterotp_button"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/customborder"
-                android:clickable="true"
-                android:focusable="true"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@string/proceed"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </RelativeLayout>
+           <TextView
+           android:id="@+id/tvResendOtp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:fontFamily="@font/raleway_medium"
+           android:textColor="@color/colorWhite"
+           android:text="RESEND OTP"/>
 
-</LinearLayout>
+           <View
+               android:layout_width="@dimen/margin_100"
+               android:layout_height="1dp"
+               android:background="@color/colorWhite"
+               android:layout_below="@id/tvResendOtp"
+               android:layout_centerHorizontal="true"/>
+
+       </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

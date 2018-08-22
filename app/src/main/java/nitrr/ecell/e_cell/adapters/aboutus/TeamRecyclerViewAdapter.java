@@ -113,7 +113,9 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
                     .into(holder.teamImage);
         }
 
-        if (details.get(position).getUrl() != null)
+        if (!TextUtils.isEmpty(details.get(position).getUrl())){
+            holder.teamURL.setVisibility(View.VISIBLE);
+            holder.viewLinkedin.setVisibility(View.VISIBLE);
             holder.teamURL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -121,6 +123,11 @@ public class TeamRecyclerViewAdapter extends RecyclerView.Adapter<TeamRecyclerVi
                     context.startActivity(browserIntent);
                 }
             });
+        }
+        else{
+            holder.teamURL.setVisibility(View.GONE);
+            holder.viewLinkedin.setVisibility(View.GONE);
+        }
     }
 
     @Override

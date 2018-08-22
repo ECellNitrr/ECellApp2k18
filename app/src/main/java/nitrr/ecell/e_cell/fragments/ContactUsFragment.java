@@ -40,7 +40,6 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
     private EditText nameEditText, emailEditText, messageEditText;
     private ProgressDialog progressDialog;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

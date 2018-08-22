@@ -16,6 +16,7 @@ public class AppConstants {
     public static final String EVENTS_URL = "events/list/";
     public static final String SPONSOR_URL ="sponsors/list/";
     public static final String SPLASHSCREEN_URL ="is_update_available/";
+    public static final String RETRY_OTP_URL = "retry_otp/";
 
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "bquiz/is_active";
@@ -25,7 +26,7 @@ public class AppConstants {
     public static final String BQUIZ_SUBMIT_ANSWER = "bquiz/submit_answer/";
 
     public static final String FACEBOOK = "https://www.facebook.com/ecellnitrr";
-    public static final String YOUTUBE = "https://www.youtube.com/c/EntrepreneurshipCellNITRaipur";
+    public static final String YOUTUBE = "https://www.youtube.com/channel/UCrlm4gpLnIaA3pKSXbB99Yw";
     public static final String TWITTER = "https://www.twitter.com/ecell_nitrr";
     public static final String LINKEDIN = "https://www.linkedin.com/company/entrepreneurship-cell-nit-raipur";
     public static final String INSTAGRAM = "https://www.instagram.com/ecell.nitraipur";
