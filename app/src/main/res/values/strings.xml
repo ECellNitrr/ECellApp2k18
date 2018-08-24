@@ -16,7 +16,7 @@
 
     <string name="facebook_app_id">1942342869359654</string>
     <string name="fb_login_protocol_scheme">fb1942342869359654</string>
-
+    <string name="register_esummit">Register for E-Summit</string>
     <string name="proceed">Proceed</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>

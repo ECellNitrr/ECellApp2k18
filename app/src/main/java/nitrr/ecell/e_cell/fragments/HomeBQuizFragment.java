@@ -22,6 +22,7 @@ import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,11 +112,15 @@ public class HomeBQuizFragment extends Fragment {
                 progressDialog.hideDialog();
                 if (response.isSuccessful()) {
                     BQuizStatusResponse jsonResponse = response.body();
-                    if (jsonResponse != null) {
+                    if (jsonResponse != null && jsonResponse.getSuccess()) {
                         if (jsonResponse.isActive()) {
                             DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, getContext(), clickListenerPositiveRules, clickListenerNegativeRules, false, getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         } else {
                             DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositiveStatus, clickListenerNegativeStatus, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));
+                        }
+                    }else {
+                        if (jsonResponse != null) {
+                            Toast.makeText(getContext(), jsonResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -126,8 +131,20 @@ public class HomeBQuizFragment extends Fragment {
             @Override
             public void onFailure(Call<BQuizStatusResponse> call, Throwable t) {
                 progressDialog.hideDialog();
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    if (!NetworkUtils.isNetworkAvailable(getContext())) {
+                        DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, getContext(), clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                    } else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+           apiCallForBquizStatus();
+        }
+    };
 }

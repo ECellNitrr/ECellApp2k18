@@ -1,5 +1,6 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.model.ESummitRegistrationResponse;
 import nitrr.ecell.e_cell.model.SplashScreenResponse;
 import nitrr.ecell.e_cell.model.auth.LoginResponse;
 import nitrr.ecell.e_cell.model.bquiz.Answer;
@@ -77,4 +78,7 @@ public interface ApiServices {
 
     @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
     Call<GenericResponse> submitAnswer(@Body Answer answer);
+
+    @GET(AppConstants.ESUMMIT_REGISTRATION)
+    Call<ESummitRegistrationResponse> getRegistrationLink();
 }
