@@ -267,5 +267,13 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
             customTabsIntent.launchUrl(this, uri);
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(this, RegisterMainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
 
