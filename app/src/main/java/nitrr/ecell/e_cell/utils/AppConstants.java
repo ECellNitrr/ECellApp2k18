@@ -17,6 +17,7 @@ public class AppConstants {
     public static final String SPONSOR_URL ="sponsors/list/";
     public static final String SPLASHSCREEN_URL ="is_update_available/";
     public static final String RETRY_OTP_URL = "retry_otp/";
+    public static final String ESUMMIT_REGISTRATION = "https://ecell.nitrr.ac.in/events/esummit/";
 
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "bquiz/is_active";
@@ -89,5 +90,4 @@ public class AppConstants {
     public static final String BQUIZ_SHEET = "bq";
     public static final String SPONSORS_SHEET = "spons";
     public static final String EVENTS_SHEET = "ev";
-    public static final String ESUMMIT_REGISTRATION = "";
 }
