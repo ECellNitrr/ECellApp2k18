@@ -40,8 +40,7 @@ public class DialogFactory {
     }
 
     private static void getDialog(Context context, DialogInterface.OnClickListener clickListenerPositive, DialogInterface.OnClickListener clickListenerNegative,  boolean isCancellable, Object... d) {
-        final AlertDialog alertDialog = new AlertDialog.Builder(
-                context).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle(d[0].toString());
         alertDialog.setMessage(d[1].toString());
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, d[2].toString(), clickListenerPositive);
