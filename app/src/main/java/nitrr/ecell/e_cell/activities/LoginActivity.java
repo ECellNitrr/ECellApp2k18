@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
-import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.auth.LoginDetails;
+import nitrr.ecell.e_cell.model.auth.LoginResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
 import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.PrefUtils;
@@ -59,21 +59,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void apiCall() {
         setData();
         ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
-        Call<AuthenticationResponse> call = apiServices.sendLoginDetails(loginDetails);
-        call.enqueue(new Callback<AuthenticationResponse>() {
+        Call<LoginResponse> call = apiServices.sendLoginDetails(loginDetails);
+        call.enqueue(new Callback<LoginResponse>() {
 
             @Override
-            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 progressDialog.hideDialog();
                 if (response.isSuccessful()) {
-                    AuthenticationResponse jsonResponse = response.body();
+                    LoginResponse jsonResponse = response.body();
                     if (null != jsonResponse && jsonResponse.getSuccess()) {
                         Toast.makeText(LoginActivity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                         prefUtils.saveAccessToken(jsonResponse.getToken());
                         prefUtils.setIsLoggedIn(true);
+                        prefUtils.saveUserName(jsonResponse.getFirst_name());
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
+                    }
+                    else{
+                        Toast.makeText(LoginActivity.this, jsonResponse.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(LoginActivity.this, response.message(), Toast.LENGTH_LONG).show();
@@ -82,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
             @Override
-            public void onFailure(Call<AuthenticationResponse> call, Throwable throwable) {
+            public void onFailure(Call<LoginResponse> call, Throwable throwable) {
                 progressDialog.hideDialog();
                 Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -105,6 +109,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 return false;
 
         return true;
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(this, RegisterMainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

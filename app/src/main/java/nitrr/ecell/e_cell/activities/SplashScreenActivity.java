@@ -52,8 +52,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     SplashScreenResponse splashScreenResponse = response.body();
                     if (splashScreenResponse != null) {
-                        String appVersion = splashScreenResponse.getVersion();
-                        if (Float.valueOf(appVersion) > BuildConfig.VERSION_CODE) {
+                        Integer appVersion = splashScreenResponse.getVersion();
+                        if (appVersion > BuildConfig.VERSION_CODE) {
                             updateApp(splashScreenResponse.getUrl());
                         }
                         else if (splashScreenResponse.getSuccess()) {

@@ -7,28 +7,15 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+import nitrr.ecell.e_cell.model.auth.GenericResponse;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SponsorsResponse implements Serializable{
+public class SponsorsResponse extends GenericResponse implements Serializable{
 
-@SerializedName("success")
-    @Expose
-    private String success;
-
-@SerializedName("message")
-    @Expose
-    private  String message;
 
 @SerializedName("spons")
 @Expose
 private List<SponsorType> sponsors;
-
-    public String getSuccess() {
-        return success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 
     public List<SponsorType> getSponsors() {
         return sponsors;

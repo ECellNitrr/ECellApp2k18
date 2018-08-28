@@ -3,14 +3,19 @@ package nitrr.ecell.e_cell.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import nitrr.ecell.e_cell.model.aboutus.UserDetails;
+import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.otp.SendOtpResponse;
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.otp.VerifyOtp;
@@ -29,12 +34,16 @@ import retrofit2.Response;
 public class OtpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText EditText_mobilenumber, EditText_otp;
-    private TextView OTP_button, Proceed_afterotp_button;
-    private String Mobile_no, OTP_entered;
+    private TextView OTP_button, Proceed_afterotp_button, tvTimer;
     private LinearLayout FirstLayout, SecondLayout;
+    private RelativeLayout rlResendOtp;
+    public static final int MILLISECONDS_RESEND_TIMER = 30000;
+    public static final int MILLISECONDS_RESEND_TIMER_INTERVAL = 1000;
+    private String Mobile_no, OTP_entered;
     private PrefUtils prefUtils;
     private UserDetails userDetails;
     private ProgressDialog progressDialog;
+    private Gson gson = new Gson();
 
 
     @Override
@@ -42,23 +51,30 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_activity);
         initview();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            userDetails = gson.fromJson(bundle.getString("userDetails"), UserDetails.class);
+        }
+        resendOtpCountDownTimer();
 
     }
 
     private void initview() {
         prefUtils = new PrefUtils(OtpActivity.this);
-        userDetails = new UserDetails();
 
         EditText_mobilenumber = findViewById(R.id.input_mobilenumber);
         EditText_otp = findViewById(R.id.input_otp);
         OTP_button = findViewById(R.id.otp_button);
         Proceed_afterotp_button = findViewById(R.id.proceedafterotp_button);
-
+        tvTimer = findViewById(R.id.tvTimer);
+        rlResendOtp = findViewById(R.id.rlResendOtp);
         FirstLayout = findViewById(R.id.layout_first);
         SecondLayout = findViewById(R.id.layout_second);
+        rlResendOtp = findViewById(R.id.rlResendOtp);
 
         OTP_button.setOnClickListener(this);
         Proceed_afterotp_button.setOnClickListener(this);
+        rlResendOtp.setOnClickListener(this);
 
         if (prefUtils.getIfIsFacebookLogin()) {
             FirstLayout.setVisibility(View.VISIBLE);
@@ -189,7 +205,6 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         if (v == OTP_button) {
 
             if (checkmobileno()) {
-
                 apicallSendOtp();
 
             } else {
@@ -207,6 +222,66 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             }
         }
 
-
+        else if (v == rlResendOtp) {
+            resendOtpApiCall();
+            resendOtpCountDownTimer();
+        }
     }
+
+    private void resendOtpApiCall() {
+        progressDialog.showDialog("Resending the otp. Please wait...", this);
+        ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
+        Call<AuthenticationResponse> call = apiServices.getAnotherOtp(userDetails);
+        call.enqueue(new Callback<AuthenticationResponse>() {
+
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                progressDialog.hideDialog();
+                if (response.isSuccessful()) {
+                    AuthenticationResponse jsonResponse = response.body();
+                    if (null != jsonResponse) {
+                        String token = jsonResponse.getToken();
+                        PrefUtils utils = new PrefUtils(OtpActivity.this);
+                        utils.saveAccessToken(token);
+                        utils.saveUserName(userDetails.getFirstName());
+                        if(!jsonResponse.getSuccess()) {
+                            Toast.makeText(OtpActivity.this, jsonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(OtpActivity.this, response.message(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                progressDialog.hideDialog();
+                Toast.makeText(OtpActivity.this, t.getMessage()+"Failure", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void resendOtpCountDownTimer() {
+        rlResendOtp.setVisibility(View.GONE);
+        tvTimer.setVisibility(View.VISIBLE);
+        new CountDownTimer(MILLISECONDS_RESEND_TIMER, MILLISECONDS_RESEND_TIMER_INTERVAL) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if(Long.toString(millisUntilFinished/1000).length()>1){
+                    tvTimer.setText(String.valueOf("00:" + millisUntilFinished/1000));
+                }
+                else{
+                    tvTimer.setText(String.valueOf("00:0" + millisUntilFinished/1000));
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                rlResendOtp.setVisibility(View.VISIBLE);
+                tvTimer.setVisibility(View.GONE);
+            }
+        }.start();
+    }
+
+
 }

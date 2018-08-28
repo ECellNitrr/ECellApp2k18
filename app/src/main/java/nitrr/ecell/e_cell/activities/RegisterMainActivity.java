@@ -61,6 +61,7 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
                 public void run() {
                     Intent intent = new Intent(RegisterMainActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }, 150);
 
@@ -71,6 +72,7 @@ public class RegisterMainActivity extends AppCompatActivity implements View.OnCl
                 public void run() {
                     Intent intent = new Intent(RegisterMainActivity.this, ManualSignUpActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }, 150);
         }

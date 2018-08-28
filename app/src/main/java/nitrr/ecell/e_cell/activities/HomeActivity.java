@@ -5,25 +5,41 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.model.ESummitRegistrationResponse;
+import nitrr.ecell.e_cell.restapi.ApiServices;
+import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.adapters.HomeViewPagerAdapter;
+import nitrr.ecell.e_cell.utils.DialogFactory;
+import nitrr.ecell.e_cell.utils.NetworkUtils;
 import nitrr.ecell.e_cell.utils.PrefUtils;
+import nitrr.ecell.e_cell.utils.ProgressDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static java.security.AccessController.getContext;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,11 +50,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView menu;
     private CardView logOut;
     private LinearLayout homeTopLayout;
+    private Button btnRegister;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+        progressDialog = new ProgressDialog();
         setStatusBarColor(getResources().getDrawable(AppConstants.GRADIENT_LOCATIONS[0]));
         initialize();
     }
@@ -50,7 +69,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         menu = findViewById(R.id.menu);
         logOut = findViewById(R.id.log_out);
         homeTopLayout = findViewById(R.id.homeTopLayout);
-
+        btnRegister = findViewById(R.id.btn_register_esummit);
+        btnRegister.setOnClickListener(this);
         menu.setOnClickListener(this);
         logOut.setOnClickListener(this);
         homeTopLayout.setOnClickListener(this);
@@ -164,6 +184,63 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             AlertDialog dialog = builder.create();
             dialog.show();
 
+        }else if (view == btnRegister) {
+            progressDialog.showDialog("Redirecting to registration form...",HomeActivity.this);
+            apiCallForRegistrationLink();
         }
+    }
+
+    private void apiCallForRegistrationLink() {
+        ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
+        Call<ESummitRegistrationResponse> call =  apiServices.getRegistrationLink();
+        call.enqueue(new Callback<ESummitRegistrationResponse>() {
+            @Override
+            public void onResponse(Call<ESummitRegistrationResponse> call, Response<ESummitRegistrationResponse> response) {
+                progressDialog.hideDialog();
+                if (response.isSuccessful()){
+                    ESummitRegistrationResponse eSummitRegistrationResponse = response.body();
+                    if (eSummitRegistrationResponse != null){
+                        if (eSummitRegistrationResponse.getSuccess()) {
+                            openRegistrationFormLink(eSummitRegistrationResponse.getLink());
+                        }else {
+                            Toast.makeText(HomeActivity.this, eSummitRegistrationResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else {
+                    Toast.makeText(HomeActivity.this, getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ESummitRegistrationResponse> call, Throwable t) {
+                progressDialog.hideDialog();
+                    if (!NetworkUtils.isNetworkAvailable(HomeActivity.this)) {
+                        DialogFactory.showDialog(DialogFactory.CONNECTION_PROBLEM_DIALOG, HomeActivity.this, clickListenerPositive, null, false, getString(R.string.network_issue_title), getString(R.string.network_issue_details), getString(R.string.bquiz_dialog_retry_btn));
+                    } else {
+                        Toast.makeText(HomeActivity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
+
+                    }
+            }
+        });
+    }
+
+    private DialogInterface.OnClickListener clickListenerPositive = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            apiCallForRegistrationLink();
+        }
+    };
+
+    private void openRegistrationFormLink(String url) {
+            Uri uri = Uri.parse(url);
+            CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
+            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            intentBuilder.setStartAnimations(this, R.anim.slide_up, R.anim.slide_down);
+            intentBuilder.setExitAnimations(this, android.R.anim.slide_in_left,
+                    android.R.anim.slide_out_right);
+            CustomTabsIntent customTabsIntent = intentBuilder.build();
+            customTabsIntent.launchUrl(this, uri);
     }
 }

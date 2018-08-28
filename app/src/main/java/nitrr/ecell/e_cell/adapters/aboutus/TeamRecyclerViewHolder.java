@@ -13,7 +13,8 @@ public class TeamRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView teamImage;
     public TextView teamName, teamDesignation, teamURL;
-    AVLoadingIndicatorView loadingIndicatorView;
+    public AVLoadingIndicatorView loadingIndicatorView;
+    public View viewLinkedin;
 
     public TeamRecyclerViewHolder(View itemView) {
         super(itemView);
@@ -23,5 +24,6 @@ public class TeamRecyclerViewHolder extends RecyclerView.ViewHolder {
         teamDesignation = itemView.findViewById(R.id.teamDesignation);
         teamURL = itemView.findViewById(R.id.teamURL);
         loadingIndicatorView = itemView.findViewById(R.id.indicator_progress_bar_team);
+        viewLinkedin = itemView.findViewById(R.id.viewLinkedin);
     }
 }

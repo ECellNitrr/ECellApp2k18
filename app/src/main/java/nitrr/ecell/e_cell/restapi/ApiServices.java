@@ -1,6 +1,8 @@
 package nitrr.ecell.e_cell.restapi;
 
+import nitrr.ecell.e_cell.model.ESummitRegistrationResponse;
 import nitrr.ecell.e_cell.model.SplashScreenResponse;
+import nitrr.ecell.e_cell.model.auth.LoginResponse;
 import nitrr.ecell.e_cell.model.bquiz.Answer;
 import nitrr.ecell.e_cell.model.bquiz.BQuizQuestionResponse;
 import nitrr.ecell.e_cell.model.bquiz.BQuizStatusResponse;
@@ -38,6 +40,9 @@ public interface ApiServices {
     @POST(AppConstants.VERIFY_OTP_URL)
     Call<VerifyOtp> sendOtpEntered(@Body sendOtp sendOtp);
 
+    @POST(AppConstants.RETRY_OTP_URL)
+    Call<AuthenticationResponse> getAnotherOtp(@Body UserDetails userDetails);
+
     @POST(AppConstants.FB_SIGN_UP_URL)
     Call<AuthenticationResponse> sendFacebookRegistrationDetails(@Body FacebookSignInUserDetails details);
 
@@ -60,7 +65,7 @@ public interface ApiServices {
     Call<EventsResponse> getEventsResponse();
 
     @POST(AppConstants.SIGN_IN_URL)
-    Call<AuthenticationResponse>sendLoginDetails(@Body LoginDetails loginDetails);
+    Call<LoginResponse> sendLoginDetails(@Body LoginDetails loginDetails);
 
     @GET(AppConstants.SPONSOR_URL)
     Call<SponsorsResponse> getSponsorsResponce();
@@ -73,4 +78,7 @@ public interface ApiServices {
 
     @POST(AppConstants.BQUIZ_SUBMIT_ANSWER)
     Call<GenericResponse> submitAnswer(@Body Answer answer);
+
+    @GET(AppConstants.ESUMMIT_REGISTRATION)
+    Call<ESummitRegistrationResponse> getRegistrationLink();
 }

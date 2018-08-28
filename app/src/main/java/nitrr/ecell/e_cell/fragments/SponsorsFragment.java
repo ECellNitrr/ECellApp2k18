@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 
 public class SponsorsFragment extends DialogFragment {
     private RecyclerView sectionedRecyclerView;
+    private TextView tvComingSoon;
     private SwipeRefreshLayout swipeRefreshLayoutSponsors;
     private ProgressBar progressBarSponsors;
     private Toolbar toolbar;
@@ -89,9 +91,11 @@ public class SponsorsFragment extends DialogFragment {
                 SponsorsFragment.this.dismiss();
             }
         });
-        swipeRefreshLayoutSponsors = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutSponsors);
+        swipeRefreshLayoutSponsors = view.findViewById(R.id.swipeRefreshLayoutSponsors);
         sectionedRecyclerView = view.findViewById(R.id.recyclerview_sponsor1);
-        progressBarSponsors = (ProgressBar) view.findViewById(R.id.progress_bar_sponsors);
+        progressBarSponsors = view.findViewById(R.id.progress_bar_sponsors);
+        tvComingSoon = view.findViewById(R.id.tvComingSoon);
+        tvComingSoon.setVisibility(View.GONE);
 
         sectionedSponsorAdapter = new SponsorSectionAdapter(getContext());
         sectionedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -109,7 +113,6 @@ public class SponsorsFragment extends DialogFragment {
     }
 
     private void APICall() {
-        Log.e("api callfunction ====", "called");
         progressBarSponsors.setVisibility(View.VISIBLE);
         ApiServices services = AppClient.getInstance().createService(ApiServices.class);
 
@@ -120,10 +123,16 @@ public class SponsorsFragment extends DialogFragment {
                 progressBarSponsors.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     SponsorsResponse sponsorsResponse = response.body();
-                    if (null != sponsorsResponse) {
-                        Log.e("response====", "Succesfull");
+                    if (null != sponsorsResponse && sponsorsResponse.getSuccess()) {
+                        tvComingSoon.setVisibility(View.GONE);
                         sectionedSponsorAdapter.setSectionedSponsorTypeList(sponsorsResponse.getSponsors());
                         sectionedSponsorAdapter.notifyDataSetChanged();
+                    }
+                    else{
+                        tvComingSoon.setVisibility(View.VISIBLE);
+                        if (sponsorsResponse != null) {
+                            tvComingSoon.setText(sponsorsResponse.getMessage());
+                        }
                     }
                 } else if (getContext() != null) {
                     Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();

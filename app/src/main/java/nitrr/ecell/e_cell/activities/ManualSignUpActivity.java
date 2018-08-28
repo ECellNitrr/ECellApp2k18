@@ -19,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import nitrr.ecell.e_cell.R;
 import nitrr.ecell.e_cell.model.auth.AuthenticationResponse;
 import nitrr.ecell.e_cell.model.aboutus.UserDetails;
@@ -46,6 +48,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
 
     private UserDetails userDetails;
     private ProgressDialog progressDialog;
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +131,7 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                         utils.saveUserName(firstName);
                         if(jsonResponse.getSuccess()) {
                             Intent intent = new Intent(ManualSignUpActivity.this, OtpActivity.class);
+                            intent.putExtra("userDetails", gson.toJson(userDetails));
                             startActivity(intent);
                             finish();
                         }else {
@@ -261,6 +265,14 @@ public class ManualSignUpActivity extends AppCompatActivity implements View.OnCl
                     android.R.anim.slide_out_right);
             CustomTabsIntent customTabsIntent = intentBuilder.build();
             customTabsIntent.launchUrl(this, uri);
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(this, RegisterMainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

@@ -9,7 +9,8 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorHomeBottomBackground">
+        android:background="@color/colorHomeBottomBackground"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -49,6 +50,16 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/margin_256"
                 android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvComingSoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textSize="@dimen/margin_24"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/raleway_bold"/>
 
         </RelativeLayout>
 
