@@ -23,7 +23,7 @@ public class BquizAnswerAdapter extends RecyclerView.Adapter<BquizAnswerAdapter.
     private LayoutInflater layoutInflater;
     private List<QuestionDetailsModel> questionDetailsModels = new ArrayList<>();
     private SelectAnswerInterface callback;
-    private int lastSelected = -1;
+    public static int lastSelected = -1;
 //    private int lastSecondSelected = -2;
 
     public BquizAnswerAdapter(Context context, List<QuestionDetailsModel> questionDetailsModels, SelectAnswerInterface callback) {
