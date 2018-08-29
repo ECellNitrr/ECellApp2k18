@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import retrofit2.Response;
 
 public class LeaderboardFragment extends DialogFragment {
 
+    private ImageView imgDismissLeaderboard;
     private LeaderBoardAdapter leaderBoardAdapter;
     private RecyclerView recyclerViewLeaderboard;
     private ProgressBar progressBarLeaderboard;
@@ -74,13 +76,21 @@ public class LeaderboardFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
         prefUtils = new PrefUtils(getActivity());
         initialize(view);
+        userNameLeadeboard.setText(prefUtils.getUserName());
         setUpLeaderboardRecyclerView();
         apiCallForBquizLeaderboard();
         progressBarLeaderboard.setVisibility(View.VISIBLE);
+        imgDismissLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LeaderboardFragment.this.dismiss();
+            }
+        });
         return view;
     }
 
     private void initialize(View view) {
+        imgDismissLeaderboard = view.findViewById(R.id.img_dismiss_leaderboard);
         recyclerViewLeaderboard = (RecyclerView) view.findViewById(R.id.recycler_view_leaderboard);
         userNameLeadeboard = (TextView) view.findViewById(R.id.user_name_leaderboard);
         userRankLeaderboard = (TextView) view.findViewById(R.id.user_rank_leaderboard);
@@ -104,7 +114,6 @@ public class LeaderboardFragment extends DialogFragment {
                     BQuizLeaderboardResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
                         leaderBoardAdapter.setLeaderboardUserDetailsList(jsonResponse.getLeaderboard());
-                        userNameLeadeboard.setText(prefUtils.getUserName());
                         userRankLeaderboard.setText(String.valueOf(jsonResponse.getUserRank()));
                         leaderBoardAdapter.notifyDataSetChanged();
                     }

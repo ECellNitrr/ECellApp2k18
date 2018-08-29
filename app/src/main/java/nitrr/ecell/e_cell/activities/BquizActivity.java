@@ -121,6 +121,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     }
 
     private void apiCall(){
+        questionDetailsModels.clear();
         ApiServices api = AppClient.getInstance().createServiceWithAuth(ApiServices.class, this);
         Call<BQuizQuestionResponse> call = api.getQuestion(retryQuestion);
         call.enqueue(new Callback<BQuizQuestionResponse>() {
@@ -224,7 +225,9 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
                     GenericResponse responseBody = response.body();
                     if(null != responseBody){
                         if (responseBody.getSuccess()){
+                            BquizAnswerAdapter.lastSelected = -1;
                             isPenaltyApplicable = false;
+                            bm = BitmapFactory.decodeResource(getResources(), R.drawable.bquiz_logo);
                             makeLayoutsInvisible();
                             tvQuestion.setText(responseBody.getMessage());
                             Glide.with(BquizActivity.this).load(R.drawable.bquiz_logo).into(ivQuestion);
@@ -241,12 +244,14 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
             @Override
             public void onFailure(Call<GenericResponse> call, Throwable t) {
                 progressDialog.hideDialog();
-                Toast.makeText(BquizActivity.this, "Please Submit again", Toast.LENGTH_LONG).show();
+                Toast.makeText(BquizActivity.this, getResources().getString(R.string.something_went_wrong_msg), Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void makeLayoutsInvisible(){
+        questionDetailsModels.clear();
+        adapter.notifyDataSetChanged();
         rvAnswers.setVisibility(View.GONE);
         timer.setVisibility(View.GONE);
         donutProgress.setVisibility(View.GONE);

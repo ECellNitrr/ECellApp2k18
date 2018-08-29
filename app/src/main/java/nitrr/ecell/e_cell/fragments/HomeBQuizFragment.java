@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +84,7 @@ public class HomeBQuizFragment extends Fragment {
 
     private void init() {
         progressDialog = new ProgressDialog();
+        ImageView imgLeaderboard = getView().findViewById(R.id.leaderboard_img);
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
         ImageView imageView = getView().findViewById(R.id.bqImageView);
         Glide.with(getActivity())
@@ -98,6 +101,16 @@ public class HomeBQuizFragment extends Fragment {
             public void onClick(View view) {
                 progressDialog.showDialog("Checking, if Bquiz is active now...", getContext());
                 apiCallForBquizStatus();
+            }
+        });
+
+        imgLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentActivity activity = (FragmentActivity) (getActivity());
+                FragmentManager fm = activity.getSupportFragmentManager();
+                LeaderboardFragment leaderboardFragment = LeaderboardFragment.newInstance();
+                leaderboardFragment.show(fm, "LeaderBoard Fragment");
             }
         });
 

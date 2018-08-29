@@ -47,7 +47,7 @@
     <string name="bquiz_quit">Quit</string>
     <string name="something_went_wrong_msg">Something went wrong. Please try again.</string>
     <string name="leaderboard_title">Leaderboard</string>
-    <string name="def_user_name_leaderboard">Vrihas Pathak</string>
+    <string name="def_user_name_leaderboard">UserName</string>
     <string name="def_user_rank_leaderboard">Rank</string>
     <string name="rank_hash">\#</string>
     <string name="network_issue_title">Network Issue</string>
