@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nitrr.ecell.e_cell.R;
+import nitrr.ecell.e_cell.activities.HomeActivity;
 import nitrr.ecell.e_cell.adapters.bquiz.LeaderBoardAdapter;
 import nitrr.ecell.e_cell.model.bquiz.BQuizLeaderboardResponse;
 import nitrr.ecell.e_cell.restapi.ApiServices;
@@ -104,8 +105,8 @@ public class LeaderboardFragment extends DialogFragment {
     }
 
     private void apiCallForBquizLeaderboard() {
-        ApiServices apiServices = AppClient.getInstance().createService(ApiServices.class);
-        Call<BQuizLeaderboardResponse> call = apiServices.getBquizLeaderboard();
+        ApiServices apiServices = AppClient.getInstance().createServiceWithAuth(ApiServices.class, (HomeActivity)getActivity());
+        Call<BQuizLeaderboardResponse> call = apiServices.getBquizLeaderboard(prefUtils.getQuestionSetId());
         call.enqueue(new Callback<BQuizLeaderboardResponse>() {
             @Override
             public void onResponse(Call<BQuizLeaderboardResponse> call, Response<BQuizLeaderboardResponse> response) {
@@ -113,9 +114,13 @@ public class LeaderboardFragment extends DialogFragment {
                 if (response.isSuccessful()) {
                     BQuizLeaderboardResponse jsonResponse = response.body();
                     if (jsonResponse != null) {
-                        leaderBoardAdapter.setLeaderboardUserDetailsList(jsonResponse.getLeaderboard());
-                        userRankLeaderboard.setText(String.valueOf(jsonResponse.getUserRank()));
-                        leaderBoardAdapter.notifyDataSetChanged();
+                        if (jsonResponse.getSuccess()){
+                            leaderBoardAdapter.setLeaderboardUserDetailsList(jsonResponse.getLeaderboard());
+                            userRankLeaderboard.setText(String.valueOf(jsonResponse.getUserRank()));
+                            leaderBoardAdapter.notifyDataSetChanged();
+                        }else {
+                            Toast.makeText(getContext(),jsonResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else if (getContext() != null) {
                     Toast.makeText(getContext(), getString(R.string.something_went_wrong_msg), Toast.LENGTH_SHORT).show();

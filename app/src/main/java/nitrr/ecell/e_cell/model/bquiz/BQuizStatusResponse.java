@@ -15,6 +15,14 @@ public class BQuizStatusResponse extends GenericResponse implements Serializable
     @Expose
     private boolean isActive;
 
+    @SerializedName("questionsetId")
+    @Expose
+    private int questionsetId;
+
+    public int getQuestionsetId() {
+        return questionsetId;
+    }
+
     public boolean isActive() {
         return isActive;
     }

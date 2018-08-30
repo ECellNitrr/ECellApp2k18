@@ -53,7 +53,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
     private ImageView ivQuestion;
     private RecyclerView rvAnswers;
     private DonutProgress donutProgress;
-    private Button btnSubmitAnswer, btnRetryQuestion;
+    private Button btnSubmitAnswer, btnRetryQuestion, btnExitBquiz;
     private Boolean retryQuestion = false;
 
     private BquizAnswerAdapter adapter;
@@ -101,6 +101,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
 
         btnRetryQuestion = findViewById(R.id.btnRetryQuestion);
         btnSubmitAnswer = findViewById(R.id.btnSubmitAnswer);
+        btnExitBquiz = findViewById(R.id.btnExitBquiz);
         btnRetryQuestion.setVisibility(View.GONE);
         btnSubmitAnswer.setVisibility(View.GONE);
 
@@ -112,6 +113,7 @@ public class BquizActivity extends AppCompatActivity implements SelectAnswerInte
         btnRetryQuestion.setOnClickListener(this);
         btnSubmitAnswer.setOnClickListener(this);
         ivQuestion.setOnClickListener(this);
+        btnExitBquiz.setOnClickListener(this);
         makeLayoutsVisible();
     }
 

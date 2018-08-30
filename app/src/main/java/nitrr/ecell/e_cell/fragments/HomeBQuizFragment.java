@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -25,6 +26,7 @@ import nitrr.ecell.e_cell.restapi.AppClient;
 import nitrr.ecell.e_cell.utils.AppConstants;
 import nitrr.ecell.e_cell.utils.DialogFactory;
 import nitrr.ecell.e_cell.utils.NetworkUtils;
+import nitrr.ecell.e_cell.utils.PrefUtils;
 import nitrr.ecell.e_cell.utils.ProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +35,7 @@ import retrofit2.Response;
 public class HomeBQuizFragment extends Fragment {
 
     private ProgressDialog progressDialog;
+    private PrefUtils prefUtils;
 
     private DialogInterface.OnClickListener clickListenerNegativeStatus = new DialogInterface.OnClickListener() {
         @Override
@@ -84,6 +87,7 @@ public class HomeBQuizFragment extends Fragment {
 
     private void init() {
         progressDialog = new ProgressDialog();
+        prefUtils = new PrefUtils(getActivity());
         ImageView imgLeaderboard = getView().findViewById(R.id.leaderboard_img);
         Typeface bebasNeue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
         ImageView imageView = getView().findViewById(R.id.bqImageView);
@@ -127,6 +131,7 @@ public class HomeBQuizFragment extends Fragment {
                     BQuizStatusResponse jsonResponse = response.body();
                     if (jsonResponse != null && jsonResponse.getSuccess()) {
                         if (jsonResponse.isActive()) {
+                            prefUtils.setQuestionSetId(jsonResponse.getQuestionsetId());
                             DialogFactory.showDialog(DialogFactory.BQUIZ_RULES, getContext(), clickListenerPositiveRules, clickListenerNegativeRules, false, getString(R.string.bquiz_rules_title), getString(R.string.bquiz_rules_detail), getString(R.string.bquiz_rules_ok_btn), getString(R.string.bquiz_dialog_cancel_btn));
                         } else {
                             DialogFactory.showDialog(DialogFactory.BQUIZ_NOT_ACTIVE_ID, getContext(), clickListenerPositiveStatus, clickListenerNegativeStatus, true, getString(R.string.bquiz_dialog_title), getString(R.string.bquiz_dialog_msg), getString(R.string.bquiz_dialog_retry_btn), getString(R.string.bquiz_dialog_cancel_btn));

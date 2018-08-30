@@ -21,7 +21,7 @@ public class AppConstants {
 
     //Bquiz Urls
     public static final String BQUIZ_STATUS = "bquiz/is_active";
-    public static final String BQUIZ_LEADERBOARD = "v2/5b66b49a3200007400ee11cb";
+    public static final String BQUIZ_LEADERBOARD = "bquiz/leaderboard/";
 //    public static final String BQUIZ_QUESTION = "v2/5b682c6d3300005b0432db31";
     public static final String BQUIZ_QUESTION = "bquiz/get_question/";
     public static final String BQUIZ_SUBMIT_ANSWER = "bquiz/submit_answer/";

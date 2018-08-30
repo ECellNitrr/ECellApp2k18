@@ -86,6 +86,18 @@ public class PrefUtils {
         editor.apply();
     }
 
+    public void setQuestionSetId(int id) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("QuestionSetId", id);
+        editor.apply();
+    }
+
+    public int getQuestionSetId() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        return prefs.getInt("QuestionSetId", -1);
+    }
+
     public boolean getIsLoggedIn() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         return preferences.getBoolean("isLoggedIn", false);

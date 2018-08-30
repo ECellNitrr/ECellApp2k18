@@ -59,7 +59,7 @@ public interface ApiServices {
     Call<BQuizStatusResponse> getBquizStatus();
 
     @GET(AppConstants.BQUIZ_LEADERBOARD)
-    Call<BQuizLeaderboardResponse> getBquizLeaderboard();
+    Call<BQuizLeaderboardResponse> getBquizLeaderboard(@Query("questionsetId") int questionsetId);
 
     @GET(AppConstants.EVENTS_URL)
     Call<EventsResponse> getEventsResponse();
